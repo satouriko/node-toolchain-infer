@@ -1,0 +1,13 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-17.0.1-darwin-arm64-b49c65be9112f7e5de4e39f4f01e541ee73b3d28d3e2bbd3ea85a86952d0dc2d/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/yarn-gap-audit/tools/3.1.0-rc.12-historical-1788955492489/yarn-3.1.0-rc.12/yarn.cjs install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0001: │ Error [ERR_STREAM_PREMATURE_CLOSE]: Premature close
+    at new NodeError (node:internal/errors:371:5)
+    at PassThrough.onclose (node:internal/streams/end-of-stream:122:30)
+    at PassThrough.emit (node:events:390:28)
+    at emitCloseNT (node:internal/streams/destroy:145:10)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+➤ YN0013: │ No packages were cached - one package had to be fetched (is-number@npm:7.0.0)
+➤ YN0000: └ Completed in 0s 300ms
+➤ YN0000: Failed with errors in 0s 306ms

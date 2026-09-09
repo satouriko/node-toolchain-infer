@@ -1,0 +1,24 @@
+{
+  "release": {
+    "version": "2.0.0-rc.4",
+    "node": null,
+    "sourceUrl": "https://registry.npmjs.org/@yarnpkg%2Fcli",
+    "releasedAt": "2019-09-05T15:50:21.708Z",
+    "integrity": "sha512-/SUjLWftNPPBpzsNAWQPxYIqJCaMTeydM5InH+tCvOAEKuWY/Z4kanOqT/bj7wfLd9dQIsYBIo2HY5/72V2ZsA==",
+    "bundle": {
+      "tag": "@yarnpkg/cli/2.0.0-rc.4",
+      "commit": "919dea641d485df741571557cb335c7c2721256b",
+      "url": "https://raw.githubusercontent.com/yarnpkg/berry/919dea641d485df741571557cb335c7c2721256b/packages/yarnpkg-cli/bin/yarn.js",
+      "size": 5785581
+    }
+  },
+  "version": "2.0.0-rc.4",
+  "metadataUrl": "https://registry.npmjs.org/@yarnpkg%2Fcli",
+  "enginesSource": "https://registry.npmjs.org/@yarnpkg%2Fcli",
+  "timeSource": "https://registry.npmjs.org/@yarnpkg%2Fcli",
+  "timeField": "time[2.0.0-rc.4]",
+  "error": {
+    "message": "Actual tool version mismatch: 2.0.0-rc.1\n",
+    "stack": "Error: Actual tool version mismatch: 2.0.0-rc.1\n\n    at provision (/Users/cuteloli/Code/node-toolchain-infer/maintenance/provision.ts:314:52)\n    at async verify (/Users/cuteloli/Code/node-toolchain-infer/maintenance/enrich-yarn-catalog.ts:191:20)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/enrich-yarn-catalog.ts:252:26)\n    at async Promise.all (index 1)\n    at async enrichYarnCatalog (/Users/cuteloli/Code/node-toolchain-infer/maintenance/enrich-yarn-catalog.ts:267:5)\n    at async <anonymous> (/Users/cuteloli/Code/node-toolchain-infer/maintenance/enrich-yarn-catalog.ts:293:22)"
+  }
+}

@@ -1,0 +1,25 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/12/tools/pnpm-5.16.0-2/node_modules/pnpm/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/12/project/.pnpm-store/v3
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: inconclusive; logs/7eaeeddac647d34e947c2fa6310bb0cd298d423d9b49188f99bf97bc72f6853c-71f2e038a76a.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

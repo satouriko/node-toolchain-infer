@@ -1,0 +1,16 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/lib/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+mkdirp is not a function
+
+TypeError: mkdirp is not a function
+    at /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/mkdirp-promise/lib/index.js:7:5
+    at new Promise (<anonymous>)
+    at module.exports (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/mkdirp-promise/lib/index.js:6:10)
+    at Object.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/lock.js:53:15)
+    at Generator.next (<anonymous>)
+    at /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/lock.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/lock.js:3:12)
+    at Object.withLock [as default] (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/lock.js:51:12)
+    at Object.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/install.js:45:33)
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/303a8acb37dc0b464943260413d7ab9b61272b306e9db3b658b6ed75fa88d7de/tool/node_modules/supi/lib/api/install.js:4:58)

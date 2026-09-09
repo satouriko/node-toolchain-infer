@@ -1,0 +1,20 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.11.1-darwin-arm64-5e772e478390fab3001b7148a923e4f22fca50170000f18b28475337d3a97248/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/yarn-gap-audit/tools/0.20.3-16.11.1-1788955712137/yarn-0.20.3/node_modules/yarn/bin/yarn.js install --frozen-lockfile --ignore-scripts --non-interactive
+yarn install v0.20.3
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+warning Ignored scripts due to flag.
+Done in 0.07s.
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: semantic-mismatch; logs/3fbf09c20fe3b534dbb86e0b0f83b6e36eba49dbe5c071e780e7aa3025e2e5ff-cfafafa4b8ac.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

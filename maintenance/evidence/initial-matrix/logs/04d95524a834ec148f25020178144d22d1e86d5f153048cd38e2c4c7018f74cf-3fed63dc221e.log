@@ -1,0 +1,22 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/8/tools/pnpm-11.0.0-alpha.7/node_modules/pnpm/bin/pnpm.mjs install --frozen-lockfile --ignore-scripts
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 1s using pnpm v11.0.0-alpha.7
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/7975d9dfebd5104f955cb5442ffa0361f714d61bbaa28a6b96e0ae473a1d6e7b-1f7f1ba50d22.log

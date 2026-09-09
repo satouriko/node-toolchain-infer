@@ -1,0 +1,46 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/tools/npm-6.14.11/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm ERR! cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/project-control-project/.npm-cache/_logs/2026-09-09T10_42_51_926Z-debug.log
+
+[npm debug: 2026-09-09T10_42_51_926Z-debug.log]
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node',
+1 verbose cli   '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/tools/npm-6.14.11/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   'ci',
+1 verbose cli   '--ignore-scripts',
+1 verbose cli   '--no-audit',
+1 verbose cli   '--no-fund'
+1 verbose cli ]
+2 info using npm@6.14.11
+3 info using node@v24.10.0
+4 verbose npm-session a5e88c6a910e466d
+5 info prepare initializing installer
+6 verbose prepare starting workers
+7 verbose prepare installation prefix: /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/project-control-project
+8 verbose prepare using package-lock.json
+9 verbose checkLock verifying package-lock data
+10 verbose teardown shutting down workers.
+11 info teardown Done in 0s
+12 verbose stack Error: cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+12 verbose stack
+12 verbose stack
+12 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+12 verbose stack
+12 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/tools/npm-6.14.11/node_modules/npm/node_modules/libcipm/index.js:172:15
+13 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/project-control-project
+14 verbose Darwin 25.6.0
+15 verbose argv "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node" "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/4/tools/npm-6.14.11/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+16 verbose node v24.10.0
+17 verbose npm  v6.14.11
+18 error cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+18 error
+18 error
+18 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+19 verbose exit [ 1, true ]

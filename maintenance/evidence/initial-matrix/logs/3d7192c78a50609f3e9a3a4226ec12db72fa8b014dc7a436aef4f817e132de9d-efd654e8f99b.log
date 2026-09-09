@@ -1,0 +1,15 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+(node:49338) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/project/pnpm-lock.yaml
+ ERROR  Headless installation requires a pnpm-lock.yaml file
+
+pnpm: Headless installation requires a pnpm-lock.yaml file
+    at _install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:187184:21)
+    at mutateModules (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:187109:29)
+    at async install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:187035:24)
+    at async installDeps (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:188990:31)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:216087:21
+    at async main (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:216054:34)
+    at async runPnpm (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:216309:5)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/2/tools/pnpm-8.3.0/dist/pnpm.cjs:216301:7

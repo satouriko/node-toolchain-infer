@@ -1,0 +1,12 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-19.4.0-darwin-arm64-9b6bfec4787ec5e500d21e835467fc4bb67689ef7d30a66e31d5bc372405eb42/bin/node /Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/yarn-pnp-baselines/tools/yarn-modern-v7/yarn-4.0.0-rc.35/node_modules/@yarnpkg/cli-dist/bin/yarn.js install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ No packages were cached - one package had to be fetched (is-number@npm:7.0.0)
+➤ YN0000: └ Completed in 0s 385ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: Done in 0s 448ms
+
+[PnP dependency verification] /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-19.4.0-darwin-arm64-9b6bfec4787ec5e500d21e835467fc4bb67689ef7d30a66e31d5bc372405eb42/bin/node --require /Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/yarn-pnp-baselines/work/yarn-modern-v7/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}

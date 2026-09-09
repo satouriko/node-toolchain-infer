@@ -1,0 +1,12 @@
+{
+  "probe": {
+    "manager": "yarn",
+    "version": "2.0.0-rc.27",
+    "lock": "yarn.lock",
+    "sharedWorkspace": false
+  },
+  "status": "incomplete",
+  "log": "probes/yarn-2.0.0-rc.27-yarn.lock-1788947251760-d263bc",
+  "error": "Error: Generation failed (1); /Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/format-discovery/probes/yarn-2.0.0-rc.27-yarn.lock-1788947251760-d263bc/candidate/generation.log: Usage Error: Unrecognized or legacy configuration settings found: enableTelemetry - run \"yarn config -v\" to see the list of settings supported in Yarn (in /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-dVQEvq/project/.yarnrc.yml)\n\n$ yarn install [--json] [--immutable] [--immutable-cache] [--check-cache] [--inline-builds] [--cache-folder #0]\n",
+  "stack": "Error: Generation failed (1); /Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/format-discovery/probes/yarn-2.0.0-rc.27-yarn.lock-1788947251760-d263bc/candidate/generation.log: Usage Error: Unrecognized or legacy configuration settings found: enableTelemetry - run \"yarn config -v\" to see the list of settings supported in Yarn (in /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-dVQEvq/project/.yarnrc.yml)\n\n$ yarn install [--json] [--immutable] [--immutable-cache] [--check-cache] [--inline-builds] [--cache-folder #0]\n\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:84:13)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:139:15)\n    at async Promise.all (index 1)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:195:3)"
+}

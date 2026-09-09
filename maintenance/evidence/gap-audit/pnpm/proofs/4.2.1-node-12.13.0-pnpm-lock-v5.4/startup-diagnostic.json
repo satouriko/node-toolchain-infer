@@ -1,0 +1,17 @@
+{
+  "diagnosticOnly": true,
+  "purpose": "Expose error swallowed before reporter initialization; original CLI files unchanged",
+  "node": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-12.13.0-darwin-x64-49a7374670a111b033ce16611b20fd1aafd3296bbc662b184fe8fb26a29c22cc/bin/node",
+  "command": [
+    "--require",
+    "/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/trace-pnpm-error.cjs",
+    "/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/4.2.1-node-12.13.0-pnpm-lock-v5.4/pnpm-4.2.1/node_modules/pnpm/bin/pnpm.js",
+    "install",
+    "--frozen-lockfile",
+    "--ignore-scripts"
+  ],
+  "preload": "const path = require('path'); const target = require(path.resolve(process.env.NTI_TRACE_CLI, '../../lib/err.js')); const original = target.default; target.default = function(error) { console.error('[Captured original error]', error && error.stack || error); return original.apply(this,arguments); };\n",
+  "status": 1,
+  "stdout": "",
+  "stderr": "[Captured original error] /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/4.2.1-node-12.13.0-pnpm-lock-v5.4/pnpm-4.2.1/node_modules/pnpm/lib/node_modules/@pnpm/list/lib/renderTree.js:23\n        !((_a = pkg.dependencies), === null || _a === void 0 ? void 0 : _a.length) &&\n                                   ^^^\n\nSyntaxError: Unexpected token '==='\n    at Module._compile (internal/modules/cjs/loader.js:892:18)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)\n    at Module.load (internal/modules/cjs/loader.js:812:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:724:14)\n    at Module.require (internal/modules/cjs/loader.js:849:19)\n    at require (internal/modules/cjs/helpers.js:74:18)\n    at Object.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/4.2.1-node-12.13.0-pnpm-lock-v5.4/pnpm-4.2.1/node_modules/pnpm/lib/node_modules/@pnpm/list/lib/index.js:9:22)\n    at Module._compile (internal/modules/cjs/loader.js:956:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)\n    at Module.load (internal/modules/cjs/loader.js:812:32)\n"
+}

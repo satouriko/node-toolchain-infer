@@ -1,0 +1,89 @@
+{
+  "id": "b30509cf-8096-499f-aa2b-7bbc0cf0b10d",
+  "key": "fdd1832aff40f04feb8e209b2bcb80f12acc57183e59bcd12787778c25ba6c23",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.27.1",
+  "fixtureId": "yarn-modern-v8",
+  "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:01.243Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "id": "35473acd42985cb43f2faa0b039c62c674b4df79971b3fcccfbcb542a1d1b268-95b4b0160569",
+    "key": "35473acd42985cb43f2faa0b039c62c674b4df79971b3fcccfbcb542a1d1b268",
+    "manager": "yarn",
+    "version": "0.27.1",
+    "actualVersion": "0.27.1",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-gQtDrhKT6+gDzf+9m25frrhU3j1gBK1Km1CxJ7738hNdCbdAJBDLoWEN3dULx1RlIPrR/FEgnZDCJCazsj4dQw==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/0fd55ecf763d5787909102625e4742bbb2a145dfa235314857887a624cf821e9/package-lock.json",
+      "lockfileSha256": "0fd55ecf763d5787909102625e4742bbb2a145dfa235314857887a624cf821e9",
+      "logPath": "bootstrap/0fd55ecf763d5787909102625e4742bbb2a145dfa235314857887a624cf821e9/f8f0761f635e68ae7d798f02c261d8b27089a0de381ba186e9d2c3012295f25d.log",
+      "installedTreeSha256": "3b45946883ef065c5d0173114d5d2320c6f427de5d0ff5083f85704377ba2fe4"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.27.1.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v8",
+    "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/35473acd42985cb43f2faa0b039c62c674b4df79971b3fcccfbcb542a1d1b268-95b4b0160569.log",
+    "createdAt": "2026-09-09T10:19:01.201Z"
+  }
+}

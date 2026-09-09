@@ -1,0 +1,27 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/8/tools/pnpm-12.0.0-alpha.0/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+✓ Lockfile passes supply-chain policies (previously verified)
+Packages: +1
++
+Packages: +1
++
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/8/project/.pnpm-home/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 382ms using pnpm v12.0.0-alpha.0
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: inconclusive; logs/8c2f0fa45c296afada1637d4a292b12a7a71dec33e2b0ae8b9aac7434dbd77a5-a02d49bc908c.log
+Frozen enforcement was not established: a contradictory manifest must produce an explicit lock rejection.

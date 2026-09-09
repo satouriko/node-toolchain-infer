@@ -1,0 +1,81 @@
+import { readFile, writeFile, readdir } from 'node:fs/promises'
+import { join, dirname, resolve } from 'node:path'
+import semver from 'semver'
+import { observationFingerprint, validateKnownBugs } from '../../maintenance/known-bugs.js'
+import { digest } from '../../maintenance/model.js'
+
+const root = resolve('maintenance/evidence')
+const directories = [
+  'initial-matrix', 'initial-boundaries', 'yarn-supplement', 'yarn-pnp-matrix',
+  'yarn-boundaries', 'legacy-pnpm-boundaries', 'npm-v3-controls', 'gap-audit/pnpm',
+]
+const records = []
+for (const name of directories) {
+  const directory = join(root, name)
+  for (const file of await readdir(join(directory, 'rows'))) {
+    const raw = await readFile(join(directory, 'rows', file))
+    const row = JSON.parse(raw.toString())
+    if (row.manager !== 'pnpm' || !row.observation || row.observation.protocol !== 'frozen-install-v2') continue
+    const log = await readFile(join(directory, row.observation.logPath), 'utf8').catch(() => '')
+    records.push({ row, raw, directory, log })
+  }
+}
+const reviewedAt = new Date().toISOString()
+const common = { manager: 'pnpm', reviewedAt }
+const definitions = [
+  { ...common, id: 'pnpm-auto-import-5.17.0', range: '5.17.0',
+    fixtureIds: ['pnpm-lock-v5', 'pnpm-lock-v5.1', 'pnpm-lock-v5.2', 'pnpm-lock-v5.3', 'pnpm-lock-v5.4'],
+    reason: 'The macOS auto/clone package importer exits before linking dependencies. The unchanged executable installs the same lock correctly with copy or hardlink; 5.17.1 also passes.',
+    url: 'https://github.com/pnpm/pnpm/compare/v5.17.0...v5.17.1',
+    semanticEvidence: 'maintenance/evidence/gap-audit/pnpm/README.md#pnpm-5170: original reader accepts lockfile major 5; all five original fixtures install without changed bytes when only package-import-method=copy is selected. Default import reproduces missing dependencies on Node 15.8.0 and 24.10.0. No repaired executable is used as baseline evidence.',
+    accept: ({ row }) => row.observation.status === 'semantic-mismatch' && row.observation.installed['is-number'] === '<missing>' && JSON.stringify(row.observation.beforeHashes) === JSON.stringify(row.observation.afterHashes),
+  },
+  { ...common, id: 'pnpm-frozen-rewrite-8-prerelease', range: '>=8.0.0-alpha.0 <8.0.0-rc.0', fixtureIds: ['pnpm-lock-v6'],
+    reason: 'Early pnpm 8 prereleases serialize an already current lockfile during frozen installation; the parsed lock, integrity and installed graph are unchanged.',
+    url: 'https://github.com/pnpm/pnpm/pull/6260',
+    semanticEvidence: 'maintenance/evidence/gap-audit/pnpm/README.md#pnpm-8-prereleases: Node 19.7.0 replays of alpha.0, beta.0 and beta.1 have identical parsed YAML and install is-number@7.0.0. Each historical after hash matches the replay; rc.0 preserves bytes.',
+    accept: ({ row }) => row.observation.status === 'rewrite' && row.observation.afterHashes['pnpm-lock.yaml'] === 'f3decc3cd5bd9359318e2283676c05f43a39476771b3a4ec46d3719283d4e24d' && row.observation.installed['is-number'] === '7.0.0',
+  },
+  { ...common, id: 'pnpm-v6-frozen-rejection-7934', range: '>=9.0.0-rc.0 <9.0.1', fixtureIds: ['pnpm-lock-v6'],
+    reason: 'The reader explicitly accepts lockfile 6, but the frozen-install full-resolution guard incorrectly rejects it; fixed in pnpm 9.0.1.',
+    url: 'https://github.com/pnpm/pnpm/issues/7934',
+    semanticEvidence: 'maintenance/evidence/gap-audit/pnpm/README.md#pnpm-90: exact tagged readLockfiles.ts includes LOCKFILE_VERSION_V6, and install/index.ts compares it incorrectly. PR 7935 fixes the guard; unchanged original fixtures pass on adjacent 9.0.1. rc.0, rc.1, rc.2 and 9.0.0 rejection logs independently reproduced on Node 20.12.2. Earlier alpha/beta versions that do not list v6 remain incompatible.',
+    accept: ({ row, log }) => row.observation.status === 'incompatible' && log.includes('ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE'),
+  },
+  { ...common, id: 'pnpm-v6-frozen-upgrade-7991', range: '9.0.5', fixtureIds: ['pnpm-lock-v6'],
+    reason: 'pnpm 9.0.5 upgrades lockfile 6 to 9 even with --frozen-lockfile; the locked dependency graph and integrity are preserved. Fixed in 9.0.6.',
+    url: 'https://github.com/pnpm/pnpm/issues/7991',
+    semanticEvidence: 'maintenance/evidence/gap-audit/pnpm/README.md#pnpm-905: Node 20.12.2 reproduces the same after SHA-256 as every reviewed historical rewrite. Root specifier/version, package integrity, engines and empty dependency graph are preserved by the v6-to-v9 migration; is-number@7.0.0 is installed. Official 9.0.6 changelog explicitly fixes frozen upgrades.',
+    accept: ({ row }) => row.observation.status === 'rewrite' && row.observation.afterHashes['pnpm-lock.yaml'] === '88818e6e51b71df8b8120ce055aeb14e3fdccc193f10d1ba65bc0e3b294ed5fc' && row.observation.installed['is-number'] === '7.0.0',
+  },
+]
+const candidates = definitions.map(({ accept, ...bug }) => ({ ...bug,
+  observations: [...new Map(records.filter(item => bug.fixtureIds.includes(item.row.fixtureId)
+    && semver.satisfies(item.row.version, bug.range, { includePrerelease: true }) && accept(item))
+    .map(({ row }) => [row.observation.id, { id: row.observation.id, fingerprint: observationFingerprint(row.observation) }])).values()],
+}))
+validateKnownBugs({ schemaVersion: 1, bugs: candidates })
+await writeFile(join(root, 'gap-audit/pnpm/candidate-known-bugs.json'), JSON.stringify({ schemaVersion: 1, bugs: candidates }, null, 2) + '\n')
+console.log(candidates.map(b => ({ id: b.id, observations: b.observations.length })))
+
+const changed = new Map()
+for (const item of records) {
+  const { row, log, directory, raw } = item
+  if (row.fixtureId !== 'pnpm-lock-v6' || !/^7\.33\./.test(row.version)
+    || !log.includes('ERR_PNPM_LOCKFILE_CONFIG_MISMATCH') || !log.includes('settings.autoInstallPeers')) continue
+  const positive = records.find(other => other.row.version === row.version && other.row.fixtureId === row.fixtureId
+    && other.row.status === 'pass' && other.row.observation.environment?.npm_config_auto_install_peers === 'true'
+    && other.row.observation.fixtureHash === row.observation.fixtureHash)
+  if (!positive) throw new Error(`No same-file configuration replay: ${row.version}`)
+  if (!changed.has(directory)) {
+    const existing = JSON.parse(await readFile(join(directory, 'exclusions.json'), 'utf8').catch(() => '{"schemaVersion":1,"entries":[]}'))
+    changed.set(directory, existing)
+  }
+  const table = changed.get(directory)
+  if (!table.entries.some(e => e.rowId === row.id)) table.entries.push({ rowId: row.id, observationId: row.observation.id,
+    rowSha256: digest(raw), reason: `Fixture configuration mismatch, not a format rejection: the v6 lock records autoInstallPeers=true while the old harness used pnpm 7's false default. The same fixture passes with matching settings: ${positive.row.observation.id}. See maintenance/evidence/gap-audit/pnpm/README.md#pnpm-733.`, reviewedAt })
+}
+for (const [directory, data] of changed) {
+  await writeFile(join(directory, 'exclusions.json'), JSON.stringify(data, null, 2) + '\n')
+  console.log(directory, 'total reviewed exclusions', data.entries.length)
+}

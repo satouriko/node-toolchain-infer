@@ -1,0 +1,35 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/4/tools/pnpm-12.0.0-alpha.7/native-pnpm install --frozen-lockfile --ignore-scripts
+Error: pacquet_lockfile::parse_yaml
+
+  × installing dependencies
+  ├─▶ Failed to parse lockfile content as YAML: error: line 1 column 18: The
+  │   lockfileVersion of 6.0 is incompatible with 9.x
+  │    --> <input>:1:18
+  │     |
+  │   1 | lockfileVersion: '6.0'
+  │     |                  ^ The lockfileVersion of 6.0 is incompatible with
+  │   9.x
+  │   2 |
+  │   3 | settings:
+  │     |
+  ├─▶ Failed to parse lockfile content as YAML: error: line 1 column 18: The
+  │   lockfileVersion of 6.0 is incompatible with 9.x
+  │    --> <input>:1:18
+  │     |
+  │   1 | lockfileVersion: '6.0'
+  │     |                  ^ The lockfileVersion of 6.0 is incompatible with
+  │   9.x
+  │   2 |
+  │   3 | settings:
+  │     |
+  ╰─▶ error: line 1 column 18: The lockfileVersion of 6.0 is incompatible with
+      9.x
+       --> <input>:1:18
+        |
+      1 | lockfileVersion: '6.0'
+        |                  ^ The lockfileVersion of 6.0 is incompatible with
+      9.x
+      2 |
+      3 | settings:
+        |
+

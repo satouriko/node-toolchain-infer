@@ -1,0 +1,5 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-18.3.0-darwin-arm64-5800be1084a61dbbe6748535c7f0aefa8bc9b2a5aeb6482916f4b7500d6fc892/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/8/tools/pnpm-7.2.0/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+ ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up-to-date with package.json
+
+Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"

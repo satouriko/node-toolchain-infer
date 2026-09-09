@@ -1,0 +1,31 @@
+import { readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { execute, hashes, fixtureFiles } from '../../maintenance/runner.js'
+import { FROZEN_LOCKFILES } from '../../maintenance/model.js'
+
+const cases = [
+  ...['5', '5.1', '5.2', '5.3'].map(format => ({ name: '5.17.0-node-15.8.0-pnpm-lock-v5.4', fixture: `lock-v${format}/basic`, environment: { npm_config_package_import_method: 'copy' }, label: `copy-import-lock-${format}` })),
+  { name: '5.17.0-node-15.8.0-pnpm-lock-v5.4', fixture: 'lock-v5.4/basic', environment: { npm_config_package_import_method: 'copy' }, label: 'copy-import' },
+  { name: '5.17.0-node-15.8.0-pnpm-lock-v5.4', fixture: 'lock-v5.4/basic', environment: { npm_config_package_import_method: 'hardlink' }, label: 'hardlink-import' },
+  { name: '7.33.0-node-18.16.0-pnpm-lock-v6', fixture: 'lock-v6/basic', environment: { npm_config_auto_install_peers: 'true', npm_config_exclude_links_from_lockfile: 'false' }, label: 'matching-config' },
+]
+for (const task of cases) {
+  const evidence = resolve('maintenance/evidence/gap-audit/pnpm/proofs', task.name)
+  const tool = JSON.parse(await readFile(join(evidence, 'tool.json'), 'utf8'))
+  const source = resolve('fixtures/pnpm', task.fixture)
+  const work = resolve('.cache/gap-audit/controlled', task.label)
+  await rm(work, { recursive: true, force: true })
+  await mkdir(work, { recursive: true })
+  const files = await fixtureFiles(source)
+  for (const file of files) await cp(join(source, file), join(work, file))
+  const observed = [...new Set([...files, ...FROZEN_LOCKFILES])]
+  const before = await hashes(work, observed)
+  const command = ['install', '--frozen-lockfile', '--ignore-scripts']
+  const result = await execute(tool, command, work, task.environment)
+  const after = await hashes(work, observed)
+  let installed = '<missing>'
+  try { installed = JSON.parse(await readFile(join(work, 'node_modules/is-number/package.json'), 'utf8')).version } catch {}
+  const proof = { task, tool, command, ...result, before, after, installed, unchanged: JSON.stringify(before) === JSON.stringify(after) }
+  await writeFile(join(evidence, `${task.label}.json`), JSON.stringify(proof, null, 2) + '\n')
+  console.log(JSON.stringify({ label: task.label, exit: result.exitCode, installed, unchanged: proof.unchanged, output: result.output.slice(-450) }))
+}

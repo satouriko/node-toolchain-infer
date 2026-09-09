@@ -1,0 +1,89 @@
+{
+  "output": "/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-v2-baseline/run-1788952011199",
+  "results": [
+    {
+      "id": "npm-package-lock-v2",
+      "generatedMatch": {
+        "format": 2,
+        "file": "package-lock.json"
+      },
+      "originalFiles": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "generatedFiles": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "comparison": [
+        {
+          "file": "package-lock.json",
+          "identical": true
+        },
+        {
+          "file": "package.json",
+          "identical": true
+        }
+      ],
+      "originalFixtureHash": "fc9ad2ae620e08b33e88b182ea75479267593513349a4ce23b1a4fa279f4b106",
+      "generatedFixtureHash": "fc9ad2ae620e08b33e88b182ea75479267593513349a4ce23b1a4fa279f4b106",
+      "status": "pass",
+      "controlStatus": "incompatible",
+      "installed": {
+        "is-number": "7.0.0"
+      },
+      "controlInstalled": {
+        "is-number": "<missing>"
+      },
+      "node": "16.10.0",
+      "command": [
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ]
+    },
+    {
+      "id": "npm-shrinkwrap-v2",
+      "generatedMatch": {
+        "format": 2,
+        "file": "npm-shrinkwrap.json"
+      },
+      "originalFiles": [
+        "npm-shrinkwrap.json",
+        "package.json"
+      ],
+      "generatedFiles": [
+        "npm-shrinkwrap.json",
+        "package.json"
+      ],
+      "comparison": [
+        {
+          "file": "npm-shrinkwrap.json",
+          "identical": true
+        },
+        {
+          "file": "package.json",
+          "identical": true
+        }
+      ],
+      "originalFixtureHash": "827210d911e50440f5e2674daadb7a8161f1a1df173834248d1272584f6dfc81",
+      "generatedFixtureHash": "827210d911e50440f5e2674daadb7a8161f1a1df173834248d1272584f6dfc81",
+      "status": "pass",
+      "controlStatus": "incompatible",
+      "installed": {
+        "is-number": "7.0.0"
+      },
+      "controlInstalled": {
+        "is-number": "<missing>"
+      },
+      "node": "16.10.0",
+      "command": [
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ]
+    }
+  ]
+}

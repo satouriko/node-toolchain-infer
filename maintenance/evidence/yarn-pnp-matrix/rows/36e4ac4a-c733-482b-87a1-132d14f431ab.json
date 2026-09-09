@@ -1,0 +1,165 @@
+{
+  "id": "36e4ac4a-c733-482b-87a1-132d14f431ab",
+  "key": "1044d00331fe7886fd4329c0460d6673740c1d5997567dbc7730835956f74eec",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.24.6",
+  "fixtureId": "yarn-classic-v1",
+  "fixtureHash": "a61cb9d35cf16d13e2fe22895738251cf8a05e8fb2edebb0ce331ca0ec5c614a",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:32:39.671Z",
+  "attempt": 2,
+  "status": "pass",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+    },
+    "id": "a5a6f9c48794b7901eddf10843e207f1d2a161b6c3e4626986dfa1df1fa2cbb4-2b5b33f52a3f",
+    "key": "a5a6f9c48794b7901eddf10843e207f1d2a161b6c3e4626986dfa1df1fa2cbb4",
+    "manager": "yarn",
+    "version": "0.24.6",
+    "actualVersion": "0.24.6",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-pqBnmMpNdRBlglZO7MGweJ5Z4UFw+oBaCAz+lz+NMuKZv2o9T30T1sAtGHyZ68ZmkZcPUHHTdY6SzE1fyEhUkA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/package-lock.json",
+      "lockfileSha256": "5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65",
+      "logPath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/2e8c8a9711779d360ff0985d6c2ccebb755e40d858efb645eaca4de06e6ef00f.log",
+      "installedTreeSha256": "60f72fecb53a5fab954711d14825ed16b0a65dc356d922917cdce9b0622c0a8e"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.24.6.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-classic-v1",
+    "fixtureHash": "a61cb9d35cf16d13e2fe22895738251cf8a05e8fb2edebb0ce331ca0ec5c614a",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "pass",
+    "exitCode": 0,
+    "beforeHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+    },
+    "afterHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+    },
+    "installed": {
+      "is-number": "7.0.0"
+    },
+    "requestedDependencies": {
+      "is-number": "7.0.0"
+    },
+    "semantic": true,
+    "semanticMethod": "node-modules",
+    "frozenControl": {
+      "protocol": "frozen-install-v2",
+      "inputHashes": {
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+      },
+      "id": "4e567e798224eb775b9682e0cdd94bc5bfab1febc2f9a81b1c2d6ffde4f0f1ee-0d94fa14624b",
+      "key": "4e567e798224eb775b9682e0cdd94bc5bfab1febc2f9a81b1c2d6ffde4f0f1ee",
+      "manager": "yarn",
+      "version": "0.24.6",
+      "actualVersion": "0.24.6",
+      "node": "24.10.0",
+      "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+      "nodeArch": "arm64",
+      "toolIntegrity": "sha512-pqBnmMpNdRBlglZO7MGweJ5Z4UFw+oBaCAz+lz+NMuKZv2o9T30T1sAtGHyZ68ZmkZcPUHHTdY6SzE1fyEhUkA==",
+      "bootstrap": {
+        "protocol": 1,
+        "node": "24.10.0",
+        "npmVersion": "11.6.1",
+        "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+        "command": [
+          "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+          "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+          "install",
+          "--global=false",
+          "--ignore-scripts",
+          "--omit=dev",
+          "--no-audit",
+          "--no-fund",
+          "--registry=https://registry.npmjs.org"
+        ],
+        "lockfilePath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/package-lock.json",
+        "lockfileSha256": "5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65",
+        "logPath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/2e8c8a9711779d360ff0985d6c2ccebb755e40d858efb645eaca4de06e6ef00f.log",
+        "installedTreeSha256": "60f72fecb53a5fab954711d14825ed16b0a65dc356d922917cdce9b0622c0a8e"
+      },
+      "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.24.6.tgz",
+      "platform": "darwin",
+      "arch": "arm64",
+      "fixtureId": "yarn-classic-v1:frozen-control",
+      "fixtureHash": "0542969567f9f4b4a58c1762abbf21d5abe522e207071b5bed2434edf1ffd730",
+      "command": [
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--non-interactive"
+      ],
+      "status": "incompatible",
+      "exitCode": 1,
+      "beforeHashes": {
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+      },
+      "afterHashes": {
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "f007613a3a99c66abc3f4c77d63c4f7ad35a7287b40f5c12d545c94f97fd0635"
+      },
+      "installed": {
+        "is-number": "<missing>"
+      },
+      "requestedDependencies": {
+        "is-number": "6.0.0"
+      },
+      "semantic": false,
+      "semanticMethod": "node-modules",
+      "logPath": "logs/4e567e798224eb775b9682e0cdd94bc5bfab1febc2f9a81b1c2d6ffde4f0f1ee-0d94fa14624b.log",
+      "createdAt": "2026-09-09T10:32:39.613Z"
+    },
+    "logPath": "logs/a5a6f9c48794b7901eddf10843e207f1d2a161b6c3e4626986dfa1df1fa2cbb4-2b5b33f52a3f.log",
+    "createdAt": "2026-09-09T10:32:39.654Z"
+  }
+}

@@ -1,0 +1,20 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/1/tools/yarn-1.2.0/node_modules/yarn/bin/yarn.js install --frozen-lockfile --ignore-scripts --non-interactive
+yarn install v1.2.0
+warning You are using Node "24.10.0" which is not supported and may encounter bugs or unexpected behavior. Yarn supports the following semver range: "^4.8.0 || ^5.7.0 || ^6.2.2 || ^8.0.0"
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+warning Ignored scripts due to flag.
+Done in 0.30s.
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/949c9876fa93ad8705bf104bdfff50f9581cbc344574e479ec30a1e8ee206667-caa9331f7041.log

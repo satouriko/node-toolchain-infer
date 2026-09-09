@@ -1,0 +1,806 @@
+TAP version 13
+# Subtest: public infer integrates filesystem priorities and preserves runtime fallback without network
+ok 1 - public infer integrates filesystem priorities and preserves runtime fallback without network
+  ---
+  duration_ms: 15.212208
+  ...
+# Subtest: runtime npm comes from the selected Node installation, not PATH npm
+ok 2 - runtime npm comes from the selected Node installation, not PATH npm
+  ---
+  duration_ms: 14.641334
+  ...
+# Subtest: CLI describes semver inputs and warns on unsupported options
+ok 3 - CLI describes semver inputs and warns on unsupported options
+  ---
+  duration_ms: 393.723042
+  ...
+# Subtest: fetchCatalog parses official Node and registry shapes without dropping prereleases
+ok 4 - fetchCatalog parses official Node and registry shapes without dropping prereleases
+  ---
+  duration_ms: 6.087084
+  ...
+# Subtest: fetchCatalog rejects a registry key that differs from manifest.version
+ok 5 - fetchCatalog rejects a registry key that differs from manifest.version
+  ---
+  duration_ms: 0.982542
+  ...
+# Subtest: fetchCatalog rejects malformed declared engines.node instead of inventing compatibility
+ok 6 - fetchCatalog rejects malformed declared engines.node instead of inventing compatibility
+  ---
+  duration_ms: 0.612167
+  ...
+# Subtest: loadCatalog and loadRules reject invalid shipped data
+ok 7 - loadCatalog and loadRules reject invalid shipped data
+  ---
+  duration_ms: 8.944333
+  ...
+# Subtest: syncData preserves the destination and leaves no temp file after HTTP failure
+ok 8 - syncData preserves the destination and leaves no temp file after HTTP failure
+  ---
+  duration_ms: 3.137166
+  ...
+# Subtest: syncData preserves the destination and leaves no temp file after parse failure
+ok 9 - syncData preserves the destination and leaves no temp file after parse failure
+  ---
+  duration_ms: 4.587917
+  ...
+# Subtest: conditional requests reuse validated bytes on 304 and recover after transient failures
+ok 10 - conditional requests reuse validated bytes on 304 and recover after transient failures
+  ---
+  duration_ms: 1.485375
+  ...
+# Subtest: concurrent requests deduplicate and a rejected request can be retried
+ok 11 - concurrent requests deduplicate and a rejected request can be retried
+  ---
+  duration_ms: 14.99125
+  ...
+# Subtest: missing engines.node stays unknown rather than being written as a wildcard
+ok 12 - missing engines.node stays unknown rather than being written as a wildcard
+  ---
+  duration_ms: 0.952833
+  ...
+# Subtest: tag-only Yarn releases retain official manifest engines and response hashes without runtime bundle downloads
+ok 13 - tag-only Yarn releases retain official manifest engines and response hashes without runtime bundle downloads
+  ---
+  duration_ms: 0.687166
+  ...
+# Subtest: unavailable or missing tag manifest engines stay explicit unknown with actionable warnings
+ok 14 - unavailable or missing tag manifest engines stay explicit unknown with actionable warnings
+  ---
+  duration_ms: 0.6015
+  ...
+# Subtest: collection reads each directory through Git root, with directory priority before file priority
+ok 15 - collection reads each directory through Git root, with directory priority before file priority
+  ---
+  duration_ms: 24.35325
+  ...
+# Subtest: a git worktree marker is the stopping directory and parents are not collected
+ok 16 - a git worktree marker is the stopping directory and parents are not collected
+  ---
+  duration_ms: 15.651667
+  ...
+# Subtest: all same-directory files and declarations use strict source order
+ok 17 - all same-directory files and declarations use strict source order
+  ---
+  duration_ms: 15.180292
+  ...
+# Subtest: malformed lockfiles preserve manager identity while reporting their unreadable format
+ok 18 - malformed lockfiles preserve manager identity while reporting their unreadable format
+  ---
+  duration_ms: 5.802
+  ...
+# Subtest: legacy pnpm shrinkwrap is collected after pnpm-lock with its real format and workspace feature
+ok 19 - legacy pnpm shrinkwrap is collected after pnpm-lock with its real format and workspace feature
+  ---
+  duration_ms: 14.125375
+  ...
+# Subtest: without a git root only the starting directory contributes and a warning explains it
+ok 20 - without a git root only the starting directory contributes and a warning explains it
+  ---
+  duration_ms: 6.780875
+  ...
+# Subtest: an uninspectable Git marker stops ancestor discovery before an outer repository
+ok 21 - an uninspectable Git marker stops ancestor discovery before an outer repository
+  ---
+  duration_ms: 8.101125
+  ...
+# Subtest: confirmed adjacent behavior changes compile restored support and leave its future open
+ok 22 - confirmed adjacent behavior changes compile restored support and leave its future open
+  ---
+  duration_ms: 10.847709
+  ...
+# Subtest: sparse transitions and cross-Node transitions remain unknown rather than invented bounds
+ok 23 - sparse transitions and cross-Node transitions remain unknown rather than invented bounds
+  ---
+  duration_ms: 1.441958
+  ...
+# Subtest: historical Yarn semantic failures require a PnP-aware verification receipt
+ok 24 - historical Yarn semantic failures require a PnP-aware verification receipt
+  ---
+  duration_ms: 0.324542
+  ...
+# Subtest: explicit original catalogs allow unchanged artifact evidence to survive an expanded release list
+ok 25 - explicit original catalogs allow unchanged artifact evidence to survive an expanded release list
+  ---
+  duration_ms: 0.6945
+  ...
+# Subtest: inconclusive tail cannot create an upper bound or erase a confirmed earlier interval
+ok 26 - inconclusive tail cannot create an upper bound or erase a confirmed earlier interval
+  ---
+  duration_ms: 0.179
+  ...
+# Subtest: prerelease passes remain exact admissible clauses without prerelease failures truncating stable support
+ok 27 - prerelease passes remain exact admissible clauses without prerelease failures truncating stable support
+  ---
+  duration_ms: 0.810583
+  ...
+# Subtest: continuous prereleases merge with their stable interval without admitting a measured rejection
+ok 28 - continuous prereleases merge with their stable interval without admitting a measured rejection
+  ---
+  duration_ms: 1.588875
+  ...
+# Subtest: reviewed upstream bugs preserve failed evidence while compiling semantic compatibility
+ok 29 - reviewed upstream bugs preserve failed evidence while compiling semantic compatibility
+  ---
+  duration_ms: 1.089584
+  ...
+# Subtest: forged pass receipts and contradictory retry outcomes cannot establish support
+ok 30 - forged pass receipts and contradictory retry outcomes cannot establish support
+  ---
+  duration_ms: 0.287875
+  ...
+# Subtest: identical numeric formats in npm lock and shrinkwrap retain separate rules
+ok 31 - identical numeric formats in npm lock and shrinkwrap retain separate rules
+  ---
+  duration_ms: 0.474458
+  ...
+# Subtest: a contradictory tail cannot disappear into unknown while an open range admits its measured rejection
+ok 32 - a contradictory tail cannot disappear into unknown while an open range admits its measured rejection
+  ---
+  duration_ms: 0.170958
+  ...
+# Subtest: missing parsed format never compiles a broad filename-only rule
+ok 33 - missing parsed format never compiles a broad filename-only rule
+  ---
+  duration_ms: 0.122625
+  ...
+# Subtest: nested feature sets cannot collapse into the same rule identity
+ok 34 - nested feature sets cannot collapse into the same rule identity
+  ---
+  duration_ms: 0.3255
+  ...
+# Subtest: unconfirmed transitions expose adjacent retest tasks with common official engine-compatible Nodes
+ok 35 - unconfirmed transitions expose adjacent retest tasks with common official engine-compatible Nodes
+  ---
+  duration_ms: 0.3755
+  ...
+# Subtest: disk entry writes an unknown data file and retest reports into explicit output without changing inputs
+ok 36 - disk entry writes an unknown data file and retest reports into explicit output without changing inputs
+  ---
+  duration_ms: 88.16675
+  ...
+# Subtest: tampered receipt identity, stale fixture, catalog mismatch and non-frozen commands remain incomplete
+ok 37 - tampered receipt identity, stale fixture, catalog mismatch and non-frozen commands remain incomplete
+  ---
+  duration_ms: 2.306542
+  ...
+# Subtest: all-pass samples cannot manufacture an unmeasured lower bound
+ok 38 - all-pass samples cannot manufacture an unmeasured lower bound
+  ---
+  duration_ms: 0.17675
+  ...
+# Subtest: unknown raw outcomes never become negative evidence
+ok 39 - unknown raw outcomes never become negative evidence
+  ---
+  duration_ms: 0.205334
+  ...
+# Subtest: superseded protocol cannot negate current protocol results and new root lockfiles cannot pass
+ok 40 - superseded protocol cannot negate current protocol results and new root lockfiles cannot pass
+  ---
+  duration_ms: 0.254333
+  ...
+# Subtest: compiled output passes the actual public data validator while unknown formats stay report-only
+ok 41 - compiled output passes the actual public data validator while unknown formats stay report-only
+  ---
+  duration_ms: 5.116375
+  ...
+# Subtest: successful retries resolve historical environment failures without discarding either attempt order
+ok 42 - successful retries resolve historical environment failures without discarding either attempt order
+  ---
+  duration_ms: 0.28325
+  ...
+# Subtest: official tag enumeration preserves prereleases and peeled commits take precedence
+ok 43 - official tag enumeration preserves prereleases and peeled commits take precedence
+  ---
+  duration_ms: 0.78175
+  ...
+# Subtest: enrichment retains original artifacts, adds metadata and tag-only bundles with auditable immutable sources
+ok 44 - enrichment retains original artifacts, adds metadata and tag-only bundles with auditable immutable sources
+  ---
+  duration_ms: 36.870125
+  ...
+# Subtest: an official bundle with a different actual version stays in the full catalog as an unresolved artifact
+ok 45 - an official bundle with a different actual version stays in the full catalog as an unresolved artifact
+  ---
+  duration_ms: 21.216167
+  ...
+# Subtest: compiler and monitor consistently exclude only reviewed row identities and retain source evidence and audit
+ok 46 - compiler and monitor consistently exclude only reviewed row identities and retain source evidence and audit
+  ---
+  duration_ms: 95.791709
+  ...
+# Subtest: bad exclusion hashes, identities, reasons and unmatched rows fail loudly in both production entry points
+ok 47 - bad exclusion hashes, identities, reasons and unmatched rows fail loudly in both production entry points
+  ---
+  duration_ms: 169.986542
+  ...
+# Subtest: a control that keeps the original locked versions also proves lock enforcement
+ok 48 - a control that keeps the original locked versions also proves lock enforcement
+  ---
+  duration_ms: 8.493958
+  ...
+# Subtest: measured frozen rejection of changed manifest is required for pass evidence in compiler and monitor
+ok 49 - measured frozen rejection of changed manifest is required for pass evidence in compiler and monitor
+  ---
+  duration_ms: 2.567084
+  ...
+# Subtest: runtime, command, input and failed-control identities cannot be substituted in a pass receipt
+ok 50 - runtime, command, input and failed-control identities cannot be substituted in a pass receipt
+  ---
+  duration_ms: 6.326042
+  ...
+# Subtest: imported pass evidence archives the control command log and cannot survive a missing control log
+ok 51 - imported pass evidence archives the control command log and cannot survive a missing control log
+  ---
+  duration_ms: 43.909958
+  ...
+# Subtest: local matrix reuse cannot bypass a newly required frozen control
+ok 52 - local matrix reuse cannot bypass a newly required frozen control
+  ---
+  duration_ms: 38.572125
+  ...
+# Subtest: seed resumes stale pnpm commands without discarding the original attempts
+ok 53 - seed resumes stale pnpm commands without discarding the original attempts
+  ---
+  duration_ms: 62.71575
+  ...
+# Subtest: compiler, scheduled monitor and local matrix all reject the obsolete pnpm command
+ok 54 - compiler, scheduled monitor and local matrix all reject the obsolete pnpm command
+  ---
+  duration_ms: 17.78575
+  ...
+# Subtest: known-bug reviews apply to exact evidence, never blanket-pass failures in the affected release
+ok 55 - known-bug reviews apply to exact evidence, never blanket-pass failures in the affected release
+  ---
+  duration_ms: 3.295125
+  ...
+# Subtest: a bug review requires an independent semantic basis and cannot give one observation conflicting exemptions
+ok 56 - a bug review requires an independent semantic basis and cannot give one observation conflicting exemptions
+  ---
+  duration_ms: 0.876459
+  ...
+# Subtest: the monitor accepts reviewed semantic compatibility while retaining alerts for unrelated failures
+ok 57 - the monitor accepts reviewed semantic compatibility while retaining alerts for unrelated failures
+  ---
+  duration_ms: 0.278709
+  ...
+# Subtest: unknown bounds still alert when comparable observed behavior changes
+ok 58 - unknown bounds still alert when comparable observed behavior changes
+  ---
+  duration_ms: 0.74375
+  ...
+# Subtest: stable rules do not manufacture prerelease incompatibility
+ok 59 - stable rules do not manufacture prerelease incompatibility
+  ---
+  duration_ms: 1.079167
+  ...
+# Subtest: blocked retry releases cannot starve untouched old branches
+ok 60 - blocked retry releases cannot starve untouched old branches
+  ---
+  duration_ms: 14.311208
+  ...
+# Subtest: historical observations using the wrong version-specific frozen option cannot establish expected behavior
+ok 61 - historical observations using the wrong version-specific frozen option cannot establish expected behavior
+  ---
+  duration_ms: 0.108416
+  ...
+# Subtest: version discovery runs outside the maintenance project and its package-manager declaration
+ok 62 - version discovery runs outside the maintenance project and its package-manager declaration
+  ---
+  duration_ms: 517.587041
+  ...
+# Subtest: immutable Yarn bundles verify size, checksum and actual version without treating CLI metadata as executable
+ok 63 - immutable Yarn bundles verify size, checksum and actual version without treating CLI metadata as executable
+  ---
+  duration_ms: 392.860959
+  ...
+# Subtest: official packages retain normal node_modules self-resolution without rewriting their bytes
+ok 64 - official packages retain normal node_modules self-resolution without rewriting their bytes
+  ---
+  duration_ms: 163.945041
+  ...
+# Subtest: native pnpm wrappers use their exact verified platform package and execute without Node interpreting the binary
+ok 65 - native pnpm wrappers use their exact verified platform package and execute without Node interpreting the binary
+  ---
+  duration_ms: 497.045167
+  ...
+# Subtest: verified artifact cache reuses downloads and repairs corrupted cached bytes
+ok 66 - verified artifact cache reuses downloads and repairs corrupted cached bytes
+  ---
+  duration_ms: 473.586584
+  ...
+# Subtest: manager version discovery is bounded when an old executable hangs
+ok 67 - manager version discovery is bounded when an old executable hangs
+  ---
+  duration_ms: 208.641709
+  ...
+# Subtest: opt-in missing-dependency bootstrap preserves an exact production lock and reuses its receipt
+ok 68 - opt-in missing-dependency bootstrap preserves an exact production lock and reuses its receipt
+  ---
+  duration_ms: 1262.474417
+  ...
+# Subtest: compiled confirmed boundaries preserve restored support and open upper bounds
+ok 69 - compiled confirmed boundaries preserve restored support and open upper bounds
+  ---
+  duration_ms: 0.701333
+  ...
+# Subtest: the explicit-boundary compiler also requires current controls and identical Node integrity
+ok 70 - the explicit-boundary compiler also requires current controls and identical Node integrity
+  ---
+  duration_ms: 0.296209
+  ...
+# Subtest: sparse samples, environment failures, changed fixtures and absent receipts cannot confirm bounds
+ok 71 - sparse samples, environment failures, changed fixtures and absent receipts cannot confirm bounds
+  ---
+  duration_ms: 0.103167
+  ...
+# Subtest: explicit boundaries reject stale frozen commands on either side, including negatives
+ok 72 - explicit boundaries reject stale frozen commands on either side, including negatives
+  ---
+  duration_ms: 0.106917
+  ...
+# Checking npm@1.0.0
+# Subtest: a single successful host retry cannot erase contradictory preserved conclusive facts
+ok 73 - a single successful host retry cannot erase contradictory preserved conclusive facts
+  ---
+  duration_ms: 443.218166
+  ...
+# Subtest: new release generation selects its runtime and discovers replacement pnpm lock filenames
+ok 74 - new release generation selects its runtime and discovers replacement pnpm lock filenames # SKIP Fixture generation uses the ESLint 10 development formatter
+  ---
+  duration_ms: 0.098084
+  ...
+# Subtest: paired retests use one verified Node binary, retain the complete catalog and resume without repeating installs
+ok 75 - paired retests use one verified Node binary, retain the complete catalog and resume without repeating installs
+  ---
+  duration_ms: 509.73175
+  ...
+# Subtest: no common candidate writes explicit incomplete rows on both sides without falling back to host Node
+ok 76 - no common candidate writes explicit incomplete rows on both sides without falling back to host Node
+  ---
+  duration_ms: 48.2225
+  ...
+# Subtest: downloaded Node archive provenance is distinct from the executable byte checksum
+ok 77 - downloaded Node archive provenance is distinct from the executable byte checksum
+  ---
+  duration_ms: 322.140084
+  ...
+# Subtest: provisioning failure remains auditable and explicit retry appends successful rows
+ok 78 - provisioning failure remains auditable and explicit retry appends successful rows
+  ---
+  duration_ms: 285.545958
+  ...
+# Subtest: partial retry retains a conclusive side while rerunning only the incomplete side
+ok 79 - partial retry retains a conclusive side while rerunning only the incomplete side
+  ---
+  duration_ms: 480.067416
+  ...
+# Subtest: filtering by one endpoint retains both sides and worker concurrency stays bounded
+ok 80 - filtering by one endpoint retains both sides and worker concurrency stays bounded
+  ---
+  duration_ms: 628.973375
+  ...
+# Subtest: bootstrap dependency locks and logs are copied into durable evidence and reused independently of cache
+ok 81 - bootstrap dependency locks and logs are copied into durable evidence and reused independently of cache
+  ---
+  duration_ms: 291.047792
+  ...
+# Subtest: bootstrap receipts survive a failed paired runtime verification before any observation exists
+ok 82 - bootstrap receipts survive a failed paired runtime verification before any observation exists
+  ---
+  duration_ms: 113.622375
+  ...
+# Subtest: a runtime integrity mismatch on one side prevents both paired installs
+ok 83 - a runtime integrity mismatch on one side prevents both paired installs
+  ---
+  duration_ms: 207.272459
+  ...
+# Subtest: an architecture claim cannot substitute for the actual selected Node runtime architecture
+ok 84 - an architecture claim cannot substitute for the actual selected Node runtime architecture
+  ---
+  duration_ms: 142.492333
+  ...
+# Subtest: an explicit published Node may override report candidates while preserving both endpoints
+ok 85 - an explicit published Node may override report candidates while preserving both endpoints
+  ---
+  duration_ms: 290.853959
+  ...
+# Subtest: explicit runtime overrides require fixed catalog membership and both engines
+ok 86 - explicit runtime overrides require fixed catalog membership and both engines
+  ---
+  duration_ms: 97.235625
+  ...
+# Subtest: a successful install proves frozen compatibility when a contradictory manifest rejects or retains locked dependencies
+ok 87 - a successful install proves frozen compatibility when a contradictory manifest rejects or retains locked dependencies
+  ---
+  duration_ms: 453.854167
+  ...
+# Subtest: frozen evidence detects a newly created alternative root lockfile
+ok 88 - frozen evidence detects a newly created alternative root lockfile
+  ---
+  duration_ms: 33.864417
+  ...
+# Subtest: npm failure evidence preserves its debug stack so lock-parser errors can be distinguished from runtime crashes
+ok 89 - npm failure evidence preserves its debug stack so lock-parser errors can be distinguished from runtime crashes
+  ---
+  duration_ms: 32.599042
+  ...
+# Subtest: Yarn PnP installations verify actual resolved package manifests without requiring node_modules
+ok 90 - Yarn PnP installations verify actual resolved package manifests without requiring node_modules
+  ---
+  duration_ms: 62.06175
+  ...
+# Subtest: historical conclusive facts cover the exact artifact and fixture independently of check host runtime
+ok 91 - historical conclusive facts cover the exact artifact and fixture independently of check host runtime
+  ---
+  duration_ms: 7.736917
+  ...
+# Subtest: portable release keys distinguish manager artifacts and relevant fixture contracts, not unrelated managers
+ok 92 - portable release keys distinguish manager artifacts and relevant fixture contracts, not unrelated managers
+  ---
+  duration_ms: 0.16025
+  ...
+# Subtest: old protocol, alternate new lock, inconclusive and forged passes never cover history
+ok 93 - old protocol, alternate new lock, inconclusive and forged passes never cover history
+  ---
+  duration_ms: 0.2395
+  ...
+# Subtest: genuine negative contract results are reusable but contradictory conclusive attempts are unresolved
+ok 94 - genuine negative contract results are reusable but contradictory conclusive attempts are unresolved
+  ---
+  duration_ms: 0.203
+  ...
+# Subtest: old Yarn missing-node_modules checks do not establish incompatibility without a PnP-aware verifier
+ok 95 - old Yarn missing-node_modules checks do not establish incompatibility without a PnP-aware verifier
+  ---
+  duration_ms: 0.331708
+  ...
+# Subtest: an exclusion invalidates a previously imported sole success and its completed state during production checks
+ok 96 - an exclusion invalidates a previously imported sole success and its completed state during production checks
+  ---
+  duration_ms: 74.348833
+  ...
+# Subtest: cold scheduled check imports initial facts across hosts and archives source rows and logs without mutation
+ok 97 - cold scheduled check imports initial facts across hosts and archives source rows and logs without mutation
+  ---
+  duration_ms: 85.421291
+  ...
+# Subtest: baseline cannot clear unresolved work or cover new versions and fixture bytes
+ok 98 - baseline cannot clear unresolved work or cover new versions and fixture bytes
+  ---
+  duration_ms: 67.647
+  ...
+# Subtest: old seed protocol and missing reproduction logs never become reusable initial facts
+ok 99 - old seed protocol and missing reproduction logs never become reusable initial facts
+  ---
+  duration_ms: 12.983542
+  ...
+# Subtest: imported initial facts do not hide disagreement with a current confirmed rule
+ok 100 - imported initial facts do not hide disagreement with a current confirmed rule
+  ---
+  duration_ms: 21.4555
+  ...
+# Subtest: tarball provisioning rejects modified bytes
+ok 101 - tarball provisioning rejects modified bytes
+  ---
+  duration_ms: 0.613958
+  ...
+# Subtest: Node selection is exact and compatible with declared manager engines
+ok 102 - Node selection is exact and compatible with declared manager engines
+  ---
+  duration_ms: 3.692208
+  ...
+# Subtest: format detection distinguishes Yarn families and numeric npm/pnpm formats
+ok 103 - format detection distinguishes Yarn families and numeric npm/pnpm formats
+  ---
+  duration_ms: 2.914
+  ...
+# Subtest: every family uses its documented frozen install mode
+ok 104 - every family uses its documented frozen install mode
+  ---
+  duration_ms: 0.090042
+  ...
+# Subtest: pnpm switches its canonical frozen option at the published alpha.3 CLI rename
+ok 105 - pnpm switches its canonical frozen option at the published alpha.3 CLI rename
+  ---
+  duration_ms: 0.193833
+  ...
+# Subtest: fixture manifest is canonically formatted before generation and hashing
+ok 106 - fixture manifest is canonically formatted before generation and hashing # SKIP
+  ---
+  duration_ms: 0.02325
+  ...
+# Subtest: historical Node selection respects release date and engines instead of broad modern compatibility
+ok 107 - historical Node selection respects release date and engines instead of broad modern compatibility
+  ---
+  duration_ms: 28.472791
+  ...
+# Subtest: shared workspace generation preserves declared input shape across the official option rename
+ok 108 - shared workspace generation preserves declared input shape across the official option rename
+  ---
+  duration_ms: 1.088708
+  ...
+# Subtest: ordinary pnpm generation does not silently enable workspace generation
+ok 109 - ordinary pnpm generation does not silently enable workspace generation
+  ---
+  duration_ms: 0.071458
+  ...
+# Subtest: preserved bundle identity survives fresh metadata and immutable archived catalog remains reusable
+ok 110 - preserved bundle identity survives fresh metadata and immutable archived catalog remains reusable
+  ---
+  duration_ms: 21.8705
+  ...
+# Subtest: conflicting immutable artifacts stay incomplete across runs and cannot be silently chosen
+ok 111 - conflicting immutable artifacts stay incomplete across runs and cannot be silently chosen
+  ---
+  duration_ms: 36.528208
+  ...
+# Subtest: production release check consumes a default Yarn supplement without rerunning valid foreign-host seed facts
+ok 112 - production release check consumes a default Yarn supplement without rerunning valid foreign-host seed facts
+  ---
+  duration_ms: 100.919667
+  ...
+# Subtest: production checks enrich metadata-only existing versions and retain version mismatch diagnostics across resumes
+ok 113 - production checks enrich metadata-only existing versions and retain version mismatch diagnostics across resumes
+  ---
+  duration_ms: 32.348083
+  ...
+# Subtest: invalid saved bundle URLs cannot impersonate immutable artifacts
+ok 114 - invalid saved bundle URLs cannot impersonate immutable artifacts
+  ---
+  duration_ms: 6.212958
+  ...
+# Subtest: historical Yarn lock token errors are incompatible while checksum failures alone remain inconclusive
+ok 115 - historical Yarn lock token errors are incompatible while checksum failures alone remain inconclusive
+  ---
+  duration_ms: 1.032166
+  ...
+# Subtest: legacy pnpm format detection preserves file name and shared-workspace structure
+ok 116 - legacy pnpm format detection preserves file name and shared-workspace structure
+  ---
+  duration_ms: 3.195125
+  ...
+# Subtest: frozen success requires identical manifest/lock bytes and installed dependency
+ok 117 - frozen success requires identical manifest/lock bytes and installed dependency
+  ---
+  duration_ms: 0.290958
+  ...
+# Subtest: old npm command lists without ci explicitly reject the requested frozen command
+ok 118 - old npm command lists without ci explicitly reject the requested frozen command
+  ---
+  duration_ms: 0.1835
+  ...
+# Subtest: successful history survives retries; failed evidence remains auditable
+ok 119 - successful history survives retries; failed evidence remains auditable
+  ---
+  duration_ms: 0.190833
+  ...
+# Subtest: release discovery includes old branch patches, excludes already seen exact versions
+ok 120 - release discovery includes old branch patches, excludes already seen exact versions
+  ---
+  duration_ms: 0.150542
+  ...
+# Subtest: only confirmed boundaries compile, keeping last interval open and restoring OR support
+ok 121 - only confirmed boundaries compile, keeping last interval open and restoring OR support
+  ---
+  duration_ms: 0.369
+  ...
+# Subtest: unknown format, mismatches, and unresolved work stay red; incomplete takes exit precedence
+ok 122 - unknown format, mismatches, and unresolved work stay red; incomplete takes exit precedence
+  ---
+  duration_ms: 0.07375
+  ...
+# Subtest: legacy pnpm explicitly rejects an out-of-date manifest in frozen mode
+ok 123 - legacy pnpm explicitly rejects an out-of-date manifest in frozen mode
+  ---
+  duration_ms: 0.6185
+  ...
+# Subtest: historical pnpm headless manifest rejection is explicit incompatibility, not a generic headless failure
+ok 124 - historical pnpm headless manifest rejection is explicit incompatibility, not a generic headless failure
+  ---
+  duration_ms: 0.2935
+  ...
+# Subtest: calculator and collector preserve explicit legacy workspace features at every directory
+ok 125 - calculator and collector preserve explicit legacy workspace features at every directory
+  ---
+  duration_ms: 11.937541
+  ...
+# Subtest: new releases include old patches; a pass on one fixture does not cover another
+ok 126 - new releases include old patches; a pass on one fixture does not cover another
+  ---
+  duration_ms: 0.629083
+  ...
+# Subtest: path runner accepts compatibility observations and writes JSON/Markdown before failure
+ok 127 - path runner accepts compatibility observations and writes JSON/Markdown before failure
+  ---
+  duration_ms: 11.141292
+  ...
+# Subtest: release orchestration preserves unresolved history and emits both reports on incomplete metadata
+ok 128 - release orchestration preserves unresolved history and emits both reports on incomplete metadata
+  ---
+  duration_ms: 22.707292
+  ...
+# Subtest: known upstream bugs keep compatible candidates selectable and expose the exception
+ok 129 - known upstream bugs keep compatible candidates selectable and expose the exception
+  ---
+  duration_ms: 5.640375
+  ...
+# Subtest: lock rules distinguish package-lock and shrinkwrap even when their format numbers are equal
+ok 130 - lock rules distinguish package-lock and shrinkwrap even when their format numbers are equal
+  ---
+  duration_ms: 0.579667
+  ...
+# Subtest: no declarations prefer current Node and its bundled npm, not the highest npm
+ok 131 - no declarations prefer current Node and its bundled npm, not the highest npm
+  ---
+  duration_ms: 0.506625
+  ...
+# Subtest: a Node major range selects the greatest matching published release
+ok 132 - a Node major range selects the greatest matching published release
+  ---
+  duration_ms: 0.406333
+  ...
+# Subtest: current Node is preferred inside a range, even when newer matching releases exist
+ok 133 - current Node is preferred inside a range, even when newer matching releases exist
+  ---
+  duration_ms: 0.244125
+  ...
+# Subtest: exact project Node beats the current compatible version
+ok 134 - exact project Node beats the current compatible version
+  ---
+  duration_ms: 0.202333
+  ...
+# Subtest: directory distance precedes source priority
+ok 135 - directory distance precedes source priority
+  ---
+  duration_ms: 0.302041
+  ...
+# Subtest: source priority does not change when volta contains a range and nvmrc contains an exact version
+ok 136 - source priority does not change when volta contains a range and nvmrc contains an exact version
+  ---
+  duration_ms: 0.327792
+  ...
+# Subtest: caller inputs accept arbitrary semver ranges at the highest priority
+ok 137 - caller inputs accept arbitrary semver ranges at the highest priority
+  ---
+  duration_ms: 2.740458
+  ...
+# Subtest: packageManager integrity suffix is not part of the version
+ok 138 - packageManager integrity suffix is not part of the version
+  ---
+  duration_ms: 0.266417
+  ...
+# Subtest: a high priority manager pin constrains Node before a lower priority Node declaration is merged
+ok 139 - a high priority manager pin constrains Node before a lower priority Node declaration is merged
+  ---
+  duration_ms: 1.42075
+  ...
+# Subtest: retained manager candidate engines are kept paired with their versions
+ok 140 - retained manager candidate engines are kept paired with their versions
+  ---
+  duration_ms: 0.700458
+  ...
+# Subtest: a lower priority manager pin incompatible with a higher Node constraint is warned away
+ok 141 - a lower priority manager pin incompatible with a higher Node constraint is warned away
+  ---
+  duration_ms: 0.416791
+  ...
+# Subtest: lockfile candidate range is used and a compatible local manager is preferred
+ok 142 - lockfile candidate range is used and a compatible local manager is preferred
+  ---
+  duration_ms: 0.235208
+  ...
+# Subtest: when local manager is outside the lockfile range use maximum satisfying candidate
+ok 143 - when local manager is outside the lockfile range use maximum satisfying candidate
+  ---
+  duration_ms: 0.211917
+  ...
+# Subtest: unknown lock formats retain only manager identity and emit an explicit warning
+ok 144 - unknown lock formats retain only manager identity and emit an explicit warning
+  ---
+  duration_ms: 0.264708
+  ...
+# Subtest: higher priority packageManager ignores a conflicting lockfile manager
+ok 145 - higher priority packageManager ignores a conflicting lockfile manager
+  ---
+  duration_ms: 0.247584
+  ...
+# Subtest: conditional engines do not independently select a package manager
+ok 146 - conditional engines do not independently select a package manager
+  ---
+  duration_ms: 0.290584
+  ...
+# Subtest: nearby conditional engine applies to a compatible ancestor manager declaration
+ok 147 - nearby conditional engine applies to a compatible ancestor manager declaration
+  ---
+  duration_ms: 0.271875
+  ...
+# Subtest: Yarn cacheKey matching does not confuse it with lockfile format version
+ok 148 - Yarn cacheKey matching does not confuse it with lockfile format version
+  ---
+  duration_ms: 0.196625
+  ...
+# Subtest: an unsupported package manager warns and falls back to npm
+ok 149 - an unsupported package manager warns and falls back to npm
+  ---
+  duration_ms: 0.441
+  ...
+# Subtest: same-depth same-rank declarations preserve occurrence order rather than sorting path or id
+ok 150 - same-depth same-rank declarations preserve occurrence order rather than sorting path or id
+  ---
+  duration_ms: 0.400042
+  ...
+# Subtest: open compatibility ranges admit new releases and unknown formats do not restrict versions
+ok 151 - open compatibility ranges admit new releases and unknown formats do not restrict versions
+  ---
+  duration_ms: 1.320083
+  ...
+# Subtest: missing snapshot records do not erase the known current Node/npm fallback
+ok 152 - missing snapshot records do not erase the known current Node/npm fallback
+  ---
+  duration_ms: 0.0845
+  ...
+# Subtest: stable wildcard selection excludes unpublished or prerelease maxima
+ok 153 - stable wildcard selection excludes unpublished or prerelease maxima
+  ---
+  duration_ms: 0.416083
+  ...
+# Subtest: LTS alias uses official codename metadata
+ok 154 - LTS alias uses official codename metadata
+  ---
+  duration_ms: 0.233917
+  ...
+# Subtest: invalid declarations warn rather than aborting an otherwise usable inference
+ok 155 - invalid declarations warn rather than aborting an otherwise usable inference
+  ---
+  duration_ms: 0.2015
+  ...
+# Subtest: rule feature predicates avoid applying a patched fixture to an unpatched lockfile
+ok 156 - rule feature predicates avoid applying a patched fixture to an unpatched lockfile
+  ---
+  duration_ms: 0.228542
+  ...
+# Subtest: historical Node retries require a runtime failure, not a network or lock error
+ok 157 - historical Node retries require a runtime failure, not a network or lock error
+  ---
+  duration_ms: 0.648625
+  ...
+# Subtest: resume orders attempts monotonically when timestamps tie or the clock moves backwards
+ok 158 - resume orders attempts monotonically when timestamps tie or the clock moves backwards
+  ---
+  duration_ms: 4.355792
+  ...
+# Subtest: initial matrix attempts every exact release and fixture, resumes, and preserves failed provisioning
+ok 159 - initial matrix attempts every exact release and fixture, resumes, and preserves failed provisioning
+  ---
+  duration_ms: 47.927417
+  ...
+1..159
+# tests 159
+# suites 0
+# pass 157
+# fail 0
+# cancelled 0
+# skipped 2
+# todo 0
+# duration_ms 3967.563667

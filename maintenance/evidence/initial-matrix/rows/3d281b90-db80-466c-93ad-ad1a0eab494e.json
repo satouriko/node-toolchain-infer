@@ -1,0 +1,15 @@
+{
+  "id": "3d281b90-db80-466c-93ad-ad1a0eab494e",
+  "key": "2b30a1e6a8bed5347bdf8f8e68a2a9794eb723d05f83c639bbd48e8c58b97f9b",
+  "protocol": "frozen-initial-matrix-v1",
+  "manager": "pnpm",
+  "version": "12.2.0",
+  "fixtureId": "pnpm-lock-v6",
+  "fixtureHash": "edd6448e86df1228057908002338d7c9f7540a097818bee398dfd46a065c2f16",
+  "catalogHash": "972e5af6bc92aaeb37c6db20e1a98da894371f74975b09564e8db63b530373b4",
+  "createdAt": "2026-09-09T08:41:51.980Z",
+  "attempt": 1,
+  "status": "inconclusive",
+  "error": "Command failed: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe --version\nnode:internal/modules/esm/get_format:185\n  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);\n        ^\n\nTypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension \".exe\" for /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe\n    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:185:9)\n    at defaultGetFormat (node:internal/modules/esm/get_format:211:36)\n    at defaultLoad (node:internal/modules/esm/load:94:16)\n    at ModuleLoader.load (node:internal/modules/esm/loader:841:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:612:31)\n    at #createModuleJob (node:internal/modules/esm/loader:643:36)\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:318:41)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:685:25) {\n  code: 'ERR_UNKNOWN_FILE_EXTENSION'\n}\n\nNode.js v24.10.0\n",
+  "logPath": "logs/provision-pnpm-12.2.0-78db8e82-96f4-452c-8752-ac52234ee0ef.log"
+}

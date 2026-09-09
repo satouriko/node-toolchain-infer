@@ -1,0 +1,22 @@
+COMMAND: pnpm install --ignore-scripts --registry https://registry.npmjs.org
+Progress: resolved 0, reused 0, downloaded 1, added 0
+Packages: +3
++++
+Progress: resolved 3, reused 2, downloaded 1, added 3, done
+
+dependencies:
++ node-toolchain-infer 0.1.0
+
+Done in 611ms using pnpm v10.33.0
+COMMAND: /Users/cuteloli/.local/share/fnm/node-versions/v18.20.8/installation/bin/node check.mjs
+Packed API, all exports, bundled data, runtime detection and CLI passed on Node 18.20.8
+COMMAND: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node check.mjs
+Packed API, all exports, bundled data, runtime detection and CLI passed on Node 24.10.0
+COMMAND: /Users/cuteloli/Code/node-toolchain-infer/node_modules/.bin/tsc -p /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/node-toolchain-infer-consumer-final-aoh0ihgq/tsconfig.json
+COMMAND: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/node-toolchain-infer-consumer-final-aoh0ihgq/node_modules/.bin/node-toolchain-infer --help
+node-toolchain-infer [--cwd directory] [--node range] [--package-manager name@range] [--catalog file] [--json]
+
+Read declarations from cwd through its nearest Git root and infer Node and npm/pnpm/Yarn.
+Inputs accept semver ranges. Official metadata is refreshed in memory on each call.
+--catalog uses an explicit previously downloaded metadata snapshot.
+Conflicting declarations produce warnings, not fatal errors.

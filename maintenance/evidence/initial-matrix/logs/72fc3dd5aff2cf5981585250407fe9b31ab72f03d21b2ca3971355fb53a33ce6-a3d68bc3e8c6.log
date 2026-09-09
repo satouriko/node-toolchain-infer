@@ -1,0 +1,22 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+(node:79658) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+ WARN  GET https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz error (ERR_INVALID_THIS). Will retry in 1 minute. 1 retries left.
+ ERR_INVALID_THIS  Value of "this" must be of type URLSearchParams
+
+pnpm [ERR_INVALID_THIS]: Value of "this" must be of type URLSearchParams
+    at Proxy.getAll (node:internal/url:552:13)
+    at Proxy.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60530:55)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60592:31
+    at Array.reduce (<anonymous>)
+    at Proxy.raw (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60591:33)
+    at new Headers (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60476:28)
+    at getNodeRequestOptions (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60825:23)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60882:25
+    at new Promise (<anonymous>)
+    at fetch (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-7.30.4/dist/pnpm.cjs:60880:14)

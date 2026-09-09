@@ -1,0 +1,23 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/5/tools/yarn-4.0.0-rc.40/node_modules/@yarnpkg/cli-dist/bin/yarn.js install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ No packages were cached - one package had to be fetched (is-number@npm:7.0.0)
+➤ YN0000: └ Completed in 0s 434ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: Done in 0s 615ms
+
+[PnP dependency verification] /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node --require /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/5/project/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/20a84fb4dbbe6e6e5354029c2c81bf785367d5c6e1c4ac8213c6e6284cb2c7bc-7a08c4b40a22.log

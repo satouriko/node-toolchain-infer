@@ -1,0 +1,30 @@
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { provision, verifyIntegrity } from '../../maintenance/provision.ts'
+import { runFixture } from '../../maintenance/runner.ts'
+import { digest } from '../../maintenance/model.ts'
+const exec=promisify(execFile)
+const root=resolve('.')
+const catalog=JSON.parse(await readFile('maintenance/evidence/yarn-pnp-matrix/catalog.json','utf8'))
+const fixtures=JSON.parse(await readFile('fixtures/recipes.json','utf8'))
+const release=catalog.managers.yarn.find((x:any)=>x.version==='4.9.1')
+const output=join(root,'maintenance/evidence/gap-audit/yarn/version-label-4.9.1')
+const work=join(root,'.cache/yarn-gap-audit/version-label-4.9.1')
+await mkdir(output,{recursive:true});await mkdir(work,{recursive:true})
+const baseline=await provision('yarn',catalog.managers.yarn.find((x:any)=>x.version==='4.9.0'),catalog,join(work,'baseline'),undefined,{cacheDirectory:join(root,'.cache/maintenance'),timeoutMs:60000})
+const archive=await readFile(join(root,'.cache/maintenance/downloads',digest(release.tarball)))
+verifyIntegrity(archive,release.integrity)
+await writeFile(join(work,'artifact.tgz'),archive)
+await exec('tar',['-xzf',join(work,'artifact.tgz'),'-C',work])
+const cli=join(work,'package/bin/yarn.js')
+const reportedVersion=(await exec(baseline.node,[cli,'--version'],{cwd:work})).stdout.trim()
+await writeFile(join(output,'identity.json'),JSON.stringify({publishedRelease:release,reportedVersion,archiveSha256:digest(archive),cliSha256:digest(await readFile(cli)),officialIssue:'https://github.com/yarnpkg/berry/issues/6802',note:'Observation uses the actual reported version and is diagnostic only; it is not a standard row for published release 4.9.1.'},null,2)+'\n')
+const tool={...baseline,cli,version:reportedVersion,integrity:release.integrity,url:release.tarball}
+const fixture=fixtures.find((x:any)=>x.id==='yarn-modern-v8')
+const observation=await runFixture(fixture,tool,join(root,'fixtures'),join(work,'project'),output)
+await writeFile(join(output,'observation.json'),JSON.stringify(observation,null,2)+'\n')
+await cp(join(root,'fixtures',fixture.directory,fixture.lock),join(output,'yarn.before.lock'))
+await cp(join(work,'project',fixture.lock),join(output,'yarn.after.lock'))
+console.log(JSON.stringify({reportedVersion,status:observation.status,semantic:observation.semantic,control:observation.frozenControl?.status}))

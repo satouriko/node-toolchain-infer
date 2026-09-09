@@ -1,0 +1,16 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/12.0.0-alpha.4-node-24.10.0-pnpm-lock-v9/pnpm-12.0.0-alpha.4/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+Error: pacquet_package_manager::outdated_lockfile
+
+  × installing dependencies
+  ╰─▶ Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up
+      to date with package.json.
+      
+        Failure reason:
+        specifiers in the lockfile don't match specifiers in package.json:
+      * 1 dependency is mismatched:
+        - is-number (lockfile: 7.0.0, manifest: 6.0.0)
+  help: Regenerate the lockfile with `pnpm install --lockfile-only` so that
+        pnpm-lock.yaml reflects the current package.json, then re-run `pacquet
+        install --frozen-lockfile`.
+

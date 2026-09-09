@@ -1,45 +1,87 @@
 {
-  "name": "toolchain-infer",
+  "name": "node-toolchain-infer",
   "version": "0.1.0",
   "description": "Infer a project's Node.js and package manager versions with traceable constraints and reproducible lockfile compatibility evidence.",
+  "homepage": "https://satouriko.github.io/node-toolchain-infer/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satouriko/node-toolchain-infer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/satouriko/node-toolchain-infer/issues"
+  },
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "import": "./src/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./data": "./src/catalog.js"
+    "./data": {
+      "types": "./dist/catalog.d.ts",
+      "import": "./dist/catalog.js"
+    },
+    "./resolve": {
+      "types": "./dist/resolve.d.ts",
+      "import": "./dist/resolve.js"
+    }
   },
-  "types": "./types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "bin": {
-    "toolchain-infer": "./bin/toolchain-infer.js"
+    "node-toolchain-infer": "./dist/cli.js"
   },
   "files": [
-    "src",
-    "bin",
-    "types",
-    "data",
-    "maintenance",
-    "scripts",
-    "fixtures",
+    "dist",
+    "data/compatibility.json",
     "README.md",
+    "README.zh-CN.md",
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --test test/*.test.js",
-    "data:sync": "node scripts/sync-data.js",
-    "releases:check": "node scripts/check-releases.js",
-    "fixtures:generate": "node maintenance/generate-fixtures.js",
-    "compat:test": "node maintenance/run-matrix.js",
-    "data:validate": "node scripts/validate-data.js",
-    "prepack": "npm run data:validate"
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit && tsc -p website/tsconfig.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "tsx --test test/*.test.ts",
+    "data:sync": "tsx scripts/sync-data.ts",
+    "data:seed": "tsx scripts/seed-data.ts",
+    "data:compile": "tsx maintenance/compile-initial.ts",
+    "data:audit": "tsx maintenance/audit-gaps.ts",
+    "data:enrich-yarn": "tsx maintenance/enrich-yarn-catalog.ts",
+    "releases:check": "tsx scripts/check-releases.ts",
+    "fixtures:generate": "tsx maintenance/generate-fixtures.ts",
+    "compat:test": "tsx maintenance/run-matrix.ts",
+    "compat:retest": "tsx maintenance/retest-initial.ts",
+    "data:validate": "tsx scripts/validate-data.ts",
+    "prepack": "pnpm build && pnpm data:validate",
+    "website:build": "tsx website/scripts/build.ts",
+    "website:serve": "tsx website/serve.ts",
+    "website:test": "tsx website/tests/browser.ts && tsx website/tests/cors.ts"
   },
   "dependencies": {
     "semver": "^7.7.2",
     "yaml": "^2.8.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "18.19.130",
+    "@types/semver": "7.8.0",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "esbuild": "0.25.12",
+    "eslint": "10.10.0",
+    "eslint-config-unicute": "1.0.2",
+    "playwright": "1.63.0",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "npm:@typescript/typescript6@6.0.2"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
 }

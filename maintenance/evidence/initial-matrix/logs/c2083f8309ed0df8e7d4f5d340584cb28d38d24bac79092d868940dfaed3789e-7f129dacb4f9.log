@@ -1,0 +1,18 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+ ERR_INVALID_THIS  Value of "this" must be of type URLSearchParams
+
+pnpm [ERR_INVALID_THIS]: Value of "this" must be of type URLSearchParams
+    at Proxy.getAll (node:internal/url:552:13)
+    at Proxy.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55006:55)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55059:31
+    at Array.reduce (<anonymous>)
+    at Proxy.raw (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55058:33)
+    at new Headers (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:54952:28)
+    at getNodeRequestOptions (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55271:23)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55328:25
+    at new Promise (<anonymous>)
+    at fetch (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/pnpm-7.13.4/node_modules/pnpm/dist/pnpm.cjs:55326:14)

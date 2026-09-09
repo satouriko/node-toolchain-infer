@@ -1,0 +1,50 @@
+import { randomUUID } from 'node:crypto'
+import { mkdir, readFile, writeFile, cp } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { isDeepStrictEqual } from 'node:util'
+import YAML from 'yaml'
+import { provision } from '../../maintenance/provision.js'
+import { runFixture, execute, hashes } from '../../maintenance/runner.js'
+import { digest, SEED_PROTOCOL } from '../../maintenance/model.js'
+
+const catalog = JSON.parse(await readFile('maintenance/evidence/yarn-pnp-matrix/catalog.json', 'utf8'))
+const fixtures = JSON.parse(await readFile('fixtures/recipes.json', 'utf8'))
+const output = resolve('maintenance/evidence/gap-audit/pnpm')
+await mkdir(join(output, 'rows'), { recursive: true })
+await cp('maintenance/evidence/yarn-pnp-matrix/catalog.json', join(output, 'catalog.json'))
+const tasks = process.argv.slice(2).map((value) => {
+  const [version, node, fixture = 'pnpm-lock-v6'] = value.split(':')
+  return { version, node, fixture }
+})
+for (const task of tasks) {
+  const { version, node } = task
+  const fixture = fixtures.find((f) => f.id === task.fixture)
+  const name = `${version}-node-${node}-${fixture.id}`
+  const work = resolve('.cache/gap-audit/runs', name)
+  const proof = join(output, 'proofs', name)
+  await mkdir(proof, { recursive: true })
+  try {
+    const tool = await provision('pnpm', catalog.managers.pnpm.find((r) => r.version === version), catalog,
+      resolve('.cache/gap-audit/tools', name), node, { cacheDirectory: resolve('.cache/maintenance'), bootstrapDependencies: true })
+    await writeFile(join(proof, 'tool.json'), JSON.stringify(tool, null, 2) + '\n')
+    const observation = await runFixture(fixture, tool, resolve('fixtures'), work, output)
+    const id = randomUUID()
+    await writeFile(join(output, 'rows', `${id}.json`), JSON.stringify({ id, key: observation.key, protocol: SEED_PROTOCOL,
+      manager: 'pnpm', version, fixtureId: fixture.id, fixtureHash: observation.fixtureHash,
+      catalogHash: digest(JSON.stringify(catalog)), createdAt: new Date().toISOString(), attempt: 1,
+      status: observation.status, observation }, null, 2) + '\n')
+    const before = await readFile(join('fixtures', fixture.directory, fixture.lock), 'utf8')
+    const after = await readFile(join(work, fixture.lock), 'utf8')
+    await writeFile(join(proof, 'before.yaml'), before)
+    await writeFile(join(proof, 'after.yaml'), after)
+    const result = { observationId: observation.id, rowId: id, task, status: observation.status,
+      installed: observation.installed, equalYaml: isDeepStrictEqual(YAML.parse(before), YAML.parse(after)),
+      beforeSha256: digest(before), afterSha256: digest(after) }
+    await writeFile(join(proof, 'result.json'), JSON.stringify(result, null, 2) + '\n')
+    console.log(JSON.stringify(result))
+  } catch (error) {
+    const details = { task, error: String(error), stack: error.stack, stdout: error.stdout, stderr: error.stderr }
+    await writeFile(join(proof, 'error.json'), JSON.stringify(details, null, 2) + '\n')
+    console.log(JSON.stringify({ task, error: String(error).slice(0,500) }))
+  }
+}

@@ -1,0 +1,18 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/13/tools/pnpm-12.0.0-alpha.13/native-pnpm install --frozen-lockfile --ignore-scripts
+Error: pacquet_workspace::walk_error
+
+  × installing dependencies
+  ├─▶ Failed to walk workspace projects under /private/var/folders/dk/
+  │   hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/13/project:
+  │   failed to match directory tree: failed to read file at `Some("/private/
+  │   var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-
+  │   7iEB2A/13/project/packages/")`: No such file or directory (os error 2)
+  ├─▶ Failed to walk workspace projects under /private/var/folders/dk/
+  │   hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/13/project:
+  │   failed to match directory tree: failed to read file at `Some("/private/
+  │   var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-
+  │   7iEB2A/13/project/packages/")`: No such file or directory (os error 2)
+  ╰─▶ failed to match directory tree: failed to read file at `Some("/private/
+      var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-
+      7iEB2A/13/project/packages/")`: No such file or directory (os error 2)
+

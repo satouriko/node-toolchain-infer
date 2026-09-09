@@ -1,0 +1,56 @@
+[
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "3.0.0-alpha.0",
+      "lock": "pnpm-lock.yaml"
+    },
+    "status": "incomplete",
+    "log": "probes/pnpm-3.0.0-alpha.0-pnpm-lock.yaml-1788943875708-e3a309",
+    "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: ENOENT: no such file or directory, open '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-2Sa40H/project/pnpm-lock.yaml'",
+    "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: ENOENT: no such file or directory, open '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-2Sa40H/project/pnpm-lock.yaml'\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:96:69)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:95:23)\n    at async Promise.all (index 1)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:151:3)"
+  },
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "3.0.0-alpha.0",
+      "lock": "shrinkwrap.yaml"
+    },
+    "node": "11.8.0",
+    "match": {
+      "format": "5"
+    },
+    "fixtureId": "pnpm-legacy-shrinkwrap-v5",
+    "status": "unsupported-collector-pass",
+    "observationId": "bedfdb6d55d8aa6578f4e52584d5c99e9f9167230018ce9b770be55b921c558a-d7a5c40ec55e",
+    "collectorSupported": false,
+    "log": "logs/bedfdb6d55d8aa6578f4e52584d5c99e9f9167230018ce9b770be55b921c558a-d7a5c40ec55e.log"
+  },
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "3.0.0-beta.0",
+      "lock": "shrinkwrap.yaml"
+    },
+    "status": "incomplete",
+    "log": "probes/pnpm-3.0.0-beta.0-shrinkwrap.yaml-1788943890069-e4a5f8",
+    "error": "Error: ENOENT: no such file or directory, open '/Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/format-discovery/probes/pnpm-3.0.0-beta.0-shrinkwrap.yaml-1788943890069-e4a5f8/candidate/shrinkwrap.yaml'",
+    "stack": "Error: ENOENT: no such file or directory, open '/Users/cuteloli/Code/node-toolchain-infer/maintenance/evidence/format-discovery/probes/pnpm-3.0.0-beta.0-shrinkwrap.yaml-1788943890069-e4a5f8/candidate/shrinkwrap.yaml'\n    at async open (node:internal/fs/promises:642:25)\n    at async readFile (node:internal/fs/promises:1279:14)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:98:34)\n    at async Promise.all (index 1)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:151:3)"
+  },
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "3.0.0-beta.0",
+      "lock": "pnpm-lock.yaml"
+    },
+    "node": "11.11.0",
+    "match": {
+      "format": "5"
+    },
+    "fixtureId": "pnpm-lock-v5",
+    "status": "known-format-pass",
+    "observationId": "2708cee7cd3be5c97e9f7089eefb9af8c7f1f8300105c9f30e4a6ae222a09314-745d83818fea",
+    "collectorSupported": true,
+    "log": "logs/2708cee7cd3be5c97e9f7089eefb9af8c7f1f8300105c9f30e4a6ae222a09314-745d83818fea.log"
+  }
+]

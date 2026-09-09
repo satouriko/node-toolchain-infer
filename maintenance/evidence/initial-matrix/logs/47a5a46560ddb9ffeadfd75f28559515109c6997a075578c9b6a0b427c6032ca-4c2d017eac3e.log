@@ -1,0 +1,23 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-11.6.0-darwin-x64-c880063b112c48130dba8f7b058de61959ae46fddcfa363715571b22c1cbeb26/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/10/tools/pnpm-2.25.0/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+ WARN  waiting for the store at "/Users/cuteloli/.pnpm-store/2" to be unlocked...
+Performing headless installation
+Resolving: total 1, reused 0, downloaded 0
+Resolving: total 1, reused 0, downloaded 0
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/b39b831dbbb6ebd719409058bd3c935e07bf7e238cbabb9480acbf0f665c757c-6d6d0464b395.log

@@ -1,0 +1,19 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.11.1-darwin-arm64-5e772e478390fab3001b7148a923e4f22fca50170000f18b28475337d3a97248/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/yarn-gap-audit/bootstrap-1.22.12/package/bin/yarn.js install --frozen-lockfile --ignore-scripts --non-interactive
+yarn install v1.22.12
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+warning Ignored scripts due to flag.
+Done in 0.43s.
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/ffc1fb5997209b9b25343a152894fe79308c4d7b4753fce687356f086181b589-584f1046852b.log

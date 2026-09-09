@@ -1,0 +1,13 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/11/tools/pnpm-0.30.0/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/2e194ac52fec744fcf3b39b54a5f02a0b4e9410304685ca1afc2cd4e5277dacf-33e19f670bb8.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

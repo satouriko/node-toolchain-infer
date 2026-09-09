@@ -1,0 +1,89 @@
+{
+  "id": "5092d1aa-4f6b-4326-8595-6e75421fc134",
+  "key": "75fc7e6e99bf0ba180e3302fb1b9fc89ec629051f75800e537954fbd22954b9e",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.23.1",
+  "fixtureId": "yarn-modern-v10",
+  "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:55.569Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "id": "ad1408a1060bb392f84c34a6f5e8029f0603e22ea4feee667123dec9e5c65c4c-8765fc41b08f",
+    "key": "ad1408a1060bb392f84c34a6f5e8029f0603e22ea4feee667123dec9e5c65c4c",
+    "manager": "yarn",
+    "version": "0.23.1",
+    "actualVersion": "0.23.1",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-2HlfstDurPFAgbWtJvaERIkzKTprLmUjl6RuRyRQ175geGfqSKCXmq6kY7dpb52SzIFP94Yzk5eXLEiNWUjeEQ==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/478a06b963bb31598f7c4a30bcc952b77ae7fc7d1896beffc69afa44342b8846/package-lock.json",
+      "lockfileSha256": "478a06b963bb31598f7c4a30bcc952b77ae7fc7d1896beffc69afa44342b8846",
+      "logPath": "bootstrap/478a06b963bb31598f7c4a30bcc952b77ae7fc7d1896beffc69afa44342b8846/f18eac32d8315ff30b3654035f741e399480db0e2690c2fb2eac7916f38179cb.log",
+      "installedTreeSha256": "10eb4e5d7b887851a182a5c1a52a16d4cfad21b31a7db9a0fcd98c96f2990f04"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.23.1.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v10",
+    "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/ad1408a1060bb392f84c34a6f5e8029f0603e22ea4feee667123dec9e5c65c4c-8765fc41b08f.log",
+    "createdAt": "2026-09-09T10:19:55.544Z"
+  }
+}

@@ -1,0 +1,79 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-17.4.0-darwin-arm64-9bd53805faf6df658ecd4f54321b25eff89818efdcb52c20435ff1703fd7064c/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npm-cache/_logs/2026-09-09T12_05_23_462Z-debug-0.log
+
+[npm debug: 2026-09-09T12_05_23_462Z-debug-0.log]
+0 verbose cli [
+0 verbose cli   '/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-17.4.0-darwin-arm64-9bd53805faf6df658ecd4f54321b25eff89818efdcb52c20435ff1703fd7064c/bin/node',
+0 verbose cli   '/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/bin/npm-cli.js',
+0 verbose cli   'ci',
+0 verbose cli   '--ignore-scripts',
+0 verbose cli   '--no-audit',
+0 verbose cli   '--no-fund'
+0 verbose cli ]
+1 info using npm@8.4.1
+2 info using node@v17.4.0
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/npmrc Completed in 0ms
+6 timing config:load:builtin Completed in 0ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 0ms
+11 timing config:load:file:/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npm-userconfig Completed in 0ms
+12 timing config:load:user Completed in 1ms
+13 timing config:load:file:/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npm-globalconfig Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:credentials Completed in 0ms
+17 timing config:load:setEnvs Completed in 0ms
+18 timing config:load Completed in 5ms
+19 timing npm:load:configload Completed in 5ms
+20 timing npm:load:setTitle Completed in 7ms
+21 timing config:load:flatten Completed in 1ms
+22 timing npm:load:display Completed in 1ms
+23 verbose logfile /Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npm-cache/_logs/2026-09-09T12_05_23_462Z-debug-0.log
+24 timing npm:load:logFile Completed in 3ms
+25 timing npm:load:timers Completed in 0ms
+26 timing npm:load:configScope Completed in 0ms
+27 timing npm:load Completed in 16ms
+28 timing arborist:ctor Completed in 0ms
+29 timing npm-ci:rm Completed in 2ms
+30 timing idealTree:init Completed in 1ms
+31 timing idealTree:userRequests Completed in 0ms
+32 silly idealTree buildDeps
+33 silly fetch manifest is-number@6.0.0
+34 http fetch GET 200 https://registry.npmjs.org/is-number 236ms (cache miss)
+35 silly placeDep ROOT is-number@6.0.0 REPLACE for: compatibility-fixture@1.0.0 want: 6.0.0
+36 timing idealTree:#root Completed in 240ms
+37 timing idealTree:node_modules/is-number Completed in 0ms
+38 timing idealTree:buildDeps Completed in 240ms
+39 timing idealTree:fixDepFlags Completed in 0ms
+40 timing idealTree Completed in 241ms
+41 timing command:ci Completed in 249ms
+42 verbose stack Error: `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+42 verbose stack
+42 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+42 verbose stack
+42 verbose stack     at CI.exec (/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/lib/commands/ci.js:73:13)
+42 verbose stack     at async module.exports (/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/lib/cli.js:66:5)
+43 verbose cwd /Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project
+44 verbose Darwin 25.6.0
+45 verbose argv "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-17.4.0-darwin-arm64-9bd53805faf6df658ecd4f54321b25eff89818efdcb52c20435ff1703fd7064c/bin/node" "/Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/tools/8.4.1/npm-8.4.1/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+46 verbose node v17.4.0
+47 verbose npm  v8.4.1
+48 error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+48 error
+48 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+48 error
+49 verbose exit 1
+50 timing npm Completed in 342ms
+51 verbose code 1
+52 error A complete log of this run can be found in:
+52 error     /Users/cuteloli/Code/node-toolchain-infer/.cache/npm-gap-audit/work/8.4.1/npm-package-lock-v3-control-project/.npm-cache/_logs/2026-09-09T12_05_23_462Z-debug-0.log

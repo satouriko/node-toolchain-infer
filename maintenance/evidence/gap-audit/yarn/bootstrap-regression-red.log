@@ -1,0 +1,53 @@
+✖ production tool bootstrap ignores conflicting development peers without changing the tool manifest (458.374541ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 588.661083
+
+✖ failing tests:
+
+test at test/maintenance-provision.test.ts:327:1
+✖ production tool bootstrap ignores conflicting development peers without changing the tool manifest (458.374541ms)
+  Error: Dependency bootstrap incomplete; log: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/bootstrap-development-peers-ZFXXed/cache/prepared/db8a71fe85336f9533f9c66b09206f00445368b852fc7ca911e34ae33742a914/attempt-szo3en/bootstrap.log
+      at <anonymous> (/Users/cuteloli/Code/node-toolchain-infer/maintenance/bootstrap.ts:145:15) {
+    [cause]: Error: Command failed: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js install --global=false --ignore-scripts --omit=dev --no-audit --no-fund --registry=https://registry.npmjs.org
+    npm error code ERESOLVE
+    npm error ERESOLVE unable to resolve dependency tree
+    npm error
+    npm error While resolving: fixture-tool@1.0.0
+    npm error Found: fixture-runtime@1.0.0
+    npm error node_modules/fixture-runtime
+    npm error   fixture-runtime@"file:runtime.tgz" from the root project
+    npm error
+    npm error Could not resolve dependency:
+    npm error peer fixture-runtime@"^2.0.0" from fixture-lint@1.0.0
+    npm error node_modules/fixture-lint
+    npm error   dev fixture-lint@"file:lint.tgz" from the root project
+    npm error
+    npm error Fix the upstream dependency conflict, or retry
+    npm error this command with --force or --legacy-peer-deps
+    npm error to accept an incorrect (and potentially broken) dependency resolution.
+    npm error
+    npm error
+    npm error For a full report see:
+    npm error /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/bootstrap-development-peers-ZFXXed/cache/npm-cache/_logs/2026-09-09T12_11_35_691Z-eresolve-report.txt
+    npm error A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/bootstrap-development-peers-ZFXXed/cache/npm-cache/_logs/2026-09-09T12_11_35_691Z-debug-0.log
+    
+        at genericNodeError (node:internal/errors:985:15)
+        at wrappedFn (node:internal/errors:539:14)
+        at ChildProcess.exithandler (node:child_process:417:12)
+        at ChildProcess.emit (node:events:508:28)
+        at maybeClose (node:internal/child_process:1101:16)
+        at ChildProcess._handle.onexit (node:internal/child_process:305:5) {
+      code: 1,
+      killed: false,
+      signal: null,
+      cmd: '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js install --global=false --ignore-scripts --omit=dev --no-audit --no-fund --registry=https://registry.npmjs.org',
+      stdout: '',
+      stderr: 'npm error code ERESOLVE\nnpm error ERESOLVE unable to resolve dependency tree\nnpm error\nnpm error While resolving: fixture-tool@1.0.0\nnpm error Found: fixture-runtime@1.0.0\nnpm error node_modules/fixture-runtime\nnpm error   fixture-runtime@"file:runtime.tgz" from the root project\nnpm error\nnpm error Could not resolve dependency:\nnpm error peer fixture-runtime@"^2.0.0" from fixture-lint@1.0.0\nnpm error node_modules/fixture-lint\nnpm error   dev fixture-lint@"file:lint.tgz" from the root project\nnpm error\nnpm error Fix the upstream dependency conflict, or retry\nnpm error this command with --force or --legacy-peer-deps\nnpm error to accept an incorrect (and potentially broken) dependency resolution.\nnpm error\nnpm error\nnpm error For a full report see:\nnpm error /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/bootstrap-development-peers-ZFXXed/cache/npm-cache/_logs/2026-09-09T12_11_35_691Z-eresolve-report.txt\nnpm error A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/bootstrap-development-peers-ZFXXed/cache/npm-cache/_logs/2026-09-09T12_11_35_691Z-debug-0.log\n'
+    }
+  }

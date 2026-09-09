@@ -1,0 +1,12 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gYV5T8/6/tools/yarn-3.0.1-rc.2/yarn.cjs install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0001: │ Error [ERR_STREAM_PREMATURE_CLOSE]: Premature close
+    at PassThrough.onclose (node:internal/streams/end-of-stream:166:30)
+    at PassThrough.emit (node:events:508:28)
+    at emitCloseNT (node:internal/streams/destroy:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+➤ YN0013: │ No packages were cached - one package had to be fetched (is-number@npm:7.0.0)
+➤ YN0000: └ Completed in 0s 233ms
+➤ YN0000: Failed with errors in 0s 245ms

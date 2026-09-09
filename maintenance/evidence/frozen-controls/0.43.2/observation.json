@@ -1,0 +1,55 @@
+{
+  "originalRowId": "8f396cff-8d8e-4f58-a07b-1dd5eee4d14f",
+  "purpose": "A frozen installation must reject a manifest requesting is-number 6 while the lock pins 7. Exit-zero unchanged lock with installed 6 disproves enforcement.",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "fba10415bdb3a94a007223eef25742d89764fea8dd8b3041d59fa9c1558dbd65"
+    },
+    "id": "3ac62a9e47ad650f264b1faca46dac495cdd9b7c0e788ea22d7b955a59e2d638-a35887ca062d",
+    "key": "3ac62a9e47ad650f264b1faca46dac495cdd9b7c0e788ea22d7b955a59e2d638",
+    "manager": "pnpm",
+    "version": "0.43.2",
+    "actualVersion": "0.43.2",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-Hcfb5CS48sBHKt2CtVC6m7vnFlALsqIizD4TP8LNfYF1VYzKg0/3W4A3ePtIkCuLMFS3QYqv6sLLSPtYzuf9Pg==",
+    "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-0.43.2.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "frozen-control-0.43.2",
+    "fixtureHash": "17d38fe1335a4e850376e707cf685d5203cf0d3746a1bb9e1c83f1575ec709b9",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "status": "pass",
+    "exitCode": 0,
+    "beforeHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "fba10415bdb3a94a007223eef25742d89764fea8dd8b3041d59fa9c1558dbd65",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "<missing>"
+    },
+    "afterHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "fba10415bdb3a94a007223eef25742d89764fea8dd8b3041d59fa9c1558dbd65",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "<missing>"
+    },
+    "installed": {
+      "is-number": "6.0.0"
+    },
+    "semantic": true,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/3ac62a9e47ad650f264b1faca46dac495cdd9b7c0e788ea22d7b955a59e2d638-a35887ca062d.log",
+    "createdAt": "2026-09-09T10:25:12.881Z"
+  }
+}

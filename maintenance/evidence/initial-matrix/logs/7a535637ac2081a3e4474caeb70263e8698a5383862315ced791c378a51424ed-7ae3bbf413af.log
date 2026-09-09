@@ -1,0 +1,24 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.10.0-darwin-arm64-dfdaf4149365e170929b99692520388e89f618e8d64ddd3ded7126bccf4583ed/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/tools/pnpm-6.16.0/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/project/.pnpm-store/v3
+  Virtual store is at:             node_modules/.pnpm
+
+dependencies:
++ is-number 7.0.0
+
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/77944f26e1a51d2477594be8e8f9882f7827cbc4892b02c01da7f3ada21d8672-86dcda9f62a0.log

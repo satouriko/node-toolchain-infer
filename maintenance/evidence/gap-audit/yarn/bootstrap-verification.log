@@ -1,0 +1,33 @@
+✔ a control that keeps the original locked versions also proves lock enforcement (6.532958ms)
+✔ measured frozen rejection of changed manifest is required for pass evidence in compiler and monitor (2.98125ms)
+✔ runtime, command, input and failed-control identities cannot be substituted in a pass receipt (2.452541ms)
+✔ imported pass evidence archives the control command log and cannot survive a missing control log (13.933708ms)
+✔ local matrix reuse cannot bypass a newly required frozen control (3.238791ms)
+✔ version discovery runs outside the maintenance project and its package-manager declaration (267.779625ms)
+✔ immutable Yarn bundles verify size, checksum and actual version without treating CLI metadata as executable (460.837375ms)
+✔ official packages retain normal node_modules self-resolution without rewriting their bytes (180.864292ms)
+✔ native pnpm wrappers use their exact verified platform package and execute without Node interpreting the binary (663.2145ms)
+✔ verified artifact cache reuses downloads and repairs corrupted cached bytes (537.192084ms)
+✔ manager version discovery is bounded when an old executable hangs (226.634875ms)
+✔ opt-in missing-dependency bootstrap preserves an exact production lock and reuses its receipt (1131.799958ms)
+✔ production tool bootstrap ignores conflicting development peers without changing the tool manifest (230.669917ms)
+✔ paired retests use one verified Node binary, retain the complete catalog and resume without repeating installs (368.466458ms)
+✔ no common candidate writes explicit incomplete rows on both sides without falling back to host Node (63.488542ms)
+✔ downloaded Node archive provenance is distinct from the executable byte checksum (392.072041ms)
+✔ provisioning failure remains auditable and explicit retry appends successful rows (348.256208ms)
+✔ partial retry retains a conclusive side while rerunning only the incomplete side (583.64875ms)
+✔ filtering by one endpoint retains both sides and worker concurrency stays bounded (774.35575ms)
+✔ bootstrap dependency locks and logs are copied into durable evidence and reused independently of cache (342.995541ms)
+✔ bootstrap receipts survive a failed paired runtime verification before any observation exists (151.640083ms)
+✔ a runtime integrity mismatch on one side prevents both paired installs (269.598458ms)
+✔ an architecture claim cannot substitute for the actual selected Node runtime architecture (179.014958ms)
+✔ an explicit published Node may override report candidates while preserving both endpoints (333.283584ms)
+✔ explicit runtime overrides require fixed catalog membership and both engines (113.179666ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4073.471542

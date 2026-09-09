@@ -1,0 +1,8 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-4.12.0-0/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+Scope: all 1 workspace projects
+ERROR  Headless installation requires a pnpm-lock.yaml file
+at _install                ../tools/pnpm-4.12.0-0/lib/node_modules/supi/lib/install/index.js:205                              
+at withLock [as default]   ../tools/pnpm-4.12.0-0/lib/node_modules/supi/lib/lock.js:26                                        
+at mutateModules           ../tools/pnpm-4.12.0-0/lib/node_modules/supi/lib/install/index.js:165                              
+at recursive [as default]  ../tools/pnpm-4.12.0-0/lib/node_modules/@pnpm/plugin-commands-installation/lib/recursive.js:250    
+at handler [as default]    ../tools/pnpm-4.12.0-0/lib/node_modules/@pnpm/plugin-commands-installation/lib/installDeps.js:111

@@ -1,0 +1,27 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/12.0.0-alpha.2-node-24.10.0-pnpm-lock-v9/pnpm-12.0.0-alpha.2/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+✓ Lockfile passes supply-chain policies (previously verified)
+Packages: +1
++
+Packages: +1
++
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/runs/12.0.0-alpha.2-node-24.10.0-pnpm-lock-v9/.pnpm-home/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 488ms using pnpm v12.0.0-alpha.2
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/e05c134d3a5b7fd312c00c19bbe73f1b4e561a993a91970895b431cbf13ea1ff-6d163b269f23.log

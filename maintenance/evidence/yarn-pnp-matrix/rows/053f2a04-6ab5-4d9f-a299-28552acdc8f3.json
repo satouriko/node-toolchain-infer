@@ -1,0 +1,89 @@
+{
+  "id": "053f2a04-6ab5-4d9f-a299-28552acdc8f3",
+  "key": "63095fa129ea66b852e417b46c75226a8c52a603515f88ae29276496dfa2d8dd",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.23.3",
+  "fixtureId": "yarn-modern-v5",
+  "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:45.388Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "id": "7c0c40cf3bf784dd3b95fa92dfeac378e9f79935779d00bef7f62b3996c393ee-8aba5d7846da",
+    "key": "7c0c40cf3bf784dd3b95fa92dfeac378e9f79935779d00bef7f62b3996c393ee",
+    "manager": "yarn",
+    "version": "0.23.3",
+    "actualVersion": "0.23.3",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-nicShMg0UXKG0v3fiRVLMhk5YGP+cjjHbOkYxu9phIe+EruPak6dMC30oQ05vp3n7ASjTeR6vruTWye6dXmEKQ==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/0ac06315d1f3f2013f35a5229fefbf05f2d9752842f92e8aa6f6054a2239df25/package-lock.json",
+      "lockfileSha256": "0ac06315d1f3f2013f35a5229fefbf05f2d9752842f92e8aa6f6054a2239df25",
+      "logPath": "bootstrap/0ac06315d1f3f2013f35a5229fefbf05f2d9752842f92e8aa6f6054a2239df25/f18eac32d8315ff30b3654035f741e399480db0e2690c2fb2eac7916f38179cb.log",
+      "installedTreeSha256": "f7470de76320b9ed03dc753162aa1ef66d2a0ec7ceb450cc430b5049b5baf9b3"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.23.3.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v5",
+    "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/7c0c40cf3bf784dd3b95fa92dfeac378e9f79935779d00bef7f62b3996c393ee-8aba5d7846da.log",
+    "createdAt": "2026-09-09T10:19:45.377Z"
+  }
+}

@@ -1,0 +1,24 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/yarn-gap-audit/version-label-4.9.1/package/bin/yarn.js install --immutable
+➤ YN0000: · Yarn 4.9.1-git.20250411.hash-1908ee79f
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ A package was added to the project (+ 10.17 KiB).
+➤ YN0000: └ Completed in 0s 221ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: · Done in 0s 242ms
+
+[PnP dependency verification] /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node --require /Users/cuteloli/Code/node-toolchain-infer/.cache/yarn-gap-audit/version-label-4.9.1/project/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/398e6b805ea015a493164caed647a83127c710b107307653935a6a395543c2d7-d7f15e102310.log

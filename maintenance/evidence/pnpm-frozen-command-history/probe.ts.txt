@@ -1,0 +1,24 @@
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { resolve, join } from 'node:path'
+import semver from 'semver'
+import { provision } from '../../maintenance/provision.js'
+import { runFixture } from '../../maintenance/runner.js'
+import type { Fixture } from '../../maintenance/model.js'
+import type { Catalog } from '../../src/types.js'
+const root = process.cwd()
+const catalog = JSON.parse(await readFile('maintenance/evidence/initial-matrix/catalog.json', 'utf8')) as Catalog
+const fixtures = JSON.parse(await readFile('fixtures/recipes.json', 'utf8')) as Fixture[]
+const output = resolve('.cache/pnpm-frozen-history', `run-${Date.now()}`)
+await mkdir(output, {recursive:true})
+for (const version of ['2.25.7', '3.0.0-alpha.2', '3.0.0-alpha.3', '3.0.0']) {
+ const release = catalog.managers.pnpm.find(r=>r.version===version)!
+ const fixture = fixtures.find(f=>f.id===(semver.lt(version,'3.0.0-alpha.3')?'pnpm-legacy-shrinkwrap-v3':'pnpm-lock-v5'))!
+ const directory = join(output,version)
+ await mkdir(directory, {recursive:true})
+ try {
+  const tool = await provision('pnpm',release,catalog,join(directory,'tools'),'10.24.1',{cacheDirectory:resolve('.cache/maintenance'),timeoutMs:60000})
+  const observation = await runFixture(fixture,tool,join(root,'fixtures'),join(directory,'project'),directory)
+  await writeFile(join(directory,'observation.json'),JSON.stringify(observation,null,2))
+  console.log(JSON.stringify({version,fixture:fixture.id,status:observation.status,command:observation.command,control:observation.frozenControl?.status,controlCommand:observation.frozenControl?.command,output:directory}))
+ } catch(error) { await writeFile(join(directory,'failure.log'),String(error)); console.log(JSON.stringify({version,error:String(error),output:directory})) }
+}

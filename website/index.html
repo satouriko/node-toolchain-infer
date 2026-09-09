@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <title>node-toolchain-infer</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%231d3157'/%3E%3Cpath d='M12 12h16M12 20h11M12 28h16' stroke='%23b8dfb1' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="diagram.css" />
+    <link rel="stylesheet" href="data-plan.css" />
+    <link rel="stylesheet" href="app-shell.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#calculator">跳到计算器</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="site-title">
+          <a class="brand" href="#rules">node-toolchain-infer</a>
+        </h1>
+        <div class="language-switch" role="group" aria-label="语言">
+          <button type="button" data-locale="zh-CN" data-i18n-ignore lang="zh-CN" aria-pressed="true">中文</button
+          ><button type="button" data-locale="en" data-i18n-ignore lang="en" aria-pressed="false">English</button>
+        </div>
+        <nav role="tablist" aria-label="主要功能">
+          <a
+            id="tab-rules"
+            href="#rules"
+            class="nav-link active"
+            role="tab"
+            aria-controls="rules"
+            aria-selected="true"
+            tabindex="0"
+            >规则说明</a
+          >
+          <a
+            id="tab-calculator"
+            href="#calculator"
+            class="nav-link"
+            role="tab"
+            aria-controls="calculator"
+            aria-selected="false"
+            tabindex="-1"
+            >版本计算器</a
+          >
+          <a
+            id="tab-data"
+            href="#data"
+            class="nav-link"
+            role="tab"
+            aria-controls="data"
+            aria-selected="false"
+            tabindex="-1"
+            >数据来源、获取与维护</a
+          >
+          <a
+            id="tab-facts"
+            href="#facts"
+            class="nav-link"
+            role="tab"
+            aria-controls="facts"
+            aria-selected="false"
+            tabindex="-1"
+            >实时版本数据</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section id="rules" class="rules-section tab-panel" role="tabpanel" aria-labelledby="tab-rules" tabindex="-1">
+        <div class="section-heading">
+          <div class="section-label"><h2 id="rules-title">规则说明</h2></div>
+          <div class="legend">
+            <span class="tag exact">具体值</span><span class="tag range">版本范围</span
+            ><span class="tag inferred">锁文件推断</span><span class="tag fallback">兜底候选</span>
+          </div>
+        </div>
+        <div class="resolution-map" aria-label="版本来源、目录查找和版本选择流程图">
+          <div class="map-heading">
+            <span class="map-label">Node 项目 · 包自身运行要求 Node ≥ 18</span
+            ><strong>先确定来源，再排队合并，最后选版本</strong>
+          </div>
+          <div class="collection-map">
+            <div class="direct-route">
+              <div class="route-heading">
+                <span class="route-icon">↘</span>
+                <div>
+                  <h3>调用方直接输入</h3>
+                  <p>不沿父目录查找</p>
+                </div>
+              </div>
+              <div class="direct-config map-node">
+                <span class="map-kicker">独立包的输入参数</span>
+                <h4><code>input</code></h4>
+                <div class="direct-field"><b class="rank-token">01</b><code>node</code></div>
+                <div class="direct-field"><b class="rank-token">02</b><code>packageManager</code></div>
+                <div class="value-key">
+                  <span class="tag exact">完整版本 → 具体值</span><span class="tag range">任意 semver 范围</span>
+                </div>
+                <p>
+                  <code>18.20.8</code> → 单一版本<br /><code>18</code> → <code>18.x</code><br /><code>18.20</code> →
+                  <code>18.20.x</code>
+                </p>
+                <p>
+                  <code>^18.20</code> · <code>~18.20</code><br /><code>&gt;=18 &lt;21</code> · <code>*</code><br /><code
+                    >18 || 20</code
+                  >
+                  ·
+                  <code>18 - 20</code>
+                </p>
+                <small
+                  >采用
+                  <a href="https://github.com/npm/node-semver#ranges" target="_blank" rel="noreferrer"
+                    >node-semver 的范围语法 ↗</a
+                  >；包管理器填写 <code>名称@范围</code>。</small
+                >
+              </div>
+              <div class="direct-note">
+                <span>由调用方传入一次</span>
+                <p>
+                  调用方把已有配置转换为 <code>node</code> 和 <code>packageManager</code> 传入。包本身只接收这两个值。
+                </p>
+              </div>
+              <div class="direct-output">
+                <span>最高优先级<br />直接排在队首</span><i aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="directory-route">
+              <div class="route-heading">
+                <span class="route-icon">↑</span>
+                <div>
+                  <h3>项目文件逐级向上读取</h3>
+                  <p>这些来源都与所在目录有关；先读完一层，再进入父目录</p>
+                </div>
+              </div>
+              <div class="boundary-map">
+                <div class="boundary-row">
+                  <span class="boundary-label">查找起点</span>
+                  <div class="start-options">
+                    <span>传了 cwd <b>→</b> 指定目录</span><span>没有传 cwd <b>→</b> process.cwd()（pwd）</span>
+                  </div>
+                  <span class="boundary-arrow" aria-hidden="true">→</span><code>startDir</code>
+                </div>
+                <div class="boundary-row">
+                  <span class="boundary-label">停止目录</span><span>从 startDir 定位所属 Git 仓库</span
+                  ><span class="boundary-arrow">→</span><code>gitRoot</code>
+                </div>
+                <p>
+                  读取 startDir → 父目录 → … → gitRoot，包含两端；不越过 gitRoot。Git worktree 的 .git
+                  文件也属于仓库标记。
+                </p>
+                <p class="boundary-pending">
+                  目录不属于 Git 仓库时，只读取 startDir 并警告，不向文件系统根目录继续查找。
+                </p>
+              </div>
+              <div class="walk-and-files">
+                <div class="walk-diagram">
+                  <div class="walk-init map-node">
+                    <span class="map-kicker">从这里开始</span><strong>当前目录 = startDir</strong
+                    ><small>层数 = 0</small>
+                  </div>
+                  <div class="map-down" aria-hidden="true">↓</div>
+                  <div class="walk-loop">
+                    <div class="walk-loop-line" aria-hidden="true">
+                      <span>回到读取</span>
+                    </div>
+                    <div class="walk-read map-node">
+                      <strong>读取本层的 03 → 16</strong><span>文件存在就收集声明<br />记下目录层数与来源编号</span
+                      ><a href="#directory-source-list">每层都查这些来源 <b aria-hidden="true">→</b></a>
+                    </div>
+                    <div class="map-down" aria-hidden="true">↓</div>
+                    <div class="walk-check">
+                      <strong>当前目录是<br /><code>gitRoot</code> 吗？</strong>
+                    </div>
+                    <div class="walk-fork">
+                      <div class="walk-next map-node">
+                        <span class="edge-label">否 · 继续 ↑</span><strong>进入父目录</strong><small>层数 + 1</small>
+                      </div>
+                      <div class="walk-stop map-node">
+                        <span class="edge-label">是 · 结束 ↓</span><strong>停止收集</strong><small>根目录已读取</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="walk-boundary">
+                    <span aria-hidden="true">⊣</span><strong>gitRoot 的父目录不读取</strong>
+                  </div>
+                </div>
+                <div class="directory-source-list" id="directory-source-list">
+                  <div class="source-list-heading">
+                    <strong>每层目录，重复读取这一整张表</strong><span>编号只决定同目录内的顺序</span>
+                  </div>
+                  <div id="directory-priority"></div>
+                  <div class="source-list-note">
+                    <span>具体值 = 单版本范围</span><span>精确程度不改变来源顺序</span>
+                  </div>
+                </div>
+              </div>
+              <div class="directory-path-example">
+                <span>实际路径示例</span>
+                <div>
+                  <code>/repo/packages/web</code><b>↑</b><code>/repo/packages</code><b>↑</b><code>/repo</code
+                  ><span class="path-end">读完即停</span>
+                </div>
+                <small>startDir · 第 0 层 <span>→</span> 第 1 层 <span>→</span> gitRoot · 第 2 层</small>
+              </div>
+              <div class="collection-output">↓ 每层的声明按下方顺序进入队列</div>
+            </div>
+          </div>
+
+          <div class="priority-queue">
+            <div class="queue-title"><strong>严格采纳顺序</strong><span>先比较目录，再比较本层编号</span></div>
+            <div class="queue-track">
+              <div class="queue-item queue-remote"><b>调用方输入</b><span>01 → 02</span></div>
+              <i aria-hidden="true">→</i>
+              <div class="queue-item"><b>startDir · 第 0 层</b><span>03 → 16</span></div>
+              <i aria-hidden="true">→</i>
+              <div class="queue-item"><b>父目录 · 第 1 层</b><span>03 → 16</span></div>
+              <i aria-hidden="true">→</i>
+              <div class="queue-ellipsis">…</div>
+              <i aria-hidden="true">→</i>
+              <div class="queue-item"><b>gitRoot · 最后一层</b><span>03 → 16</span></div>
+            </div>
+            <p>
+              <code>本层 .nvmrc</code> 优先于 <code>父层 volta.node</code>，也优先于
+              <code>父层 packageManager</code>。同目录、同字段的重复项按出现顺序。
+            </p>
+            <p>每层只读取一次；如果 startDir 就是 gitRoot，目录队列只有第 0 层。</p>
+          </div>
+          <div class="queue-to-resolve" aria-hidden="true">
+            <span>↓ 按队列依次合并</span>
+          </div>
+
+          <div class="resolve-stages">
+            <div class="resolve-stage">
+              <div class="resolve-stage-heading">
+                <span>1</span>
+                <h3>加入约束前，带上 Node 要求</h3>
+              </div>
+              <div class="merge-pairing map-node">
+                <strong>包管理器条件 → 候选具体版本</strong>
+                <p class="format-filter-flow">
+                  有锁文件时：查随包的冻结安装兼容表 → 得到可用的包管理器具体版本集合或有证据的范围。
+                </p>
+                <div class="inline-lookup">
+                  <span>查官方包元数据<br /><code>engines.node</code></span
+                  ><b aria-hidden="true">→</b><span>得到每个候选<br />支持的 Node 范围</span>
+                </div>
+                <small>包管理器版本与其 Node 要求一起参加合并，沿用原声明的目录层数和来源优先级。</small
+                ><a class="lookup-source-link" href="#facts">查看包版本与 engines.node 的记录 ↗</a>
+              </div>
+              <div class="map-down" aria-hidden="true">↓</div>
+              <div class="merge-question">
+                <strong>加入本条后，仍有可运行的<br />Node + 包管理器组合？</strong>
+              </div>
+              <div class="merge-outcomes">
+                <div><span>是 ↓</span><strong>保留本条</strong></div>
+                <div><span>否 ↓</span><strong>忽略本条 + 警告</strong></div>
+              </div>
+              <div class="merge-repeat">↻ 取下一条，直到队列为空</div>
+              <p class="stage-caption">
+                兼容的父层条件继续收窄范围；冲突条件及其推导的 Node 要求一起忽略。没有包管理器类型声明时，默认使用 npm。
+              </p>
+            </div>
+            <div class="stage-link" aria-hidden="true">→<span>保留条件</span></div>
+            <div class="resolve-stage">
+              <div class="resolve-stage-heading">
+                <span>2</span>
+                <h3>确定 Node 版本</h3>
+              </div>
+              <div class="pick-node">
+                <span class="tag exact">具体值</span><strong>有保留的具体版本？</strong>
+                <p>有 → 采用该版本</p>
+              </div>
+              <div class="pick-otherwise">否则 ↓</div>
+              <div class="pick-node">
+                <div class="inline-input">
+                  <span>读取当前 Node 进程</span><b aria-hidden="true">→</b><strong>当前 Node 版本</strong>
+                </div>
+                <strong>这个版本满足保留条件？</strong>
+                <p>是 → 采用当前版本</p>
+              </div>
+              <div class="pick-otherwise">否则 ↓</div>
+              <div class="pick-node">
+                <span class="tag range">范围</span><strong>取满足声明与预发布规则的最大版本</strong>
+                <p>从<a href="#facts">官方 Node 发行表</a>中筛选，再取最大值。</p>
+              </div>
+              <div class="selected-node-output">↓ 选定 Node 版本</div>
+            </div>
+            <div class="stage-link" aria-hidden="true">→<span>选定 Node</span></div>
+            <div class="resolve-stage">
+              <div class="resolve-stage-heading">
+                <span>3</span>
+                <h3>确定包管理器版本</h3>
+              </div>
+              <div class="pick-node">
+                <span class="tag exact">具体值</span><strong>有保留的具体版本？</strong>
+                <p>有 → 采用该版本</p>
+              </div>
+              <div class="pick-otherwise">否则 ↓</div>
+              <div class="pm-candidate map-node">
+                <div class="pm-source-path">
+                  <span class="pm-path-label">选 npm 时</span><span>上一步选定的 Node</span
+                  ><i aria-hidden="true">↓ 查官方 Node 发行记录</i><strong>该 Node 绑定的 npm 版本</strong>
+                </div>
+                <div class="pm-source-path">
+                  <span class="pm-path-label">选 pnpm / Yarn 时</span><code>pnpm --version / yarn --version</code
+                  ><i aria-hidden="true">↓ 读取本地命令结果</i><strong>本地安装的具体版本</strong>
+                </div>
+              </div>
+              <div class="map-down" aria-hidden="true">↓</div>
+              <div class="pm-check">
+                <strong>候选满足范围，且支持选定 Node？</strong>
+                <p><b>是 →</b> 采用候选版本</p>
+                <p><b>否 / 未安装 →</b> 从<a href="#facts">官方包版本表</a>中，取满足两者的最大版本</p>
+              </div>
+              <div class="final-map-output">✓ Node + 包管理器</div>
+            </div>
+          </div>
+        </div>
+        <div class="rule-footnote">
+          <span>↳</span>
+          <p>
+            <strong>完全没有声明：</strong>使用当前进程的 Node 和与它绑定的
+            npm。<strong>“最大版本”：</strong>从实时获取、符合预发布规则的候选版本中，按 semver
+            条件取最大值。锁兼容性来自有证据的冻结安装记录，<a href="#lock-mapping">查看数据来源与维护规范</a
+            >。未知兼容性单独警告，不能当作冲突或通过。
+          </p>
+        </div>
+        <article class="prerelease-rule" id="prerelease-rule" aria-labelledby="prerelease-rule-title">
+          <h3 id="prerelease-rule-title">预发布版本规则</h3>
+          <p>
+            <strong>默认只选择稳定版；用户显式声明允许时，可以采用匹配的预发布版。</strong>
+          </p>
+          <p>预发布许可只对被声明的工具生效。锁文件推断、版本统计和兼容数据维护仍只处理稳定版。</p>
+          <div class="prerelease-example">
+            <code data-i18n-ignore>packageManager: "pnpm@&gt;=10.0.0-rc.1 &lt;10.0.0"</code>
+            <p>这里允许 pnpm 使用匹配的预发布版；推导 Node 时仍只选稳定版，除非 Node 自己的显式声明也允许预发布版。</p>
+          </div>
+        </article>
+      </section>
+
+      <section
+        id="calculator"
+        class="calculator-section tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-calculator"
+        tabindex="-1"
+        hidden
+      >
+        <div class="section-heading">
+          <div class="section-label">
+            <div>
+              <h2 id="calculator-title">版本计算器</h2>
+              <p class="section-description">留空表示没有声明。每次修改，结果与警告都会重新计算。</p>
+            </div>
+          </div>
+          <div class="toolbar">
+            <button class="button subtle" id="clear-fields">清空声明</button
+            ><button class="button secondary" id="export-result">导出结果 <span aria-hidden="true">↓</span></button>
+          </div>
+        </div>
+        <div class="preset-bar">
+          <span>试试场景</span>
+          <div id="presets"></div>
+        </div>
+        <div class="calculator-grid">
+          <div class="inputs-column">
+            <div class="form-panel environment-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">候选与兜底 · 不参与声明排序</span>
+                  <h3>当前运行环境</h3>
+                </div>
+                <span class="tag fallback">示例，可修改</span>
+              </div>
+              <p class="panel-description">
+                模拟调用这个包的机器。Node 版本可选择，它绑定的 npm 根据官方发行数据自动显示。
+              </p>
+              <div class="runtime-grid" id="runtime-fields"></div>
+            </div>
+            <div id="source-fields"></div>
+            <details id="directory-rules" class="form-panel extra-panel" open>
+              <summary>
+                <div>
+                  <span class="panel-kicker">目录距离 → 同目录来源优先级 → 出现顺序</span>
+                  <h3>上级目录与重复声明</h3>
+                </div>
+                <span class="chevron">⌄</span>
+              </summary>
+              <div class="details-content">
+                <p class="panel-description">
+                  主表位于 startDir（第 0 层）。先检查这一层的全部声明，再检查第 1 层、第 2 层，直到
+                  gitRoot。每一层内部才按来源编号排序。
+                </p>
+                <a class="directory-map-link" href="#rules"
+                  >↑ 查看完整目录查找图：起点、每层来源、父目录回路与停止边界</a
+                ><label class="root-depth-field"
+                  ><span>gitRoot 在上级第几层</span
+                  ><input
+                    id="search-depth"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="3"
+                    aria-label="gitRoot 距离 startDir 的层数"
+                  /><small>0 表示 startDir 就是 gitRoot；超出层数的声明不收集。</small></label
+                >
+                <div class="directory-examples">
+                  <p>
+                    <b>同名且冲突</b><code>本层 .nvmrc = 18</code>，<code>父层 .nvmrc = 20</code
+                    ><span>→ 保留 18；忽略父层的 20 并警告。</span>
+                  </p>
+                  <p>
+                    <b>同名且兼容</b><code>本层 .nvmrc = 18</code>，<code>父层 .nvmrc = 18.20.8</code
+                    ><span>→ 两条都保留，范围收窄到 18.20.8。</span>
+                  </p>
+                  <p>
+                    <b>字段不同</b><code>本层 .nvmrc = 18</code>，<code>父层 volta.node = 20</code
+                    ><span>→ 本层更近，保留 18；父层 Volta 被忽略并警告。</span>
+                  </p>
+                </div>
+                <div id="additional-fields"></div>
+                <button class="button secondary small" id="add-source">+ 添加一条声明</button>
+              </div>
+            </details>
+          </div>
+          <aside class="results-column" aria-label="计算结果">
+            <div class="sticky-results">
+              <div id="result-summary" aria-live="polite"></div>
+              <div id="warnings"></div>
+              <div id="trace"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="data" class="data-section tab-panel" role="tabpanel" aria-labelledby="tab-data" tabindex="-1" hidden>
+        <div class="section-heading">
+          <div class="section-label">
+            <div>
+              <h2 id="data-title">数据来源、获取与维护</h2>
+              <p class="section-description">
+                规定数据来源、获取方式、维护原则与操作流程，适用于维护人员和
+                AI。数据分为运行时获取、随包发布与维护仓库保存三类。
+              </p>
+            </div>
+          </div>
+          <span class="data-kind local-kind">数据维护规范</span>
+        </div>
+
+        <div class="data-decision-board">
+          <article class="data-decision live-decision">
+            <span class="decision-eyebrow">运行时获取 · 脚本可直接处理</span>
+            <h3>官方版本元数据</h3>
+            <p>已发布版本、每个版本的 <code>engines.node</code>、每个 Node 发行版绑定的 npm。</p>
+            <div class="decision-bottom">
+              <strong>查官方接口 → 进程内缓存 → 参与计算</strong><span>不把发布版本表固定在包里</span>
+            </div>
+          </article>
+          <article class="data-decision shipped-decision">
+            <span class="decision-eyebrow">随包发布 · 实测 + AI 维护</span>
+            <h3>锁文件的冻结安装兼容性</h3>
+            <p>
+              维护脚本根据实测生成版本范围；infer 使用随包的范围，未知锁格式使用
+              <code>*</code>。
+            </p>
+            <div class="decision-bottom">
+              <strong>保留实测 → 脚本生成范围 → 随包发布</strong><span>安装 / 升级本包时一并获得</span>
+            </div>
+          </article>
+        </div>
+        <div class="local-data-strip">
+          <span class="data-kind local-kind">本机读取</span>
+          <p>
+            <strong>当前 Node、本地 pnpm / Yarn、项目声明</strong
+            >每次调用时读取；属于本次输入，不是随包维护的版本表。当前 Node 来自 <code>process.versions.node</code>；pnpm
+            / Yarn 来自本地命令的实际版本。
+          </p>
+        </div>
+
+        <div class="data-plan-block" id="official-data-plan">
+          <div class="data-block-heading">
+            <span class="data-kind live-kind">A · 动态获取</span>
+            <div>
+              <h3>官方版本数据与查询接口</h3>
+              <p>由脚本下载和解析官方数据；版本与 engines 使用原始声明。</p>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="data-source-table">
+              <thead>
+                <tr>
+                  <th>数据项</th>
+                  <th>原始来源 / 读取字段</th>
+                  <th>获取方式</th>
+                  <th>维护方式</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Node 已发布版本与 LTS 信息</strong><span>决定哪些 Node 版本可选</span></td>
+                  <td>
+                    <a href="https://nodejs.org/dist/index.json" target="_blank" rel="noreferrer"
+                      >nodejs.org/dist/index.json ↗</a
+                    ><code>[].version · [].lts · [].date</code>
+                  </td>
+                  <td rowspan="8">
+                    <span class="data-kind live-kind">运行时</span>
+                    <p>
+                      每次 infer() 都请求官方接口校验更新。同一 Node 进程中的后续调用携带 ETag / Last-Modified；返回 304
+                      就复用进程内数据。并发请求同一来源时只发一次。
+                    </p>
+                    <p>
+                      默认不写磁盘。新进程第一次调用重新获取。同步脚本另外供维护和测试使用，不依靠项目文件缓存官方数据。
+                    </p>
+                  </td>
+                  <td rowspan="8">
+                    <strong>新增版本：自动处理</strong>
+                    <p>重新拉取、检查字段、规范化版本并保存来源与时间。</p>
+                    <strong>接口结构变化：维护解析器</strong>
+                    <p>字段缺失或范围非法时保留原响应并记录异常；不得静默排除异常版本后输出最大版本结论。</p>
+                    <small>发布版本及 engines 不人工填写。</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>每个 Node 绑定的 npm</strong><span>npm 的优先候选</span></td>
+                  <td>
+                    <a href="https://nodejs.org/dist/index.json" target="_blank" rel="noreferrer"
+                      >同一份 Node 发行索引 ↗</a
+                    ><code>[].version → [].npm</code><small>同一条记录直接关联，不按 Node 主版本猜。</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>npm 版本与 Node 要求</strong></td>
+                  <td>
+                    <a href="https://registry.npmjs.org/npm" target="_blank" rel="noreferrer"
+                      >registry.npmjs.org/npm ↗</a
+                    ><code>versions[v].version<br />versions[v].engines.node</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>pnpm 版本与 Node 要求</strong></td>
+                  <td>
+                    <a href="https://registry.npmjs.org/pnpm" target="_blank" rel="noreferrer"
+                      >registry.npmjs.org/pnpm ↗</a
+                    ><code>versions[v].version<br />versions[v].engines.node</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Yarn 历史发行版与 Node 要求</strong></td>
+                  <td>
+                    <a href="https://registry.npmjs.org/yarn" target="_blank" rel="noreferrer"
+                      >registry.npmjs.org/yarn ↗</a
+                    ><code>versions[v]，包含 Classic 与历史 Berry 发行版<br />versions[v].engines.node</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Yarn Berry 版本与 Node 要求</strong></td>
+                  <td>
+                    <a href="https://registry.npmjs.org/@yarnpkg%2Fcli-dist" target="_blank" rel="noreferrer"
+                      >registry.npmjs.org/@yarnpkg/cli-dist ↗</a
+                    ><code>versions[v]，其中 v 为 &gt;=2 &lt;6<br />versions[v].engines.node</code
+                    ><small>同版本的声明优先级：cli-dist、yarn、cli。保留每条声明的实际来源。</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>补全 Yarn 历史声明</strong></td>
+                  <td>
+                    <a href="https://registry.npmjs.org/@yarnpkg%2Fcli" target="_blank" rel="noreferrer"
+                      >registry.npmjs.org/@yarnpkg/cli ↗</a
+                    ><code>versions[v].version · versions[v].engines.node</code
+                    ><small>补全 2.1–2.4 等历史版本。此 npm 包没有独立命令，不能直接当作测试用可执行文件。</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Yarn 官方分发版本</strong></td>
+                  <td>
+                    <a href="https://repo.yarnpkg.com/tags" target="_blank" rel="noreferrer">repo.yarnpkg.com/tags ↗</a
+                    ><code>tags[]</code
+                    ><small
+                      >合并官方版本列表。注册表中缺少的版本，按官方 tag 查询 packages/yarnpkg-cli/package.json 的
+                      version 与 engines.node；缺失字段保留未知并给出警告。</small
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Yarn 6+ 原生版本</strong></td>
+                  <td>
+                    <a href="https://repo.yarnpkg.com/releases" target="_blank" rel="noreferrer"
+                      >repo.yarnpkg.com/releases ↗</a
+                    ><code>releaseLines.zpm.stable / canary / tags[]</code
+                    ><small
+                      >原生程序，无宿主 Node 要求。预发布版按用户显式声明的版本或范围查询，不加入稳定版统计。</small
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cache-contract" id="data-cache">
+            <div class="cache-heading">
+              <span class="data-kind live-kind">缓存边界</span>
+              <h4>一次调用一个结果，模块仍能跨调用保存元数据</h4>
+            </div>
+            <p>
+              默认使用<strong>进程内缓存</strong>：数据放在这个包的模块变量中，同一模块实例的多次
+              <code>infer()</code>
+              共用；不缓存项目推断结果，不写用户磁盘，不要求调用方持有实例。
+            </p>
+            <div class="cache-call-flow">
+              <div>
+                <span>同一 Node 进程 · 第一次调用</span><code>infer({ cwd: '/repo/a' })</code
+                ><b>HTTP 200 → 保存官方元数据</b>
+                <p>同时读取 A 项目的文件，计算 A 的结果。</p>
+              </div>
+              <i aria-hidden="true">→</i>
+              <div>
+                <span>同一 Node 进程 · 第二次调用</span><code>infer({ cwd: '/repo/b' })</code
+                ><b>条件请求 → 304 则复用数据</b>
+                <p>读取 B 项目的文件，重新计算 B；若返回 200，则更新元数据。</p>
+              </div>
+              <i aria-hidden="true">→</i>
+              <div>
+                <span>进程结束，再启动命令</span><code>新进程中的 infer(...)</code><b>内存已释放 → 重新下载</b>
+                <p>不同进程 / worker 不共用这份缓存。</p>
+              </div>
+            </div>
+            <p class="cache-contract-note">
+              <strong>缓存键：</strong>官方来源 URL + 解析结构版本。缓存里保存响应数据、ETag /
+              Last-Modified、数据获取时间、最近校验时间。没有 HTTP 校验标记的来源，每次重新下载；304
+              更新校验时间。并发中的失败请求会移出队列，下一次可重试。
+            </p>
+          </div>
+          <div class="data-policy-grid">
+            <div>
+              <b>只有官方元数据复用</b>
+              <p>
+                每次仍读取该目录的声明和本地工具版本，并重新做优先级与范围计算。项目结果不跨调用缓存；同一进程中不同项目可以复用相同的官方版本事实。
+              </p>
+            </div>
+            <div>
+              <b>离线或请求失败</b>
+              <p>
+                若本进程已有成功响应，可继续使用并警告数据时间；“最大版本”只指这份数据的范围。新进程无缓存且请求失败时，无法核实的数据标为未知。
+              </p>
+            </div>
+            <div>
+              <b>没有 engines.node 的版本</b>
+              <p>保留“官方未声明”这个事实；不能写成官方支持任意 Node。它的 Node 兼容性标为未知，不伪造约束。</p>
+            </div>
+            <div>
+              <b>当前 Node 的 npm 兜底</b>
+              <p>
+                当前安装绑定的 npm 从该 Node 安装位置核对；选择另一个 Node 发行版时，查官方索引的 npm 字段。不会把任意
+                PATH 上的 npm 当作绑定版本。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-plan-block" id="lock-mapping">
+          <div class="data-block-heading">
+            <span class="data-kind shipped-kind">B · 随包发布</span>
+            <div>
+              <h3>锁文件兼容表：维护时生成范围，运行时查表</h3>
+              <p>实测检查冻结安装、锁文件和依赖。兼容判定另行应用已确认的上游 bug 例外；测试失败记录始终保留。</p>
+            </div>
+          </div>
+          <p class="lock-command-note">
+            pnpm 按待测版本选择冻结参数：早于 <code>3.0.0-alpha.3</code> 时执行
+            <code>--frozen-shrinkwrap</code>；从该版本起执行 <code>--frozen-lockfile</code>。两种锁文件都遵守这条规则。
+          </p>
+          <div class="table-scroll">
+            <table class="lock-plan-table">
+              <thead>
+                <tr>
+                  <th>锁文件 / 识别信息</th>
+                  <th>维护时使用的原始来源</th>
+                  <th>实际执行的安装方式</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>package-lock.json</strong><code>lockfileVersion + 相关内容特征</code></td>
+                  <td rowspan="2">
+                    <a href="https://github.com/npm/cli" target="_blank" rel="noreferrer">npm/cli 官方发布源码 ↗</a>
+                    <p>对应发布版本的锁文件读取、校验和安装流程；两个文件类型分别建样例。</p>
+                  </td>
+                  <td rowspan="2">
+                    <a href="https://docs.npmjs.com/cli/v11/commands/npm-ci/" target="_blank" rel="noreferrer"
+                      ><code>npm ci</code> ↗</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>npm-shrinkwrap.json</strong><code>lockfileVersion + 相关内容特征</code></td>
+                </tr>
+                <tr>
+                  <td><strong>pnpm-lock.yaml</strong><code>lockfileVersion + settings / 特征字段</code></td>
+                  <td>
+                    <a href="https://github.com/pnpm/pnpm" target="_blank" rel="noreferrer">pnpm/pnpm 官方发布源码 ↗</a>
+                    <p>读取器、迁移分支、冻结安装检查，以及补丁 / 校验字段的处理。</p>
+                  </td>
+                  <td>
+                    <a href="https://pnpm.io/cli/install#--frozen-lockfile" target="_blank" rel="noreferrer"
+                      ><code>pnpm install --frozen-lockfile</code> ↗</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>shrinkwrap.yaml</strong><code>shrinkwrapVersion + importers / 内容特征</code></td>
+                  <td>
+                    <a href="https://github.com/pnpm/pnpm" target="_blank" rel="noreferrer">pnpm/pnpm 官方发布源码 ↗</a>
+                    <p>旧版 pnpm 的读取器、共享 workspace 模式与冻结安装检查。</p>
+                  </td>
+                  <td>
+                    <code>pnpm install --frozen-shrinkwrap</code>
+                    <p>按上方版本边界切换冻结参数。</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>yarn.lock · Classic</strong><code># yarn lockfile v1 + 依赖内容</code></td>
+                  <td>
+                    <a href="https://github.com/yarnpkg/yarn" target="_blank" rel="noreferrer"
+                      >yarnpkg/yarn 官方发布源码 ↗</a
+                    >
+                    <p>Classic 的 lockfile parser 与 install 检查。</p>
+                  </td>
+                  <td>
+                    <a
+                      href="https://classic.yarnpkg.com/lang/en/docs/cli/install/#toc-yarn-install-frozen-lockfile"
+                      target="_blank"
+                      rel="noreferrer"
+                      ><code>yarn install --frozen-lockfile</code> ↗</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>yarn.lock · Berry YAML（&gt;=2 &lt;6）</strong><code>__metadata.version + 相关特征</code
+                    ><small>cacheKey 是单独维度，不当成锁格式号。</small>
+                  </td>
+                  <td>
+                    <a href="https://github.com/yarnpkg/berry" target="_blank" rel="noreferrer"
+                      >yarnpkg/berry 官方发布源码 ↗</a
+                    >
+                    <p>Project 的锁文件读取 / 迁移与 immutable 校验。</p>
+                  </td>
+                  <td>
+                    <a href="https://yarnpkg.com/cli/install" target="_blank" rel="noreferrer"
+                      ><code>yarn install --immutable</code> ↗</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>yarn.lock · Yarn 6+ JSON（ZPM）</strong><code>JSON __metadata.version + 相关特征</code
+                    ><small>与 Berry YAML 的相同格式号分别识别；没有稳定版实测范围时使用 *。</small>
+                  </td>
+                  <td>
+                    <a href="https://github.com/yarnpkg/zpm" target="_blank" rel="noreferrer"
+                      >yarnpkg/zpm 官方发布源码 ↗</a
+                    >
+                    <p>原生 ZPM 的 JSON 锁文件读取与 immutable 校验。</p>
+                  </td>
+                  <td><code>yarn install --immutable</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="evidence-contract">
+            <div>
+              <span class="data-kind shipped-kind">来源链</span>
+              <p>
+                Registry 中的<strong>具体发布版本</strong> → <code>dist.tarball</code> +
+                <code>dist.integrity</code> 校验 → 实际执行该版本 → 生成测试记录。分析源码时使用该版本对应的 tag /
+                commit，并与发布包核对。
+              </p>
+              <p>
+                Yarn 独立脚本：官方 tags → tag 对应的 commit → 该 commit 中的 yarn.js。保存不可变
+                URL、commit、文件大小和下载脚本计算的 SHA-512；执行前校验字节并核对
+                --version。这份摘要由维护脚本计算，不作为官方发布的 SRI 声明。
+              </p>
+            </div>
+            <div>
+              <span class="data-kind local-kind">存储边界</span>
+              <p>
+                <strong>随包：</strong>精简后的 <code>compatibility.json</code>，包含锁格式 /
+                特征、生成的版本范围、数据日期和必要的已知 bug
+                标记。<strong>维护仓库：</strong>原始测试记录、完整证据索引、样例、生成脚本与维护规范。已验证的历史记录直接保留；完整
+                provenance 不随包发布。
+              </p>
+            </div>
+          </div>
+          <div class="maintenance-flow" aria-label="锁文件兼容数据获取和发布流程">
+            <div>
+              <span>01 · 脚本</span><b>发现新增版本</b>
+              <p>与已保存记录比较，旧结果直接复用</p>
+            </div>
+            <i aria-hidden="true">→</i>
+            <div>
+              <span>02 · 脚本</span><b>仅测试新增组合</b>
+              <p>新版本 × 现有样例；跳过已有记录</p>
+            </div>
+            <i aria-hidden="true">→</i>
+            <div>
+              <span>03 · AI</span><b>纳入新锁格式</b>
+              <p>AI 解析新格式，真实生成样例并补测边界</p>
+            </div>
+            <i aria-hidden="true">→</i>
+            <div>
+              <span>04 · 脚本 + 审核</span><b>生成范围并发布</b>
+              <p>根据已确认的兼容变化点生成范围，随包发布</p>
+            </div>
+          </div>
+          <p class="maintenance-update-note">
+            <strong>数据更新方式：</strong>安装或升级 node-toolchain-infer
+            时获得兼容表。包管理器发布新版，不会改变用户已安装的这份表；infer
+            仍用表内范围匹配运行时获取的已发布版本。只有升级 infer，才采用新版表中的实测边界。
+          </p>
+          <div class="forward-policy" id="forward-ranges">
+            <div class="forward-heading">
+              <div>
+                <h4>兼容范围：维护原则与示例</h4>
+                <p>范围由维护脚本生成并随包发布；infer 运行时只查表、匹配版本。</p>
+              </div>
+              <span class="data-kind shipped-kind">维护原则</span>
+            </div>
+            <ol class="range-principles">
+              <li>
+                <strong>保留实测结果，确认具体变化点。</strong>AI
+                维护样例、分析失败原因并补测边界。仅知道某个版本安装成功，不能把它当作首次支持版本；网络或环境失败也不能当作锁格式不兼容。
+              </li>
+              <li>
+                <strong>已知 bug 不等于锁格式不兼容。</strong>
+                确认该版本在语义上支持锁格式，但已知 bug 导致测试失败时，登记 bug
+                来源、影响版本、样例、独立兼容依据和审核过的失败记录。编译时按兼容处理并保留标记；原始失败、输出与文件摘要不改写。没有审核的其他失败仍需调查。
+              </li>
+              <li>
+                <strong>在维护阶段由脚本生成范围。</strong><code>build-compatibility</code>
+                按包管理器、锁格式和内容特征分组，按 semver 排序具体版本的记录。从不支持变为支持的版本写成下界
+                <code>&gt;=版本</code>；从支持变为不支持的版本写成上界 <code>&lt;版本</code>；后来恢复支持则新增一段，用
+                <code>||</code>
+                合并。边界精确到实际发生变化的版本，不固定按主版本切分。
+              </li>
+              <li>
+                <strong>没有已确认的不兼容上界，就不加上界。</strong
+                >最后一段仍支持时，不用“最后测试版本”或“下一个主版本”截断范围。未知情况尽量放宽；表中已有明确不兼容边界的范围继续保留。
+              </li>
+              <li>
+                <strong>infer 使用当前安装包里的表。</strong
+                >找到锁格式对应的规则，就直接使用表内范围；找不到规则，就使用 <code>*</code>，仍保留 npm / pnpm / Yarn
+                类型。新发布的包管理器版本是否可选，只需匹配这份表，无需在运行时补测或重新生成范围。
+              </li>
+              <li>
+                <strong>实测有新结论时，重新生成表并发布。</strong>用户升级 infer
+                后使用新版范围；没有升级，就继续使用旧表。新锁格式出现本身不关闭旧格式范围，只有确认不兼容的变化点才产生上界。
+              </li>
+            </ol>
+            <p class="range-principle-summary">
+              <strong>推断原则：</strong
+              >除非当前随包数据明确排除兼容性，否则按最大的可能兼容性推断。允许参与选择不等于已经实测通过。
+            </p>
+            <div class="range-example" id="known-bug-policy">
+              <h5>已知 bug 示例 · pnpm 7.28.0</h5>
+              <p>
+                pnpm 7.28.0 可以读取并安装 lockfile 5.1。冻结安装重写
+                YAML，导致字节检查失败，但解析后的内容和依赖均相同。上游 #6158 / #6260 确认了该 bug，7.30.1
+                修复。该失败保留为 rewrite，兼容判定标为 known-bug-compatible，不在版本范围中挖掉这一段。
+              </p>
+              <p>已知 bug 标记只影响兼容判定，不意味着安装没有 bug。选中受影响版本时，计算结果会给出对应提示。</p>
+              <a href="https://github.com/pnpm/pnpm/pull/6260">pnpm #6260</a>
+            </div>
+            <div class="range-example" id="stable-version-policy">
+              <h5>稳定版数据维护</h5>
+              <p>
+                <a href="#prerelease-rule">遵循预发布版本规则</a
+                ><span
+                  >：版本列表、统计、样例发现、矩阵测试、维护巡检及兼容范围编译均只处理稳定版；显式指定的预发布版仅在计算时按需查询，不加入这些数据。</span
+                >
+              </p>
+            </div>
+            <div class="range-example">
+              <h5>示例 1 · 测试记录怎样生成 <code>&gt;=9.0.0</code></h5>
+              <p>
+                以下版本与行为用于说明算法，不是实际测试结论。假设已确认 lockfile 9 的首次支持版本是 pnpm
+                9.0.0，此前版本不支持，且测试覆盖的 9 / 10 / 11 / 12 版本均支持。
+              </p>
+              <div class="table-scroll">
+                <table class="range-change-table">
+                  <thead>
+                    <tr>
+                      <th>维护时已确认的测试结果</th>
+                      <th>脚本生成的 lockfile 9 范围</th>
+                      <th>生成依据</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>从 9.0.0 起支持，尚无停止支持的边界</td>
+                      <td><code>&gt;=9.0.0</code></td>
+                      <td>只写下界；测试到 12 不产生上界。</td>
+                    </tr>
+                    <tr>
+                      <td>后来确认从 13.0.0 起不再支持</td>
+                      <td><code>&gt;=9.0.0 &lt;13.0.0</code></td>
+                      <td>在已确认的变化点补上界。</td>
+                    </tr>
+                    <tr>
+                      <td>再后来确认从 14.0.0 起恢复支持</td>
+                      <td><code>&gt;=9.0.0 &lt;13.0.0 || &gt;=14.0.0</code></td>
+                      <td>保留中间的不兼容区间，新增一段。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="range-example">
+              <h5>示例 2 · pnpm 发布新版，用户有没有升级 infer</h5>
+              <p>
+                假设旧版 infer 的表只有
+                <code>lockfile 9 → &gt;=9.0.0</code>。随后 pnpm 13.0.0 发布；维护测试确认它从这个版本起不再支持 lockfile
+                9，并开始支持 lockfile 10，于是发布新版 infer。
+              </p>
+              <div class="table-scroll">
+                <table class="range-change-table">
+                  <thead>
+                    <tr>
+                      <th>用户实际安装的 infer</th>
+                      <th>遇到 lockfile 9</th>
+                      <th>遇到 lockfile 10</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>仍是旧版 infer</strong></td>
+                      <td><code>&gt;=9.0.0</code><small>13.0.0 满足旧表范围，仍可参与选择。</small></td>
+                      <td><code>*</code><small>旧表没有此格式，不限制 pnpm 版本。</small></td>
+                    </tr>
+                    <tr>
+                      <td><strong>已升级到新版 infer</strong></td>
+                      <td><code>&gt;=9.0.0 &lt;13.0.0</code><small>使用新表，13.0.0 被此条件排除。</small></td>
+                      <td><code>&gt;=13.0.0</code><small>使用新增格式的实测下界。</small></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p>
+              <strong>以上只决定锁文件提供的版本条件。</strong
+              >候选仍来自官方已发布版本，并按既定优先级与其他声明、每个候选实际的
+              <code>engines.node</code> 一起计算。未知锁格式的 <code>*</code> 不会取消其他来源的限制。
+            </p>
+          </div>
+          <div class="matrix-outcomes">
+            <div>
+              <span class="outcome-dot pass-dot"></span><b>已验证支持</b>
+              <p>
+                安装成功、文件字节不变、依赖版本正确。再用与锁文件矛盾的清单做对照：明确拒绝安装，或仍安装原锁定版本且文件字节不变，才算通过；静默改装成清单中新要求的版本不算。
+              </p>
+            </div>
+            <div>
+              <span class="outcome-dot fail-dot"></span><b>已验证不支持</b>
+              <p>可复现地拒绝锁文件或改写文件。保留版本边界和失败证据。</p>
+            </div>
+            <div>
+              <span class="outcome-dot assumed-dot"></span><b>匹配范围，尚未实测</b>
+              <p>包括旧表范围内的新发布版本。允许参与推断，不把范围匹配标为实测通过。</p>
+            </div>
+            <div>
+              <span class="outcome-dot unknown-dot"></span><b>没有可用结论</b>
+              <p>表中无对应格式时使用 *。未完成的测试或网络 / 环境失败不产生不兼容边界。</p>
+            </div>
+          </div>
+          <div class="history-contract">
+            <h4>已有数据不重测；新格式补的是新组合</h4>
+            <div class="table-scroll">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>待检查的组合</th>
+                    <th>处理方式</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>旧版本 × 旧样例，已有有效结果</td>
+                    <td><strong>直接读取历史记录，跳过测试。</strong></td>
+                  </tr>
+                  <tr>
+                    <td>新版本 × 已有样例</td>
+                    <td>只跑新增的这一行，确认兼容行为是否变化。</td>
+                  </tr>
+                  <tr>
+                    <td>旧版本 × 新格式样例</td>
+                    <td>仅补测确定兼容边界所需、且尚无有效记录的版本。</td>
+                  </tr>
+                  <tr>
+                    <td>新版本 × 新格式样例</td>
+                    <td>首次测试，纳入新格式的基线。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              每条记录以工具版本 / 发布包摘要、fixture 摘要、测试
+              Node、平台和安装参数标识。相同组合的有效结果直接复用；网络失败等无结论记录可以重试。新增样例单独建档，旧样例及其结果保留。
+            </p>
+          </div>
+          <details class="maintenance-detail">
+            <summary>
+              <div>
+                <h4>测试目录与基线记录</h4>
+                <p>按文件类型 → 锁格式 → 内容特征组织测试目录。</p>
+              </div>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="details-content fixture-layout">
+              <pre>
+fixtures/
+  npm/package-lock/&lt;format&gt;/&lt;case&gt;/
+  npm/shrinkwrap/&lt;format&gt;/&lt;case&gt;/
+  pnpm/&lt;format&gt;/&lt;case&gt;/
+  yarn/classic/v1/&lt;case&gt;/
+  yarn/modern/&lt;format&gt;/&lt;case&gt;/</pre>
+              <div>
+                <p>每个目录保存：<strong>package.json、真实生成的锁文件、必要配置和依赖材料、fixture.json</strong>。</p>
+                <p>
+                  <code>fixture.json</code> 记录生成工具的具体版本、Node
+                  版本、生成命令、样例特征、预期依赖与文件摘要。基础安装、workspace、peer、patch
+                  和相关校验字段按需要拆成不同 case。
+                </p>
+                <p>
+                  新格式先用实际发布的包管理器生成，不能只手改锁格式数字。新增 fixture
+                  后，只补测确定边界所需的历史版本；这些是“旧版本 × 新样例”的新组合，不重跑旧组合。
+                </p>
+                <p>
+                  每次运行保存实际工具 <code>--version</code>、Node、OS /
+                  架构、命令、退出码、前后摘要和日志。每次复制到干净目录执行，避免沿用旧的安装状态。
+                </p>
+              </div>
+            </div>
+          </details>
+          <div class="maintenance-detail maintenance-automation" id="maintenance-checks">
+            <div class="maintenance-detail-heading">
+              <h4>脚本、GitHub Actions 与 AI 维护</h4>
+              <p>
+                GitHub Actions 通过
+                <code>schedule</code> 定时运行固定脚本，同时提供
+                <code>workflow_dispatch</code>
+                手动触发。脚本完成下载、检测和实测；需要修改兼容表、解析器或样例时，输出报告并失败，由维护人员把报告交给
+                AI。
+              </p>
+            </div>
+            <div class="details-content">
+              <h5>建立初始数据</h5>
+              <p>
+                首次运行固定官方版本清单，逐个测试 npm、pnpm、Yarn
+                的全部稳定版本，排除预发布版。每个版本执行该包管理器的全部锁文件样例。
+              </p>
+              <pre><code>pnpm data:seed --concurrency 6
+pnpm data:seed --concurrency 6 --retry-incomplete</code></pre>
+              <p>
+                重复命令会续跑，已完成且输入摘要相同的组合直接复用。新增样例只补测新组合；更换版本清单使用新的 --output
+                目录，保留原目录。
+              </p>
+              <p>
+                Yarn 还合并官方 tags 和独立脚本，覆盖未发布到 cli-dist
+                的历史版本。扩充清单时保留旧快照；编译器核对旧、新清单中的制品地址和校验值相同后复用旧实验，按完整新清单重新判断相邻版本。
+              </p>
+              <p>
+                每组记录包含具体工具、下载校验、Node、命令、日志、安装前后文件摘要与实际依赖版本。summary.json
+                汇总通过、不兼容、改写文件、依赖不符和未完成；下载或启动失败不算不兼容。
+              </p>
+              <p><code>maintenance/evidence/initial-matrix/</code></p>
+              <h5>每次定时检查执行什么</h5>
+              <ol class="maintenance-check-steps">
+                <li>
+                  <strong>检查官方数据。</strong
+                  >下载稳定版本与元数据，列出尚未检查的具体稳定版本，包括旧主版本分支新发布的补丁版。普通新增版本本身不构成维护失败。
+                </li>
+                <li>
+                  <strong>检查新版本生成的锁文件。</strong
+                  >用新版本运行已有样例生成脚本，识别锁格式与内容特征；发现未知格式或无法解析的结构，记录维护事项。
+                </li>
+                <li>
+                  <strong>实测已有锁文件。</strong>使用满足该包管理器 <code>engines.node</code> 的
+                  Node，对已有样例执行冻结安装，检查退出结果、文件摘要和实际安装的依赖。已有相同组合的有效记录直接复用，只运行新增组合。
+                </li>
+                <li>
+                  <strong>对照当前兼容表。</strong
+                  >比较实际结果与表内范围的预期，汇总全部异常。每次还要检查此前的未处理事项；“这个版本检查过”不等于“问题已经解决”。
+                </li>
+              </ol>
+              <div class="table-scroll">
+                <table class="history-table maintenance-decision-table">
+                  <thead>
+                    <tr>
+                      <th>检查结果</th>
+                      <th>Action 行为</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>没有新版本，也没有未处理事项</td>
+                      <td><span class="check-result pass">成功</span></td>
+                    </tr>
+                    <tr>
+                      <td>有新版本，格式可识别，实测符合现有规则</td>
+                      <td>
+                        <span class="check-result pass">保存新增记录，成功</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>生成了兼容表中没有的新锁格式</td>
+                      <td>
+                        <span class="check-result maintain">失败 · 需要维护</span><br />补充解析、真实样例和兼容数据。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>按现有范围应当兼容，但冻结安装失败、文件变化或依赖不正确，且没有匹配的已审核 bug 例外</td>
+                      <td>
+                        <span class="check-result maintain">失败 · 需要维护</span
+                        ><br />定位原因，确认是否出现不兼容边界。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>已确认语义兼容，失败记录与已审核的上游 bug 例外匹配</td>
+                      <td>
+                        <span class="check-result">通过 · 保留 bug 标记</span><br />原始失败仍保存；按兼容参与范围生成。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>按现有范围不兼容，但冻结安装成功、文件不变且依赖正确</td>
+                      <td>
+                        <span class="check-result maintain">失败 · 需要维护</span><br />确认是否恢复支持，并补测变化点。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>官方数据或锁文件无法解析</td>
+                      <td>
+                        <span class="check-result maintain">失败 · 需要维护</span><br />保存原始输入，维护解析器。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>下载超时、网络故障或测试环境无法启动</td>
+                      <td>
+                        <span class="check-result retry">重试后仍失败 · 检查未完成</span
+                        ><br />不记为锁格式不兼容，不据此生成版本边界。
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h5>报告先保存，最后再让 Action 失败</h5>
+              <p>
+                每次输出供人阅读的摘要和机器可读的
+                <code>report.json</code>。摘要写入 GitHub Actions
+                的运行页面，原始数据、样例和安装日志作为附件保存。收集完可完成的检查并保存报告后，再统一设置退出码。
+              </p>
+              <div class="report-fields">
+                <div>
+                  <b>问题与影响范围</b>
+                  <p>问题类型、包管理器具体版本、锁格式、内容特征和样例路径。</p>
+                </div>
+                <div>
+                  <b>预期与实际</b>
+                  <p>当前兼容范围、预期结果、实际退出结果、文件变化和依赖检查结果。</p>
+                </div>
+                <div>
+                  <b>完整复现材料</b>
+                  <p>工具发布包摘要、测试 Node、平台、执行命令、输入文件、前后摘要和完整日志。</p>
+                </div>
+                <div>
+                  <b>AI 需要处理什么</b>
+                  <p>需要修改的解析器、样例或数据，以及尚未确认、需要补测的版本边界。</p>
+                </div>
+              </div>
+              <p>
+                <code>0</code>：检查通过。<code>1 · MAINTENANCE_REQUIRED</code>：检查已完成，但存在维护事项。<code
+                  >2 · CHECK_INCOMPLETE</code
+                >：检查因网络或环境等原因未完成。后两种都让 Action 失败；同次运行出现两类问题时退出
+                2，报告同时保留已发现的维护事项。
+              </p>
+
+              <h5>历史记录保存在哪里</h5>
+              <p>
+                <strong>专用数据分支：</strong>Action
+                自动追加原始测试记录、来源与摘要，后续运行读取并复用。记录区分已确认结论、待复核异常和无结论失败；待复核异常不能直接变成随包的兼容边界。
+              </p>
+              <p>
+                <strong>主分支：</strong>保存解析器、样例、维护脚本和随包兼容表。AI
+                确认异常原因、补齐边界证据后，由脚本生成范围，维护变更进入主分支。
+              </p>
+              <p>
+                <strong>缓存与运行附件：</strong>缓存用于加速下载，附件用于交付本次报告和日志。长期有效的历史证据保存在
+                Git 中，不能只依赖有保留期限的缓存或附件。
+              </p>
+              <p class="maintenance-state-note">
+                <strong>未处理事项持续失败。</strong
+                >后续运行复用已有记录，重新对照当前规则；维护变更完成、必要测试补齐且规则与实测一致后，才将事项标为已解决。不能仅记录“已检查版本”，第二天跳过问题并恢复成功。
+              </p>
+
+              <h5>脚本与 AI 的职责</h5>
+              <div class="script-responsibilities">
+                <div>
+                  <b>固定脚本</b>
+                  <p><code>sync-catalog</code>：下载、校验官方元数据。</p>
+                  <p><code>check-releases</code>：列出新增具体版本，读取未处理事项。</p>
+                  <p><code>generate-fixture</code>：用指定工具真实生成锁文件并检查格式。</p>
+                  <p><code>test-compatibility</code>：复用有效记录，只执行新增测试组合。</p>
+                  <p>
+                    <code>build-compatibility</code>：按已确认的变化点生成范围；未确认的异常不生成边界。算法见<a
+                      href="#forward-ranges"
+                      >维护原则与示例</a
+                    >。
+                  </p>
+                </div>
+                <div>
+                  <b>维护人员与 AI</b>
+                  <p>
+                    维护人员根据失败报告启动 AI 维护。AI
+                    读取报告、现有规则、样例与历史证据，定位原因；需要时核对对应发布版本的源码。
+                  </p>
+                  <p>
+                    新格式需要更新解析器并用真实工具生成样例；兼容变化需要确认首次支持、停止支持或恢复支持的精确版本。
+                  </p>
+                  <p>
+                    固定脚本的检查范围由现有样例决定。发现样例未覆盖的相关行为时，AI
+                    增加样例；已有有效历史记录保留，不重复测试。
+                  </p>
+                </div>
+              </div>
+              <div class="prompt-outline">
+                <b>AI 收到失败报告后的维护流程</b>
+                <ol>
+                  <li>读取报告中的问题类型、具体版本、样例、预期 / 实际结果和复现命令；区分需要维护与检查未完成。</li>
+                  <li>复用已有有效记录，定位异常原因。网络或环境故障先修复运行条件，不能改成不兼容结论。</li>
+                  <li>
+                    新格式或无法解析的特征：核对该发布版本源码，更新解析器，用真实工具生成新 fixture，保存命令与摘要。
+                  </li>
+                  <li>
+                    对新增样例和变化点补测必要组合，确认首次支持、停止支持或恢复支持的精确版本；不重跑已有有效组合。
+                  </li>
+                  <li>
+                    运行 build-compatibility
+                    生成范围并检查差异。范围由脚本生成；没有已确认的不兼容上界就不加上界，多段使用 || 合并。
+                  </li>
+                  <li>
+                    保留原始记录与证据，提交解析器、样例及生成数据的维护变更；重新运行检查，确认未处理事项已解决。
+                  </li>
+                  <li>
+                    随包发布更新后的兼容表。旧版 infer 继续使用旧表，新版使用新表；未知格式使用
+                    *。不把未实测的版本标为实测通过。
+                  </li>
+                </ol>
+              </div>
+              <div class="maintenance-links">
+                <a
+                  href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule"
+                  target="_blank"
+                  rel="noreferrer"
+                  >GitHub 定时触发 ↗</a
+                ><a
+                  href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands"
+                  target="_blank"
+                  rel="noreferrer"
+                  >运行摘要与错误标注 ↗</a
+                ><a
+                  href="https://docs.github.com/en/actions/how-tos/create-and-publish-actions/set-exit-codes"
+                  target="_blank"
+                  rel="noreferrer"
+                  >退出码与失败状态 ↗</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="coverage-note">
+            <strong>数据覆盖与证据要求</strong>
+            <p>
+              实测记录与推断范围分别保存，每个已确认边界须能追溯到具体版本和样例。没有对应规则的锁格式标记为未知，但版本条件使用
+              *，不因此阻止推断；匹配范围也不代表该版本已经实测。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="facts"
+        class="data-section tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-facts"
+        tabindex="-1"
+        hidden
+      >
+        <div class="section-heading">
+          <div class="section-label">
+            <div>
+              <h2 id="facts-title">实时版本数据</h2>
+              <p class="section-description">
+                查看官方接口响应、获取时间，以及这次响应中的 Node、npm、pnpm 和 Yarn 版本。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="data-panel live-data-panel" id="live-source-detail">
+          <div class="live-panel-heading">
+            <h3>官方接口查询记录</h3>
+            <p>显示各官方接口的响应状态、获取时间与版本记录。</p>
+          </div>
+          <div class="details-content">
+            <div class="data-refresh-toolbar">
+              <span class="data-date" id="data-date"></span
+              ><button id="refresh-data" class="button secondary">重新获取官方数据 ↻</button
+              ><span id="data-status" role="status">等待读取</span>
+            </div>
+            <p class="live-refresh-rule">
+              网页与包共用官方数据模块和纯解析器。打开页面时获取数据，计算前检查是否超过 60
+              秒，刷新按钮立即校验更新。网页让浏览器用 HTTP 缓存重新校验；脚本只发送 Accept，不手工添加 If-None-Match /
+              If-Modified-Since，避免触发额外的 CORS
+              预检。请求失败时可复用页面内已有数据并标出获取时间。页面重新加载后重新获取；应用不向 localStorage /
+              IndexedDB 写版本快照，浏览器 HTTP
+              缓存遵循浏览器自身策略。锁文件条件使用随包兼容表；未知格式保留包管理器类型并使用 *，不表示已实测通过。
+            </p>
+            <div id="source-receipts" class="source-receipts"></div>
+          </div>
+        </div>
+        <div class="catalog-panel data-panel">
+          <div class="panel-heading">
+            <div>
+              <h3>实时版本事实 · 只读</h3>
+              <p class="panel-description">
+                下表展示官方接口返回的稳定版本和 Node 要求；包管理器的锁格式匹配来自随包兼容规则。未声明 engines.node
+                会明确标出。
+              </p>
+            </div>
+            <span class="tag fallback">官方数据 · 动态获取</span>
+          </div>
+          <div class="catalog-stats" id="catalog-stats"></div>
+          <div class="fact-controls">
+            <div class="fact-tabs" aria-label="版本数据类型">
+              <button class="fact-tab active" data-fact-kind="node" aria-pressed="true">Node</button
+              ><button class="fact-tab" data-fact-kind="npm" aria-pressed="false">npm</button
+              ><button class="fact-tab" data-fact-kind="pnpm" aria-pressed="false">pnpm</button
+              ><button class="fact-tab" data-fact-kind="yarn" aria-pressed="false">Yarn</button>
+            </div>
+            <label class="fact-search"
+              ><span>搜索</span
+              ><input
+                id="fact-search"
+                type="search"
+                placeholder="版本或范围，如 18.20"
+                aria-label="搜索版本与兼容记录"
+                autocomplete="off"
+                spellcheck="false"
+            /></label>
+          </div>
+          <div class="table-scroll">
+            <table class="fact-table">
+              <thead>
+                <tr>
+                  <th id="fact-version-heading">Node 版本</th>
+                  <th id="fact-requirement-heading">绑定的 npm 版本</th>
+                  <th id="fact-lockfile-heading" hidden>匹配的锁文件格式 · 随包规则</th>
+                  <th>数据来源</th>
+                </tr>
+              </thead>
+              <tbody id="fact-rows"></tbody>
+            </table>
+          </div>
+          <div class="fact-pagination">
+            <span id="fact-count"></span>
+            <div>
+              <button id="fact-prev" class="button secondary small">← 上一页</button
+              ><button id="fact-next" class="button secondary small">下一页 →</button>
+            </div>
+          </div>
+          <div class="lockfile-mapping-heading">
+            <h3>锁文件格式与完整兼容范围</h3>
+            <p>
+              来源：随包 data/compatibility.json 的编译规则；fixtures/recipes.json 仅补全格式目录。未知格式使用 *
+              保留类型，不代表支持任何版本。
+            </p>
+            <p>兼容表生成时间：<time id="lockfile-generated-at" data-i18n-ignore></time></p>
+          </div>
+          <p class="fact-scroll-hint">横向滚动表格可查看 bug 与数据来源。</p>
+          <div class="table-scroll">
+            <table class="fact-table lockfile-mapping-table">
+              <thead>
+                <tr>
+                  <th>包管理器与锁格式</th>
+                  <th>完整稳定版范围</th>
+                  <th>已知安装 bug</th>
+                  <th>随包数据来源</th>
+                </tr>
+              </thead>
+              <tbody id="lockfile-fact-rows"></tbody>
+            </table>
+          </div>
+          <p class="catalog-sources">
+            数据来源：<a href="https://nodejs.org/dist/index.json" target="_blank" rel="noreferrer"
+              >Node 官方发行索引 ↗</a
+            ><a href="https://registry.npmjs.org/npm" target="_blank" rel="noreferrer">npm 注册表 ↗</a
+            ><a href="https://registry.npmjs.org/pnpm" target="_blank" rel="noreferrer">pnpm 元数据 ↗</a
+            ><a href="https://registry.npmjs.org/yarn" target="_blank" rel="noreferrer">Yarn 历史发行元数据 ↗</a
+            ><a href="https://registry.npmjs.org/@yarnpkg%2Fcli-dist" target="_blank" rel="noreferrer"
+              >Yarn Berry 元数据 ↗</a
+            ><a href="https://registry.npmjs.org/@yarnpkg%2Fcli" target="_blank" rel="noreferrer">Yarn CLI 历史声明 ↗</a
+            ><a href="https://repo.yarnpkg.com/tags" target="_blank" rel="noreferrer">Yarn 官方版本列表 ↗</a
+            ><a href="https://repo.yarnpkg.com/releases" target="_blank" rel="noreferrer">Yarn 6+ 原生发行索引 ↗</a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <datalist id="node-versions"></datalist><datalist id="npm-versions"></datalist
+    ><datalist id="pnpm-versions"></datalist><datalist id="yarn-versions"></datalist>
+    <datalist id="pnpm-formats">
+      <option value="5.3"></option>
+      <option value="5.4"></option>
+      <option value="6.0"></option>
+      <option value="9.0"></option></datalist
+    ><datalist id="npm-formats">
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option></datalist
+    ><datalist id="yarn-formats">
+      <option value="v1"></option>
+      <option value="4"></option>
+      <option value="5"></option>
+      <option value="6"></option>
+      <option value="8"></option>
+      <option value="9"></option>
+      <option value="10"></option>
+    </datalist>
+  </body>
+</html>

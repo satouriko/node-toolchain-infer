@@ -1,0 +1,80 @@
+name: Compatibility maintenance
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      max_releases:
+        description: Maximum release combinations to process (remaining backlog stays incomplete)
+        default: '8'
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: compatibility-data
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+      - run: pnpm install --frozen-lockfile
+      - name: Restore append-only evidence branch
+        shell: bash
+        run: |
+          mkdir -p maintenance/results
+          if git ls-remote --exit-code --heads origin compatibility-data; then
+            git fetch origin compatibility-data
+            git worktree add --detach "$RUNNER_TEMP/compatibility-data" FETCH_HEAD
+            cp -a "$RUNNER_TEMP/compatibility-data/evidence/." maintenance/results/
+          else
+            git worktree add --detach "$RUNNER_TEMP/compatibility-data" HEAD
+            git -C "$RUNNER_TEMP/compatibility-data" checkout --orphan compatibility-data
+            git -C "$RUNNER_TEMP/compatibility-data" rm -rf .
+          fi
+      - name: Check exact releases and unresolved items
+        id: check
+        env:
+          MAX_RELEASES: ${{ inputs.max_releases || '8' }}
+        shell: bash
+        run: |
+          set +e
+          pnpm releases:check --state-dir maintenance/results --max-releases "$MAX_RELEASES"
+          result=$?
+          echo "exit_code=$result" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload reports and reproduction logs before failing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compatibility-${{ github.run_id }}
+          path: maintenance/results/
+          if-no-files-found: warn
+      - name: Preserve evidence and unresolved state
+        if: always() && steps.check.outputs.exit_code != ''
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/compatibility-data/evidence"
+          cp -a maintenance/results/. "$RUNNER_TEMP/compatibility-data/evidence/"
+          git -C "$RUNNER_TEMP/compatibility-data" config user.name 'github-actions[bot]'
+          git -C "$RUNNER_TEMP/compatibility-data" config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C "$RUNNER_TEMP/compatibility-data" add evidence
+          if ! git -C "$RUNNER_TEMP/compatibility-data" diff --cached --quiet; then
+            git -C "$RUNNER_TEMP/compatibility-data" commit -m 'Record compatibility maintenance evidence'
+            git -C "$RUNNER_TEMP/compatibility-data" push origin HEAD:compatibility-data
+          fi
+      - name: Retain maintenance-required or incomplete status
+        if: always()
+        env:
+          RESULT: ${{ steps.check.outputs.exit_code }}
+        run: exit "${RESULT:-2}"

@@ -1,0 +1,11 @@
+{
+  "probe": {
+    "manager": "pnpm",
+    "version": "3.0.0-alpha.0",
+    "lock": "pnpm-lock.yaml"
+  },
+  "status": "incomplete",
+  "log": "probes/pnpm-3.0.0-alpha.0-pnpm-lock.yaml-1788943875708-e3a309",
+  "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: ENOENT: no such file or directory, open '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-2Sa40H/project/pnpm-lock.yaml'",
+  "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: ENOENT: no such file or directory, open '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-generate-2Sa40H/project/pnpm-lock.yaml'\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:96:69)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:95:23)\n    at async Promise.all (index 1)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:151:3)"
+}

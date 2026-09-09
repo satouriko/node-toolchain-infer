@@ -1,0 +1,15 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.10.0-darwin-x64-66a42483908aabd6d5fb19e9f3cebd6927dc84206b75b8801d9e010815083906/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-xHqkoZ/108d9f99-29b9-4cad-b1a2-b3c59651a2a3/tools/1/npm-8.4.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 609ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/d5e6dae903daa40234079ca9709ac4477c2c2aec2fb805d8fcd32b323f33a7a9-993988e0852d.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

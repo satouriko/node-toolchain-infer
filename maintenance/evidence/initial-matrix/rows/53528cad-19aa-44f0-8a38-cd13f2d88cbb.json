@@ -1,0 +1,58 @@
+{
+  "id": "53528cad-19aa-44f0-8a38-cd13f2d88cbb",
+  "key": "cd12ba1ada2466cc3acf2c0eaa7fd7c30899d644433b0b3229c37a953c85708e",
+  "protocol": "frozen-initial-matrix-v1",
+  "manager": "pnpm",
+  "version": "12.0.0-rc.6",
+  "fixtureId": "pnpm-legacy-shrinkwrap-v3",
+  "fixtureHash": "e794d9bdc7cf680854babb065a72502aa8505e46e6b68f9f63ba29803518282b",
+  "catalogHash": "972e5af6bc92aaeb37c6db20e1a98da894371f74975b09564e8db63b530373b4",
+  "createdAt": "2026-09-09T09:05:11.124Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "id": "8e587820b1efffa12382f1bc70560b2faa202a2e01e611381939cdd5659a33bb-f7256976371b",
+    "key": "8e587820b1efffa12382f1bc70560b2faa202a2e01e611381939cdd5659a33bb",
+    "manager": "pnpm",
+    "version": "12.0.0-rc.6",
+    "actualVersion": "12.0.0-rc.6",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-OSf85JwwVLflVB3HILzntOurB/RWL6b/zns5cgol5qdn12OEmE4iZcgAeZYT9/ecXEIun1ztybZs//0Iyjx3qQ==",
+    "native": {
+      "package": "@pnpm/exe.darwin-arm64",
+      "version": "12.0.0-rc.6",
+      "metadataUrl": "https://registry.npmjs.org/%40pnpm%2Fexe.darwin-arm64/12.0.0-rc.6",
+      "url": "https://registry.npmjs.org/@pnpm/exe.darwin-arm64/-/exe.darwin-arm64-12.0.0-rc.6.tgz",
+      "integrity": "sha512-m57z/dG0gzeh4rCApyLaHbaLh+4SwOiIoEQAyYUvY/YVVThBY4PrgJIE/0jxfNe9WeJR2cGO6W0ehiQ9LZ4csg==",
+      "binarySha256": "309d0418159976bd9635dcf0c08d2f63962a692874c87fb9e88e9101d4e786e4"
+    },
+    "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-12.0.0-rc.6.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "pnpm-legacy-shrinkwrap-v3",
+    "fixtureHash": "e794d9bdc7cf680854babb065a72502aa8505e46e6b68f9f63ba29803518282b",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d"
+    },
+    "afterHashes": {
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "logPath": "logs/8e587820b1efffa12382f1bc70560b2faa202a2e01e611381939cdd5659a33bb-f7256976371b.log",
+    "createdAt": "2026-09-09T09:05:11.124Z"
+  }
+}

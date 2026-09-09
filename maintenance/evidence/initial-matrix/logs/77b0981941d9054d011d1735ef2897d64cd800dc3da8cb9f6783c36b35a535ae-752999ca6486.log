@@ -1,0 +1,13 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-19.9.0-darwin-arm64-13f7f0e57a2123e55a3172b65e08bc2a51fb52bf366a83d7dda12456ebdc3da0/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/project/pnpm-lock.yaml
+ ERROR  Headless installation requires a pnpm-lock.yaml file
+
+pnpm: Headless installation requires a pnpm-lock.yaml file
+    at _install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:187181:21)
+    at mutateModules (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:187106:29)
+    at async install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:187032:24)
+    at async installDeps (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:188987:31)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:216074:21
+    at async main (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:216041:34)
+    at async runPnpm (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:216296:5)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-8.3.0-0/dist/pnpm.cjs:216288:7

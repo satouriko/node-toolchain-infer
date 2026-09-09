@@ -1,0 +1,18 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/1fe292002b1e22f2652f168a3bdf384acd136660ef71a1573f432f1c25080d57/tool/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+(node:93030) [DEP0128] DeprecationWarning: Invalid 'main' field in '/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/1fe292002b1e22f2652f168a3bdf384acd136660ef71a1573f432f1c25080d57/tool/node_modules/promisequence/package.json' of 'promoseq.js'. Please either fix that or report it to the module author
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:93030) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+node:internal/errors:542
+      throw error;
+      ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at makeCallback (node:fs:183:3)
+    at Object.unlink (node:fs:1930:14)
+    at process.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/1fe292002b1e22f2652f168a3bdf384acd136660ef71a1573f432f1c25080d57/tool/lib/file_logger.js:24:8)
+    at process.emit (node:events:520:35)
+    at process.processEmit [as emit] (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/1fe292002b1e22f2652f168a3bdf384acd136660ef71a1573f432f1c25080d57/tool/node_modules/signal-exit/index.js:191:37) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+
+Node.js v24.10.0

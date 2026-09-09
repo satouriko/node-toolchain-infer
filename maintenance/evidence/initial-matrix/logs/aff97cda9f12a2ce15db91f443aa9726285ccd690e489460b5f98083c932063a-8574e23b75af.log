@@ -1,0 +1,17 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-8.5.0-darwin-x64-0c8d4c4d90f858a19a29fe1ae7f42b2b7f1a4d3caaa25bea2e08479c00ebbd5f/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/lib/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+mkdirp is not a function
+
+TypeError: mkdirp is not a function
+    at Promise (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/mkdirp-promise/lib/index.js:7:5)
+    at Promise (<anonymous>)
+    at module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/mkdirp-promise/lib/index.js:6:10)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/lock.js:53:15)
+    at Generator.next (<anonymous>)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/lock.js:7:71
+    at Promise (<anonymous>)
+    at __awaiter (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/lock.js:3:12)
+    at Object.withLock [as default] (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/lock.js:51:12)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/install.js:45:33)
+    at Generator.next (<anonymous>)
+    at fulfilled (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/7/tools/pnpm-1.14.7/node_modules/pnpm/node_modules/supi/lib/api/install.js:4:58)
+    at <anonymous>

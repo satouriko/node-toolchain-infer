@@ -1,0 +1,154 @@
+import json
+from collections import Counter
+from pathlib import Path
+
+root = Path('maintenance/evidence/gap-audit')
+before = json.loads((root/'audit-before.json').read_text())
+after = json.loads((root/'inventory-after.json').read_text())
+old = json.loads(Path('maintenance/evidence/compatibility-policy-update/report.json').read_text())
+new = json.loads((root/'compiled/report.json').read_text())
+current = {f['fixtureId']: f for f in new['fixtures']}
+before_points = {f['fixtureId']: {p['version']: p for p in f['points']} for f in old['fixtures']}
+points = {f['fixtureId']: {p['version']: p for p in f['points']} for f in new['fixtures']}
+names = {'supported': '语义兼容', 'unsupported': '不兼容', 'unknown': '未知'}
+membership = {'included': '已包含', 'excluded': '已排除', 'uncompiled': '未限制（*）'}
+
+def span(ps):
+    return ps[0]['version'] if len(ps) == 1 else ps[0]['version']+' … '+ps[-1]['version']
+
+def stable_reason(fid, v):
+    if fid.startswith('npm-'):
+        return 'npm ci 未验证矛盾清单，上游 #4363；正常锁定依赖对照与锁外 canary 已证明读取锁文件。按已知 bug 保留语义兼容。'
+    causes = {
+        '1.22.12': '旧 bootstrap 解析了工具开发依赖而 ERESOLVE；仅准备生产依赖后正常安装和冻结对照都通过。',
+        '4.9.1': '官方 Yarn 发行包自报 git 版本，身份校验失败；原范围已包含它。原制品诊断通过但不能伪造实际版本。',
+        '3.5.4': '官方 pnpm tarball 返回 404，没有可验证的执行制品；实测保留未知，范围继续包含。',
+        '3.7.2': '原 pnpm CLI 启动缺少 @zkochan/rimraf；错误处理器吞掉输出，preload 诊断取得实际栈。',
+        '4.2.0': '4.2.0 启动读取 undefined.yellow；4.2.1 同模块含非法 JavaScript；Node 12.13.0 分别复现。',
+        '4.12.3': '旧工具准备失败；去掉开发依赖干扰后仍无法取得有效自报版本，实测保留未知。',
+        '5.4.1': '发行代码缺少 delay 模块，未能进入有效锁文件实验。',
+        '5.9.1': '缺少 @pnpm/cli-meta；修正准备流程后仍无法取得有效自报版本，保留未知。',
+        '5.17.0': '本地 auto/clone 模式退出且依赖缺失；原 CLI 改用 copy 后五种 5.x 格式都通过。上游对应 issue 与底层原因尚未确认，按复现的安装 bug 保留兼容。',
+        '7.32.1': '新 Node 上旧 node-fetch 报 ERR_INVALID_THIS；Node 18.16.0 的全部适用样例通过。',
+        '7.33.0': 'autoInstallPeers 默认值与锁文件设置不一致；对齐设置后 .0–.7 八个版本全部通过，排除旧误测。',
+        '8.3.0': '新 Node 上旧 node-fetch 报 ERR_INVALID_THIS；Node 18.16.0 复测通过。',
+        '9.0.0': '官方 #7934/#7935：读取器支持 v6，但冻结 full-resolution 检查错误拒绝；按已知 bug 保留兼容。',
+        '9.0.5': '官方 #7991：冻结安装错误升级 v6 到 v9，依赖图不变；按已知 bug 保留兼容。',
+    }
+    return causes[v]
+
+def prerelease_reason(fid, core):
+    if fid.startswith('npm-'):
+        assert core == '7.0.0'
+        return '两类 npm ci bug：#1811 非预期写回、#4363 未验证矛盾清单。逐条审核原记录并保留语义兼容。'
+    if fid.startswith('yarn-'):
+        if core == '2.0.0': return 'rc.4/5 发行标签与自报版本不符；早期其他 unknown 为 YN0018 checksum 失败。原明确拒绝/迁移仍保留；详见 Yarn 完整分类表。'
+        if core == '4.9.1': return 'git 预发布制品有独立实测；stable 4.9.1 自报另一个 git 版本。两者不能冒名合并；v8 的 stable 范围原本已包含 4.9.1。'
+        if core in ['3.0.0','3.0.1']: return 'Node 17+ stream bug 曾遮住实际结果；Node 16 补测发现 cacheKey 7→8 的真实迁移，保留不兼容。'
+        if core == '3.1.0' and fid.endswith('v4'): return 'rc.1–10 cacheKey 7→8，rc.11 起 metadata 4→5；同一格式数字不能豁免明确的缓存迁移。'
+        if core == '3.1.0' and fid.endswith('v5'): return 'rc.11/12 的 Node stream bug 已复现；Node 16 正常冻结安装和对照通过，v5 下界补到 rc.11。'
+        if core == '3.2.0': return 'rc.12 发生 metadata 5→6 的真实格式切换；两份 fixture 已成对复测。'
+        if core == '4.0.0': return 'rc.1–45 支持 v7；rc.46 故意迁移 cacheKey 9→10，rc.47 改 metadata 到 8。无稳定支持下界，按现有策略保持 *，未排除这些 rc。'
+    if fid.startswith('pnpm-'):
+        if core == '0.0.0': return '两个 pr4475 制品的实际版本与标签不符；日期预发布是另一组真实发行，按各自记录保留。'
+        if core in ['4.2.0','4.5.0','4.7.0','4.9.0','4.14.0']: return '启动/制品准备/自报版本失败造成 unknown，不是格式拒绝。已核查具体启动栈并补测；相邻确定结果不受影响。'
+        if core == '3.0.0': return 'alpha.3 是 shrinkwrap.yaml → pnpm-lock.yaml 及冻结选项改名边界；保留实际格式/文件迁移。'
+        if core == '8.0.0': return 'alpha.0、beta.0、beta.1 的冻结 YAML 重写，完整解析对象和依赖不变；已按 #6260 类型 bug 审核，恢复兼容。'
+        if core == '8.3.0': return 'stable 8.3.0 的 Node/旧 node-fetch 冲突；历史 Node 补测通过。'
+        if core == '9.0.0' and fid.endswith('v6'): return 'alpha.5–beta.3 读取器不接受 v6，保留拒绝；rc.0–stable 的官方 #7934 回归单独登记，不混为一段。'
+        if core == '9.0.0': return 'rc.0 起接受当前 v9 fixture，之前明确拒绝；真实边界。'
+        if core == '10.0.0': return 'rc.0 起对 v6 明确拒绝；保留该格式上界。'
+        if core == '12.0.0' and fid.endswith('v9'): return 'alpha.0–13 的 Rust outdated_lockfile 错误码被旧分类器漏判；修复后十四个版本全部通过含冻结对照的复测。'
+        if core == '12.0.0': return '旧 workspace 样例含 packages/*，早期 Rust workspace walker 将空目录视作错误（另有早期制品标签问题）；未形成格式结论，仍在已确认上界之外。'
+        if core in ['2.0.0','2.12.0','2.14.0','2.17.0']: return '旧 graceful-fs 与新 Node 冲突，或旧分类器漏认明确 headless 锁/清单不一致；Node 10.24.1 逐个补测，读取锁文件和冻结对照均通过。'
+    raise AssertionError((fid,core))
+
+stable = []
+pre = []
+for f in before['fixtures']:
+    fid = f['fixtureId']
+    for g in f['stableGaps']:
+        stable.append({'fixtureId':fid,'versions':[p['version'] for p in g['points']],
+                       'reason':stable_reason(fid,g['points'][0]['version']),
+                       'before':g['points'], 'after':[points[fid][p['version']] for p in g['points']]})
+    for t in f['prereleaseTransitions']:
+        ps = [p for run in t['runs'] for p in run['points']]
+        pre.append({'fixtureId':fid,'coreVersion':t['coreVersion'],
+                    'reason':prerelease_reason(fid,t['coreVersion']), 'before':t,
+                    'after':[points[fid][p['version']] for p in ps]})
+(root/'dispositions.json').write_text(json.dumps({'stableGaps':stable,'prereleaseTransitions':pre},ensure_ascii=False,indent=2)+'\n')
+lines = ['# 全部原始断点的处理清单','',
+         '本表由修改前的完整清单逐项生成，不能只挑已修复项。精确版本、前后结果和全部证据 ID 在 [dispositions.json](dispositions.json)。',
+         '',f'## 稳定版内部空白：全部 {len(stable)} 处','',
+         '| 样例 | 版本 | 原范围是否包含 | 复核后结果 | 原因与处理 |', '| --- | --- | --- | --- | --- |']
+for g in stable:
+    lines.append('| '+ ' | '.join([g['fixtureId'],span(g['before']),'/'.join(dict.fromkeys(membership[p['rangeMembership']] for p in g['before'])),
+             '/'.join(dict.fromkeys(names[p['outcome']] for p in g['after'])),g['reason']])+' |')
+lines += ['',f'## 预发布变化：全部 {len(pre)} 个分组','',
+          '按主/次/补丁号分组；包括 unknown→确定结果、预发布→稳定版变化和真正的兼容切换。一个分组可能含多次变化。', '',
+          '| 样例 | 分组 | 原始变化 | 原因与处理 |','| --- | --- | --- | --- |']
+for g in pre:
+    runs='；'.join(span(r['points'])+' '+names[r['outcome']] for r in g['before']['runs'])
+    lines.append('| '+' | '.join([g['fixtureId'],g['coreVersion'],runs,g['reason']])+' |')
+(root/'ALL-GAPS.md').write_text('\n'.join(lines)+'\n')
+counts = [Counter(p['outcome'] for f in r['fixtures'] for p in f['points']) for r in [old,new]]
+resolved = counts[0]['unknown']-counts[1]['unknown']
+bugs=json.loads(Path('maintenance/known-bugs.json').read_text())['bugs']
+summary=f'''# 全量兼容断点核查
+
+核查覆盖 **23 份 fixture、18,181 个「包管理器版本 × fixture」点位**，来自完整的 npm、Yarn、pnpm 初始矩阵。修改前共有 **51 处稳定版内部空白、99 个预发布变化分组**；全部逐项登记，不只核查用户列举的两个例子。
+
+- [全部 51 处与 99 个分组的原因、处理](ALL-GAPS.md)
+- [pnpm 复现、官方源码与判断](pnpm/README.md)
+- [npm 两类 ci bug、逐点覆盖与独立对照](npm/README.md)
+- [Yarn 全部格式/缓存边界与七类剩余未知](yarn/AUDIT.md)
+- [修改前清单](audit-before.json)、[修改后清单](inventory-after.json)、[完整编译报告](compiled/report.json)
+
+## 结果
+
+| 指标 | 修改前 | 修改后 |
+| --- | ---: | ---: |
+| 语义兼容点 | {counts[0]['supported']} | {counts[1]['supported']} |
+| 不兼容点 | {counts[0]['unsupported']} | {counts[1]['unsupported']} |
+| 未知点 | {counts[0]['unknown']} | {counts[1]['unknown']} |
+| 稳定版内部空白 | 51 | {after['summary']['stableGapCount']} |
+| 实际被范围排除的内部空白 | 8 处 / 15 点 | 0 |
+| 与确定实测结论矛盾的范围 | 0 | {after['summary']['rangeContradictionCount']} |
+| 未形成完整规则的格式 | 4 | {after['summary']['uncompiledFixtureCount']} |
+
+**所有原本错误排除稳定版本的内部断点已处理。** 剩余 31 处内部空白共 36 个未知点，范围全部包含它们：pnpm 的 7 个破损/缺失发行版本分别涉及五种 5.x fixture，另一个是 Yarn 4.9.1 自报版本不符。原本已有范围不应因这些失败挖洞。精确原因见全清单。
+
+本次使 {resolved} 个未知点获得确定结论。语义兼容不等于原冻结命令通过：已知 bug 的原失败仍保留。当前共有 {len(bugs)} 类精确审核的 bug（含此前已登记的 #6158），绑定 {sum(len(b['observations']) for b in bugs)} 条失败观察；它们的完整审核在维护仓库，发行包只带紧凑警告标记。
+
+## 用户提到的例子
+
+| 组合 | 查明的原因 | 最终行为 |
+| --- | --- | --- |
+| lockfile 9 / pnpm 9.1.0–9.4.0 | 原范围 `>=9.0.0-rc.0` 已包含全部这些稳定版；后面的 OR 只补充预发布版 | 继续兼容，没有稳定版断点 |
+| lockfile 5.4 / pnpm 5.17.0 | 本地 auto/clone 模式依赖未落盘；copy 后五种 5.x fixture 全部通过；尚未确认对应上游 issue | 保留兼容，加已知安装 bug 警告 |
+| lockfile 6 / pnpm 7.33.0–7.33.7 | 测试未复现 autoInstallPeers 设置 | 八个版本全部重新通过，排除原误测 |
+| lockfile 6 / pnpm 9.0.0 | 官方冻结检查回归 #7934 | 保留兼容，加 bug 警告 |
+| lockfile 6 / pnpm 9.0.5 | 官方冻结安装错误升级格式 #7991 | 保留兼容，加 bug 警告 |
+
+## 最终范围表示
+
+按用户最终确认：**稳定版本用范围，预发布仍按主/次/补丁号合并兼容范围，各组单独列出**。例如 `>=9.0.0 || >=9.0.0-rc.0 <9.0.0 || >=9.1.0-0 <9.1.0`。预发布组始终保留自己的上界，不并入稳定版；新增稳定版上界只修改稳定版子句。审计修改前的旧表达式仍原样保存。
+
+## 保留的真实边界与不确定性
+
+npm 12 移除 shrinkwrap 支持、pnpm 8 拒绝 5.x、pnpm 9 alpha.5–beta.3 不接受 v6、pnpm 10 rc.0 起拒绝 v6，以及 Yarn 的 metadata/cache/checksum 迁移，仍按原明确行为保留。不能把所有失败一律登记成 bug。
+
+Yarn Classic 没有确定的稳定版下界；Yarn v7 只有 4.0.0-rc.1–rc.45 的支持区间，且早期稳定版本仍有未知。这两项按现有编译契约不发布部分限制，infer 保持 `*`。完整成功/失败点留在报告中，没有把 rc 当成不支持。
+
+未知点包括缺失官方制品、历史工具启动失败、实际版本标签不符、不能证明冻结行为的控制实验、运行环境问题。不能把“查明为何没有结论”写成“已实测支持”。此处基线平台为 macOS，具体 Node、工具完整性、输入摘要和控制实验均在原始记录。
+
+## 可复现方法
+
+`pnpm data:audit --report maintenance/evidence/gap-audit/compiled/report.json --json maintenance/evidence/gap-audit/inventory-after.json --markdown maintenance/evidence/gap-audit/inventory-after.md` 重新生成最终全量清单。
+
+编译时传入所有原始目录及本次 `gap-audit/pnpm`、`gap-audit/yarn` 目录；精确命令保存在 [compile-command.txt](compile-command.txt)。退出 2 表示仍有明确列出的未知证据，不能为追求退出 0 删除这些记录。
+
+`rows/`、`logs/`、官方来源快照、复现脚本、输入/输出文件与指纹留在维护仓库。已确认误测以原 row SHA-256 精确排除；安装器 bug 以 observation 指纹登记。新证据追加，不改写旧日志或将失败伪装成 pass。
+'''
+(root/'README.md').write_text(summary)
+print(json.dumps({'stableDispositions':len(stable),'prereleaseDispositions':len(pre),'unknownResolved':resolved,'after':after['summary']},ensure_ascii=False))

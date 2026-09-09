@@ -1,0 +1,8 @@
+Error: Actual tool version mismatch: 2.0.0-rc.4
+
+    at provision (/Users/cuteloli/Code/node-toolchain-infer/maintenance/provision.ts:314:52)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async attempt (/Users/cuteloli/Code/node-toolchain-infer/scripts/seed-data.ts:314:18)
+    at async worker (/Users/cuteloli/Code/node-toolchain-infer/scripts/seed-data.ts:357:11)
+    at async Promise.allSettled (index 3)
+    at async seedData (/Users/cuteloli/Code/node-toolchain-infer/scripts/seed-data.ts:376:23)

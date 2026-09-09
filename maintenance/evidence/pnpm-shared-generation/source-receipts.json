@@ -1,0 +1,176 @@
+[
+  {
+    "version": "2.25.7",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-2.25.7.tgz",
+    "integrity": "sha512-GSV9mvoZbSApIaPNyJRWxV2Bp7XYbZx9w8UJDh4V/TAvQVA+Uwl3W4CvjVWyVHyTTap2FPComCKIUBn1rzJqMw==",
+    "excerpts": [
+      {
+        "file": "package/lib/cmd/help.js",
+        "lines": [
+          {
+            "line": 361,
+            "text": "          --shared-workspace-shrinkwrap"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/node_modules/@pnpm/config/lib/index.js",
+        "lines": [
+          {
+            "line": 54,
+            "text": "    'shared-workspace-shrinkwrap': Boolean,"
+          },
+          {
+            "line": 101,
+            "text": "        'shared-workspace-shrinkwrap': false,"
+          },
+          {
+            "line": 151,
+            "text": "            if (opts.cliArgs['shared-workspace-shrinkwrap']) {"
+          },
+          {
+            "line": 152,
+            "text": "                const err = new Error('Configuration conflict. \"shared-workspace-shrinkwrap\" may not be used with \"global\"');"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "3.0.0-alpha.2",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-3.0.0-alpha.2.tgz",
+    "integrity": "sha512-W16qkpSVpCq0kKRM/pORe3LWw6SuQ5TXRSGmbkhp4QVwJjPe/3bmXnBZ2IHOn5DM8jadKjJD/zfBmBvRr6qZTw==",
+    "excerpts": [
+      {
+        "file": "package/lib/cmd/help.js",
+        "lines": [
+          {
+            "line": 357,
+            "text": "          --shared-workspace-shrinkwrap"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/node_modules/@pnpm/config/lib/index.js",
+        "lines": [
+          {
+            "line": 54,
+            "text": "    'shared-workspace-shrinkwrap': Boolean,"
+          },
+          {
+            "line": 101,
+            "text": "        'shared-workspace-shrinkwrap': true,"
+          },
+          {
+            "line": 151,
+            "text": "            if (opts.cliArgs['shared-workspace-shrinkwrap']) {"
+          },
+          {
+            "line": 152,
+            "text": "                const err = new Error('Configuration conflict. \"shared-workspace-shrinkwrap\" may not be used with \"global\"');"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "3.0.0-alpha.3",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-3.0.0-alpha.3.tgz",
+    "integrity": "sha512-wgtWpOaLlU9eJpZ4W6x7O99mqyaYYUn6pWRbi9+JEyafxJcX9fOm7Zwxs142J2C8+IWO7PU4z9XfJyEaOTpP/Q==",
+    "excerpts": [
+      {
+        "file": "package/lib/main.js",
+        "lines": [
+          {
+            "line": 89,
+            "text": "        'shared-workspace-lockfile': ['--shared-workspace-shrinkwrap'],"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/cmd/help.js",
+        "lines": [
+          {
+            "line": 358,
+            "text": "          --shared-workspace-lockfile"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/node_modules/@pnpm/config/lib/index.js",
+        "lines": [
+          {
+            "line": 50,
+            "text": "    'shared-workspace-lockfile': Boolean,"
+          },
+          {
+            "line": 51,
+            "text": "    'shared-workspace-shrinkwrap': Boolean,"
+          },
+          {
+            "line": 98,
+            "text": "        'shared-workspace-shrinkwrap': true,"
+          },
+          {
+            "line": 166,
+            "text": "            if (opts.cliArgs['shared-workspace-lockfile'] || opts.cliArgs['shared-workspace-shrinkwrap']) {"
+          },
+          {
+            "line": 167,
+            "text": "                const err = new Error('Configuration conflict. \"shared-workspace-lockfile\" may not be used with \"global\"');"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "3.0.0",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-3.0.0.tgz",
+    "integrity": "sha512-MZHQ4ZejIod8EYtc/LZ3F4HUfSc6ilhMcZ1Shk631XoGrpXTJm44Jn9W1/BVrZVlt5jmkYKXpcWkjaxjgqhy1g==",
+    "excerpts": [
+      {
+        "file": "package/lib/main.js",
+        "lines": [
+          {
+            "line": 89,
+            "text": "        'shared-workspace-lockfile': ['--shared-workspace-shrinkwrap'],"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/cmd/help.js",
+        "lines": [
+          {
+            "line": 378,
+            "text": "          --shared-workspace-lockfile"
+          }
+        ]
+      },
+      {
+        "file": "package/lib/node_modules/@pnpm/config/lib/index.js",
+        "lines": [
+          {
+            "line": 50,
+            "text": "    'shared-workspace-lockfile': Boolean,"
+          },
+          {
+            "line": 51,
+            "text": "    'shared-workspace-shrinkwrap': Boolean,"
+          },
+          {
+            "line": 98,
+            "text": "        'shared-workspace-shrinkwrap': true,"
+          },
+          {
+            "line": 172,
+            "text": "            if (opts.cliArgs['shared-workspace-lockfile'] || opts.cliArgs['shared-workspace-shrinkwrap']) {"
+          },
+          {
+            "line": 173,
+            "text": "                const err = new Error('Configuration conflict. \"shared-workspace-lockfile\" may not be used with \"global\"');"
+          }
+        ]
+      }
+    ]
+  }
+]

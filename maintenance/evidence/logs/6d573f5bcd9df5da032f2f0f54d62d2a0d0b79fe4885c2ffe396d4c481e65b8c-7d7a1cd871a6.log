@@ -1,0 +1,15 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-matrix-GcsqxT/tools/npm-7.24.2/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 509ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/e260276ac69bc5a60e875e0e73c025310c0dee413187be41ff45027060bc4cde-e341736841cf.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

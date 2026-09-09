@@ -1,0 +1,48 @@
+{
+  "task": {
+    "name": "7.33.0-node-18.16.0-pnpm-lock-v6",
+    "fixture": "lock-v6/basic",
+    "environment": {
+      "npm_config_auto_install_peers": "true",
+      "npm_config_exclude_links_from_lockfile": "false"
+    },
+    "label": "matching-config"
+  },
+  "tool": {
+    "node": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-18.16.0-darwin-arm64-82c7bb4869419ce7338669e6739a786dfc7e72f276ffbed663f85ffc905dcdb4/bin/node",
+    "nodeVersion": "18.16.0",
+    "nodeArch": "arm64",
+    "nodeIntegrity": "sha256-gse7SGlBnOczhmnmc5p4bfx+cvJ2/77WY/hf/JBdzbQ=",
+    "nodeBinarySha256": "31c79352389512601b5b9b5f01a90f934463c0951364cc187bcc393e092a985c",
+    "cli": "/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/7.33.0-node-18.16.0-pnpm-lock-v6/pnpm-7.33.0/node_modules/pnpm/bin/pnpm.cjs",
+    "version": "7.33.0",
+    "integrity": "sha512-Mx97pT+pbYWesDFARX3YbBADaXHQ8G5uZALx4WsbQVprGWFfTM+eSCygWUrhJ/KX6Qr51S7SwB6DTjFPx+8YHw==",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-7.33.0.tgz",
+    "execution": "node"
+  },
+  "command": [
+    "install",
+    "--frozen-lockfile",
+    "--ignore-scripts"
+  ],
+  "exitCode": 0,
+  "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +1\n+\nPackages are hard linked from the content-addressable store to the virtual store.\n  Content-addressable store is at: /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/controlled/matching-config/.pnpm-store/v3\n  Virtual store is at:             node_modules/.pnpm\n\ndependencies:\n+ is-number 7.0.0\n\nDone in 424ms\nProgress: resolved 1, reused 0, downloaded 1, added 1, done\n",
+  "before": {
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "fe3950ed138759ebbed9cfee916be8f76a5e9bbfe2b5c19b36fc59f8a2665ee8",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "<missing>"
+  },
+  "after": {
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "fe3950ed138759ebbed9cfee916be8f76a5e9bbfe2b5c19b36fc59f8a2665ee8",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "<missing>"
+  },
+  "installed": "7.0.0",
+  "unchanged": true
+}

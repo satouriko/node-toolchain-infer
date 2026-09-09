@@ -1,0 +1,89 @@
+{
+  "id": "6a29c0c7-ff8b-4000-93fe-0b8881a573ef",
+  "key": "735d5768b90c92c1b9022b2ba27eed36658b90364d0690990b59d12de5920f1c",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.23.4",
+  "fixtureId": "yarn-modern-v5",
+  "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:43.959Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "id": "2f089895f29c4dbef5507175c3b49ae6d68a45ab495e99995e523fb87eaa54a7-ceb1e82cbbc6",
+    "key": "2f089895f29c4dbef5507175c3b49ae6d68a45ab495e99995e523fb87eaa54a7",
+    "manager": "yarn",
+    "version": "0.23.4",
+    "actualVersion": "0.23.4",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-B0YD+ZLHA+fmgn0DaA4Erv2AE+YOhdRZqQzNHEg2LlIjGPmLIYGXS9PRMCTahPlJlxcA0zTz5Jl6KeY7sMk+NQ==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/215a6dda7ae03265310e349609421d9a70656f3e976a9f5de2ca86a580bb6703/package-lock.json",
+      "lockfileSha256": "215a6dda7ae03265310e349609421d9a70656f3e976a9f5de2ca86a580bb6703",
+      "logPath": "bootstrap/215a6dda7ae03265310e349609421d9a70656f3e976a9f5de2ca86a580bb6703/ffda1947c9f0b40b9e7c23718d0ac9abcf7b4bffd5440c9661c0debc09f92b25.log",
+      "installedTreeSha256": "c84e6f5b21f14e08bb7bb8d6c4e7ac538123c5882ce1d99d0b518798204c2a0a"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.23.4.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v5",
+    "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/2f089895f29c4dbef5507175c3b49ae6d68a45ab495e99995e523fb87eaa54a7-ceb1e82cbbc6.log",
+    "createdAt": "2026-09-09T10:19:43.947Z"
+  }
+}

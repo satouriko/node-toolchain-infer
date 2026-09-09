@@ -1,0 +1,89 @@
+{
+  "id": "0a426a1d-ddd7-41c6-ad0f-e5cbb934477b",
+  "key": "915a74b8ba113e0bc133a0011948ed0ad63c797c99b8f5c7568f8847a69a46ad",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.22.0",
+  "fixtureId": "yarn-modern-v5",
+  "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:20:14.918Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "id": "e33d3b20c744deaf0aa8f95830946e628737c84df578a12b40e7d388c1c2beb8-9a84256aebd5",
+    "key": "e33d3b20c744deaf0aa8f95830946e628737c84df578a12b40e7d388c1c2beb8",
+    "manager": "yarn",
+    "version": "0.22.0",
+    "actualVersion": "0.22.0",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-JN4Inz+tcgG04AQNE26awG4dLutKf8eIZO12C00yn9XebTzWt6AFzNUvNV7cXlaA+/StcRcjqcMACt8YZVouuQ==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/c3203c830bfefe6eed327a482d8ab1723bccacf5f273e71dc6ef438d454cbf92/package-lock.json",
+      "lockfileSha256": "c3203c830bfefe6eed327a482d8ab1723bccacf5f273e71dc6ef438d454cbf92",
+      "logPath": "bootstrap/c3203c830bfefe6eed327a482d8ab1723bccacf5f273e71dc6ef438d454cbf92/873c83a80b99718a5a271cb8435cb0e4995cd1946c513b7051df09e83303364c.log",
+      "installedTreeSha256": "b42a6ebbebd6d9d8b5ad0107a9ba40acfaa8c73ffde77701af6160ef8376e75d"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.22.0.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v5",
+    "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/e33d3b20c744deaf0aa8f95830946e628737c84df578a12b40e7d388c1c2beb8-9a84256aebd5.log",
+    "createdAt": "2026-09-09T10:20:14.908Z"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "protocol": "frozen-install-v2",
+  "inputHashes": {
+    ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+  },
+  "id": "b5f59a5aabfa738133e4ba81500e33fe0c4a8d5078c7b954a42f86dd8f41935c-38cfa4615606",
+  "key": "b5f59a5aabfa738133e4ba81500e33fe0c4a8d5078c7b954a42f86dd8f41935c",
+  "manager": "yarn",
+  "version": "1.22.12",
+  "actualVersion": "1.22.12",
+  "node": "16.11.1",
+  "nodeIntegrity": "sha256-XncuR4OQ+rMAG3FIqSPk8i/KUBcAAPGLKEdTN9Opckg=",
+  "nodeArch": "arm64",
+  "toolIntegrity": "sha512-CfCpYdjNkQkvjSv1vFXFbcHfgf7HzdO28W6WimQ1z1I5cBMa/YbBaN3ROGnv0qtQ4wLYZ0pae4g9mxdRmE4BBg==",
+  "bootstrap": {
+    "protocol": 1,
+    "node": "24.10.0",
+    "npmVersion": "11.6.1",
+    "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+    "command": [
+      "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+      "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+      "install",
+      "--global=false",
+      "--ignore-scripts",
+      "--omit=dev",
+      "--no-audit",
+      "--no-fund",
+      "--registry=https://registry.npmjs.org"
+    ],
+    "lockfilePath": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/bootstrap/53b7d20c3d6ad03fe5236c61a4e735e70391af7f37168191d0968f35d6133239/6d377e5080512af97380d962f1fa4a4cebb7414cb884571073e6d03bc1693686/package-lock.json",
+    "lockfileSha256": "6d377e5080512af97380d962f1fa4a4cebb7414cb884571073e6d03bc1693686",
+    "logPath": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/bootstrap/53b7d20c3d6ad03fe5236c61a4e735e70391af7f37168191d0968f35d6133239/6d377e5080512af97380d962f1fa4a4cebb7414cb884571073e6d03bc1693686/f8b88cfae1d5750c57696724248471707a8c18233f8dc818724076d1e3370e0d.log",
+    "installedTreeSha256": "6a49be1d63a101af959066fa969c6d82b54f84737aa5e017a90ee3254969c36b",
+    "manifestPreparation": {
+      "original": {
+        "content": "{\n  \"name\": \"yarn\",\n  \"installationMethod\": \"unknown\",\n  \"version\": \"1.22.12\",\n  \"license\": \"BSD-2-Clause\",\n  \"preferGlobal\": true,\n  \"description\": \"📦🐈 Fast, reliable, and secure dependency management.\",\n  \"dependencies\": {\n    \"@zkochan/cmd-shim\": \"^3.1.0\",\n    \"babel-runtime\": \"^6.26.0\",\n    \"bytes\": \"^3.0.0\",\n    \"camelcase\": \"^4.0.0\",\n    \"chalk\": \"^2.1.0\",\n    \"cli-table3\": \"^0.4.0\",\n    \"commander\": \"^2.9.0\",\n    \"death\": \"^1.0.0\",\n    \"debug\": \"^3.0.0\",\n    \"deep-equal\": \"^1.0.1\",\n    \"detect-indent\": \"^5.0.0\",\n    \"dnscache\": \"^1.0.1\",\n    \"glob\": \"^7.1.1\",\n    \"gunzip-maybe\": \"^1.4.0\",\n    \"hash-for-dep\": \"^1.2.3\",\n    \"imports-loader\": \"^0.8.0\",\n    \"ini\": \"^1.3.4\",\n    \"inquirer\": \"^6.2.0\",\n    \"invariant\": \"^2.2.0\",\n    \"is-builtin-module\": \"^2.0.0\",\n    \"is-ci\": \"^1.0.10\",\n    \"is-webpack-bundle\": \"^1.0.0\",\n    \"js-yaml\": \"^3.13.1\",\n    \"leven\": \"^2.0.0\",\n    \"loud-rejection\": \"^1.2.0\",\n    \"micromatch\": \"^2.3.11\",\n    \"mkdirp\": \"^0.5.1\",\n    \"node-emoji\": \"^1.6.1\",\n    \"normalize-url\": \"^2.0.0\",\n    \"npm-logical-tree\": \"^1.2.1\",\n    \"object-path\": \"^0.11.2\",\n    \"proper-lockfile\": \"^2.0.0\",\n    \"puka\": \"^1.0.0\",\n    \"read\": \"^1.0.7\",\n    \"request\": \"^2.87.0\",\n    \"request-capture-har\": \"^1.2.2\",\n    \"rimraf\": \"^2.5.0\",\n    \"semver\": \"^5.1.0\",\n    \"ssri\": \"^5.3.0\",\n    \"strip-ansi\": \"^4.0.0\",\n    \"strip-bom\": \"^3.0.0\",\n    \"tar-fs\": \"^1.16.0\",\n    \"tar-stream\": \"^1.6.1\",\n    \"uuid\": \"^3.0.1\",\n    \"v8-compile-cache\": \"^2.0.0\",\n    \"validate-npm-package-license\": \"^3.0.4\",\n    \"yn\": \"^2.0.0\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"babel-eslint\": \"^7.2.3\",\n    \"babel-loader\": \"^6.2.5\",\n    \"babel-plugin-array-includes\": \"^2.0.3\",\n    \"babel-plugin-inline-import\": \"^3.0.0\",\n    \"babel-plugin-transform-builtin-extend\": \"^1.1.2\",\n    \"babel-plugin-transform-inline-imports-commonjs\": \"^1.0.0\",\n    \"babel-plugin-transform-runtime\": \"^6.4.3\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"babel-preset-flow\": \"^6.23.0\",\n    \"babel-preset-stage-0\": \"^6.0.0\",\n    \"babylon\": \"^6.5.0\",\n    \"commitizen\": \"^2.9.6\",\n    \"cz-conventional-changelog\": \"^2.0.0\",\n    \"eslint\": \"^4.3.0\",\n    \"eslint-config-fb-strict\": \"^22.0.0\",\n    \"eslint-plugin-babel\": \"^5.0.0\",\n    \"eslint-plugin-flowtype\": \"^2.35.0\",\n    \"eslint-plugin-jasmine\": \"^2.6.2\",\n    \"eslint-plugin-jest\": \"^21.0.0\",\n    \"eslint-plugin-jsx-a11y\": \"^6.0.2\",\n    \"eslint-plugin-prefer-object-spread\": \"^1.2.1\",\n    \"eslint-plugin-prettier\": \"^2.1.2\",\n    \"eslint-plugin-react\": \"^7.1.0\",\n    \"eslint-plugin-relay\": \"^0.0.28\",\n    \"eslint-plugin-yarn-internal\": \"file:scripts/eslint-rules\",\n    \"execa\": \"^0.11.0\",\n    \"fancy-log\": \"^1.3.2\",\n    \"flow-bin\": \"^0.66.0\",\n    \"git-release-notes\": \"^3.0.0\",\n    \"gulp\": \"^4.0.0\",\n    \"gulp-babel\": \"^7.0.0\",\n    \"gulp-if\": \"^2.0.1\",\n    \"gulp-newer\": \"^1.0.0\",\n    \"gulp-plumber\": \"^1.0.1\",\n    \"gulp-sourcemaps\": \"^2.2.0\",\n    \"jest\": \"^22.4.4\",\n    \"jsinspect\": \"^0.12.6\",\n    \"minimatch\": \"^3.0.4\",\n    \"mock-stdin\": \"^0.3.0\",\n    \"prettier\": \"^1.5.2\",\n    \"string-replace-loader\": \"^2.1.1\",\n    \"temp\": \"^0.8.3\",\n    \"webpack\": \"^2.1.0-beta.25\",\n    \"yargs\": \"^6.3.0\"\n  },\n  \"resolutions\": {\n    \"sshpk\": \"^1.14.2\"\n  },\n  \"engines\": {\n    \"node\": \">=4.0.0\"\n  },\n  \"repository\": \"yarnpkg/yarn\",\n  \"bin\": {\n    \"yarn\": \"./bin/yarn.js\",\n    \"yarnpkg\": \"./bin/yarn.js\"\n  },\n  \"scripts\": {\n    \"build\": \"gulp build\",\n    \"build-bundle\": \"node ./scripts/build-webpack.js\",\n    \"build-chocolatey\": \"powershell ./scripts/build-chocolatey.ps1\",\n    \"build-deb\": \"./scripts/build-deb.sh\",\n    \"build-dist\": \"bash ./scripts/build-dist.sh\",\n    \"build-win-installer\": \"scripts\\\\build-windows-installer.bat\",\n    \"changelog\": \"git-release-notes $(git describe --tags --abbrev=0 $(git describe --tags --abbrev=0)^)..$(git describe --tags --abbrev=0) scripts/changelog.md\",\n    \"dupe-check\": \"yarn jsinspect ./src\",\n    \"lint\": \"eslint . && flow check\",\n    \"pkg-tests\": \"yarn --cwd packages/pkg-tests jest yarn.test.js\",\n    \"prettier\": \"eslint src __tests__ --fix\",\n    \"release-branch\": \"./scripts/release-branch.sh\",\n    \"test\": \"yarn lint && yarn test-only\",\n    \"test-only\": \"node --max_old_space_size=4096 node_modules/jest/bin/jest.js --verbose\",\n    \"test-only-debug\": \"node --inspect-brk --max_old_space_size=4096 node_modules/jest/bin/jest.js --runInBand --verbose\",\n    \"test-coverage\": \"node --max_old_space_size=4096 node_modules/jest/bin/jest.js --coverage --verbose\",\n    \"watch\": \"gulp watch\",\n    \"commit\": \"git-cz\"\n  },\n  \"jest\": {\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\"\n    ],\n    \"testEnvironment\": \"node\",\n    \"modulePathIgnorePatterns\": [\n      \"__tests__/fixtures/\",\n      \"packages/pkg-tests/pkg-tests-fixtures\",\n      \"dist/\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"__tests__/(fixtures|__mocks__)/\",\n      \"updates/\",\n      \"_(temp|mock|install|init|helpers).js$\",\n      \"packages/pkg-tests\"\n    ]\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  }\n}\n",
+        "sha256": "2362e9d615922c6484bf9454056ec95df4512b6953c6f352dea54e34ccb96d67"
+      },
+      "installation": {
+        "content": "{\n  \"name\": \"yarn\",\n  \"installationMethod\": \"unknown\",\n  \"version\": \"1.22.12\",\n  \"license\": \"BSD-2-Clause\",\n  \"preferGlobal\": true,\n  \"description\": \"📦🐈 Fast, reliable, and secure dependency management.\",\n  \"dependencies\": {\n    \"@zkochan/cmd-shim\": \"^3.1.0\",\n    \"babel-runtime\": \"^6.26.0\",\n    \"bytes\": \"^3.0.0\",\n    \"camelcase\": \"^4.0.0\",\n    \"chalk\": \"^2.1.0\",\n    \"cli-table3\": \"^0.4.0\",\n    \"commander\": \"^2.9.0\",\n    \"death\": \"^1.0.0\",\n    \"debug\": \"^3.0.0\",\n    \"deep-equal\": \"^1.0.1\",\n    \"detect-indent\": \"^5.0.0\",\n    \"dnscache\": \"^1.0.1\",\n    \"glob\": \"^7.1.1\",\n    \"gunzip-maybe\": \"^1.4.0\",\n    \"hash-for-dep\": \"^1.2.3\",\n    \"imports-loader\": \"^0.8.0\",\n    \"ini\": \"^1.3.4\",\n    \"inquirer\": \"^6.2.0\",\n    \"invariant\": \"^2.2.0\",\n    \"is-builtin-module\": \"^2.0.0\",\n    \"is-ci\": \"^1.0.10\",\n    \"is-webpack-bundle\": \"^1.0.0\",\n    \"js-yaml\": \"^3.13.1\",\n    \"leven\": \"^2.0.0\",\n    \"loud-rejection\": \"^1.2.0\",\n    \"micromatch\": \"^2.3.11\",\n    \"mkdirp\": \"^0.5.1\",\n    \"node-emoji\": \"^1.6.1\",\n    \"normalize-url\": \"^2.0.0\",\n    \"npm-logical-tree\": \"^1.2.1\",\n    \"object-path\": \"^0.11.2\",\n    \"proper-lockfile\": \"^2.0.0\",\n    \"puka\": \"^1.0.0\",\n    \"read\": \"^1.0.7\",\n    \"request\": \"^2.87.0\",\n    \"request-capture-har\": \"^1.2.2\",\n    \"rimraf\": \"^2.5.0\",\n    \"semver\": \"^5.1.0\",\n    \"ssri\": \"^5.3.0\",\n    \"strip-ansi\": \"^4.0.0\",\n    \"strip-bom\": \"^3.0.0\",\n    \"tar-fs\": \"^1.16.0\",\n    \"tar-stream\": \"^1.6.1\",\n    \"uuid\": \"^3.0.1\",\n    \"v8-compile-cache\": \"^2.0.0\",\n    \"validate-npm-package-license\": \"^3.0.4\",\n    \"yn\": \"^2.0.0\"\n  },\n  \"resolutions\": {\n    \"sshpk\": \"^1.14.2\"\n  },\n  \"engines\": {\n    \"node\": \">=4.0.0\"\n  },\n  \"repository\": \"yarnpkg/yarn\",\n  \"bin\": {\n    \"yarn\": \"./bin/yarn.js\",\n    \"yarnpkg\": \"./bin/yarn.js\"\n  },\n  \"scripts\": {\n    \"build\": \"gulp build\",\n    \"build-bundle\": \"node ./scripts/build-webpack.js\",\n    \"build-chocolatey\": \"powershell ./scripts/build-chocolatey.ps1\",\n    \"build-deb\": \"./scripts/build-deb.sh\",\n    \"build-dist\": \"bash ./scripts/build-dist.sh\",\n    \"build-win-installer\": \"scripts\\\\build-windows-installer.bat\",\n    \"changelog\": \"git-release-notes $(git describe --tags --abbrev=0 $(git describe --tags --abbrev=0)^)..$(git describe --tags --abbrev=0) scripts/changelog.md\",\n    \"dupe-check\": \"yarn jsinspect ./src\",\n    \"lint\": \"eslint . && flow check\",\n    \"pkg-tests\": \"yarn --cwd packages/pkg-tests jest yarn.test.js\",\n    \"prettier\": \"eslint src __tests__ --fix\",\n    \"release-branch\": \"./scripts/release-branch.sh\",\n    \"test\": \"yarn lint && yarn test-only\",\n    \"test-only\": \"node --max_old_space_size=4096 node_modules/jest/bin/jest.js --verbose\",\n    \"test-only-debug\": \"node --inspect-brk --max_old_space_size=4096 node_modules/jest/bin/jest.js --runInBand --verbose\",\n    \"test-coverage\": \"node --max_old_space_size=4096 node_modules/jest/bin/jest.js --coverage --verbose\",\n    \"watch\": \"gulp watch\",\n    \"commit\": \"git-cz\"\n  },\n  \"jest\": {\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\"\n    ],\n    \"testEnvironment\": \"node\",\n    \"modulePathIgnorePatterns\": [\n      \"__tests__/fixtures/\",\n      \"packages/pkg-tests/pkg-tests-fixtures\",\n      \"dist/\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"__tests__/(fixtures|__mocks__)/\",\n      \"updates/\",\n      \"_(temp|mock|install|init|helpers).js$\",\n      \"packages/pkg-tests\"\n    ]\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  }\n}\n",
+        "sha256": "b22db7fe094961e4198369f6f32f0765beb15c59b7179a108d0a5cf6c1430b13"
+      }
+    }
+  },
+  "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-1.22.12.tgz",
+  "platform": "darwin",
+  "arch": "arm64",
+  "fixtureId": "yarn-modern-v10",
+  "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+  "command": [
+    "install",
+    "--frozen-lockfile",
+    "--ignore-scripts",
+    "--non-interactive"
+  ],
+  "status": "incompatible",
+  "exitCode": 1,
+  "beforeHashes": {
+    ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "<missing>",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+  },
+  "afterHashes": {
+    ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "<missing>",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+  },
+  "installed": {
+    "is-number": "<missing>"
+  },
+  "requestedDependencies": {
+    "is-number": "7.0.0"
+  },
+  "semantic": false,
+  "semanticMethod": "node-modules",
+  "logPath": "logs/b5f59a5aabfa738133e4ba81500e33fe0c4a8d5078c7b954a42f86dd8f41935c-38cfa4615606.log",
+  "createdAt": "2026-09-09T12:12:12.783Z"
+}

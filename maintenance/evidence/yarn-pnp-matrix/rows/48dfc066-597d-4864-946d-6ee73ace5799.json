@@ -1,0 +1,89 @@
+{
+  "id": "48dfc066-597d-4864-946d-6ee73ace5799",
+  "key": "f30d6aecb612c93b95ee29b918ced8f04b00c2b71f4b0359e4a87e6050fa9cfa",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.24.4",
+  "fixtureId": "yarn-modern-v4",
+  "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:36.428Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "id": "cc0bc94974f288716081b0dec59b55793e7c4b31a527a6654a763fc44e47b1d3-7f14c383a604",
+    "key": "cc0bc94974f288716081b0dec59b55793e7c4b31a527a6654a763fc44e47b1d3",
+    "manager": "yarn",
+    "version": "0.24.4",
+    "actualVersion": "0.24.4",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-qqP0j1OD587POa2eE5uZ2iAQ4LiVN0Lmp0Gq35gf9FsoXA5oNZ6gn4hE9Cl0iTcUJxAs5OknG7NKUtxtOn33lA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/05479a37c2377a58edb799b9499e06db80def31df7aa4bf17a68e0ea241fc722/package-lock.json",
+      "lockfileSha256": "05479a37c2377a58edb799b9499e06db80def31df7aa4bf17a68e0ea241fc722",
+      "logPath": "bootstrap/05479a37c2377a58edb799b9499e06db80def31df7aa4bf17a68e0ea241fc722/259394b714be05f5c0dcda434de1253e26076858c15364948bdbc366e21be917.log",
+      "installedTreeSha256": "b058b357b376b7ce8e52c188e1522218ceb19873dffd1efc06429403ae435f3b"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.24.4.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v4",
+    "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/cc0bc94974f288716081b0dec59b55793e7c4b31a527a6654a763fc44e47b1d3-7f14c383a604.log",
+    "createdAt": "2026-09-09T10:19:36.315Z"
+  }
+}

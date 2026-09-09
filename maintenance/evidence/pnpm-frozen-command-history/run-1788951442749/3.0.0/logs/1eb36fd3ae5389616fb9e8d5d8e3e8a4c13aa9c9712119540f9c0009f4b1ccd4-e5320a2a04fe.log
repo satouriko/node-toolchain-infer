@@ -1,0 +1,9 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-12.22.12-darwin-x64-32927913ed549ce01685a6f9f4697567a64592c7fd1e9a845ac8a10efa1475e6/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/pnpm-frozen-history/run-1788951442749/3.0.0/tools/pnpm-3.0.0/node_modules/pnpm/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+/Users/cuteloli/Code/node-toolchain-infer/.cache/pnpm-frozen-history/run-1788951442749/3.0.0/tools/pnpm-3.0.0/node_modules/pnpm/lib/node_modules/graceful-fs/polyfills.js:285
+        if (cb) cb.apply(this, arguments)
+                   ^
+
+TypeError: cb.apply is not a function
+    at /Users/cuteloli/Code/node-toolchain-infer/.cache/pnpm-frozen-history/run-1788951442749/3.0.0/tools/pnpm-3.0.0/node_modules/pnpm/lib/node_modules/graceful-fs/polyfills.js:285:20
+    at /Users/cuteloli/Code/node-toolchain-infer/.cache/pnpm-frozen-history/run-1788951442749/3.0.0/tools/pnpm-3.0.0/node_modules/pnpm/lib/node_modules/graceful-fs/polyfills.js:285:20
+    at FSReqCallback.oncomplete (fs.js:169:5)

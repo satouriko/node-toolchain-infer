@@ -1,0 +1,20 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+(node:16811) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+ ERR_INVALID_THIS  Value of "this" must be of type URLSearchParams
+
+pnpm [ERR_INVALID_THIS]: Value of "this" must be of type URLSearchParams
+    at Proxy.getAll (node:internal/url:552:13)
+    at Proxy.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58291:55)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58344:31
+    at Array.reduce (<anonymous>)
+    at Proxy.raw (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58343:33)
+    at new Headers (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58237:28)
+    at getNodeRequestOptions (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58556:23)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58613:25
+    at new Promise (<anonymous>)
+    at fetch (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/2/tools/pnpm-7.16.0/dist/pnpm.cjs:58611:14)

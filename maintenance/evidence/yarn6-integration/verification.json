@@ -1,0 +1,261 @@
+{
+  "scope": "explicit prerelease integration only; excluded from compatibility matrices, compiled ranges, statistics and knownBugs",
+  "runs": [
+    {
+      "protocol": "frozen-install-v2",
+      "inputHashes": {
+        ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "id": "23aee12f86ab6736d8ec20b79656337ab7a36b4b57001cd5b0da092920712409-8fe8054c56de",
+      "key": "23aee12f86ab6736d8ec20b79656337ab7a36b4b57001cd5b0da092920712409",
+      "manager": "yarn",
+      "version": "6.0.0-rc.20",
+      "actualVersion": "6.0.0-rc.20",
+      "node": "18.20.8",
+      "nodeIntegrity": "sha256-+5wtzpK9qqm4RO5l5kfMVVQndsPw4fzPEE9rUkhElqI=",
+      "nodeArch": "arm64",
+      "toolIntegrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+      "native": {
+        "package": "@yarnpkg/yarn-aarch64-apple-darwin",
+        "version": "6.0.0-rc.20",
+        "metadataUrl": "https://registry.npmjs.org/%40yarnpkg%2Fyarn-aarch64-apple-darwin/6.0.0-rc.20",
+        "url": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+        "integrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+        "binarySha256": "ea42086b026f03f46d15645eee28b1df0d5c07baeb8a1e16e1819aaf8f73c752"
+      },
+      "toolUrl": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+      "platform": "darwin",
+      "arch": "arm64",
+      "fixtureId": "yarn-zpm-v9-node-modules-explicit-rc",
+      "fixtureHash": "098b4ffd02b22524b2cf56786e0d35c4c26cad1f722665909973d968cebf0802",
+      "command": [
+        "install",
+        "--immutable"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "beforeHashes": {
+        ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "afterHashes": {
+        ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "installed": {
+        "is-number": "7.0.0"
+      },
+      "requestedDependencies": {
+        "is-number": "7.0.0"
+      },
+      "semantic": true,
+      "semanticMethod": "node-modules",
+      "frozenControl": {
+        "protocol": "frozen-install-v2",
+        "inputHashes": {
+          ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "id": "d1903dc983ff694bf184788ec3bc5a9b2393287db490a51dbc6bec51d85184e5-9d3629515a81",
+        "key": "d1903dc983ff694bf184788ec3bc5a9b2393287db490a51dbc6bec51d85184e5",
+        "manager": "yarn",
+        "version": "6.0.0-rc.20",
+        "actualVersion": "6.0.0-rc.20",
+        "node": "18.20.8",
+        "nodeIntegrity": "sha256-+5wtzpK9qqm4RO5l5kfMVVQndsPw4fzPEE9rUkhElqI=",
+        "nodeArch": "arm64",
+        "toolIntegrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+        "native": {
+          "package": "@yarnpkg/yarn-aarch64-apple-darwin",
+          "version": "6.0.0-rc.20",
+          "metadataUrl": "https://registry.npmjs.org/%40yarnpkg%2Fyarn-aarch64-apple-darwin/6.0.0-rc.20",
+          "url": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+          "integrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+          "binarySha256": "ea42086b026f03f46d15645eee28b1df0d5c07baeb8a1e16e1819aaf8f73c752"
+        },
+        "toolUrl": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+        "platform": "darwin",
+        "arch": "arm64",
+        "fixtureId": "yarn-zpm-v9-node-modules-explicit-rc:frozen-control",
+        "fixtureHash": "46cbecc4bbd92cca35009e58f3fdbb052438525c3c42d5b3c14433f6f943687f",
+        "command": [
+          "install",
+          "--immutable"
+        ],
+        "status": "incompatible",
+        "exitCode": 1,
+        "beforeHashes": {
+          ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+          "npm-shrinkwrap.json": "<missing>",
+          "package-lock.json": "<missing>",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "pnpm-lock.yaml": "<missing>",
+          "shrinkwrap.yaml": "<missing>",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "afterHashes": {
+          ".yarnrc.yml": "08db3ca9a5ec43dbf3d37337295c3c92d35f7e5a490385b7fbe120b0f6755c5a",
+          "npm-shrinkwrap.json": "<missing>",
+          "package-lock.json": "<missing>",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "pnpm-lock.yaml": "<missing>",
+          "shrinkwrap.yaml": "<missing>",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "installed": {
+          "is-number": "6.0.0"
+        },
+        "requestedDependencies": {
+          "is-number": "6.0.0"
+        },
+        "semantic": true,
+        "semanticMethod": "node-modules",
+        "logPath": "logs/d1903dc983ff694bf184788ec3bc5a9b2393287db490a51dbc6bec51d85184e5-9d3629515a81.log",
+        "createdAt": "2026-09-09T13:33:16.357Z"
+      },
+      "logPath": "logs/23aee12f86ab6736d8ec20b79656337ab7a36b4b57001cd5b0da092920712409-8fe8054c56de.log",
+      "createdAt": "2026-09-09T13:33:16.360Z"
+    },
+    {
+      "protocol": "frozen-install-v2",
+      "inputHashes": {
+        ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "id": "c5896682739a5bb4ae39eebf112575041390891af64b037df4b2392244f13c84-a330dd16e5eb",
+      "key": "c5896682739a5bb4ae39eebf112575041390891af64b037df4b2392244f13c84",
+      "manager": "yarn",
+      "version": "6.0.0-rc.20",
+      "actualVersion": "6.0.0-rc.20",
+      "node": "18.20.8",
+      "nodeIntegrity": "sha256-+5wtzpK9qqm4RO5l5kfMVVQndsPw4fzPEE9rUkhElqI=",
+      "nodeArch": "arm64",
+      "toolIntegrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+      "native": {
+        "package": "@yarnpkg/yarn-aarch64-apple-darwin",
+        "version": "6.0.0-rc.20",
+        "metadataUrl": "https://registry.npmjs.org/%40yarnpkg%2Fyarn-aarch64-apple-darwin/6.0.0-rc.20",
+        "url": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+        "integrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+        "binarySha256": "ea42086b026f03f46d15645eee28b1df0d5c07baeb8a1e16e1819aaf8f73c752"
+      },
+      "toolUrl": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+      "platform": "darwin",
+      "arch": "arm64",
+      "fixtureId": "yarn-zpm-v9-pnp-explicit-rc",
+      "fixtureHash": "1af8a0d5ea4e12d59e0c6839c33953ec1934d8f8453156fc4f76e240069ecabe",
+      "command": [
+        "install",
+        "--immutable"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "beforeHashes": {
+        ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "afterHashes": {
+        ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "ea6c8e4c92168fa66ec9727a7c9fdacbc1c8d08edd4e87aa7f5ebf4a7154949f",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "<missing>",
+        "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+      },
+      "installed": {
+        "is-number": "7.0.0"
+      },
+      "requestedDependencies": {
+        "is-number": "7.0.0"
+      },
+      "semantic": true,
+      "semanticMethod": "pnp",
+      "frozenControl": {
+        "protocol": "frozen-install-v2",
+        "inputHashes": {
+          ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "id": "7e706ecb0a4c57beb24963b8107ae8f68cd46b12cdbbccaba80e5e4d79840d70-04c5d5f66088",
+        "key": "7e706ecb0a4c57beb24963b8107ae8f68cd46b12cdbbccaba80e5e4d79840d70",
+        "manager": "yarn",
+        "version": "6.0.0-rc.20",
+        "actualVersion": "6.0.0-rc.20",
+        "node": "18.20.8",
+        "nodeIntegrity": "sha256-+5wtzpK9qqm4RO5l5kfMVVQndsPw4fzPEE9rUkhElqI=",
+        "nodeArch": "arm64",
+        "toolIntegrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+        "native": {
+          "package": "@yarnpkg/yarn-aarch64-apple-darwin",
+          "version": "6.0.0-rc.20",
+          "metadataUrl": "https://registry.npmjs.org/%40yarnpkg%2Fyarn-aarch64-apple-darwin/6.0.0-rc.20",
+          "url": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+          "integrity": "sha512-gSywkXVcZlsR95ymo1pCvhAA1Rm6CMD2J6TQz9xJYur33gjN9n7xh+ydrAM0ebeSTAm21PmbLjTWldjKI4pR4Q==",
+          "binarySha256": "ea42086b026f03f46d15645eee28b1df0d5c07baeb8a1e16e1819aaf8f73c752"
+        },
+        "toolUrl": "https://registry.npmjs.org/@yarnpkg/yarn-aarch64-apple-darwin/-/yarn-aarch64-apple-darwin-6.0.0-rc.20.tgz",
+        "platform": "darwin",
+        "arch": "arm64",
+        "fixtureId": "yarn-zpm-v9-pnp-explicit-rc:frozen-control",
+        "fixtureHash": "6b39224c01a73dcc6821d45c5bf402bedf04f2760c4c0fa87d35596ff2d65612",
+        "command": [
+          "install",
+          "--immutable"
+        ],
+        "status": "incompatible",
+        "exitCode": 1,
+        "beforeHashes": {
+          ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+          "npm-shrinkwrap.json": "<missing>",
+          "package-lock.json": "<missing>",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "pnpm-lock.yaml": "<missing>",
+          "shrinkwrap.yaml": "<missing>",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "afterHashes": {
+          ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+          "npm-shrinkwrap.json": "<missing>",
+          "package-lock.json": "<missing>",
+          "package.json": "85be8b411576ec1285c38b1b78f63e3957f81f952e6f2c8eeecb09970297f0b8",
+          "pnpm-lock.yaml": "<missing>",
+          "shrinkwrap.yaml": "<missing>",
+          "yarn.lock": "693a2a72eb95b103c54f1f9f007928aa0ef425fd3323704018fb1c4b3b0c1c20"
+        },
+        "installed": {
+          "is-number": "<missing>"
+        },
+        "requestedDependencies": {
+          "is-number": "6.0.0"
+        },
+        "semantic": false,
+        "semanticMethod": "node-modules",
+        "logPath": "logs/7e706ecb0a4c57beb24963b8107ae8f68cd46b12cdbbccaba80e5e4d79840d70-04c5d5f66088.log",
+        "createdAt": "2026-09-09T13:33:17.316Z"
+      },
+      "logPath": "logs/c5896682739a5bb4ae39eebf112575041390891af64b037df4b2392244f13c84-a330dd16e5eb.log",
+      "createdAt": "2026-09-09T13:33:17.319Z"
+    }
+  ]
+}

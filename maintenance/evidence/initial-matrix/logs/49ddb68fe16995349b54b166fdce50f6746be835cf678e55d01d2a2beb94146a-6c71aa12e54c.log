@@ -1,0 +1,31 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-14.6.0-darwin-x64-7907a18605b900ce977ff4c7e67f7507f937f85738659865d31779c3b2990756/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+Error: Cannot find module 'delay'
+Require stack:
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/store-connection-manager/lib/index.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/cmd/index.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/main.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/bin/pnpm.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/bin/pnpm.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:1065:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:911:27)
+    at Module.require (internal/modules/cjs/loader.js:1125:19)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/store-connection-manager/lib/index.js:9:17)
+    at Module._compile (internal/modules/cjs/loader.js:1236:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1257:10)
+    at Module.load (internal/modules/cjs/loader.js:1085:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:950:14)
+    at Module.require (internal/modules/cjs/loader.js:1125:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/store-connection-manager/lib/index.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/cmd/index.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/main.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/lib/bin/pnpm.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/11/tools/pnpm-5.4.1/bin/pnpm.js'
+  ]
+}

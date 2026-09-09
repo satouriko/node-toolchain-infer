@@ -1,0 +1,28 @@
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { provision } from '../../maintenance/provision.js'
+import { execute } from '../../maintenance/runner.js'
+import type { Catalog } from '../../src/types.js'
+const catalog = JSON.parse(await readFile('maintenance/evidence/initial-matrix/catalog.json', 'utf8')) as Catalog
+const output = resolve('.cache/pnpm-store-diagnosis', `production-${Date.now()}`)
+await mkdir(output, {recursive:true})
+const results=[]
+for (const version of ['2.17.8','0.65.0','0.60.0']) {
+ const cwd = join(output,version,'project')
+ await mkdir(cwd,{recursive:true})
+ await writeFile(join(cwd,'package.json'),JSON.stringify({name:'isolated-store-probe',version:'1.0.0',private:true}))
+ const isolatedStore = join(cwd,'.pnpm-store')
+ try {
+  const tool = await provision('pnpm',catalog.managers.pnpm.find(r=>r.version===version)!,catalog,join(output,version,'tools'),version==='2.17.8'?'11.1.0':'10.24.1',{cacheDirectory:resolve('.cache/maintenance'),timeoutMs:60000})
+  const environment={npm_config_store:isolatedStore,npm_config_store_path:isolatedStore,pnpm_store_path:isolatedStore}
+  const result = await execute(tool,['install','--ignore-scripts'],cwd)
+  await writeFile(join(output,version,'install.log'),result.output)
+  let storeEntries:string[]=[]
+  try {storeEntries=await readdir(isolatedStore)}catch{}
+  const modules = await readFile(join(cwd,'node_modules/.modules.yaml'),'utf8').catch(()=>null)
+  const row={productionExecute:true,environmentOverrides:false,version,node:tool.nodeVersion,integrity:tool.integrity,toolUrl:tool.url,environment,exitCode:result.exitCode,storeEntries,modules,log:join(output,version,'install.log')}
+  results.push(row);console.log(JSON.stringify(row))
+ }catch(error){await writeFile(join(output,version,'error.log'),String(error));console.log(String(error))}
+}
+await writeFile(join(output,'report.json'),JSON.stringify(results,null,2)+'\n')
+console.log(output)

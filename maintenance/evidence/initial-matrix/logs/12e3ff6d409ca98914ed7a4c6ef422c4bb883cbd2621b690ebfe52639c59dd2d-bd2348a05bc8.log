@@ -1,0 +1,22 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-11.0.0-darwin-x64-f70e12d246ba35e88c5c08a195215c5c913ce66c9d95d0bd21cc1d3e69904279/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/6/tools/pnpm-2.17.2/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+ WARN  waiting for the store at "/Users/cuteloli/.pnpm-store/2" to be unlocked...
+Performing headless installation
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: inconclusive; logs/516e2b65ced3c2ea705c1c7643bf65ce08d97ac84b3ef72104c2199db16fcf1a-7268858017af.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

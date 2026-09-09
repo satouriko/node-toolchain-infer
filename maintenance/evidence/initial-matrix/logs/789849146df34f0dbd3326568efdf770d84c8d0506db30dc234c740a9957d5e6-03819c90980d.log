@@ -1,0 +1,23 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/0/tools/pnpm-5.2.8/node_modules/pnpm/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+Resolving: total 1, reused 0, downloaded 0
+Resolving: total 1, reused 0, downloaded 0
+Packages: +1
++
+Resolving: total 1, reused 0, downloaded 1, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: inconclusive; logs/3129d97396146dd42c22691ab4ad1a68a5a6ad4617ab5ede2f041afa5eda6131-aa51219998d6.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

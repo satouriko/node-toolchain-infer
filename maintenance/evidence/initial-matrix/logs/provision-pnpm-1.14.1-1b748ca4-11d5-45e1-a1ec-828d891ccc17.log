@@ -1,0 +1,23 @@
+Error: Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-8.5.0-darwin-x64-0c8d4c4d90f858a19a29fe1ae7f42b2b7f1a4d3caaa25bea2e08479c00ebbd5f/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/e4d422a0cd8a374cde18f14865382bf5655fb43c956df9cf298c950559aebaf5/tool/lib/bin/pnpm.js --version
+module.js:529
+    throw err;
+    ^
+
+Error: Cannot find module 'loud-rejection'
+    at Function.Module._resolveFilename (module.js:527:15)
+    at Function.Module._load (module.js:476:23)
+    at Module.require (module.js:568:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/e4d422a0cd8a374cde18f14865382bf5655fb43c956df9cf298c950559aebaf5/tool/lib/bin/pnpm.js:14:23)
+    at Module._compile (module.js:624:30)
+    at Object.Module._extensions..js (module.js:635:10)
+    at Module.load (module.js:545:32)
+    at tryModuleLoad (module.js:508:12)
+    at Function.Module._load (module.js:500:3)
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)

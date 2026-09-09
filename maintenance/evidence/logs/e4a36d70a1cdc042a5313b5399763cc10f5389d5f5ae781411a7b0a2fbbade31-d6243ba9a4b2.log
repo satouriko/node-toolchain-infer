@@ -1,0 +1,15 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-matrix-GcsqxT/tools/nodes/node-16.10.0-darwin-arm64-dfdaf4149365e170929b99692520388e89f618e8d64ddd3ded7126bccf4583ed/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-matrix-GcsqxT/tools/npm-7.24.2/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 537ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/042ca50d4075793dcf91fbc28f41bdf8f654b3ffdacaeb7b51121367ecf2bff6-afd5c4df1727.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

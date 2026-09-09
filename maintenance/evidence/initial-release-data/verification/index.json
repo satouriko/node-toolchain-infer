@@ -1,0 +1,88 @@
+{
+  "results": {
+    "unitTests": {
+      "passed": 153,
+      "failed": 0
+    },
+    "node18": {
+      "passed": 151,
+      "failed": 0,
+      "skipped": 2,
+      "skipReason": "Development-only ESLint 10 formatter checks require Node20+; production API/CLI and inference run on Node18."
+    },
+    "fixtureBaselines": {
+      "passed": 23,
+      "note": "Unchanged exact-input baseline receipts are reused; two npm v2 generator baselines were rechecked."
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "browser": "passed in both locales with four tabs and desktop/mobile layouts",
+    "packedConsumer": "passed API, CLI, runtime detection, exports and TypeScript on Node18/24",
+    "dataCompile": {
+      "exitCode": 2,
+      "note": "All 18181 combinations attempted; 2276 unknown points and four unconfirmed ranges retained."
+    }
+  },
+  "files": [
+    {
+      "file": "unit-tests.log",
+      "bytes": 16126,
+      "sha256": "af3b90802dad16b75a6fc805ee54e0257fbfea2369fff88c9c95d3ccbb3cc524"
+    },
+    {
+      "file": "node18-tests.log",
+      "bytes": 34430,
+      "sha256": "9cc0bcef2261d7c48e46cde85172071b784977192527a7ce432d4b79a6763212"
+    },
+    {
+      "file": "typecheck.log",
+      "bytes": 130,
+      "sha256": "47ae0e712652b4f43b9eec931cecbbe1a84499b4ff8f4c32f3ec6e9cee16d622"
+    },
+    {
+      "file": "lint.log",
+      "bytes": 239,
+      "sha256": "9e661891490430bcfbac57b4d444182a17bf0da63e81ddd0b35d13175f880d1b"
+    },
+    {
+      "file": "fixture-baselines.log",
+      "bytes": 874,
+      "sha256": "8ac3fc884a9bc9ad34e98be0baeb1391acee138b391ff9a3f818ba5bf3389abb"
+    },
+    {
+      "file": "website-build.log",
+      "bytes": 180,
+      "sha256": "998093cd7eb10e57e591324d13ad7942e29d8cad65c22657cd79b6df4f39d446"
+    },
+    {
+      "file": "website-browser.log",
+      "bytes": 298,
+      "sha256": "5ad2f5a088f4ab6e1bcc46b263cd02bb6e9c7355221edcfb8de7d287cf05f6bc"
+    },
+    {
+      "file": "package-consumer.log",
+      "bytes": 1405,
+      "sha256": "ce6e5c381287c7a7347fae83b3de6deb1d553c777b189041b8e0fb05f3a987d5"
+    },
+    {
+      "file": "package-build.log",
+      "bytes": 1488,
+      "sha256": "4c47e2750a3209469cd2579a162e2a19c86ff1f9c275e1abf7fa81a793df1f46"
+    },
+    {
+      "file": "package-receipt.json",
+      "bytes": 717,
+      "sha256": "fc99a24aadb3ff6fc20bd53b86751e328b9b69585d209da9b85232ea8f327a47"
+    },
+    {
+      "file": "data-compile.log",
+      "bytes": 675,
+      "sha256": "0c527f8c6239974b4deac79f74fbc19fc1669036465daebfbc270cf84607ec66"
+    },
+    {
+      "file": "independent-data-review.md",
+      "bytes": 3636,
+      "sha256": "4cc04ad24d0628edd05acf65d86fb47a688b8ea41f146b6da22c306011e172e3"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-7.6.1/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+(node:4667) [DEP0174] DeprecationWarning: Calling promisify on a function that returns a Promise is likely a mistake.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+added 1 package in 361ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/f2ee434a833922f197e195a6dc9df128945b0acf121c75013b9c3217d118f99f-d51745190f0c.log
+Frozen enforcement was not established: a contradictory manifest must produce an explicit lock rejection.

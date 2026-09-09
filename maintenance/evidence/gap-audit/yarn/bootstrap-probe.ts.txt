@@ -1,0 +1,47 @@
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { dirname, resolve, join } from 'node:path'
+import { provision, verifyIntegrity } from '../../maintenance/provision.ts'
+import { runFixture } from '../../maintenance/runner.ts'
+import { digest } from '../../maintenance/model.ts'
+
+const exec = promisify(execFile)
+const root = resolve('.')
+const catalog = JSON.parse(await readFile('maintenance/evidence/yarn-pnp-matrix/catalog.json','utf8'))
+const fixtures = JSON.parse(await readFile('fixtures/recipes.json','utf8'))
+const release = catalog.managers.yarn.find((x:any)=>x.version==='1.22.12')
+const output = join(root,'maintenance/evidence/gap-audit/yarn/bootstrap-1.22.12')
+const toolRoot = join(root,'.cache/yarn-gap-audit/bootstrap-1.22.12')
+await mkdir(output,{recursive:true})
+await mkdir(toolRoot,{recursive:true})
+const baseline = await provision('yarn',catalog.managers.yarn.find((x:any)=>x.version==='1.22.13'),catalog,join(toolRoot,'baseline'),'16.11.1',{cacheDirectory:join(root,'.cache/maintenance'),timeoutMs:60000})
+const archive = await readFile(join(root,'.cache/maintenance/downloads',digest(release.tarball)))
+verifyIntegrity(archive,release.integrity)
+const archivePath = join(toolRoot,'yarn.tgz')
+await writeFile(archivePath,archive)
+await exec('tar',['-xzf',archivePath,'-C',toolRoot])
+const packageRoot=join(toolRoot,'package')
+const beforeManifest=await readFile(join(packageRoot,'package.json'))
+const npmCli=join(dirname(process.execPath),'../lib/node_modules/npm/bin/npm-cli.js')
+const command=[npmCli,'install','--global=false','--ignore-scripts','--omit=dev','--legacy-peer-deps','--no-audit','--no-fund','--registry=https://registry.npmjs.org']
+try {
+ const result=await exec(process.execPath,command,{cwd:packageRoot,timeout:120000,maxBuffer:8*1024*1024,env:{...process.env,npm_config_cache:join(toolRoot,'npm-cache'),npm_config_userconfig:'/dev/null'}})
+ await writeFile(join(output,'bootstrap.log'),[process.execPath,...command].join(' ')+'\n'+result.stdout+result.stderr)
+ await cp(join(packageRoot,'package-lock.json'),join(output,'package-lock.json'))
+ const cli=join(packageRoot,'bin/yarn.js')
+ const version=(await exec(baseline.node,[cli,'--version'],{cwd:toolRoot})).stdout.trim()
+ if(version!==release.version)throw new Error(`actual ${version}`)
+ if(digest(beforeManifest)!==digest(await readFile(join(packageRoot,'package.json'))))throw new Error('manifest changed')
+ const tool={...baseline,cli,version,integrity:release.integrity,url:release.tarball}
+ await writeFile(join(output,'tool.json'),JSON.stringify(tool,null,2)+'\n')
+ await writeFile(join(output,'bootstrap-receipt.json'),JSON.stringify({originalArtifact:release,archiveSha256:digest(archive),manifestSha256:digest(beforeManifest),command:[process.execPath,...command],npmCliSha256:digest(await readFile(npmCli)),note:'Only tool dependency bootstrap uses legacy peer resolution; fixture and Yarn executable bytes are unchanged.'},null,2)+'\n')
+ const fixture=fixtures.find((x:any)=>x.id==='yarn-classic-v1')
+ const obs=await runFixture(fixture,tool,join(root,'fixtures'),join(toolRoot,'project'),output)
+ await writeFile(join(output,'observation.json'),JSON.stringify(obs,null,2)+'\n')
+ console.log(JSON.stringify({status:obs.status,semantic:obs.semantic,control:obs.frozenControl?.status}))
+} catch(error) {
+ const e=error as Error & {stdout?:string;stderr?:string}
+ await writeFile(join(output,'error.log'),String(e)+'\n'+(e.stdout??'')+(e.stderr??''))
+ console.log(String(e))
+}

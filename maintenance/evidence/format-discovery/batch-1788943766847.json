@@ -1,0 +1,131 @@
+[
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "1.43.1",
+      "lock": "shrinkwrap.yaml"
+    },
+    "status": "incomplete",
+    "log": "probes/pnpm-1.43.1-shrinkwrap.yaml-1788943716359-d64983",
+    "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format",
+    "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format\n    at detectFormat (/Users/cuteloli/Code/node-toolchain-infer/maintenance/runner.ts:31:11)\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:94:15)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:90:27)\n    at async Promise.all (index 0)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:136:3)"
+  },
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "2.0.0",
+      "lock": "shrinkwrap.yaml"
+    },
+    "status": "incomplete",
+    "log": "probes/pnpm-2.0.0-shrinkwrap.yaml-1788943716359-66e471",
+    "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format",
+    "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format\n    at detectFormat (/Users/cuteloli/Code/node-toolchain-infer/maintenance/runner.ts:31:11)\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:94:15)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:90:27)\n    at async Promise.all (index 1)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:136:3)"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "3.1.0",
+      "lock": "yarn.lock"
+    },
+    "node": "17.0.1",
+    "match": {
+      "format": 5,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v5",
+    "status": "added",
+    "observationId": "48c09b91cb015eb021e2dddd7ba6e5c2036e955ac1079b4de8434b210d4fc7bb-d91810a32524",
+    "log": "logs/48c09b91cb015eb021e2dddd7ba6e5c2036e955ac1079b4de8434b210d4fc7bb-d91810a32524.log"
+  },
+  {
+    "probe": {
+      "manager": "pnpm",
+      "version": "2.25.7",
+      "lock": "shrinkwrap.yaml"
+    },
+    "status": "incomplete",
+    "log": "probes/pnpm-2.25.7-shrinkwrap.yaml-1788943730325-183ae0",
+    "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format",
+    "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format\n    at detectFormat (/Users/cuteloli/Code/node-toolchain-infer/maintenance/runner.ts:31:11)\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:94:15)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:90:27)\n    at async Promise.all (index 0)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:136:3)"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "3.2.0",
+      "lock": "yarn.lock"
+    },
+    "node": "17.5.0",
+    "match": {
+      "format": 6,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v6",
+    "status": "known-format-pass",
+    "observationId": "f917af59a5a669652fd71922f02cfea82cb62cc7c2c373603c9ff3c060ea2ea9-fa25c750a0a8",
+    "log": "logs/f917af59a5a669652fd71922f02cfea82cb62cc7c2c373603c9ff3c060ea2ea9-fa25c750a0a8.log"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "3.3.0",
+      "lock": "yarn.lock"
+    },
+    "node": "19.1.0",
+    "match": {
+      "format": 6,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v6",
+    "status": "known-format-pass",
+    "observationId": "4ea4d0ee1414737ec3ded7268f4390948ed071867a1516c12ddb4d7b36568b21-607dab8939d3",
+    "log": "logs/4ea4d0ee1414737ec3ded7268f4390948ed071867a1516c12ddb4d7b36568b21-607dab8939d3.log"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "4.0.0-rc.35",
+      "lock": "yarn.lock"
+    },
+    "node": "19.4.0",
+    "match": {
+      "format": 7,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v7",
+    "status": "added",
+    "observationId": "b94bbdd496cfea24209a78a374d3cea51515b5980c4f46caff75ed8281415842-4af6259fa296",
+    "log": "logs/b94bbdd496cfea24209a78a374d3cea51515b5980c4f46caff75ed8281415842-4af6259fa296.log"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "4.0.0-rc.53",
+      "lock": "yarn.lock"
+    },
+    "node": "20.8.0",
+    "match": {
+      "format": 8,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v8",
+    "status": "known-format-pass",
+    "observationId": "fe180c25cfa0b99b0f78dd97aa2e0fbb39b7f66e3988607a00d0e9557f60cd14-8f12333bb062",
+    "log": "logs/fe180c25cfa0b99b0f78dd97aa2e0fbb39b7f66e3988607a00d0e9557f60cd14-8f12333bb062.log"
+  },
+  {
+    "probe": {
+      "manager": "yarn",
+      "version": "4.13.0",
+      "lock": "yarn.lock"
+    },
+    "node": "25.8.1",
+    "match": {
+      "format": 8,
+      "classic": false
+    },
+    "fixtureId": "yarn-modern-v8",
+    "status": "known-format-pass",
+    "observationId": "b40dc37fec46a5bdfe1619d9e4f2151d67e8d2f7490cc211fa9720e81b4722ec-21f3930fa624",
+    "log": "logs/b40dc37fec46a5bdfe1619d9e4f2151d67e8d2f7490cc211fa9720e81b4722ec-21f3930fa624.log"
+  }
+]

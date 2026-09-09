@@ -1,0 +1,17 @@
+import { readFile, writeFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { generateFixture } from '../../maintenance/generate-fixtures.js'
+import { digest, type Fixture } from '../../maintenance/model.js'
+import { fixtureFiles, hashes } from '../../maintenance/runner.js'
+import type { Catalog } from '../../src/types.js'
+const fixture = (JSON.parse(await readFile('fixtures/recipes.json', 'utf8')) as Fixture[]).find(f => f.id === 'pnpm-legacy-shrinkwrap-v4')!
+const catalog = JSON.parse(await readFile('maintenance/evidence/initial-matrix/catalog.json','utf8')) as Catalog
+const output = resolve('.cache/pnpm-shared-generation', `run-${Date.now()}`)
+const generated = await generateFixture(fixture,catalog,output,{cacheDirectory:resolve('.cache/maintenance'),timeoutMs:60000})
+const source = join('fixtures',fixture.directory)
+const originalFiles = await fixtureFiles(source)
+const generatedFiles = await fixtureFiles(output)
+const comparison = await Promise.all(originalFiles.map(async file=>({file,identical:(await readFile(join(source,file))).equals(await readFile(join(output,file)))})))
+const report = {output,match:generated.match,originalFiles,generatedFiles,comparison,originalHash:digest(JSON.stringify(await hashes(source,originalFiles))),generatedHash:digest(JSON.stringify(await hashes(output,generatedFiles)))}
+await writeFile(join(output,'comparison.json'),JSON.stringify(report,null,2)+'\n')
+console.log(JSON.stringify(report))

@@ -1,0 +1,20 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-12.1.0-darwin-x64-57c592b13940aa44611aec08e7b425f35565a2c95c51736f433cb36eb65105b7/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-AbpthK/10/tools/pnpm-3.3.0-0/node_modules/pnpm/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+Performing headless installation
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/6db4fa4b302278850a007d76f1c36f247d09252b2d0164df2c5aa8f1aa20a823-8e7e089bbcdf.log

@@ -1,0 +1,13 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/project/pnpm-lock.yaml
+ ERROR  Headless installation requires a pnpm-lock.yaml file
+
+pnpm: Headless installation requires a pnpm-lock.yaml file
+    at _install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:135741:21)
+    at mutateModules (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:135673:29)
+    at async install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:135620:24)
+    at async handler (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:137363:31)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:199473:21
+    at async run (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:199444:34)
+    at async runPnpm (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:199665:5)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-lQgKaW/9/tools/pnpm-7.10.0-0/dist/pnpm.cjs:199657:7

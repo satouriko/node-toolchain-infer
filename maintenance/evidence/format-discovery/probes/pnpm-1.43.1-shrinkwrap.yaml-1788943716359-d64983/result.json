@@ -1,0 +1,11 @@
+{
+  "probe": {
+    "manager": "pnpm",
+    "version": "1.43.1",
+    "lock": "shrinkwrap.yaml"
+  },
+  "status": "incomplete",
+  "log": "probes/pnpm-1.43.1-shrinkwrap.yaml-1788943716359-d64983",
+  "error": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format",
+  "stack": "FormatDetectionError: Unable to parse pnpm lock format: Error: Unknown pnpm lock format\n    at detectFormat (/Users/cuteloli/Code/node-toolchain-infer/maintenance/runner.ts:31:11)\n    at generateFixture (/Users/cuteloli/Code/node-toolchain-infer/maintenance/generate-fixtures.ts:94:15)\n    at async worker (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:90:27)\n    at async Promise.all (index 0)\n    at async discoverFixtures (/Users/cuteloli/Code/node-toolchain-infer/maintenance/discover-fixtures.ts:136:3)"
+}

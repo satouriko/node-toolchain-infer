@@ -1,0 +1,23 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-matrix-GcsqxT/tools/nodes/node-11.10.1-darwin-x64-dea52b86f6875efae26fbb6d0269d9769da7ca69408b74b6ab724d4b64004b07/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-matrix-GcsqxT/tools/pnpm-2.25.7/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+Scope: current workspace package
+Performing headless installation
+Resolving: total 1, reused 0, downloaded 0
+Resolving: total 1, reused 0, downloaded 0
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/b0cfd42b2cfbc3fdf2bc4208619dd2a9e4098fda9c54db1180e7c1301a843444-b16b55612ab6.log

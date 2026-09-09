@@ -1,0 +1,16 @@
+import { readFile, writeFile } from 'node:fs/promises'
+import { observationFingerprint, validateKnownBugs } from '../../maintenance/known-bugs.ts'
+const points=JSON.parse(await readFile('maintenance/evidence/gap-audit/yarn/point-evidence.json','utf8'))
+const observations=[]
+for(const point of points.filter((x:any)=>x.fixtureId==='yarn-modern-v5' && ['3.1.0-rc.11','3.1.0-rc.12'].includes(x.version))){
+ for(const attempt of point.attempts){
+  const row=JSON.parse(await readFile(attempt.rowPath,'utf8'))
+  const observation=row.observation
+  if(observation?.fixtureHash!=='771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77' || attempt.reason!=='stream-premature-close' || observation.status!=='inconclusive')continue
+  observations.push({id:observation.id,fingerprint:observationFingerprint(observation)})
+ }
+}
+const review={schemaVersion:1,bugs:[{id:'yarn-node17-tar-stream-3597',manager:'yarn',range:'>=3.1.0-rc.11 <3.1.0-rc.13',fixtureIds:['yarn-modern-v5'],reason:'A known tar extraction stream bug on Node 17 and newer prevents fetching; the same immutable lockfile and frozen control pass under Node 16.11.1.',url:'https://github.com/yarnpkg/berry/issues/3597',semanticEvidence:'Official yarnpkg/berry#3610 replaces PassThrough.destroy() with end() after tar close and explicitly fixes Node 17 ERR_STREAM_PREMATURE_CLOSE. Both exact affected releases 3.1.0-rc.11 and 3.1.0-rc.12 were independently executed with the unchanged current yarn-modern-v5 fixture on Node 16.11.1, installing is-number 7.0.0 with no root lock or manifest byte changes and rejecting the contradictory is-number 6.0.0 control. Reproductions and original observation fingerprints are archived under maintenance/evidence/gap-audit/yarn. This review is deliberately restricted to v5 rc.11/rc.12: v4 observations affected by the same stream bug also have an independently reproduced cache generation migration, so they are not excused.',reviewedAt:new Date().toISOString(),observations}]}
+validateKnownBugs(review)
+await writeFile('maintenance/evidence/gap-audit/yarn/known-bug-candidates.json',JSON.stringify(review,null,2)+'\n')
+console.log(JSON.stringify({reviews:review.bugs.length,observations:observations.length}))

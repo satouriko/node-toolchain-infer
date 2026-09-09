@@ -1,0 +1,35 @@
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { verifyIntegrity } from '../../maintenance/provision.js'
+import { runFixture } from '../../maintenance/runner.js'
+import { digest } from '../../maintenance/model.js'
+
+const output = resolve('maintenance/evidence/gap-audit/pnpm')
+const original = JSON.parse(await readFile(join(output, 'proofs/5.17.0-node-15.8.0-pnpm-lock-v5.4/tool.json'), 'utf8'))
+const directory = resolve('.cache/gap-audit/repaired-5.17')
+await mkdir(directory, { recursive: true })
+const originalRoot = resolve(original.cli, '../..')
+const repairedRoot = join(directory, 'pnpm')
+await cp(originalRoot, repairedRoot, { recursive: true })
+const metadataUrl = 'https://registry.npmjs.org/graceful-fs/4.2.4'
+const metadata = await (await fetch(metadataUrl)).json()
+const archive = Buffer.from(await (await fetch(metadata.dist.tarball)).arrayBuffer())
+verifyIntegrity(archive, metadata.dist.integrity)
+const tarball = join(directory, 'graceful-fs.tgz')
+await writeFile(tarball, archive)
+const dependency = join(repairedRoot, 'node_modules/graceful-fs')
+await mkdir(dependency, { recursive: true })
+execFileSync('tar', ['-xzf', tarball, '-C', dependency, '--strip-components=1'])
+const tool = { ...original, cli: join(repairedRoot, 'bin/pnpm.js') }
+const originalBundleHash = digest(await readFile(join(originalRoot, 'dist/pnpm.js')))
+const repairedBundleHash = digest(await readFile(join(repairedRoot, 'dist/pnpm.js')))
+if (originalBundleHash !== repairedBundleHash) throw new Error('Tool bundle was changed')
+const fixtures = JSON.parse(await readFile('fixtures/recipes.json', 'utf8')).filter(f => /^pnpm-lock-v5(?:\.|$)/.test(f.id))
+const results = []
+for (const fixture of fixtures) {
+  const observation = await runFixture(fixture, tool, resolve('fixtures'), join(directory, fixture.id), output)
+  results.push(observation)
+  console.log(fixture.id, observation.status, observation.installed)
+}
+await writeFile(join(output, 'proofs/graceful-fs-repair.json'), JSON.stringify({ purpose: 'Controlled repair proof, not an unmodified published artifact or baseline seed row', metadataUrl, dependency: { name: metadata.name, version: metadata.version, ...metadata.dist }, originalBundleHash, repairedBundleHash, original, repaired: tool, observations: results }, null, 2) + '\n')

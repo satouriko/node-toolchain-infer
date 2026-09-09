@@ -1,0 +1,89 @@
+{
+  "id": "deb527bd-a8a7-4824-9241-b80192b9f2a6",
+  "key": "619f694b3b8b184384fe64a0befc6b1c8113cf129e9dceba249cc4ffe8e06bdb",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.20.4",
+  "fixtureId": "yarn-modern-v8",
+  "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:21:48.130Z",
+  "attempt": 2,
+  "status": "inconclusive",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "id": "f6af101ef85d37d7c1f5577803e3980feca74455afb43b99f5e791d8c47767a1-7b920cc77174",
+    "key": "f6af101ef85d37d7c1f5577803e3980feca74455afb43b99f5e791d8c47767a1",
+    "manager": "yarn",
+    "version": "0.20.4",
+    "actualVersion": "0.20.4",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-ITgJ9cmWh0MijOE7yiLKQxm+Mnw1bkDHFVKGCfL6SRXXK1TuCJUaHQjLMDIsW/6Z5x3vTqMFF4N7ukjeTDRgog==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669/package-lock.json",
+      "lockfileSha256": "2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669",
+      "logPath": "bootstrap/2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669/6a3eeaed0d6d8de73dabff1e9d3872e52bba9d8b1bbaa71e293cb2aa1dfff22c.log",
+      "installedTreeSha256": "c4c94710837d57f9f574c628f53813b34f90a96f9be171bcca9db6d572a12b62"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.20.4.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v8",
+    "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "inconclusive",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/f6af101ef85d37d7c1f5577803e3980feca74455afb43b99f5e791d8c47767a1-7b920cc77174.log",
+    "createdAt": "2026-09-09T10:21:48.066Z"
+  }
+}

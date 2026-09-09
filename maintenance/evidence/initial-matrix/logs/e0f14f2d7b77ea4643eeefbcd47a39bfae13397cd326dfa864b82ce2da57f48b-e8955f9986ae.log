@@ -1,0 +1,22 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/7/tools/pnpm-0.0.0-2020520224551/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+Resolving: total 1, reused 0, downloaded 0
+Resolving: total 1, reused 0, downloaded 0
+Packages: +1
++
+Resolving: total 1, reused 0, downloaded 1, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/55d8877dba8d9faf0a5eb9ddf88a31ba36d30057e070fd07a9b70bdec123b15b-57d61a3200a2.log

@@ -1,0 +1,15 @@
+{
+  "id": "5efdf58b-3f84-4cc5-8387-383a8c96e2d6",
+  "key": "cedbcf3e60e83f82d7e2156439fbbcfc4eaf94774f2e9ff4886dae7f0ee7ff39",
+  "protocol": "frozen-initial-matrix-v1",
+  "manager": "pnpm",
+  "version": "12.2.0",
+  "fixtureId": "pnpm-lock-v9",
+  "fixtureHash": "8c30fb852f2cfc659d26646a8b168d84138dd215f1dded318371ea2139a74dd9",
+  "catalogHash": "972e5af6bc92aaeb37c6db20e1a98da894371f74975b09564e8db63b530373b4",
+  "createdAt": "2026-09-09T08:41:52.360Z",
+  "attempt": 2,
+  "status": "inconclusive",
+  "error": "Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.8.1-darwin-arm64-6e577fd0d9db776db82306629e441a9dace416702622aebdd171c9dfaa41f4d2/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe --version\nnode:internal/modules/esm/get_format:243\n  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);\n        ^\n\nTypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension \".exe\" for /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe\n    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:243:9)\n    at defaultGetFormat (node:internal/modules/esm/get_format:283:36)\n    at defaultLoadSync (node:internal/modules/esm/load:159:16)\n    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:809:12)\n    at #loadSync (node:internal/modules/esm/loader:841:53)\n    at ModuleLoader.load (node:internal/modules/esm/loader:790:26)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:501:31)\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:567:36)\n    at afterResolve (node:internal/modules/esm/loader:614:52)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:620:12) {\n  code: 'ERR_UNKNOWN_FILE_EXTENSION'\n}\n\nNode.js v26.8.1\n",
+  "logPath": "logs/provision-pnpm-12.2.0-102c5185-60c0-4f74-8f80-a2d0a44cd4d5.log"
+}

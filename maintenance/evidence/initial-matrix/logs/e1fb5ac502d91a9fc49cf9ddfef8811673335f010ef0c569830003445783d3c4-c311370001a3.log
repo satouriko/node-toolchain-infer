@@ -1,0 +1,8 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+Error: double-loading config "/dev/null" as "global", previously loaded as "user"
+    at #loadObject (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/node_modules/@npmcli/config/lib/index.js:571:13)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/node_modules/@npmcli/config/lib/index.js:617:31
+    at async #loadFile (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/node_modules/@npmcli/config/lib/index.js:616:5)
+    at async Config.load (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/node_modules/@npmcli/config/lib/index.js:287:5)
+    at async #load (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/lib/npm.js:195:5)
+    at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-8bQ3xB/8/tools/npm-9.9.1/lib/cli-entry.js:40:5)

@@ -1,0 +1,11 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises'
+import {execFileSync} from 'node:child_process'
+import {resolve,join} from 'node:path'
+import semver from 'semver'
+import {verifyIntegrity} from '../../maintenance/provision.ts'
+import {digest} from '../../maintenance/model.ts'
+const catalog=JSON.parse(await readFile('maintenance/evidence/yarn-pnp-matrix/catalog.json','utf8'))
+const versions=catalog.managers.npm.filter((x:any)=>semver.gte(x.version,'7.0.0-0')&&semver.lte(x.version,'8.4.1')).sort((a:any,b:any)=>semver.compare(a.version,b.version))
+const out=resolve('maintenance/evidence/gap-audit/npm/source-audit');await mkdir(join(out,'files'),{recursive:true});const index=[]
+for(const release of versions){const archive=resolve('.cache/maintenance/downloads',digest(release.tarball));verifyIntegrity(await readFile(archive),release.integrity);let file='',source='';for(const candidate of ['package/lib/commands/ci.js','package/lib/ci.js']){try{source=execFileSync('tar',['-xOzf',archive,candidate],{encoding:'utf8',stdio:['ignore','pipe','pipe']});file=candidate;break}catch{}}if(!source)throw Error('Missing ci for '+release.version);const hash=digest(source);await writeFile(join(out,'files',hash+'.js'),source);index.push({version:release.version,tarball:release.tarball,integrity:release.integrity,file,sourceUrl:`https://github.com/npm/cli/blob/v${release.version}/${file.replace(/^package\//,'')}`,sourceSha256:hash,loadsVirtualLock:/loadVirtual\(/.test(source),reifies:/\.reify\(/.test(source),setsSaveFalse:/save:\s*false/.test(source),validatesLock:/validateLockfile/.test(source)});}
+await writeFile(join(out,'index.json'),JSON.stringify(index,null,2)+'\n');console.log('Audited',index.length,'official artifacts,',new Set(index.map(x=>x.sourceSha256)).size,'distinct ci sources');console.log('No loadVirtual',index.filter(x=>!x.loadsVirtualLock));console.log('With validation',index.filter(x=>x.validatesLock).map(x=>x.version));

@@ -1,0 +1,34 @@
+{
+  "package": "node-toolchain-infer-0.1.0.tgz",
+  "packageBytes": 39491,
+  "packageSha256": "37cd47506e3a19e84fe6519a7f22b97f494244a2bdc309f28668c325f2fedbdf",
+  "compatibilityBytes": 15496,
+  "tests": {
+    "node24": {
+      "passed": 160,
+      "failed": 0
+    },
+    "node18": {
+      "passed": 157,
+      "failed": 0,
+      "devOnlySkipped": 2,
+      "note": "Run before adding the final stable/prerelease monitor regression; packaged API separately verified against final bytes on both Node versions."
+    }
+  },
+  "consumerNodeVersions": [
+    "18.20.8",
+    "24.10.0"
+  ],
+  "consumer": "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-reviewed-consumer-u3rtwxw7",
+  "logs": [
+    "unit-tests.log",
+    "typecheck.log",
+    "lint.log",
+    "browser.log",
+    "pack.log",
+    "pnpm-reproduction.log",
+    "node18-tests.log",
+    "prerelease-monitor-red.log",
+    "prerelease-monitor-green.log"
+  ]
+}

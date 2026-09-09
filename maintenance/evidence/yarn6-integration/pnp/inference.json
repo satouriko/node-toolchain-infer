@@ -1,0 +1,114 @@
+{
+  "candidates": {
+    "nodes": [
+      "18.20.8"
+    ],
+    "managerVersions": [
+      "6.0.0-rc.20"
+    ]
+  },
+  "node": {
+    "version": "18.20.8",
+    "reason": "current",
+    "bundledNpm": "10.8.2"
+  },
+  "packageManager": {
+    "name": "yarn",
+    "version": "6.0.0-rc.20",
+    "reason": "exact",
+    "nodeRange": "*",
+    "runtime": "native"
+  },
+  "warnings": [
+    {
+      "code": "unknown-lock-compatibility",
+      "sourceId": "0:yarnLock:1",
+      "path": "/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/generate-pnp/yarn.lock",
+      "message": "No bundled compatibility rule covers yarn lock format 9. The version constraint is *; the manager identity is retained."
+    }
+  ],
+  "trace": [
+    {
+      "manager": "yarn",
+      "range": "6.0.0-rc.20",
+      "ranges": [
+        "6.0.0-rc.20"
+      ],
+      "exact": "6.0.0-rc.20",
+      "derivedNodeRanges": [
+        "*"
+      ],
+      "key": "packageManager",
+      "kind": "packageManager",
+      "target": "manager",
+      "rank": 3,
+      "id": "0:packageManager:0",
+      "depth": 0,
+      "path": "/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/generate-pnp/package.json",
+      "value": "yarn@6.0.0-rc.20",
+      "index": 0,
+      "status": "accepted",
+      "remainingNodes": 1,
+      "remainingManagerVersions": 1
+    },
+    {
+      "manager": "yarn",
+      "range": "*",
+      "ranges": [
+        "*"
+      ],
+      "exact": null,
+      "derivedNodeRanges": [],
+      "key": "yarnLock",
+      "kind": "yarn.lock",
+      "target": "manager",
+      "rank": 6,
+      "id": "0:yarnLock:1",
+      "depth": 0,
+      "path": "/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/generate-pnp/yarn.lock",
+      "value": "9",
+      "format": "9",
+      "features": {
+        "yarnFamily": "zpm"
+      },
+      "index": 1,
+      "lockfile": true,
+      "compatibilityKnown": false,
+      "ruleIds": [],
+      "knownBugs": [],
+      "status": "accepted",
+      "remainingNodes": 1,
+      "remainingManagerVersions": 1
+    }
+  ],
+  "constraints": [
+    {
+      "id": "0:packageManager:0",
+      "target": "manager",
+      "manager": "yarn",
+      "range": "6.0.0-rc.20",
+      "ranges": [
+        "6.0.0-rc.20"
+      ],
+      "derivedNodeRanges": [
+        "*"
+      ]
+    },
+    {
+      "id": "0:yarnLock:1",
+      "target": "manager",
+      "manager": "yarn",
+      "range": "*",
+      "ranges": [
+        "*"
+      ],
+      "derivedNodeRanges": [],
+      "ruleIds": []
+    }
+  ],
+  "dataTimestamp": "2026-09-09T13:33:03.309Z",
+  "directories": [
+    "/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/generate-pnp"
+  ],
+  "root": "/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/generate-pnp"
+}

@@ -1,0 +1,1 @@
+const path = require('path'); const target = require(path.resolve(process.env.NTI_TRACE_CLI, '../../lib/err.js')); const original = target.default; target.default = function(error) { console.error('[Captured original error]', error && error.stack || error); return original.apply(this,arguments); };

@@ -1,0 +1,89 @@
+{
+  "id": "cc930b8f-80b9-4583-b9fa-b9b25a459933",
+  "key": "dfd052d519ec03cf384a4a4b6d4a04f05b5c05230fc01f6f14e932d05538257e",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.25.3",
+  "fixtureId": "yarn-modern-v5",
+  "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:17.298Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "id": "df10d634611e28241b584d1c2ac4a7ed215676f8d4fc20942df89ed50474019e-099246b328f7",
+    "key": "df10d634611e28241b584d1c2ac4a7ed215676f8d4fc20942df89ed50474019e",
+    "manager": "yarn",
+    "version": "0.25.3",
+    "actualVersion": "0.25.3",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-hclOsKfo80MHqCakNa0yxzfMSgi7tr2bYLE/erZql2pymxN55RwHgl8JMtf7cn4E0HyLCaebYTWtAB66MuWRPA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/7c71bb0b3fa5d3452d79d253137735680ec4b6dfc0aa1acad95d66ff05b4454d/package-lock.json",
+      "lockfileSha256": "7c71bb0b3fa5d3452d79d253137735680ec4b6dfc0aa1acad95d66ff05b4454d",
+      "logPath": "bootstrap/7c71bb0b3fa5d3452d79d253137735680ec4b6dfc0aa1acad95d66ff05b4454d/a24ecb08d87c03cfb778a563cc52f7770e6531a5a00cfa4b11ec916f8b26bf86.log",
+      "installedTreeSha256": "ff1f16c7cda10d62a750736311544ebf535cbb1bf3115c150f4ae4d19afef67f"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.25.3.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v5",
+    "fixtureHash": "771a2c4091607bac3da9aae70237f413d3939ff26a33a8d6d8fb620ff48a8f77",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c7866778f7534db52fced75f2525043ec8614d7b32672115b68a7dc574cb8b1e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/df10d634611e28241b584d1c2ac4a7ed215676f8d4fc20942df89ed50474019e-099246b328f7.log",
+    "createdAt": "2026-09-09T10:19:17.206Z"
+  }
+}

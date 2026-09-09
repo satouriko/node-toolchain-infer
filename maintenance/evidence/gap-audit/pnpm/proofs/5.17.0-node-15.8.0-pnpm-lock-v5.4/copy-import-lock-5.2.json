@@ -1,0 +1,47 @@
+{
+  "task": {
+    "name": "5.17.0-node-15.8.0-pnpm-lock-v5.4",
+    "fixture": "lock-v5.2/basic",
+    "environment": {
+      "npm_config_package_import_method": "copy"
+    },
+    "label": "copy-import-lock-5.2"
+  },
+  "tool": {
+    "node": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-15.8.0-darwin-x64-23f9a8a53d0d63e1d90afe775891088533fc5b277ef83db0cd2fc37951c09595/bin/node",
+    "nodeVersion": "15.8.0",
+    "nodeArch": "x64",
+    "nodeIntegrity": "sha256-I/mopT0NY+HZCv53WJEIhTP8Wyd++D2wzS/DeVHAlZU=",
+    "nodeBinarySha256": "b1829a639c37ad7819d540066c6515be8c7b5a39dfcc70d4c81beffb8d1fd131",
+    "cli": "/Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/5.17.0-node-15.8.0-pnpm-lock-v5.4/pnpm-5.17.0/node_modules/pnpm/bin/pnpm.js",
+    "version": "5.17.0",
+    "integrity": "sha512-tZ1a4Lvp2uferbSTYbdDT/8NlxpqShVlIbrzd+pP8LRekYfmcw3OkoeAWbHgNt6qMFBxSg5dJc1XYkFZq2TcFQ==",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-5.17.0.tgz",
+    "execution": "node"
+  },
+  "command": [
+    "install",
+    "--frozen-lockfile",
+    "--ignore-scripts"
+  ],
+  "exitCode": 0,
+  "output": "Packages are copied from the content-addressable store to the virtual store.\n  Content-addressable store is at: /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/controlled/copy-import-lock-5.2/.pnpm-store/v3\n  Virtual store is at:             node_modules/.pnpm\nLockfile is up-to-date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +1\n+\nProgress: resolved 1, reused 0, downloaded 1, added 1, done\n\ndependencies:\n+ is-number 7.0.0\n\n",
+  "before": {
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "fb5da6bf6b1c333f3d42c37ffec31d4c373326c48402fd2685493184d63b6df7",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "<missing>"
+  },
+  "after": {
+    "npm-shrinkwrap.json": "<missing>",
+    "package-lock.json": "<missing>",
+    "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+    "pnpm-lock.yaml": "fb5da6bf6b1c333f3d42c37ffec31d4c373326c48402fd2685493184d63b6df7",
+    "shrinkwrap.yaml": "<missing>",
+    "yarn.lock": "<missing>"
+  },
+  "installed": "7.0.0",
+  "unchanged": true
+}

@@ -1,0 +1,16 @@
+✔ version discovery runs outside the maintenance project and its package-manager declaration (258.444833ms)
+✔ immutable Yarn bundles verify size, checksum and actual version without treating CLI metadata as executable (450.018416ms)
+✔ official packages retain normal node_modules self-resolution without rewriting their bytes (180.776333ms)
+✔ native pnpm wrappers use their exact verified platform package and execute without Node interpreting the binary (543.244916ms)
+✔ verified artifact cache reuses downloads and repairs corrupted cached bytes (563.390875ms)
+✔ manager version discovery is bounded when an old executable hangs (229.566416ms)
+✔ opt-in missing-dependency bootstrap preserves an exact production lock and reuses its receipt (1106.6815ms)
+✔ production tool bootstrap ignores conflicting development peers without changing the tool manifest (248.106292ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3711.053041

@@ -1,0 +1,22 @@
+{
+  "tarball": "/Users/cuteloli/Code/node-toolchain-infer/node-toolchain-infer-0.1.0.tgz",
+  "tarballSha256": "57982a5d9a25c47cb69b3420e9d704113edded92556ff3164f6536a478032307",
+  "packedBytes": 99936,
+  "files": 53,
+  "rules": 19,
+  "consumer": "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/node-toolchain-infer-consumer-final-aoh0ihgq",
+  "nodeVersions": [
+    "18.20.8",
+    "24.10.0"
+  ],
+  "checks": [
+    "packed API and all exports",
+    "bundled rules match compiled data",
+    "adjacent npm runtime detection",
+    "CLI exact output on Node18/24",
+    "TypeScript consumer",
+    "direct bin --help",
+    "tarball excludes maintenance/fixtures/website/cache"
+  ],
+  "log": "/tmp/nti-final-consumer.log"
+}

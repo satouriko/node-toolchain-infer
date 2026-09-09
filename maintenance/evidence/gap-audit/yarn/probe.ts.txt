@@ -1,0 +1,37 @@
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { resolve, join } from 'node:path'
+import { provision } from '../../maintenance/provision.ts'
+import { runFixture } from '../../maintenance/runner.ts'
+import { digest } from '../../maintenance/model.ts'
+
+const root = resolve('.')
+const catalog = JSON.parse(await readFile(join(root, 'maintenance/evidence/yarn-pnp-matrix/catalog.json'), 'utf8'))
+const fixtures = JSON.parse(await readFile(join(root, 'fixtures/recipes.json'), 'utf8'))
+const output = join(root, 'maintenance/evidence/gap-audit/yarn/probes')
+const specs = JSON.parse(process.argv[2]!) as Array<{ version: string; fixtures: string[]; node?: string; historical?: boolean }>
+for (const spec of specs) {
+  const runId = `${spec.version}-${spec.node ?? (spec.historical ? 'historical' : 'current')}-${Date.now()}`
+  const destination = join(output, runId)
+  const tools = join(root, '.cache/yarn-gap-audit/tools', runId)
+  await mkdir(destination, { recursive: true })
+  try {
+    const release = catalog.managers.yarn.find((x: any) => x.version === spec.version)
+    const tool = await provision('yarn', release, catalog, tools, spec.node, { cacheDirectory: join(root, '.cache/maintenance'), historicalNode: spec.historical, bootstrapDependencies: true, timeoutMs: 60000 })
+    await writeFile(join(destination, 'tool.json'), JSON.stringify(tool, null, 2) + '\n')
+    for (const fixtureId of spec.fixtures) {
+      const fixture = fixtures.find((x: any) => x.id === fixtureId)
+      const receipt = join(destination, fixtureId)
+      const work = join(root, '.cache/yarn-gap-audit/projects', runId, fixtureId)
+      const observation = await runFixture(fixture, tool, join(root, 'fixtures'), work, receipt)
+      await writeFile(join(receipt, 'observation.json'), JSON.stringify(observation, null, 2) + '\n')
+      await cp(join(root, 'fixtures', fixture.directory, fixture.lock), join(receipt, 'yarn.before.lock'))
+      await cp(join(work, fixture.lock), join(receipt, 'yarn.after.lock'))
+      const row = {id:`gap-audit-${observation.id}`, key: digest(JSON.stringify([fixture.id, spec.version, observation.createdAt])), protocol:'frozen-initial-matrix-v2', manager:'yarn', version:spec.version, fixtureId, fixtureHash:observation.fixtureHash, catalogHash:digest(JSON.stringify(catalog)), createdAt:observation.createdAt, attempt:1, status:observation.status, observation}
+      await writeFile(join(receipt, 'row.json'), JSON.stringify(row, null, 2) + '\n')
+      console.log(JSON.stringify({runId, fixtureId, node:tool.nodeVersion, status:observation.status, semantic:observation.semantic, control:observation.frozenControl?.status, receipt}))
+    }
+  } catch (error) {
+    await writeFile(join(destination, 'error.txt'), String(error) + '\n' + (error as Error).stack + '\n')
+    console.log(JSON.stringify({runId, error:String(error)}))
+  }
+}

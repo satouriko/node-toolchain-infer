@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "bugs": [
+    {
+      "id": "yarn-node17-tar-stream-3597",
+      "manager": "yarn",
+      "range": ">=3.1.0-rc.11 <3.1.0-rc.13",
+      "fixtureIds": [
+        "yarn-modern-v5"
+      ],
+      "reason": "A known tar extraction stream bug on Node 17 and newer prevents fetching; the same immutable lockfile and frozen control pass under Node 16.11.1.",
+      "url": "https://github.com/yarnpkg/berry/issues/3597",
+      "semanticEvidence": "Official yarnpkg/berry#3610 replaces PassThrough.destroy() with end() after tar close and explicitly fixes Node 17 ERR_STREAM_PREMATURE_CLOSE. Both exact affected releases 3.1.0-rc.11 and 3.1.0-rc.12 were independently executed with the unchanged current yarn-modern-v5 fixture on Node 16.11.1, installing is-number 7.0.0 with no root lock or manifest byte changes and rejecting the contradictory is-number 6.0.0 control. Reproductions and original observation fingerprints are archived under maintenance/evidence/gap-audit/yarn. This review is deliberately restricted to v5 rc.11/rc.12: v4 observations affected by the same stream bug also have an independently reproduced cache generation migration, so they are not excused.",
+      "reviewedAt": "2026-09-09T12:12:35.397Z",
+      "observations": [
+        {
+          "id": "c17786ae2cb2616fbd692e288eb05910527fbd4770e15627ce91b9c884146b8b-1aacc623c76b",
+          "fingerprint": "41a7573fcb83abfd3f3582610c8f20a20dca88749fef4dbd77d13811d763c94e"
+        },
+        {
+          "id": "c17786ae2cb2616fbd692e288eb05910527fbd4770e15627ce91b9c884146b8b-7b09f913d321",
+          "fingerprint": "e9332aeab50943f978de009ee1477d5a72358ca4d3888f48002caee0ef6a6ccd"
+        },
+        {
+          "id": "fcfa15052309eae63e63f3c43810515ca35076164a0c029adcb8a16ec05eceda-5f7594ac2199",
+          "fingerprint": "de9741cba33090724e6b0a6ddc9b4291ee2d21663085a32f41451426c9eb3a66"
+        },
+        {
+          "id": "fcfa15052309eae63e63f3c43810515ca35076164a0c029adcb8a16ec05eceda-4972e6474ff8",
+          "fingerprint": "c5f160b8554635845ce74952cb9f335baddb716aa92dddfd42f68437a6c3e2e7"
+        }
+      ]
+    }
+  ]
+}

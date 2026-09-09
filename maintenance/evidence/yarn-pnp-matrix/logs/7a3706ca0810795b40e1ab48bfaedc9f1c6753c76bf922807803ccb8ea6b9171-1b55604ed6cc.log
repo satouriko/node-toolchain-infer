@@ -1,0 +1,21 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/0/tools/yarn-0.24.3/node_modules/yarn/bin/yarn.js install --frozen-lockfile --ignore-scripts --non-interactive
+yarn install v0.24.3
+(node:91058) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+warning Ignored scripts due to flag.
+Done in 0.54s.
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/0703a3532b6979112a37b0f3a91ad77c36199ed147cf0e341f34ebc5bbc56c53-0d94fa14624b.log

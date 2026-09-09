@@ -1,0 +1,24 @@
+{
+  "recipe": {
+    "id": "pnpm-legacy-shrinkwrap-v4",
+    "manager": "pnpm",
+    "version": "2.25.7",
+    "directory": "pnpm/legacy-shrinkwrap-v4/shared-workspace",
+    "lock": "shrinkwrap.yaml",
+    "match": {
+      "format": "4",
+      "file": "shrinkwrap.yaml",
+      "features": {
+        "sharedWorkspace": true
+      }
+    },
+    "dependencies": {
+      "is-number": "7.0.0"
+    },
+    "node": "11.10.1"
+  },
+  "sourceProbe": "probes/pnpm-2.25.7-shrinkwrap.yaml-1788944041513-dd9a61",
+  "observationId": "ec41188ef379869571fde0847bac9d67c61c0e01f382b4a9fc04225d657d9fc9-6d010d5a3710",
+  "fixtureHash": "ace931357ccd73c51a9b037826fcba78373d935ea57e93ddbb587fcc708125fb",
+  "note": "Original generated inputs, receipt and log copied byte-for-byte. Actual shared-workspace-shrinkwrap configuration generated version 4; exact frozen install preserved every input byte and installed is-number 7.0.0. The root dependency is tested; no nested workspace dependency claim."
+}

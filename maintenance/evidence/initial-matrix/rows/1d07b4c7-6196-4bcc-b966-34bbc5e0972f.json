@@ -1,0 +1,121 @@
+{
+  "id": "1d07b4c7-6196-4bcc-b966-34bbc5e0972f",
+  "key": "4229cfc88d857c324d1041195e0303695f2cf7fe2433699baa184ae0a6be41a8",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "pnpm",
+  "version": "2.25.6",
+  "fixtureId": "pnpm-legacy-shrinkwrap-v3",
+  "fixtureHash": "e794d9bdc7cf680854babb065a72502aa8505e46e6b68f9f63ba29803518282b",
+  "catalogHash": "972e5af6bc92aaeb37c6db20e1a98da894371f74975b09564e8db63b530373b4",
+  "createdAt": "2026-09-09T10:59:58.830Z",
+  "attempt": 4,
+  "status": "pass",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d"
+    },
+    "id": "dfece775e149f7271fe2f9e4a1d2e3830223be9b7fb5380610864ec5644d7d27-52c6cfd45954",
+    "key": "dfece775e149f7271fe2f9e4a1d2e3830223be9b7fb5380610864ec5644d7d27",
+    "manager": "pnpm",
+    "version": "2.25.6",
+    "actualVersion": "2.25.6",
+    "node": "11.9.0",
+    "nodeIntegrity": "sha256-HfPdmdF0u4y2HMjiqkGaSZjHralFQSPDSZHOMGMvHvg=",
+    "nodeArch": "x64",
+    "toolIntegrity": "sha512-5N7JPGL0rwwWQU/ofxhnp3lgmRoF7LlxMvJUCLjWORavfpB8uBIOKoae4JGWt4cPhXY/u6y5k1yZRmHMZiyRKQ==",
+    "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-2.25.6.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "pnpm-legacy-shrinkwrap-v3",
+    "fixtureHash": "e794d9bdc7cf680854babb065a72502aa8505e46e6b68f9f63ba29803518282b",
+    "command": [
+      "install",
+      "--frozen-shrinkwrap",
+      "--ignore-scripts"
+    ],
+    "status": "pass",
+    "exitCode": 0,
+    "beforeHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d",
+      "yarn.lock": "<missing>"
+    },
+    "afterHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d",
+      "yarn.lock": "<missing>"
+    },
+    "installed": {
+      "is-number": "7.0.0"
+    },
+    "requestedDependencies": {
+      "is-number": "7.0.0"
+    },
+    "semantic": true,
+    "semanticMethod": "node-modules",
+    "frozenControl": {
+      "protocol": "frozen-install-v2",
+      "inputHashes": {
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d"
+      },
+      "id": "c3631623924a4712e2f53bec1f3eb5f2972719953e31829f22f19a9554523af6-bff2e13ae1a4",
+      "key": "c3631623924a4712e2f53bec1f3eb5f2972719953e31829f22f19a9554523af6",
+      "manager": "pnpm",
+      "version": "2.25.6",
+      "actualVersion": "2.25.6",
+      "node": "11.9.0",
+      "nodeIntegrity": "sha256-HfPdmdF0u4y2HMjiqkGaSZjHralFQSPDSZHOMGMvHvg=",
+      "nodeArch": "x64",
+      "toolIntegrity": "sha512-5N7JPGL0rwwWQU/ofxhnp3lgmRoF7LlxMvJUCLjWORavfpB8uBIOKoae4JGWt4cPhXY/u6y5k1yZRmHMZiyRKQ==",
+      "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-2.25.6.tgz",
+      "platform": "darwin",
+      "arch": "arm64",
+      "fixtureId": "pnpm-legacy-shrinkwrap-v3:frozen-control",
+      "fixtureHash": "a9ea38adff4c3f4a56dc44dc97f4b9698efa98575c3e33496646d378c13cfa2f",
+      "command": [
+        "install",
+        "--frozen-shrinkwrap",
+        "--ignore-scripts"
+      ],
+      "status": "incompatible",
+      "exitCode": 1,
+      "beforeHashes": {
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d",
+        "yarn.lock": "<missing>"
+      },
+      "afterHashes": {
+        "npm-shrinkwrap.json": "<missing>",
+        "package-lock.json": "<missing>",
+        "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+        "pnpm-lock.yaml": "<missing>",
+        "shrinkwrap.yaml": "679ab56747eebf235f2eca77806bf6630a8cc218dab967b470a84a4cd8ab088d",
+        "yarn.lock": "<missing>"
+      },
+      "installed": {
+        "is-number": "<missing>"
+      },
+      "requestedDependencies": {
+        "is-number": "6.0.0"
+      },
+      "semantic": false,
+      "semanticMethod": "node-modules",
+      "logPath": "logs/c3631623924a4712e2f53bec1f3eb5f2972719953e31829f22f19a9554523af6-bff2e13ae1a4.log",
+      "createdAt": "2026-09-09T10:59:58.390Z"
+    },
+    "logPath": "logs/dfece775e149f7271fe2f9e4a1d2e3830223be9b7fb5380610864ec5644d7d27-52c6cfd45954.log",
+    "createdAt": "2026-09-09T10:59:58.638Z"
+  }
+}

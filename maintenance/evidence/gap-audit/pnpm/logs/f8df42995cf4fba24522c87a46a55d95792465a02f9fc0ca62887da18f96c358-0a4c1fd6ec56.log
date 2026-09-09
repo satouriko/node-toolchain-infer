@@ -1,0 +1,20 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-10.24.1-darwin-x64-8088968a896e17c21b98187f8083291df9c88d0baa100a6cb9553e53c4fb17f8/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/2.17.0-5-node-10.24.1-pnpm-legacy-shrinkwrap-v3/pnpm-2.17.0-5/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+Performing headless installation
+Packages: +1
++
+Resolving: total 1, reused 0, downloaded 1, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/91dd55566e0e85357a569b08c574e12292e4aaf39f3e862fc26b52ad3f1e8d43-ce61598db7e1.log

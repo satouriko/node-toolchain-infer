@@ -1,0 +1,93 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm WARN old lockfile 
+npm WARN old lockfile The npm-shrinkwrap.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_35_36_675Z-debug-0.log
+
+[npm debug: 2026-09-09T10_35_36_675Z-debug-0.log]
+0 verbose cli [
+0 verbose cli   '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node',
+0 verbose cli   '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/bin/npm-cli.js',
+0 verbose cli   'ci',
+0 verbose cli   '--ignore-scripts',
+0 verbose cli   '--no-audit',
+0 verbose cli   '--no-fund'
+0 verbose cli ]
+1 info using npm@8.4.1
+2 info using node@v24.10.0
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/npmrc Completed in 4ms
+6 timing config:load:builtin Completed in 4ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npmrc Completed in 3ms
+10 timing config:load:project Completed in 5ms
+11 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-userconfig Completed in 1ms
+12 timing config:load:user Completed in 1ms
+13 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-globalconfig Completed in 1ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 2ms
+16 timing config:load:credentials Completed in 0ms
+17 timing config:load:setEnvs Completed in 0ms
+18 timing config:load Completed in 15ms
+19 timing npm:load:configload Completed in 15ms
+20 timing npm:load:setTitle Completed in 12ms
+21 timing config:load:flatten Completed in 1ms
+22 timing npm:load:display Completed in 1ms
+23 verbose logfile /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_35_36_675Z-debug-0.log
+24 timing npm:load:logFile Completed in 2ms
+25 timing npm:load:timers Completed in 0ms
+26 timing npm:load:configScope Completed in 0ms
+27 timing npm:load Completed in 33ms
+28 timing arborist:ctor Completed in 0ms
+29 timing npm-ci:rm Completed in 0ms
+30 timing idealTree:init Completed in 0ms
+31 warn old lockfile
+31 warn old lockfile The npm-shrinkwrap.json file was created with an old version of npm,
+31 warn old lockfile so supplemental metadata must be fetched from the registry.
+31 warn old lockfile
+31 warn old lockfile This is a one-time fix-up, please be patient...
+31 warn old lockfile
+32 silly inflate node_modules/is-number
+33 http fetch GET 200 https://registry.npmjs.org/is-number 247ms (cache miss)
+34 timing idealTree:inflate Completed in 260ms
+35 timing idealTree:userRequests Completed in 1ms
+36 silly idealTree buildDeps
+37 silly fetch manifest is-number@6.0.0
+38 silly placeDep ROOT is-number@6.0.0 REPLACE for: compatibility-fixture@1.0.0 want: 6.0.0
+39 timing idealTree:#root Completed in 4ms
+40 timing idealTree:node_modules/is-number Completed in 0ms
+41 timing idealTree:buildDeps Completed in 4ms
+42 timing idealTree:fixDepFlags Completed in 0ms
+43 timing idealTree Completed in 266ms
+44 timing command:ci Completed in 281ms
+45 verbose stack Error: `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+45 verbose stack
+45 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+45 verbose stack
+45 verbose stack     at CI.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/lib/commands/ci.js:73:13)
+45 verbose stack     at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/lib/cli.js:66:5)
+46 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project
+47 verbose Darwin 25.6.0
+48 verbose argv "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node" "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-8.4.1/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+49 verbose node v24.10.0
+50 verbose npm  v8.4.1
+51 error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+51 error
+51 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+51 error
+52 verbose exit 1
+53 timing npm Completed in 518ms
+54 verbose code 1
+55 error A complete log of this run can be found in:
+55 error     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_35_36_675Z-debug-0.log

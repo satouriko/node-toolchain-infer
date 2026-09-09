@@ -1,0 +1,27 @@
+Error: Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.4.0-darwin-arm64-4f4fbcacf6b1ff1a95deedba7bd7b2d79efecaa53a8ecb0530546dc9063fefbc/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-12.0.0-alpha.1/pnpm --version
+file:///private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/3/tools/pnpm-12.0.0-alpha.1/pnpm:1
+This is a placeholder. pnpm's native binary replaces this file during
+     ^^
+
+SyntaxError: Unexpected identifier 'is'
+    at compileSourceTextModule (node:internal/modules/esm/utils:354:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:90:18)
+    at #translate (node:internal/modules/esm/loader:437:20)
+    at afterLoad (node:internal/modules/esm/loader:505:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:510:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:563:36)
+    at afterResolve (node:internal/modules/esm/loader:610:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:616:12)
+    at node:internal/modules/esm/loader:635:32
+    at TracingChannel.tracePromise (node:diagnostics_channel:539:22)
+
+Node.js v26.4.0
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:508:28)
+    at Pipe.<anonymous> (node:net:346:12)

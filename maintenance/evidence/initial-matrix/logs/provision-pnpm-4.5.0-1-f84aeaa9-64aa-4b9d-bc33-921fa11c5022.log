@@ -1,0 +1,25 @@
+Error: Dependency bootstrap incomplete; log: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/2b17c137ac7d76ea48c2f86af2f62f39c4349f168005606cc838cc4f88002d3b/attempt-fdCPT7/bootstrap.log
+    at <anonymous> (/Users/cuteloli/Code/node-toolchain-infer/maintenance/bootstrap.ts:145:15)
+Error: Command failed: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js install --global=false --ignore-scripts --omit=dev --no-audit --no-fund --registry=https://registry.npmjs.org
+npm warn Unknown env config "npm-globalconfig". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "link:": link:
+npm error A complete log of this run can be found in: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/npm-cache/_logs/2026-09-09T10_14_52_757Z-debug-0.log
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:508:28)
+    at Pipe.<anonymous> (node:net:346:12)
+
+npm warn Unknown env config "npm-globalconfig". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "link:": link:
+npm error A complete log of this run can be found in: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/npm-cache/_logs/2026-09-09T10_14_52_757Z-debug-0.log

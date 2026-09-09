@@ -1,0 +1,8 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-12.0.0-darwin-x64-92c81a284e909424b50dd01e175260b75bbbdb487fdfe1885229817187ea76bc/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/project/pnpm-lock.yaml
+ERROR  Headless installation requires a pnpm-lock.yaml file
+at _install                 /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/lib/node_modules/supi/lib/install/index.js:204  
+at withLock [as default]    /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/lib/node_modules/supi/lib/lock.js:26            
+at async mutateModules      /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/lib/node_modules/supi/lib/install/index.js:167  
+at install                  /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/lib/node_modules/supi/lib/install/index.js:119  
+at installCmd [as install]  /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/7/tools/pnpm-3.2.0/lib/cmd/install.js:76

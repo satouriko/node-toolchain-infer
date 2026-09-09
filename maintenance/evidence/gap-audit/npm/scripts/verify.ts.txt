@@ -1,0 +1,18 @@
+import {readFile,readdir,writeFile} from 'node:fs/promises'
+import {join,resolve} from 'node:path'
+import assert from 'node:assert/strict'
+import {digest} from '../../maintenance/model.ts'
+import {validateKnownBugs,observationFingerprint,reviewedBug} from '../../maintenance/known-bugs.ts'
+const out=resolve('maintenance/evidence/gap-audit/npm')
+const json=async(p:string)=>JSON.parse(await readFile(p,'utf8'))
+const reviews=validateKnownBugs(await json(join(out,'candidate-known-bugs.json')))
+const audit=await json(join(out,'review-audit.json')),coverage=await json(join(out,'coverage.json')),source=await json(join(out,'source-audit/index.json'))
+assert.equal(audit.observations.length,636);assert.deepEqual(reviews.map(b=>b.observations.length),[60,576]);assert.equal(coverage.totalPoints,3630);assert.equal(coverage.fixtures.length,6)
+for(const item of audit.observations){const raw=await readFile(item.rowPath);assert.equal(digest(raw),item.rowSha256);const row=JSON.parse(raw.toString());assert.equal(observationFingerprint(row.observation),item.fingerprint);assert.equal(reviewedBug(row.observation,reviews)?.id,item.bugId);assert.equal(digest(await readFile(item.logPath)),item.logSha256);assert.equal(digest(await readFile(join(out,'source-audit/files',item.sourceSha256+'.js'))),item.sourceSha256)}
+let baseline=0,canaries=0,controls=0
+for(const p of (await readdir(join(out,'reproductions'),{recursive:true})).filter(p=>p.endsWith('/observation.json'))){const obs=await json(join(out,'reproductions',p));assert.equal(obs.exitCode,0);assert.equal(obs.semantic,true);assert.deepEqual(obs.installed,{'is-number':'7.0.0'});const comparison=await json(join(out,'reproductions',p.replace('observation.json','semantic-comparison.json')));assert.equal(comparison.dependencyGraphEqual,true);baseline++}
+for(const p of await readdir(join(out,'lock-selection-canary'),{recursive:true})){if(p.endsWith('/observation.json')){const obs=await json(join(out,'lock-selection-canary',p));assert.equal(obs.exitCode,0);assert.equal(obs.semantic,true);assert.deepEqual(obs.installed,{'is-number':'6.0.0'});assert.equal(obs.command[0],'ci');canaries++}else if(p.endsWith('/without-lock.json')){const control=await json(join(out,'lock-selection-canary',p));assert.equal(control.exitCode,0);assert.equal(control.installed,'7.0.0');controls++}}
+assert.equal(baseline,48);assert.equal(canaries,54);assert.equal(controls,9);assert.equal(source.length,106);assert(source.every((s:any)=>s.loadsVirtualLock));assert.deepEqual(source.filter((s:any)=>s.validatesLock).map((s:any)=>s.version),['8.4.1'])
+for(const f of coverage.fixtures)for(const p of f.points)for(const row of p.rows??[]){assert.equal(digest(await readFile(row.rowPath)),row.rowSha256);if(row.logPath)assert.equal(digest(await readFile(row.logPath)),row.logSha256)}
+const result={verifiedAt:new Date().toISOString(),result:'pass',reviewedObservations:636,baselineRuns:baseline,lockSelectionCanaries:canaries,locklessControls:controls,sourceArtifacts:source.length,classifiedPoints:coverage.totalPoints,rawConclusiveFailureLogs:coverage.rawConclusiveFailureLogsChecked}
+await writeFile(join(out,'verification.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2))

@@ -1,0 +1,34 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/3/tools/yarn-4.0.0-rc.39/node_modules/@yarnpkg/cli-dist/bin/yarn.js install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed in 0s 341ms
+
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0000: │ @@ -2,20 +2,18 @@
+➤ YN0000: │  # Manual changes might be lost - proceed with caution!
+➤ YN0000: │  
+➤ YN0000: │  __metadata:
+➤ YN0000: │    version: 7
+➤ YN0028: │ -  cacheKey: 9
+➤ YN0000: │  
+➤ YN0000: │  "compatibility-fixture@workspace:.":
+➤ YN0000: │    version: 0.0.0-use.local
+➤ YN0000: │    resolution: "compatibility-fixture@workspace:."
+➤ YN0000: │    dependencies:
+➤ YN0028: │ -    is-number: "npm:7.0.0"
+➤ YN0028: │ +    is-number: "npm:6.0.0"
+➤ YN0000: │    languageName: unknown
+➤ YN0000: │    linkType: soft
+➤ YN0000: │  
+➤ YN0028: │ -"is-number@npm:7.0.0":
+➤ YN0028: │ -  version: 7.0.0
+➤ YN0028: │ -  resolution: "is-number@npm:7.0.0"
+➤ YN0028: │ -  checksum: 748df55ae14cc960b090a7611932940df9fa703b7e0fb4f73943b4eb94c4b5391f27ba3881fab8f5bf7a2f097490e812db0d58d05c92154e70fdf14f93d6fa95
+➤ YN0028: │ +"is-number@npm:6.0.0":
+➤ YN0028: │ +  version: 6.0.0
+➤ YN0028: │ +  resolution: "is-number@npm:6.0.0"
+➤ YN0000: │    languageName: node
+➤ YN0000: │    linkType: hard
+➤ YN0000: │ 
+➤ YN0028: │ The lockfile would have been modified by this install, which is explicitly forbidden.
+➤ YN0000: └ Completed
+➤ YN0000: Failed with errors in 0s 347ms

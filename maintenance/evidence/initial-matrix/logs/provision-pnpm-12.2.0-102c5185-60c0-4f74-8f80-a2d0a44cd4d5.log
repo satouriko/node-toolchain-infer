@@ -1,0 +1,27 @@
+Error: Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.8.1-darwin-arm64-6e577fd0d9db776db82306629e441a9dace416702622aebdd171c9dfaa41f4d2/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe --version
+node:internal/modules/esm/get_format:243
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".exe" for /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-0psoBW/2/tools/pnpm-12.2.0/pnpm.exe
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:243:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:283:36)
+    at defaultLoadSync (node:internal/modules/esm/load:159:16)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:809:12)
+    at #loadSync (node:internal/modules/esm/loader:841:53)
+    at ModuleLoader.load (node:internal/modules/esm/loader:790:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:501:31)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:567:36)
+    at afterResolve (node:internal/modules/esm/loader:614:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:620:12) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v26.8.1
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)

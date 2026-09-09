@@ -1,0 +1,9 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-20.12.2-darwin-arm64-98eb624b52efec2530079e1d11296ec0ac20771b94b087d21649250339cf5332/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/9.0.0-rc.2-node-20.12.2-pnpm-lock-v6/pnpm-9.0.0-rc.2/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+ ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE  Cannot perform a frozen installation because the version of the lockfile is incompatible with this version of pnpm
+
+Try either:
+1. Aligning the version of pnpm that generated the lockfile with the version that installs from it, or
+2. Migrating the lockfile so that it is compatible with the newer version of pnpm, or
+3. Using "pnpm install --no-frozen-lockfile".
+Note that in CI environments, this setting is enabled by default.

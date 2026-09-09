@@ -1,0 +1,89 @@
+{
+  "id": "c49857ac-eb70-4f82-bb6f-de19e01dd29f",
+  "key": "fddd0b82db1cb01a655e8bb84cb47d099953210166b18544e0df75b302e2893a",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.27.5",
+  "fixtureId": "yarn-modern-v10",
+  "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:01.470Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "id": "b7022f5e43a5a1c8d61e7fcd04f0bf6807b86c3b2f1a4a508d1a46ce556a0c0c-9d423401b5c5",
+    "key": "b7022f5e43a5a1c8d61e7fcd04f0bf6807b86c3b2f1a4a508d1a46ce556a0c0c",
+    "manager": "yarn",
+    "version": "0.27.5",
+    "actualVersion": "0.27.5",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-8W8oj308F1FFK+716vGRUbCpVVjZ9Bws2lPnyXkMC+lCFWyebev3Tzxqk/j0PGMjGzE5CnwrhDeYr6aCD5UBBA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/package-lock.json",
+      "lockfileSha256": "8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4",
+      "logPath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/6f796995d647ea516f4eb1617fb5594baa32d444b1aeafea934a4301d8319260.log",
+      "installedTreeSha256": "5d4a4b9526f9963d44594374f5a0ab25dc3ebb699b1ad117329551b8d2e13b0b"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.27.5.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v10",
+    "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/b7022f5e43a5a1c8d61e7fcd04f0bf6807b86c3b2f1a4a508d1a46ce556a0c0c-9d423401b5c5.log",
+    "createdAt": "2026-09-09T10:19:01.429Z"
+  }
+}

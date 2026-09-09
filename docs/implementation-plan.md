@@ -1,62 +1,71 @@
-# toolchain-infer Implementation Plan
+# node-toolchain-infer Implementation Plan
 
-> For agentic workers: use subagent-driven-development for bounded independent data and maintenance tasks; the controller implements the resolver and integration. Execute continuously under the user's existing authorization.
+> **For agentic workers:** Use superpowers:subagent-driven-development for independent tasks; the controller implements the core and integration locally. Follow this approved plan continuously.
 
-**Goal:** Deliver a usable standalone npm package plus automated data acquisition and AI-maintained frozen-install evidence.
-**Architecture:** Pure version-pair resolver, filesystem collector, independent data refresh, isolated compatibility runner.
-**Tech Stack:** Node >=20, JavaScript ESM, semver, yaml, node:test, TypeScript declarations.
+**Goal:** Deliver the standalone Node >=18 inference package, maintained compatibility data and a complete bilingual website in one project.
+**Architecture:** Pure resolver and browser adapter; filesystem/runtime/official-data I/O; isolated fixture maintenance and Actions reporting; static multilingual website.
+**Tech Stack:** Node >=18, TypeScript 7.0.2 (strict, ESM), pnpm 10.33.0, eslint-config-unicute, semver, yaml, node:test, generated TypeScript declarations, esbuild and Playwright for the website.
 **Spec:** docs/design.md
 
 ## Global Constraints
 
-- Work only in /Users/cuteloli/Code/toolchain-infer; no edits to litest or the website.
-- npm/pnpm/Yarn/Bun are supported. Bun does not imply absence of Node.
-- Directory distance precedes source priority; version conflicts warn and ignore the lower-priority condition.
-- No hardcoded fallback Node/npm. Preserve package manager / engines.node candidate relationships.
-- Data provenance distinguishes official source and fixture verification; unknown is not pass.
-- All network writes, npm publish and remote hosting are outside this task. Local package and tarball are the deliverable.
+- Root /Users/cuteloli/Code/node-toolchain-infer; never edit litest.
+- Only npm, pnpm and Yarn; exact priority and data policy from spec are binding.
+- No hardcoded Node/npm fallback, no Renovate mapping, no fabricated fixture observations.
+- Independent website implementation may overlap controller core work but implementation subagents are sequential. No subagents spawned by implementers.
+- No doc-only commits, no remote writes or publication. Preserve existing user files and the old site until new server is ready.
 
-## Task 1: Automatic data and update detection
+### Task 1: Bilingual website in the package repository
 
-Owner: data implementer. Files: src/catalog.js; scripts/sync-data.js, check-releases.js, validate-data.js; test/catalog.test.js, releases.test.js; data/catalog.json. Do not edit package.json or compatibility.json.
+Files: website/** only. Source to migrate: /Users/cuteloli/.codex/artifacts/node-toolchain-lab (current approved site).
 
-- [ ] Write failing tests for parsing actual HTTP fixture shapes, rejecting malformed declared engines, and preserving destination on HTTP/parse failure.
-- [ ] Implement `loadCatalog(path?)` and `fetchCatalog({fetcher=fetch, signal}={})`, returning the design schema. JSON endpoints: nodejs.org/dist/index.json; registry.npmjs.org/{npm,pnpm,yarn,@yarnpkg%2Fcli-dist,bun}. Merge Yarn Classic major=1 and Berry major>=2. Verify version key equals manifest.version; retain prereleases as records. Missing node is null.
-- [ ] Export `loadRules({compatibilityPath?}={})`, returning an array from data/compatibility.json. Missing/invalid shipped files must error rather than inventing rules. Only official-source / fixture-verified provenance allowed. No external inferred-version mapping source.
-- [ ] Implement CLI sync script writing atomically only after complete validation. `--output PATH` supported. Run against live sources to populate release data.
-- [ ] Implement `check-releases.js`: compare catalog's released stable package manager versions against compatibility observations supplied through `--observations PATH`; filter `--manager` and output JSON via `--output PATH` including uncovered versions, fixture coverage requirements, prompt template path. This script never mutates existing verified rules. Summarize rather than printing all metadata.
-- [ ] Implement validate-data checking schema, ranges, rule match types and receipt presence. Missing observations are allowed (reported uncovered), malformed observation data errors.
-- [ ] Run focused tests, self-review, commit only owned files, report commands/results and provenance.
+Interfaces: retain current site UI input/state/trace contract initially. Core integration is performed by controller using resolve({sources,runtime},catalog,rules); do not change root src or package.json.
 
-## Task 2: Collector, resolver and public API
+- [x] Copy production website assets, source, local serve/build scripts and tests; omit node_modules, .qa, unused third-party research and stale datasets. Use the root semver dependency and esbuild; no copied vendor library.
+- [x] Add a browser test that switches Chinese/English, navigates each tab, preserves a calculator input and verifies the live fact filter. Run to observe missing language behavior.
+- [x] Implement complete Chinese/English content, including long rule and maintenance prose, dynamic calculator/trace/warning labels, ARIA attributes, date formatting, errors and toasts. Use explicit locale files; never runtime remote translation. Chinese/English static templates are allowed, but must share one behavior implementation and all IDs.
+- [x] Language controls are 中文 / English in header, preserve current tab/hash and entered values/filter, and persist preference. Both static and generated content must switch completely. Preserve four independent tabs and responsive layout. No slogan or local badge.
+- [x] Serve/build locally and inspect desktop and mobile in both languages. Use real official endpoints; do not ship test data as facts.
+- [x] Write website/README.md with bilingual build/serve instructions and validation results; report files and concerns. Do not commit shared files or start a persistent server on 49295 (controller will switch it).
 
-Owner: controller. Files: src/sources.js, collect.js, runtime.js, resolve.js, index.js; bin/toolchain-infer.js; types/index.d.ts; test/resolve.test.js, collect.test.js, api.test.js.
+### Task 2: Core, official metadata and public API
 
-- [ ] Write behavior tests from docs/design.md before implementations.
-- [ ] Implement strictly ordered filesystem collection, protected ancestor boundary, all declared sources including Yarn cacheKey and Bun lock formats, warnings for unreadable/malformed files without executing project code.
-- [ ] Implement pure pair-preserving priority merge and selection. Data/rules arguments allow deterministic tests; current runtime pair remains available as fallback even absent in snapshot. Retained conditional engines do not select a manager type.
-- [ ] Add runtime detection bound to process.execPath; npm manifest first, Node index second, inspected command fallback last with warning. Local PM candidates optional; never execute arbitrary project scripts.
-- [ ] Implement API and CLI flags --cwd, --root, --node, --package-manager, --catalog, --rules, --pretty. A CLI source override represents remoteContainer at cwd; invalid argument usage is CLI error, version conflicts remain warnings.
-- [ ] Verify deterministic input permutations at different directory depths, explicit ranges, pinned managers incompatible with Node, no declaration fallback, missing manager version and Bun/Node coexistence.
+Files: src/**, bin/**, types/**, test/** (except maintenance tests), scripts/sync-data.ts, scripts/validate-data.ts, package.json, README*.md.
 
-## Task 3: AI compatibility maintenance and real fixtures
+Interfaces: docs/design.md defines Source, runtime, catalog, rules and result. Export infer, collect, resolve, detectRuntime, fetchCatalog/loadCatalog/loadRules. Provide a browser-safe adapter src/playground.ts for the migrated calculator.
 
-Owner: compatibility implementer after Task 1 review. Files: maintenance/**, fixtures/**, data/compatibility.json, test/maintenance.test.js. Do not edit core modules or package.json.
+- [x] Establish behavioral tests for direct input arbitrary ranges, current/maximum/bound npm selection, parent directory ordering, conditional engines and unknown lock *; run before correcting stale resolver behavior.
+- [x] Implement collector using JSON/yaml parsing and deterministic depth/rank/occurrence order. Test temporary nested Git directories, worktree .git file, same-directory lock sources, invalid manifests, no-Git start-only behavior and absence of project writes.
+- [x] Implement paired candidate resolver and structured trace/warnings. Remove Bun and remoteContainer restrictions. Ensure evidence ranges are used exactly as shipped.
+- [x] Test metadata through a local HTTP fixture server: conditional 304, deduplication, retry after failure, explicit stale fallback, missing engines and atomic sync output. Implement eight official endpoint families plus manifests for tag-only Yarn versions, and a per-process validation cache; no default snapshot.
+- [x] Detect process Node/bound npm and local pnpm/Yarn, expose API and CLI with cwd/node/package-manager, JSON output and readable help. Write API/CLI and npm binding tests.
+- [x] Implement generated TypeScript declarations and browser adapter; validate same input selects the same result through website and package core.
 
-- [ ] Use only official package-manager sources and actual frozen-install runs. No third-party lockfile mapping. data/compatibility.json contains reviewed rules and observations using the exact schema from docs/design.md. Passing concrete manager versions can be represented as an OR set; do not claim an untested interval from its endpoints.
-- [ ] Define fixture manifest with manager, format/cacheKey/features, generator manager+Node, command, protected file paths, hashes, and real local dependency. Every supported format has a folder or explicit coverage entry with actionable pending status; never hand-edit only lockfileVersion to counterfeit a format.
-- [ ] Write runner behavioral tests before implementation: clean install pass, successful command rewriting a lockfile fails, manifest rewrite fails, command failure vs environment error, timeout cleanup, target --version verification, clean copy per run.
-- [ ] Implement verified local tool provisioning and fixture generation with explicit Node binary, then `run-matrix.js --manager NAME --version VERSION --node PATH --output PATH` runs every fixture for that manager with frozen commands. Store JSON plus logs and byte hashes. Fixtures remain immutable. Cache outside fixtures; no global installs.
-- [ ] Generate and run actual npm, pnpm, Yarn and Bun fixtures. Prefer all known format generations with explicit valid producer versions and compatible runtimes. Record exact successes/failures; unavailable environments become pending coverage, not invented results.
-- [ ] Create maintenance/update-compatibility.prompt.md and a reproducible method documenting release discovery, Node engine choice, official-source vs observed discrepancies, fixture creation, exception promotion with evidenceIds, and final validation commands. No automatic open-ended semver claims from one sample.
-- [ ] Add explicit pending version jobs referencing prompt and fixture set. Baseline observations include at least four manager families with real executions.
-- [ ] Run focused tests, self-review, commit owned files, report evidence and gaps.
+### Task 3: Compatibility maintenance, fixtures and GitHub Actions
 
-## Task 4: Integration, review, package artifact
+Files: maintenance/**, fixtures/**, .github/**, scripts/check-releases.ts, data/compatibility.json, test/maintenance*.test.ts. Core/catalog APIs consumed per spec; root package.json owned by controller.
 
-Owner: controller. Files: README.md, test/package.test.js, package.json only if needed for real integration.
+- [x] Add failing behavior tests for preserved history, pass/rewrite/inconclusive frozen outcomes, semantic mismatch detection, new format detection, unresolved items, and range generation with open upper bounds and restored OR support.
+- [x] Implement official tarball integrity provisioning, exact compatible Node selection, fixture generation and matrix execution in clean temporary directories. No global installs. Persist reproducible record keys/logs and distinguish frozen rejection from network/environment failures.
+- [x] Generate actual npm, pnpm, Yarn Classic and Modern fixtures and run frozen installs. Add format-family directories with honest coverage metadata. Use only confirmed boundaries in generated compatibility.json; unknown formats remain *; list uncovered cases in maintenance docs.
+- [x] Implement maintenance check orchestration for new releases and unresolved issues, JSON/Markdown report, exit 0/1/2, and commands reusable by AI. Successful check records can be appended; only confirmed evidence updates compatibility ranges.
+- [x] Add scheduled/manual GitHub workflow: source fixtures and code from main, reuse/persist evidence on data branch, upload report/logs before failing; no automatic npm publish. Separate checks CI for Node18 and current LTS.
+- [x] Write complete English/Chinese AI maintenance prompts/method: release comparison, fixture creation, source verification, boundary confirmation, range compilation, same-command recheck. Test the real scripts and report baseline evidence without overstating coverage.
 
-- [ ] Document API/CLI examples, exact priority, data refresh commands, the two maintenance categories, fixture matrix method and current verified coverage.
-- [ ] Run full unit suite, data validation, scan nested real temp project, exercise CLI and API using production data.
-- [ ] Run npm pack and install tarball into a new temp consumer, verify exported API/CLI/data/types. Inspect included files for secrets, caches and fixture evidence claims.
-- [ ] Request independent review, address material findings, rerun covering verification, report package path and test results.
+### Task 4: Integrate, review, pack and switch local site
+
+Files: package.json/pnpm-lock.yaml, docs/**, README*.md, test/package.test.ts, website adapter integration.
+
+- [x] Integrate browser calculator with pure core/rules, build website, run all tests and Node18 tests.
+- [x] npm pack and install resulting tarball in a fresh temporary consumer; exercise API, CLI and TypeScript types. Include only runtime files and compiled compatibility rules in published package.
+- [x] Review full changes independently and resolve material issues. Save actual test evidence and limitations.
+- [x] Restart only the known old local website server so 127.0.0.1:49295 serves website/ in this project. Verify both locales, language persistence, tabs, deep links, calculator and official facts.
+- [x] Deliver repository path, tarball, local website and validation summary. No remote publish or push.
+
+## Historical initial data result
+
+The official snapshot includes 2,259 exact releases and 23 fixtures (18,181 combinations). Every combination has an attempt record; 15,905 are conclusive and 2,276 remain unknown. Nineteen compatibility ranges are bundled; four unconfirmed formats retain `*`. Original failures, retries and reviewed exclusions remain in [the initial data report](../maintenance/evidence/initial-release-data/README.md). Unknown evidence keeps compilation at exit code 2; it is not relabeled as successful installation or incompatibility.
+
+## Stable-only policy update
+
+Automatic inference and maintained compatibility data now exclude prereleases; explicit versions and ranges fetch matching prereleases on demand and admit them only for the declared tool. The current bundle contains 21 rules; 2 formats remain unknown. The [stable-only report](../maintenance/evidence/stable-only/README.md) records 13,574 stable version/fixture points and preserves unresolved evidence. The original all-release report above remains historical. Active known-bug reviews now contain 5 families with stable releases; 3 prerelease-only reviews remain archived.

@@ -1,0 +1,24 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/0/tools/pnpm-12.0.0-alpha.15/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+✓ Lockfile passes supply-chain policies (previously verified)
+Packages: +1
++
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/0/project/.pnpm-home/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 344ms using pnpm v12.0.0-alpha.15
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/a852c6efb0f84dc7b832d0980fe99f7b43dfc484293b5ac4107e47a9699d6278-80af23024ef7.log

@@ -1,0 +1,37 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/tools/npm-6.14.6/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm ERR! Cannot read properties of undefined (reading 'is-number')
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/project/.npm-cache/_logs/2026-09-09T10_13_06_697Z-debug.log
+
+[npm debug: 2026-09-09T10_13_06_697Z-debug.log]
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node',
+1 verbose cli   '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/tools/npm-6.14.6/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   'ci',
+1 verbose cli   '--ignore-scripts',
+1 verbose cli   '--no-audit',
+1 verbose cli   '--no-fund'
+1 verbose cli ]
+2 info using npm@6.14.6
+3 info using node@v24.10.0
+4 verbose npm-session c0773c562c5951e3
+5 info prepare initializing installer
+6 verbose prepare starting workers
+7 verbose prepare installation prefix: /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/project
+8 verbose prepare using npm-shrinkwrap.json
+9 verbose checkLock verifying package-lock data
+10 verbose teardown shutting down workers.
+11 info teardown Done in 0s
+12 verbose stack TypeError: Cannot read properties of undefined (reading 'is-number')
+12 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/tools/npm-6.14.6/node_modules/npm/node_modules/lock-verify/index.js:27:40
+12 verbose stack     at Array.forEach (<anonymous>)
+12 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/tools/npm-6.14.6/node_modules/npm/node_modules/lock-verify/index.js:25:25
+13 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/project
+14 verbose Darwin 25.6.0
+15 verbose argv "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node" "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/8/tools/npm-6.14.6/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+16 verbose node v24.10.0
+17 verbose npm  v6.14.6
+18 error Cannot read properties of undefined (reading 'is-number')
+19 verbose exit [ 1, true ]

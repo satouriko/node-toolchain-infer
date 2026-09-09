@@ -1,0 +1,76 @@
+{
+  "originalRowId": "f918d904-f47c-4470-a8e9-60eba5284846",
+  "purpose": "A frozen installation must reject a manifest requesting is-number 6 while the lock pins 7. Exit-zero unchanged lock with installed 6 disproves enforcement.",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "3d6acb3ce497ed762dd37793632ca8b12a073e8ae0fd4a8c4789282da823642d"
+    },
+    "id": "e13df35d07daa0771d1a9addcf8e38b49b764fb31302a5e090afd8aba4eca549-3344cfc9688d",
+    "key": "e13df35d07daa0771d1a9addcf8e38b49b764fb31302a5e090afd8aba4eca549",
+    "manager": "pnpm",
+    "version": "0.27.0",
+    "actualVersion": "0.27.0",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-PrLf9h+Jh8xXwRbokbbuq3jgPQY5mY/8vw+Wp7u7lCDg9wmtEirAyjjJCdbL3KxMaM61OHf9lQVF/rmrxAv7xw==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/bootstrap/992d27eb10179f292997d9228ad4de42047036f2266a8e73d430f19fe151b5bb/ca1290999c38afdbfd66b0f7be821b954abfa4553502f52a79eaf4f3372abfcf/package-lock.json",
+      "lockfileSha256": "ca1290999c38afdbfd66b0f7be821b954abfa4553502f52a79eaf4f3372abfcf",
+      "logPath": "/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/bootstrap/992d27eb10179f292997d9228ad4de42047036f2266a8e73d430f19fe151b5bb/ca1290999c38afdbfd66b0f7be821b954abfa4553502f52a79eaf4f3372abfcf/7497755db473b92375e795f7554c357675180495c541a3bcc8b2e139bcc02538.log",
+      "installedTreeSha256": "ccd5d36e8f2851d812d0eae833d9f87acf14a6c29e52e59254e58a117021a572"
+    },
+    "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-0.27.0.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "frozen-control-0.27.0",
+    "fixtureHash": "f6d91ef8efbd33e042de17462b3cd4762619f9794d45477ea535c148c27a04bf",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "status": "pass",
+    "exitCode": 0,
+    "beforeHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "3d6acb3ce497ed762dd37793632ca8b12a073e8ae0fd4a8c4789282da823642d",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "<missing>"
+    },
+    "afterHashes": {
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "310eda135cb267d11cf80fbea1532bae8fb58fc70a261b09f0137d93065dd1b1",
+      "pnpm-lock.yaml": "3d6acb3ce497ed762dd37793632ca8b12a073e8ae0fd4a8c4789282da823642d",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "<missing>"
+    },
+    "installed": {
+      "is-number": "6.0.0"
+    },
+    "semantic": true,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/e13df35d07daa0771d1a9addcf8e38b49b764fb31302a5e090afd8aba4eca549-3344cfc9688d.log",
+    "createdAt": "2026-09-09T10:25:17.329Z"
+  }
+}

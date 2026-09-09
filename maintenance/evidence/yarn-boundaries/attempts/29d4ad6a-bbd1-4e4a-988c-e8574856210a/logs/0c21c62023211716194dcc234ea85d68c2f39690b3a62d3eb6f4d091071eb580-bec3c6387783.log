@@ -1,0 +1,23 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.8.0-darwin-arm64-891e72d166abbb1b838b5113cc8cfaf2fe905dfe77afe84a5af56e426ff74ddf/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-2Fksvx/279de2d7-a53e-46b4-af56-77c0d5ec02f5/tools/0/yarn-2.4.3/node_modules/yarn/bin/yarn.js install --immutable
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ No packages were cached - one package had to be fetched
+➤ YN0000: └ Completed in 0s 319ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: Done in 0s 345ms
+
+[PnP dependency verification] /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-16.8.0-darwin-arm64-891e72d166abbb1b838b5113cc8cfaf2fe905dfe77afe84a5af56e426ff74ddf/bin/node --require /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-2Fksvx/279de2d7-a53e-46b4-af56-77c0d5ec02f5/projects/0/.pnp.js --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/1cd0ccc1ef9eb54af3e0f5f0d956c3963b86e78043621f4d9fd44370c46e8b50-42042fb9a431.log

@@ -1,0 +1,21 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-11.14.0-darwin-x64-37b8db4f6700a4b5aa3b6d4283538753953f6293aff99866aa9a81038848a4d9/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-AbpthK/9/tools/pnpm-3.2.0-0/node_modules/pnpm/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+ WARN  waiting for the store at "/Users/cuteloli/.pnpm-store/2" to be unlocked...
+Performing headless installation
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/ea5bc38c47fdd046b7268383cc90cf318b22ab008cdd9f18f71c74a0a3a00a61-7a2f7b791a44.log

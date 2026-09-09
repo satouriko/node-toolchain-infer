@@ -1,0 +1,89 @@
+{
+  "id": "9744e392-3d6e-4569-a28d-775abc9263f8",
+  "key": "8d999951064fea227b8bd56c082d1e5233f0a2d88dc5ecfb6e1bb626dbe495a2",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.20.3",
+  "fixtureId": "yarn-modern-v4",
+  "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:20:16.809Z",
+  "attempt": 1,
+  "status": "inconclusive",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "id": "e2c2e17d6155d8d5bceb500db2e95b82bfed24a9d38f1f4f74fb89253693fe73-963d491b7b89",
+    "key": "e2c2e17d6155d8d5bceb500db2e95b82bfed24a9d38f1f4f74fb89253693fe73",
+    "manager": "yarn",
+    "version": "0.20.3",
+    "actualVersion": "0.20.3",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-GmfA+2aFvcJbVlx8VzTQQE7hgShEKxYVRJpNyxwlgOmWaz/MqGEqM8q66TP60WYXtW1VbEGbqe8YJ7Dni5UdBg==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/8bebbc86c1125a54d77d8b28e4d16e07c24f50d68da800a524977b6b89dcc2c6/package-lock.json",
+      "lockfileSha256": "8bebbc86c1125a54d77d8b28e4d16e07c24f50d68da800a524977b6b89dcc2c6",
+      "logPath": "bootstrap/8bebbc86c1125a54d77d8b28e4d16e07c24f50d68da800a524977b6b89dcc2c6/842d5cbc03af8d114ae5636dbdfa714f21993aeb632be213c665dca51308ed06.log",
+      "installedTreeSha256": "51fe5f47c39418347e62d0d836c272f5a58156a028783d41038887834e238513"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.20.3.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v4",
+    "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "inconclusive",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/e2c2e17d6155d8d5bceb500db2e95b82bfed24a9d38f1f4f74fb89253693fe73-963d491b7b89.log",
+    "createdAt": "2026-09-09T10:20:16.789Z"
+  }
+}

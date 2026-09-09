@@ -1,0 +1,89 @@
+{
+  "id": "7f8fdfdc-b102-44be-adb3-1d2b23a3b91b",
+  "key": "3178aa47f48fc7ec7428f2a48a2688409cc65e1a74232c9b20ff7e58121a48ce",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.23.0",
+  "fixtureId": "yarn-modern-v9",
+  "fixtureHash": "5f616211f46709df34fdc7019760551685c2cfbc1b14f1a66cfc15db9f36f8a7",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:59.030Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "id": "74267383215fbc841a9950a5ced9cf05ab9b528f6a9606a2e3f0ec0f3d9afeac-a96a734da41c",
+    "key": "74267383215fbc841a9950a5ced9cf05ab9b528f6a9606a2e3f0ec0f3d9afeac",
+    "manager": "yarn",
+    "version": "0.23.0",
+    "actualVersion": "0.23.0",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-rflHWzgHeA4jEV3d7OGXaoJJX3zu20v+IYLcd+n8oUoPBZ8xdPcSiniFZ9VxBZaN8dVTIctaNXZDFyfYpRmLKg==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/900626866f20df1a5d49a2bbf1b339468eae0da604d22dda82bf1fa85c0b6629/package-lock.json",
+      "lockfileSha256": "900626866f20df1a5d49a2bbf1b339468eae0da604d22dda82bf1fa85c0b6629",
+      "logPath": "bootstrap/900626866f20df1a5d49a2bbf1b339468eae0da604d22dda82bf1fa85c0b6629/6e65ee9b753688e022c61f71a22346438c8d2f5d77e2f8481c3c9f7f913791c3.log",
+      "installedTreeSha256": "6b8d84f407b6807d53aae94e0b31adc3cad7a531150adb42990a6532e3252df9"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.23.0.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v9",
+    "fixtureHash": "5f616211f46709df34fdc7019760551685c2cfbc1b14f1a66cfc15db9f36f8a7",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/74267383215fbc841a9950a5ced9cf05ab9b528f6a9606a2e3f0ec0f3d9afeac-a96a734da41c.log",
+    "createdAt": "2026-09-09T10:19:59.013Z"
+  }
+}

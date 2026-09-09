@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "bugs": [
+    {
+      "manager": "pnpm",
+      "reviewedAt": "2026-09-09T12:14:56.522Z",
+      "id": "pnpm-auto-import-5.17.0",
+      "range": "5.17.0",
+      "fixtureIds": [
+        "pnpm-lock-v5",
+        "pnpm-lock-v5.1",
+        "pnpm-lock-v5.2",
+        "pnpm-lock-v5.3",
+        "pnpm-lock-v5.4"
+      ],
+      "reason": "The macOS auto/clone package importer exits before linking dependencies. The unchanged executable installs the same lock correctly with copy or hardlink; 5.17.1 also passes.",
+      "url": "https://github.com/pnpm/pnpm/compare/v5.17.0...v5.17.1",
+      "semanticEvidence": "maintenance/evidence/gap-audit/pnpm/README.md#pnpm-5170: original reader accepts lockfile major 5; all five original fixtures install without changed bytes when only package-import-method=copy is selected. Default import reproduces missing dependencies on Node 15.8.0 and 24.10.0. No repaired executable is used as baseline evidence.",
+      "observations": [
+        {
+          "id": "2579697c2faaf7a9eaeafb972b94b2ab7a0fe8c0352d0d51848273b6c436ac78-e83f6b8e3a19",
+          "fingerprint": "738246455171e1bc31c222d7dbdcff2ae95c22dbdc6084c5f3f6a7f4676c7e5e"
+        },
+        {
+          "id": "e33a25235c832b07614d22d023239afdec95311548d277090ac092e9bd6cef58-0608ac5b68c3",
+          "fingerprint": "85f0cb10f6fcb67aeefa6a2ed959b69005024ee336e622f02bc54a38690a57b2"
+        },
+        {
+          "id": "95727f723ab3fd22cb91fe938fd7897cff7d23c2feb9d43c99f28507e19c6632-c4c4095c760c",
+          "fingerprint": "60dbb8e042b6798fbeed129a4001dbf7f4608314355bf344c8881bd1903b5326"
+        },
+        {
+          "id": "52137b7e66b88e6001e598976fc37558ab46c4e8213587c2fe17bac8468597f5-3ca72e3e482c",
+          "fingerprint": "45292b571a4ff8444b6e1d9cd8c116486ac339595575a62f6dd72730dd5fe94d"
+        },
+        {
+          "id": "8fbe6da4e32eb724bd0e1a463ca8ccd17260a37feddd0199672eccffa7677cbe-b5a1ea0f821b",
+          "fingerprint": "18c6b5e9e86edc67ad2744b8adf7ca1790bcc52e090d84015b7a692a71d33f25"
+        },
+        {
+          "id": "2579697c2faaf7a9eaeafb972b94b2ab7a0fe8c0352d0d51848273b6c436ac78-fb39c715467a",
+          "fingerprint": "6dd35fac232b93bfbbe1b0ff655f22ead9314e794a29dcb727738247d37bd3bb"
+        },
+        {
+          "id": "1c5fce8eaca49c64f50dda659aec79f625f8af5989b747e5a8a7e676031c97a4-c5bafaa55570",
+          "fingerprint": "bcd12959dd5c1e6ea50c29adeae4676556e4f3d0e7e0e4e49be7b5da4c9c9968"
+        }
+      ]
+    },
+    {
+      "manager": "pnpm",
+      "reviewedAt": "2026-09-09T12:14:56.522Z",
+      "id": "pnpm-frozen-rewrite-8-prerelease",
+      "range": ">=8.0.0-alpha.0 <8.0.0-rc.0",
+      "fixtureIds": [
+        "pnpm-lock-v6"
+      ],
+      "reason": "Early pnpm 8 prereleases serialize an already current lockfile during frozen installation; the parsed lock, integrity and installed graph are unchanged.",
+      "url": "https://github.com/pnpm/pnpm/pull/6260",
+      "semanticEvidence": "maintenance/evidence/gap-audit/pnpm/README.md#pnpm-8-prereleases: Node 19.7.0 replays of alpha.0, beta.0 and beta.1 have identical parsed YAML and install is-number@7.0.0. Each historical after hash matches the replay; rc.0 preserves bytes.",
+      "observations": [
+        {
+          "id": "c944dd52ecf0603dddaed5416e045ba2f05c5140d4673f70418c64cec0069212-e05e97ca6cfc",
+          "fingerprint": "a91d7134e17907930cc4fc05a4eae75af900b377ad429dffc5fb58973a2b4972"
+        },
+        {
+          "id": "16937c6e7abfc8c766ce8bb15642dd29501335f8bc8db3208d28afd0da6d66eb-b0fa10ab05dd",
+          "fingerprint": "6f2f27610081a9062b419b3982567f73f9e956533a4fcf209fb627225169e149"
+        },
+        {
+          "id": "89c519dfe9b86b43a35a0527c9ce7e45b9bfee79d832dd425f8fbc8eda1e1055-e995aff36c78",
+          "fingerprint": "39274e7999d8ba874e105a52b2537b05211f9a6fe7c8500fb313ee6c5a3d4f1f"
+        },
+        {
+          "id": "0f8686b4690f2adfe440a45c5d398c4b309440e377e99cbcdedf1c8e53bc5518-d427088e9ef5",
+          "fingerprint": "aafb04877788006bfd219634821d8e2831298ba143552372520202fddf26da47"
+        },
+        {
+          "id": "b37927f5e5d826211aba3a2c239a58e7ce283d815d2748dc054c034d314e5cf2-b5fdb767b986",
+          "fingerprint": "ea71d08adb15201696e3c48530a4139f8e9ade8f36efd03f7ce79a1d0d464ba1"
+        },
+        {
+          "id": "cdfcdde993e47d2345a658eb8d54dd770b0b402dc629c8fc3a51abec9abb4deb-87982772bdb6",
+          "fingerprint": "2e08a4769250e938f53e3b33297ae4d31bd3016ec93b3321fc6322f7f97b178c"
+        }
+      ]
+    },
+    {
+      "manager": "pnpm",
+      "reviewedAt": "2026-09-09T12:14:56.522Z",
+      "id": "pnpm-v6-frozen-rejection-7934",
+      "range": ">=9.0.0-rc.0 <9.0.1",
+      "fixtureIds": [
+        "pnpm-lock-v6"
+      ],
+      "reason": "The reader explicitly accepts lockfile 6, but the frozen-install full-resolution guard incorrectly rejects it; fixed in pnpm 9.0.1.",
+      "url": "https://github.com/pnpm/pnpm/issues/7934",
+      "semanticEvidence": "maintenance/evidence/gap-audit/pnpm/README.md#pnpm-90: exact tagged readLockfiles.ts includes LOCKFILE_VERSION_V6, and install/index.ts compares it incorrectly. PR 7935 fixes the guard; unchanged original fixtures pass on adjacent 9.0.1. rc.0, rc.1, rc.2 and 9.0.0 rejection logs independently reproduced on Node 20.12.2. Earlier alpha/beta versions that do not list v6 remain incompatible.",
+      "observations": [
+        {
+          "id": "9f4bff5018a4ea7fdde28533c6d18c667056ccd0f2bc45323a0e7258530d342e-163e9c17c03c",
+          "fingerprint": "e59eb1e93bd064ab197abe4c44baba3a3731b4ba5afa19834892d30c1213d06c"
+        },
+        {
+          "id": "0df9b7f139c66042964469ae574da1b4f29c66a1b3fda876c323e1c3008f3ea5-45d83d0252b9",
+          "fingerprint": "0e59707f3c6a1fd5540279d665a9093df6168eb54e2359a80de38c4b4985c243"
+        },
+        {
+          "id": "4c917dcd905dbf05633d183b17d679d5ff5ef744571cf4886be42029da66c686-0a375dfbb3be",
+          "fingerprint": "69084595f7ffbd857226d5282f1642b83d4252512b76eef5527238b534262ae1"
+        },
+        {
+          "id": "4207b5a085cae36c8efebabc1e25766512172caff1cff68005d1be358cc8944e-320a63e563df",
+          "fingerprint": "95f8afe5b880cf5b1f8cfd4dd3c1d07db76b285a31dd80d62de78ea15f6250ab"
+        },
+        {
+          "id": "37ec506b2ff55a7d4d8086762a031b110696025f7888f130e367faf8b497e88c-3427494bcce0",
+          "fingerprint": "344ac77513c30ef35eaa30d4d334ff7fe238642963f6b78b75a09a80f3165d57"
+        },
+        {
+          "id": "1e88c2cf3fdc4a191c9483934d2e063e1f2ab109dc08b5580d28216df4c7b6db-a8be14fd4a67",
+          "fingerprint": "e4540516f25b2e21bec870d5dfbe87082d30e0cfadeb50305e3921691dd6fdd3"
+        },
+        {
+          "id": "59e38a718c160db21448dde31842a679a714e059856060a6de9963279932c800-b44c11226f3c",
+          "fingerprint": "734d45205ae275b6ab3a7eee81593141076911eb191e8b1503b3f17e6615f564"
+        },
+        {
+          "id": "e6b8fa009a2a007155476b5e340ed8cc51dd068cf414a86bb4961ed53221bafa-3d2a0f4915f6",
+          "fingerprint": "211dd2fc0f27712c00f1858835b6668c8a3e77aefd08c842f99c93aa61338e32"
+        }
+      ]
+    },
+    {
+      "manager": "pnpm",
+      "reviewedAt": "2026-09-09T12:14:56.522Z",
+      "id": "pnpm-v6-frozen-upgrade-7991",
+      "range": "9.0.5",
+      "fixtureIds": [
+        "pnpm-lock-v6"
+      ],
+      "reason": "pnpm 9.0.5 upgrades lockfile 6 to 9 even with --frozen-lockfile; the locked dependency graph and integrity are preserved. Fixed in 9.0.6.",
+      "url": "https://github.com/pnpm/pnpm/issues/7991",
+      "semanticEvidence": "maintenance/evidence/gap-audit/pnpm/README.md#pnpm-905: Node 20.12.2 reproduces the same after SHA-256 as every reviewed historical rewrite. Root specifier/version, package integrity, engines and empty dependency graph are preserved by the v6-to-v9 migration; is-number@7.0.0 is installed. Official 9.0.6 changelog explicitly fixes frozen upgrades.",
+      "observations": [
+        {
+          "id": "9c40d45d4229bd8799ed6bc1110f197c7528230b8629ce80855975e8164b96c4-0ee3e36b4b7b",
+          "fingerprint": "9aff924169e3344912a87f0bfd06ed5da5d02d7b7f65a5aeb9e8a1cc6a5fe89a"
+        },
+        {
+          "id": "8d5c16aef125e237cbc468b764bd0b1099338dd7cec6d4577a5e66d76b8c7fdb-b91290686213",
+          "fingerprint": "0713b65ba68a8802dec0a855d44270dd5cb05c63e1ffae7c4ba227c1b5da6823"
+        }
+      ]
+    }
+  ]
+}

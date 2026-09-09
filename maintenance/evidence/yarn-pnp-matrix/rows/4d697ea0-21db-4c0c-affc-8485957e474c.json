@@ -1,0 +1,89 @@
+{
+  "id": "4d697ea0-21db-4c0c-affc-8485957e474c",
+  "key": "bbbcf9c98d4df99e7a42c0a2e37af3a0ad9f9490ff13a157a9953aed58d90ae8",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.25.1",
+  "fixtureId": "yarn-modern-v10",
+  "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:20.236Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "id": "652bf33e87115bf6401676bc9ae9bb8e979a081231edc90949643c79bab51a16-005d8671bd54",
+    "key": "652bf33e87115bf6401676bc9ae9bb8e979a081231edc90949643c79bab51a16",
+    "manager": "yarn",
+    "version": "0.25.1",
+    "actualVersion": "0.25.1",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-K9utW8JUu4f9bFZSO2AqjPz/iXcyerjSVUa8PzoQQOAyBaWTvPiZBJ2SyZwtQ0j2LVJSzeNTi3fUWDPNMb/YnA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb/package-lock.json",
+      "lockfileSha256": "d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb",
+      "logPath": "bootstrap/d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb/c3970f3da9b46f5ebd4ed3d7bf5b74f3366e243b24d8cdb069a72a67feb72db9.log",
+      "installedTreeSha256": "3d7f74215ca6c56888cdb7193c712f241d5f9c7d837d6b5abf9cfa10dd350e5a"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.25.1.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v10",
+    "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/652bf33e87115bf6401676bc9ae9bb8e979a081231edc90949643c79bab51a16-005d8671bd54.log",
+    "createdAt": "2026-09-09T10:19:20.198Z"
+  }
+}

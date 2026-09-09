@@ -1,0 +1,31 @@
+import { readFile, readdir, readlink, writeFile, mkdir } from 'node:fs/promises'
+import { join, resolve, dirname } from 'node:path'
+import { digest } from '../../maintenance/model.ts'
+import { runFixture } from '../../maintenance/runner.ts'
+const root=resolve('.')
+const evidence=join(root,'maintenance/evidence/gap-audit/yarn/bootstrap-1.22.12')
+const packageRoot=join(root,'.cache/yarn-gap-audit/bootstrap-1.22.12/package')
+const provenance=JSON.parse(await readFile(join(evidence,'bootstrap-receipt.json'),'utf8'))
+const tool=JSON.parse(await readFile(join(evidence,'tool.json'),'utf8'))
+const entries:Array<[string,string]>=[]
+async function walk(relative:string):Promise<void>{
+ for(const e of (await readdir(join(packageRoot,relative),{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){
+  const path=join(relative,e.name)
+  if(e.isDirectory())await walk(path)
+  else if(e.isSymbolicLink())entries.push([path,'link:'+await readlink(join(packageRoot,path))])
+  else if(e.isFile())entries.push([path,digest(await readFile(join(packageRoot,path)))])
+ }
+}
+await walk('')
+const bootstrap={protocol:1,node:process.versions.node,npmVersion:JSON.parse(await readFile(join(dirname(process.execPath),'../lib/node_modules/npm/package.json'),'utf8')).version,npmCliHash:provenance.npmCliSha256,command:provenance.command,lockfilePath:join(evidence,'package-lock.json'),lockfileSha256:digest(await readFile(join(evidence,'package-lock.json'))),logPath:join(evidence,'bootstrap.log'),installedTreeSha256:digest(JSON.stringify(entries))}
+tool.bootstrap=bootstrap
+const destination=join(root,'maintenance/evidence/gap-audit/yarn/probes',`1.22.12-bootstrap-${Date.now()}`,'yarn-classic-v1')
+await mkdir(destination,{recursive:true})
+await writeFile(join(destination,'tool.json'),JSON.stringify(tool,null,2)+'\n')
+const catalog=JSON.parse(await readFile(join(root,'maintenance/evidence/yarn-pnp-matrix/catalog.json'),'utf8'))
+const fixture=JSON.parse(await readFile(join(root,'fixtures/recipes.json'),'utf8')).find((x:any)=>x.id==='yarn-classic-v1')
+const observation=await runFixture(fixture,tool,join(root,'fixtures'),join(root,'.cache/yarn-gap-audit/bootstrap-1.22.12/project-verified'),destination)
+const row={id:`gap-audit-${observation.id}`,key:digest(JSON.stringify([fixture.id,tool.version,observation.createdAt])),protocol:'frozen-initial-matrix-v2',manager:'yarn',version:tool.version,fixtureId:fixture.id,fixtureHash:observation.fixtureHash,catalogHash:digest(JSON.stringify(catalog)),createdAt:observation.createdAt,attempt:1,status:observation.status,observation}
+await writeFile(join(destination,'observation.json'),JSON.stringify(observation,null,2)+'\n')
+await writeFile(join(destination,'row.json'),JSON.stringify(row,null,2)+'\n')
+console.log(JSON.stringify({destination,status:observation.status,control:observation.frozenControl?.status}))

@@ -1,0 +1,15 @@
+{
+  "id": "c98eeb2e-b059-41fa-a5ef-eab5e0ae639d",
+  "key": "68fa2ec8255b37692528258ac75932729cf24d541b9c36969041dac9603350a6",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "npm",
+  "version": "2.11.1",
+  "fixtureId": "npm-shrinkwrap-v2",
+  "fixtureHash": "827210d911e50440f5e2674daadb7a8161f1a1df173834248d1272584f6dfc81",
+  "catalogHash": "972e5af6bc92aaeb37c6db20e1a98da894371f74975b09564e8db63b530373b4",
+  "createdAt": "2026-09-09T10:17:54.084Z",
+  "attempt": 3,
+  "status": "inconclusive",
+  "error": "Command failed: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/0/tools/npm-2.11.1/node_modules/npm/bin/npm-cli.js --version\n/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/0/tools/npm-2.11.1/node_modules/npm/node_modules/osenv/osenv.js:49\n  return os.tmpDir()\n            ^\n\nTypeError: os.tmpDir is not a function\n    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/0/tools/npm-2.11.1/node_modules/npm/node_modules/osenv/osenv.js:49:13\n    at exports.<computed> [as tmpdir] (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/0/tools/npm-2.11.1/node_modules/npm/node_modules/osenv/osenv.js:14:15)\n    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/0/tools/npm-2.11.1/node_modules/npm/lib/config/defaults.js:76:18)\n    at Module._compile (node:internal/modules/cjs/loader:1760:14)\n    at Object..js (node:internal/modules/cjs/loader:1893:10)\n    at Module.load (node:internal/modules/cjs/loader:1480:32)\n    at Module._load (node:internal/modules/cjs/loader:1299:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)\n    at Module.require (node:internal/modules/cjs/loader:1503:12)\n\nNode.js v24.10.0\n",
+  "logPath": "logs/provision-npm-2.11.1-94d83b13-dba1-4a34-a629-ed5ac9c0ebbc.log"
+}

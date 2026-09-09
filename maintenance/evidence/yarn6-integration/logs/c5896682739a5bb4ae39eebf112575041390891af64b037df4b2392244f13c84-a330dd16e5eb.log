@@ -1,0 +1,20 @@
+/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/tools/.native-yarn-Y6owWK/yarn install --immutable
+➤ · Yarn 6.0.0-rc.20
+➤ ┌ Installing packages
+➤ │ Fetched 1 package (9.96 KiB)
+➤ └ Completed in 251ms
+
+[PnP dependency verification] /Users/cuteloli/.local/share/fnm/node-versions/v18.20.8/installation/bin/node --require /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/nti-yarn6-integration-NG5nZg/frozen-pnp/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "native-yarn-integration-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "yarn@6.0.0-rc.20",
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/7e706ecb0a4c57beb24963b8107ae8f68cd46b12cdbbccaba80e5e4d79840d70-04c5d5f66088.log
