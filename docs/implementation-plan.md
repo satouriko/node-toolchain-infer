@@ -13,17 +13,17 @@
 - npm/pnpm/Yarn/Bun are supported. Bun does not imply absence of Node.
 - Directory distance precedes source priority; version conflicts warn and ignore the lower-priority condition.
 - No hardcoded fallback Node/npm. Preserve package manager / engines.node candidate relationships.
-- Data provenance distinguishes upstream inference, official source, and fixture verification; unknown is not pass.
+- Data provenance distinguishes official source and fixture verification; unknown is not pass.
 - All network writes, npm publish and remote hosting are outside this task. Local package and tarball are the deliverable.
 
 ## Task 1: Automatic data and update detection
 
-Owner: data implementer. Files: src/catalog.js; scripts/sync-data.js, sync-upstream.js, check-releases.js, validate-data.js; test/catalog.test.js, upstream.test.js, releases.test.js; data/catalog.json, upstream.json. Do not edit package.json or compatibility.json.
+Owner: data implementer. Files: src/catalog.js; scripts/sync-data.js, check-releases.js, validate-data.js; test/catalog.test.js, releases.test.js; data/catalog.json. Do not edit package.json or compatibility.json.
 
 - [ ] Write failing tests for parsing actual HTTP fixture shapes, rejecting malformed declared engines, and preserving destination on HTTP/parse failure.
 - [ ] Implement `loadCatalog(path?)` and `fetchCatalog({fetcher=fetch, signal}={})`, returning the design schema. JSON endpoints: nodejs.org/dist/index.json; registry.npmjs.org/{npm,pnpm,yarn,@yarnpkg%2Fcli-dist,bun}. Merge Yarn Classic major=1 and Berry major>=2. Verify version key equals manifest.version; retain prereleases as records. Missing node is null.
-- [ ] Export `fetchUpstream({fetcher=fetch}={})` and `loadRules({upstreamPath?,compatibilityPath?}={})`. loadRules returns an array of normalized rules, curated rules first. Extract the Renovate pnpm table and npm/Yarn branches from current source without executing source. Capture URL/hash/date; refuse unrecognized layouts rather than producing an empty or overly broad range.
-- [ ] Implement CLI sync scripts writing atomically only after complete validation. `--output PATH` supported. Run against live sources to populate release data and upstream rules.
+- [ ] Export `loadRules({compatibilityPath?}={})`, returning an array from data/compatibility.json. Missing/invalid shipped files must error rather than inventing rules. Only official-source / fixture-verified provenance allowed. No external inferred-version mapping source.
+- [ ] Implement CLI sync script writing atomically only after complete validation. `--output PATH` supported. Run against live sources to populate release data.
 - [ ] Implement `check-releases.js`: compare catalog's released stable package manager versions against compatibility observations supplied through `--observations PATH`; filter `--manager` and output JSON via `--output PATH` including uncovered versions, fixture coverage requirements, prompt template path. This script never mutates existing verified rules. Summarize rather than printing all metadata.
 - [ ] Implement validate-data checking schema, ranges, rule match types and receipt presence. Missing observations are allowed (reported uncovered), malformed observation data errors.
 - [ ] Run focused tests, self-review, commit only owned files, report commands/results and provenance.
@@ -43,12 +43,12 @@ Owner: controller. Files: src/sources.js, collect.js, runtime.js, resolve.js, in
 
 Owner: compatibility implementer after Task 1 review. Files: maintenance/**, fixtures/**, data/compatibility.json, test/maintenance.test.js. Do not edit core modules or package.json.
 
-- [ ] Read the structured source catalogue at /Users/cuteloli/.codex/artifacts/node-toolchain-lab/lockfile-sources.json for verified provenance. Build curated official additions separately from automated Renovate rules.
+- [ ] Use only official package-manager sources and actual frozen-install runs. No third-party lockfile mapping. data/compatibility.json contains reviewed rules and observations using the exact schema from docs/design.md. Passing concrete manager versions can be represented as an OR set; do not claim an untested interval from its endpoints.
 - [ ] Define fixture manifest with manager, format/cacheKey/features, generator manager+Node, command, protected file paths, hashes, and real local dependency. Every supported format has a folder or explicit coverage entry with actionable pending status; never hand-edit only lockfileVersion to counterfeit a format.
 - [ ] Write runner behavioral tests before implementation: clean install pass, successful command rewriting a lockfile fails, manifest rewrite fails, command failure vs environment error, timeout cleanup, target --version verification, clean copy per run.
 - [ ] Implement verified local tool provisioning and fixture generation with explicit Node binary, then `run-matrix.js --manager NAME --version VERSION --node PATH --output PATH` runs every fixture for that manager with frozen commands. Store JSON plus logs and byte hashes. Fixtures remain immutable. Cache outside fixtures; no global installs.
 - [ ] Generate and run actual npm, pnpm, Yarn and Bun fixtures. Prefer all known format generations with explicit valid producer versions and compatible runtimes. Record exact successes/failures; unavailable environments become pending coverage, not invented results.
-- [ ] Create maintenance/update-compatibility.prompt.md and a reproducible method documenting release discovery, Node engine choice, upstream vs observed discrepancies, fixture creation, exception promotion with evidenceIds, and final validation commands. No automatic open-ended semver claims from one sample.
+- [ ] Create maintenance/update-compatibility.prompt.md and a reproducible method documenting release discovery, Node engine choice, official-source vs observed discrepancies, fixture creation, exception promotion with evidenceIds, and final validation commands. No automatic open-ended semver claims from one sample.
 - [ ] Add explicit pending version jobs referencing prompt and fixture set. Baseline observations include at least four manager families with real executions.
 - [ ] Run focused tests, self-review, commit owned files, report evidence and gaps.
 

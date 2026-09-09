@@ -32,9 +32,9 @@ Node 采用保留的精确值，否则当前 Node 满足时优先，否则从发
 
 `data/catalog.json`：`{schemaVersion:1, generatedAt, sources:[{id,url,fetchedAt,sha256,etag?}], nodes:[{version,npm,lts,date}], managers:{npm:[],pnpm:[],yarn:[],bun:[]}}`；包管理器记录为 `{version,node:string|null,releasedAt?,sourceUrl?}`。node=null 表示未声明，不伪造成官方的 *；Bun 是独立运行时。无效已声明 engines 拒绝整次更新，保留旧文件。
 
-`data/upstream.json`：`{schemaVersion:1, generatedAt, sources, rules:[{id,manager,match:{format?,classic?,cacheKeyMin?,cacheKeyMax?},range:string|null,provenance:{kind:'upstream-inference',url,sourceId}}]}`。pnpm 沿用 Renovate 映射但不把未知格式映射到 5.0；npm 仅映射格式 1 <7、格式 2 <9，其余明确未覆盖；Yarn 使用 cacheKey，Classic 和区间分支原样保留。Bun 不伪造 Renovate 表。解析源码而不 eval，结构变化更新失败并保留旧数据。
+锁文件兼容性不使用第三方版本映射。`data/compatibility.json`：`{schemaVersion:1, generatedAt, rules:[{id,manager,match:{format?,classic?,cacheKeyMin?,cacheKeyMax?,features?},range,provenance:{kind:'official-source'|'fixture-verified',url?,evidenceIds?}}], observations:[]}`。经审核的规则从真实冻结安装结果和官方读取器证据取得。精确测试版本集合可写成 OR 的精确 semver，未测试版本不自动加入；若使用连续范围，需要官方读取器覆盖证据，不能仅凭两个端点推断中间所有版本。
 
-官方补充与人工审核后的兼容性规则放 `data/compatibility.json`，独立于自动下载文件。格式 `{schemaVersion:1, rules:[{id,manager,match:{format?,features?},range,provenance:{kind:'official-source'|'fixture-verified',url?,evidenceIds?}}], observations:[]}`。保留原始上游规则出处。冻结安装实测结果不能未经审核把“全部未来版本”判断为兼容。
+未覆盖格式仍提供包管理器类型证据，警告说明不能保证冻结安装兼容，不将未知当作通过。结果同时注明使用数据的时间和证据种类。
 
 ## AI 维护与实测
 

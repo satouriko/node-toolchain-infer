@@ -3,21 +3,43 @@
   "version": "0.1.0",
   "description": "Infer a project's Node.js and package manager versions with traceable constraints and reproducible lockfile compatibility evidence.",
   "type": "module",
-  "engines": { "node": ">=20" },
-  "exports": { ".": { "types": "./types/index.d.ts", "import": "./src/index.js" }, "./data": "./src/catalog.js" },
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./data": "./src/catalog.js"
+  },
   "types": "./types/index.d.ts",
-  "bin": { "toolchain-infer": "./bin/toolchain-infer.js" },
-  "files": ["src", "bin", "types", "data", "maintenance", "scripts", "fixtures", "README.md", "LICENSE"],
+  "bin": {
+    "toolchain-infer": "./bin/toolchain-infer.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "types",
+    "data",
+    "maintenance",
+    "scripts",
+    "fixtures",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "node --test test/*.test.js",
     "data:sync": "node scripts/sync-data.js",
-    "upstream:sync": "node scripts/sync-upstream.js",
     "releases:check": "node scripts/check-releases.js",
     "fixtures:generate": "node maintenance/generate-fixtures.js",
     "compat:test": "node maintenance/run-matrix.js",
     "data:validate": "node scripts/validate-data.js",
     "prepack": "npm run data:validate"
   },
-  "dependencies": { "semver": "^7.7.2", "yaml": "^2.8.1" },
+  "dependencies": {
+    "semver": "^7.7.2",
+    "yaml": "^2.8.1"
+  },
   "license": "MIT"
 }
