@@ -92,6 +92,6 @@ pnpm website:serve
 
 `tsc` is **TypeScript 7.0.2**. `eslint-config-unicute` uses the official `@typescript/typescript6` compatibility API through Microsoft's [documented side-by-side aliases](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/). No dependency overrides are required. Formatting is performed by `pnpm lint:fix`.
 
-Scheduled compatibility checks, fixture generation, retained evidence, failure exit codes and the AI maintenance procedure are documented in `maintenance/`. GitHub Actions preserves new maintenance evidence on the `compatibility-data` branch. Pushes to `main` build and deploy the bilingual website to GitHub Pages; npm publication remains separate.
+Scheduled compatibility checks, fixture generation, retained evidence, failure exit codes and the AI maintenance procedure are documented in `maintenance/`. GitHub Actions preserves new maintenance evidence on the `compatibility-data` branch. Pushes to `main` build and deploy the bilingual website to GitHub Pages. Version tags publish the npm package through the `npm` Environment using trusted publishing; see [publishing](docs/publishing.md).
 
 Frozen installation uses each pnpm release’s historical option: `--frozen-shrinkwrap` before `3.0.0-alpha.3`, then `--frozen-lockfile`. The option is selected by the tested manager version for both lockfile names. An ignored option cannot establish support because the contradictory-manifest control must also pass.

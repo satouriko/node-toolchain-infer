@@ -80,7 +80,7 @@ pnpm website:serve
 
 `tsc` 使用 **TypeScript 7.0.2**。ESLint 的 `eslint-config-unicute` 通过微软官方的并行安装别名使用 TS 6 兼容 API；没有 `overrides`。统一通过 `pnpm lint:fix` 格式化。
 
-维护脚本、定时 GitHub Action、原始证据、失败原因和 AI 维护步骤见 `maintenance/`。GitHub Actions 将后续维护证据保存在 `compatibility-data` 分支。每次推送到 `main` 会构建并部署中英文网站到 GitHub Pages；npm 包单独发布。
+维护脚本、定时 GitHub Action、原始证据、失败原因和 AI 维护步骤见 `maintenance/`。GitHub Actions 将后续维护证据保存在 `compatibility-data` 分支。每次推送到 `main` 会构建并部署中英文网站到 GitHub Pages。版本标签通过 `npm` Environment 和可信发布机制发布 npm 包，见[发布说明](docs/publishing.md)。
 
 冻结安装按 pnpm 的待测版本选择参数：早于 `3.0.0-alpha.3` 用 `--frozen-shrinkwrap`，从该版本起用 `--frozen-lockfile`，适用于两种锁文件名。仅仅忽略了参数不能证明兼容，还必须通过矛盾清单对照。
 
