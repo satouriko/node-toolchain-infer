@@ -3,7 +3,12 @@ on:
   push:
     branches-ignore: [compatibility-data]
   pull_request: {}
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      ref:
+        required: false
+        type: string
+        default: ''
 permissions:
   contents: read
 jobs:
@@ -14,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
