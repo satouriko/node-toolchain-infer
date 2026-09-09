@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { webcrypto } from 'node:crypto'
 import { mkdir, mkdtemp, realpath, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -62,7 +63,14 @@ test('calculator preserves each Yarn lock family and defaults old states to Berr
   assert.equal(playgroundSources({ ...input, fields: { yarnLock: '9' }, additional: [] })[0].features, undefined)
 })
 
-test('a native Yarn range retains its metadata receipt and derivations without changing stable facts', async () => {
+test('a native Yarn range retains its metadata receipt and derivations without changing stable facts', async (t) => {
+  // This test executes the browser adapter; Node 18 does not expose WebCrypto globally by default.
+  if (!('crypto' in globalThis)) {
+    Object.defineProperty(globalThis, 'crypto', { configurable: true, value: webcrypto })
+    t.after(() => {
+      Reflect.deleteProperty(globalThis, 'crypto')
+    })
+  }
   const catalog: UiCatalog = {
     schemaVersion: 1,
     generatedAt: '2026-09-09T00:00:00Z',
