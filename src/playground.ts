@@ -13,12 +13,6 @@ function sourceKind(source: NormalizedSource): string {
   if (source.exact) return 'exact'
   return source.range === '*' && source.target === 'manager' ? 'type' : 'range'
 }
-function lockExplanation(source: NormalizedSource): string | undefined {
-  if (!source.lockfile) return undefined
-  return source.compatibilityKnown
-    ? `Bundled compatibility rules: ${(source.ruleIds ?? []).join(', ')}.`
-    : 'Unknown lock format: retain manager identity with version range *.'
-}
 export function playgroundSources(input: InputState): Source[] {
   const sources: Source[] = []
   const add = (
@@ -89,7 +83,7 @@ export function resolvePlayground(input: InputState, data: UiCatalog, rules: Com
       .flatMap((t) => t.ranges.map((range) => ({ range, source: t.kind, inferred: t.lockfile }))),
     derivedNodeRanges: [...new Set(accepted.flatMap((t) => t.derivedNodeRanges))],
     warnings: [...data.warnings, ...result.warnings].map((w) => ({
-      code: w.code,
+      ...w,
       source: sourceName(w.sourceId),
       message: w.message,
       blockers: (w.blockers ?? []).map(sourceName),
@@ -110,7 +104,10 @@ export function resolvePlayground(input: InputState, data: UiCatalog, rules: Com
         ?? (t.status === 'accepted'
           ? 'Retained with higher-priority conditions.'
           : 'Conflicts with higher-priority conditions; ignored together with its derived Node requirements.'),
-      inference: lockExplanation(t),
+      warning: result.warnings.find(
+        (w) => w.sourceId === t.id && (w.code === 'invalid-declaration' || w.code === 'constraint-conflict'),
+      ),
+      inference: t.lockfile ? { known: t.compatibilityKnown === true, ruleIds: t.ruleIds ?? [] } : undefined,
       manager: t.manager,
       blockers: t.blockers?.map(sourceName),
       remainingNodes: t.remainingNodes,

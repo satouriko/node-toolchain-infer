@@ -73,6 +73,8 @@ node-toolchain-infer --help
 
 The result includes the selected versions, warnings, ordered trace, retained constraints, candidate versions, scanned directories and metadata timestamp. The CLI exits nonzero for operational failures or when no runnable pair exists; declaration conflicts alone are warnings.
 
+Warnings carry a stable `code`, structured `params`, an English `message`, and source context (`sourceId`, `path`, `blockers`) where available. Use `formatWarning(warning, 'zh-CN')` or `formatWarning(warning, 'en')` to render from the code and parameters, without matching message text. Import it from `node-toolchain-infer` or the browser-safe `node-toolchain-infer/warnings` entry. Invalid declarations include `params.reason` and `params.value`. Unknown codes and old payloads missing required parameters retain their original message; external error details are preserved as received.
+
 ## Development
 
 Use Node 24 and pnpm 10.33.0 for repository tooling; the published package runs on Node ≥18.

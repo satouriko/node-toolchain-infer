@@ -1,6 +1,6 @@
 {
   "name": "node-toolchain-infer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Infer a project's Node.js and package manager versions with traceable constraints and reproducible lockfile compatibility evidence.",
   "homepage": "https://satouriko.github.io/node-toolchain-infer/",
   "repository": {
@@ -26,6 +26,10 @@
     "./resolve": {
       "types": "./dist/resolve.d.ts",
       "import": "./dist/resolve.js"
+    },
+    "./warnings": {
+      "types": "./dist/warnings.d.ts",
+      "import": "./dist/warnings.js"
     }
   },
   "types": "./dist/index.d.ts",

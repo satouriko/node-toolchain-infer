@@ -3,6 +3,13 @@ import semver from 'semver'
 import { MANAGERS, matchesDeclaration, normalizeSource } from './constraints.js'
 import { errorMessage, isAbsent } from './validation.js'
 import { isStableVersion } from './versions.js'
+import {
+  createWarning,
+  DeclarationError,
+  type WarningCode,
+  type WarningContext,
+  type WarningParamsByCode,
+} from './warnings.js'
 
 import type {
   Catalog,
@@ -26,8 +33,12 @@ const sourceOrder = (a: Source & { index: number }, b: Source & { index: number 
 export function resolve(input: ResolveInput, catalog: Catalog, rules: CompatibilityRule[] = []): ResolveResult {
   const warnings: Warning[] = []
   const trace: TraceEntry[] = []
-  const warn = (code: string, source: Source | null, message: string, detail: Partial<Warning> = {}) =>
-    warnings.push({ code, sourceId: source?.id ?? 'runtime', path: source?.path, message, ...detail })
+  const warn = <C extends WarningCode>(
+    code: C,
+    source: Source | null,
+    params: WarningParamsByCode[C],
+    detail: WarningContext = {},
+  ) => warnings.push(createWarning(code, params, { sourceId: source?.id ?? 'runtime', path: source?.path, ...detail }))
   const runtime = {
     node: semver.valid(input.runtime.node),
     npm: semver.valid(input.runtime.npm),
@@ -35,7 +46,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
     yarn: semver.valid(input.runtime.yarn ?? ''),
   }
   if (!runtime.node || !runtime.npm) {
-    warn('runtime-unavailable', null, 'A concrete running Node version and its bound npm version are required.')
+    warn('runtime-unavailable', null, {})
     return {
       node: null,
       packageManager: null,
@@ -52,10 +63,17 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
   if (isStableVersion(runningNode) && !aliasNodes.some((n) => n.version === runningNode))
     aliasNodes.push({ version: runningNode, npm: runtime.npm })
   aliasNodes.sort(descending)
+  const invalidParams = new Map<number, WarningParamsByCode['invalid-declaration']>()
   const parsed: NormalizedSource[] = raw.map((source) => {
     try {
       return normalizeSource(source, aliasNodes, rules)
     } catch (error) {
+      invalidParams.set(
+        source.index,
+        error instanceof DeclarationError
+          ? { reason: error.reason, value: error.value }
+          : { reason: 'unexpected', value: errorMessage(error) },
+      )
       return {
         manager: 'npm' as Manager,
         range: '*',
@@ -104,7 +122,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
       && !isStableVersion(version)
       && !(name === 'node' ? explicitNodes : explicitManagers[name as Manager]).has(version)
     )
-      warn('prerelease-excluded', null, `Prerelease versions are excluded: ${name}@${version}.`)
+      warn('prerelease-excluded', null, { name, version })
   if (isStableVersion(runtime.node) || explicitNodes.has(runtime.node))
     nodeMap.set(runtime.node, {
       ...nodeMap.get(runtime.node),
@@ -216,7 +234,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
       return MANAGERS.indexOf(a.manager) - MANAGERS.indexOf(b.manager)
     })
   if (!attempts.length) {
-    warn('no-runnable-pair', null, 'Version data contains no runnable Node/package-manager pair.')
+    warn('no-runnable-pair', null, {})
     return {
       node: null,
       packageManager: null,
@@ -231,7 +249,11 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
   const accepted: NormalizedSource[] = []
   for (const [index, source] of parsed.entries()) {
     if (source.invalid) {
-      warn('invalid-declaration', source, source.invalid)
+      warn(
+        'invalid-declaration',
+        source,
+        invalidParams.get(source.index) ?? { reason: 'unexpected', value: source.invalid },
+      )
       trace.push({ ...source, status: 'invalid' })
     } else if (source.conditional && source.manager !== manager) {
       trace.push({ ...source, status: 'inactive', reason: `Applies only when ${source.manager} is selected.` })
@@ -246,19 +268,13 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
           remainingManagerVersions: trial.managers.length,
         })
         if (source.lockfile && !source.compatibilityKnown)
-          warn(
-            'unknown-lock-compatibility',
-            source,
-            `No bundled compatibility rule covers ${source.manager} lock format ${source.format ?? 'unknown'}. The version constraint is *; the manager identity is retained.`,
-          )
+          warn('unknown-lock-compatibility', source, {
+            manager: source.manager,
+            format: String(source.format ?? 'unknown'),
+          })
       } else {
         const blockers = accepted.map((s) => s.id)
-        warn(
-          'constraint-conflict',
-          source,
-          'This declaration has no runnable candidate together with retained higher-priority conditions; it and its derived conditions were ignored.',
-          { blockers },
-        )
+        warn('constraint-conflict', source, {}, { blockers })
         trace.push({ ...source, status: 'ignored', blockers })
       }
     }
@@ -285,28 +301,25 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
       if (warnedBugs.has(bug.id) || !semver.satisfies(chosenManager.version, bug.range, { includePrerelease: true }))
         continue
       warnedBugs.add(bug.id)
-      warn(
-        'known-package-manager-bug',
-        source,
-        `${manager}@${chosenManager.version} is compatible with this lock format; known installation bug ${bug.id} can fail the frozen-install check. ${bug.url}`,
-      )
+      warn('known-package-manager-bug', source, {
+        manager,
+        version: chosenManager.version,
+        bugId: bug.id,
+        url: bug.url,
+      })
     }
   }
   let managerReason: 'exact' | 'bundled' | 'local' | 'maximum' = 'maximum'
   if (preferred) managerReason = manager === 'npm' ? 'bundled' : 'local'
   if (exactManager) managerReason = 'exact'
   if (!exactManager && preferredVersion && !preferred)
-    warn(
-      'preferred-version-rejected',
-      null,
-      `${manager}@${preferredVersion} does not satisfy retained constraints with Node ${chosenNode.version}; selected ${chosenManager.version}.`,
-    )
-  if (isAbsent(chosenManager.node))
-    warn(
-      'unknown-node-requirement',
-      null,
-      `${manager}@${chosenManager.version} has no declared engines.node in the available metadata.`,
-    )
+    warn('preferred-version-rejected', null, {
+      manager,
+      preferredVersion,
+      node: chosenNode.version,
+      selectedVersion: chosenManager.version,
+    })
+  if (isAbsent(chosenManager.node)) warn('unknown-node-requirement', null, { manager, version: chosenManager.version })
   return {
     candidates: { nodes: final.nodes.map((n) => n.version), managerVersions: candidates.map((p) => p.version) },
     node: { version: chosenNode.version, reason: nodeReason, bundledNpm: chosenNode.npm ?? null },

@@ -6,6 +6,7 @@ import { parse as parseYaml } from 'yaml'
 
 import { createSource } from './sources.js'
 import { declarationText, errorCode, errorMessage, object, optionalObject } from './validation.js'
+import { createWarning } from './warnings.js'
 import { readYarnLock } from './yarn-lock.js'
 
 import type { Collection, CollectOptions, Source, Warning } from './types.js'
@@ -55,23 +56,14 @@ export async function collect({ cwd = process.cwd(), node, packageManager }: Col
       }
     } catch (error) {
       if (errorCode(error) !== 'ENOENT') {
-        warnings.push({
-          code: 'git-root-read-failed',
-          path: current,
-          message: `Cannot inspect Git marker: ${errorMessage(error)}`,
-        })
+        warnings.push(createWarning('git-root-read-failed', { detail: errorMessage(error) }, { path: current }))
         break
       }
     }
     if (dirname(current) === current) break
   }
   const directories = gitRoot ? ancestors : [start]
-  if (!gitRoot)
-    warnings.push({
-      code: 'git-root-not-found',
-      path: start,
-      message: 'No Git root was found; only the starting directory is read.',
-    })
+  if (!gitRoot) warnings.push(createWarning('git-root-not-found', {}, { path: start }))
   if (node !== undefined && node !== '')
     sources.push(createSource('remoteNode', node, { depth: -1, path: 'input.node' }))
   if (packageManager !== undefined && packageManager !== '')
@@ -84,11 +76,7 @@ export async function collect({ cwd = process.cwd(), node, packageManager }: Col
           return { name, path, text: await readFile(path, 'utf8') }
         } catch (error) {
           if (errorCode(error) !== 'ENOENT')
-            warnings.push({
-              code: 'file-read-failed',
-              path,
-              message: `Cannot read declaration file: ${errorMessage(error)}`,
-            })
+            warnings.push(createWarning('file-read-failed', { detail: errorMessage(error) }, { path }))
           return null
         }
       }),
@@ -99,7 +87,7 @@ export async function collect({ cwd = process.cwd(), node, packageManager }: Col
       const add = (key: string, value: unknown, extra: Partial<Source> = {}) =>
         sources.push(createSource(key, value, { depth, path, index: sources.length, ...extra }))
       const parseFailure = (error: unknown) =>
-        warnings.push({ code: 'file-parse-failed', path, message: `Cannot parse ${name}: ${errorMessage(error)}` })
+        warnings.push(createWarning('file-parse-failed', { file: name, detail: errorMessage(error) }, { path }))
       if (name === 'package.json') {
         let manifest: Record<string, unknown>
         try {

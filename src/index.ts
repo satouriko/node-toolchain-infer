@@ -3,6 +3,7 @@ import { collect } from './collect.js'
 import { resolve } from './resolve.js'
 import { detectRuntime } from './runtime.js'
 import { errorMessage } from './validation.js'
+import { createWarning } from './warnings.js'
 
 import type {
   Catalog,
@@ -20,7 +21,9 @@ export { resolve } from './resolve.js'
 export { detectRuntime } from './runtime.js'
 export { createSource, SOURCE_DEFINITIONS } from './sources.js'
 export * from './types.js'
+export { formatWarning } from './warnings.js'
 export type { RuntimeDetection, RuntimeOptions } from './runtime.js'
+export type { WarningCode, WarningLocale, WarningParamsByCode } from './warnings.js'
 export interface InferOptions extends CollectOptions, CatalogOptions {
   runtime?: Runtime
   catalog?: Catalog
@@ -37,10 +40,7 @@ export async function infer(options: InferOptions = {}): Promise<InferResult> {
     options.catalog
       ?? fetchCatalog(options).catch((error: unknown): Catalog => {
         if (options.signal?.aborted) throw options.signal.reason
-        warnings.push({
-          code: 'metadata-unavailable',
-          message: `${errorMessage(error)}; inference is restricted to known local runtime candidates.`,
-        })
+        warnings.push(createWarning('metadata-unavailable', { detail: errorMessage(error) }))
         return {
           schemaVersion: 1,
           generatedAt: new Date().toISOString(),

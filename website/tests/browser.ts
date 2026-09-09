@@ -413,10 +413,12 @@ try {
   await page.locator('#refresh-data').click()
   await page.waitForFunction(() => document.querySelector('.live-source.stale') !== null)
   await page.locator('#tab-calculator').click()
-  await page.waitForFunction(() => document.querySelector('#warnings')?.textContent.includes('using cached metadata'))
+  await page.waitForFunction(() =>
+    document.querySelector('#warnings')?.textContent.includes('using cached data fetched at'),
+  )
   await page.locator('[data-locale="zh-CN"]').click()
-  assert.match((await page.locator('#warnings').textContent()) ?? '', /继续使用已有缓存。获取时间：/)
-  assert.doesNotMatch((await page.locator('#warnings').textContent()) ?? '', /Failed to fetch|using cached/)
+  assert.match((await page.locator('#warnings').textContent()) ?? '', /官方数据刷新失败.*继续使用.*获取的缓存/)
+  assert.doesNotMatch((await page.locator('#warnings').textContent()) ?? '', /using cached/)
   assert.deepEqual(browserErrors, [])
 } finally {
   await browser.close()

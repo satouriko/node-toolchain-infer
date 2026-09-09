@@ -3,7 +3,7 @@ import semver from 'semver'
 import { CATALOG_SOURCES, emptyCatalog, fetchOfficialCatalog } from './catalog.js'
 import { getLocale, installLocale, translate } from './i18n.js'
 import { type LockfileFact, lockfileFacts, lockfilesForVersion } from './lockfile-facts.js'
-import { classifyError, coreText, errorText, failureText, warningText } from './messages.js'
+import { classifyError, errorText, failureText, inferenceText, traceText, warningText } from './messages.js'
 import { installTabs } from './navigation.js'
 import { resolveLive } from './resolve-live.js'
 import { EMPTY_FIELDS, SOURCES } from './schema.js'
@@ -22,7 +22,6 @@ const escape = (value: string | number | null | undefined) =>
     (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!,
   )
 const raw = (value: string | number | null | undefined) => `<span data-i18n-ignore>${escape(value)}</span>`
-const coreMessage = (text: string, code?: string) => raw(coreText(text, code))
 const clone = <T>(value: T): T => structuredClone(value)
 const storageKey = 'node-toolchain-infer:calculator:v1'
 const initialRuntime: Record<string, string> = { node: '24.10.0', npm: '11.6.1', pnpm: '10.21.0', yarn: '1.22.22' }
@@ -440,7 +439,7 @@ function renderResult() {
   for (let i = 0; i < state.additional.length; i++) {
     const item = result.trace.find((t) => t.order === SOURCES.length + i)
     $(`[data-extra-state="${i}"]`).innerHTML = item
-      ? `${stateLabel[item.status]} · ${item.normalized ? raw(item.normalized) : coreMessage(item.detail)}`
+      ? `${stateLabel[item.status]} · ${item.normalized ? raw(item.normalized) : raw(traceText(item))}`
       : ''
   }
 }
@@ -454,7 +453,7 @@ function renderTrace() {
       if (t.status === 'skipped') icon = '−'
       const normalized = t.normalized && t.value !== t.normalized ? ` → ${raw(t.normalized)}` : ''
       const kind = t.kind ? `<span class="tag ${t.kind === 'type' ? 'range' : t.kind}">${kindLabel[t.kind]}</span>` : ''
-      const inference = t.inference ? `<p>推断依据：${coreMessage(t.inference)}</p>` : ''
+      const inference = t.inference ? `<p>推断依据：${raw(inferenceText(t.inference))}</p>` : ''
       const blockers = t.blockers?.length ? `<p>优先保留：<code>${t.blockers.map(raw).join(' + ')}</code></p>` : ''
       const remaining =
         t.status === 'accepted'
@@ -482,7 +481,7 @@ function renderTrace() {
         else if (yarnFamily === 'zpm') familyName = ' · Yarn 6+ JSON (ZPM)'
         else familyName = ' · Yarn Berry YAML (>=2 <6)'
       }
-      return `<details class="trace-item ${t.status}" data-trace-id="${t.order}" ${opened.has(String(t.order)) ? 'open' : ''}><summary><span class="trace-icon">${icon}</span><div class="trace-text"><div class="trace-name">${String(t.rank).padStart(2, '0')} · ${raw(`${t.name}${familyName}`)}</div><div class="trace-value">${raw(t.value)}${normalized}</div></div><span class="trace-label">${stateLabel[t.status]}</span><span class="chevron">⌄</span></summary><div class="trace-detail">${kind}<p>${coreMessage(t.detail)}</p>${inference}${blockers}${remaining}${derived}</div></details>`
+      return `<details class="trace-item ${t.status}" data-trace-id="${t.order}" ${opened.has(String(t.order)) ? 'open' : ''}><summary><span class="trace-icon">${icon}</span><div class="trace-text"><div class="trace-name">${String(t.rank).padStart(2, '0')} · ${raw(`${t.name}${familyName}`)}</div><div class="trace-value">${raw(t.value)}${normalized}</div></div><span class="trace-label">${stateLabel[t.status]}</span><span class="chevron">⌄</span></summary><div class="trace-detail">${kind}<p>${raw(traceText(t))}</p>${inference}${blockers}${remaining}${derived}</div></details>`
     })
     .join('')
   $('#trace').innerHTML =

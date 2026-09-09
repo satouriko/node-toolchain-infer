@@ -1,6 +1,6 @@
-import en from './locales/en.json'
+import en from './locales/en.json' with { type: 'json' }
 import { englishPatterns } from './locales/patterns.js'
-import zh from './locales/zh-CN.json'
+import zh from './locales/zh-CN.json' with { type: 'json' }
 
 const preferenceKey = 'node-toolchain-infer:locale'
 let locale = 'zh-CN'

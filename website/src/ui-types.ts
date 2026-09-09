@@ -52,7 +52,8 @@ export interface UiTrace {
   status: string
   kind?: string
   detail: string
-  inference?: string
+  inference?: { known: boolean; ruleIds: string[] }
+  warning?: Warning
   manager?: string
   blockers?: string[]
   remainingNodes?: number
@@ -75,7 +76,7 @@ export interface UiResult {
   nodeConstraints: Array<{ range: string; source: string }>
   pmConstraints: Array<{ range: string; source: string; inferred?: boolean }>
   derivedNodeRanges: string[]
-  warnings: Array<{ code?: string; source: string; message: string; blockers: string[] }>
+  warnings: Array<Warning & { source: string; blockers: string[] }>
   trace: UiTrace[]
   selectionVerified: boolean
   nodeCompatibility: string

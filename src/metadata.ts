@@ -3,6 +3,7 @@ import semver from 'semver'
 import { type MANAGERS, normalizeSource } from './constraints.js'
 import { errorMessage, object, optionalObject } from './validation.js'
 import { isStableVersion, prereleaseCores } from './versions.js'
+import { createWarning } from './warnings.js'
 
 import type {
   Catalog,
@@ -218,12 +219,15 @@ function createLoader({ fetcher = defaultFetcher, signal, onSource, hash = brows
           if (!previous) throw error
           return {
             entry: previous,
-            warning: {
-              code: 'stale-metadata',
-              path: source.url,
-              fetchedAt: previous.receipt.fetchedAt,
-              message: `${source.id}: ${errorMessage(error)}; using cached data fetched at ${previous.receipt.fetchedAt}.`,
-            },
+            warning: createWarning(
+              'stale-metadata',
+              {
+                source: source.id,
+                detail: errorMessage(error),
+                fetchedAt: previous.receipt.fetchedAt,
+              },
+              { path: source.url, fetchedAt: previous.receipt.fetchedAt },
+            ),
           }
         }
       })()
@@ -292,18 +296,19 @@ export async function fetchMetadata(options: MetadataOptions = {}): Promise<Cata
           const resolved = result.entry.managers![0]
           yarn.set(release.version, resolved)
           if (resolved.node === null)
-            tagWarnings.push({
-              code: 'missing-yarn-tag-engines',
-              path: url,
-              message: `Yarn ${release.version}: official tag manifest has no engines.node; runtime requirement remains unknown.`,
-            })
+            tagWarnings.push(createWarning('missing-yarn-tag-engines', { version: release.version }, { path: url }))
         } catch (error) {
           if (signal?.aborted) throw signal.reason
-          tagWarnings.push({
-            code: 'unavailable-yarn-tag-manifest',
-            path: url,
-            message: `Yarn ${release.version}: ${errorMessage(error)}; runtime requirement remains unknown.`,
-          })
+          tagWarnings.push(
+            createWarning(
+              'unavailable-yarn-tag-manifest',
+              {
+                version: release.version,
+                detail: errorMessage(error),
+              },
+              { path: url },
+            ),
+          )
         }
       }),
   )
@@ -504,12 +509,16 @@ export async function fetchExplicitMetadata(
         if (fetched.warning) result.warnings.push(fetched.warning)
       } catch (error) {
         if (options.signal?.aborted) throw options.signal.reason
-        result.warnings.push({
-          code: 'explicit-version-unavailable',
-          sourceId: source.id,
-          path: source.path,
-          message: `Cannot obtain metadata for explicitly requested ${id}: ${errorMessage(error)}`,
-        })
+        result.warnings.push(
+          createWarning(
+            'explicit-version-unavailable',
+            {
+              id,
+              detail: errorMessage(error),
+            },
+            { sourceId: source.id, path: source.path },
+          ),
+        )
       }
     }),
   )

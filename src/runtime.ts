@@ -7,6 +7,7 @@ import { promisify } from 'node:util'
 import semver from 'semver'
 
 import { optionalObject } from './validation.js'
+import { createWarning } from './warnings.js'
 
 import type { Catalog, Runtime, Warning } from './types.js'
 
@@ -50,11 +51,7 @@ export async function detectRuntime({
   const warnings: Warning[] = []
   if (!npm) {
     npm = catalog?.nodes.find((record) => record.version === node)?.npm ?? null
-    if (npm)
-      warnings.push({
-        code: 'npm-from-release-metadata',
-        message: 'No adjacent npm installation was found; using the npm version recorded for this exact Node release.',
-      })
+    if (npm) warnings.push(createWarning('npm-from-release-metadata', {}))
   }
   if (!npm)
     throw new Error(

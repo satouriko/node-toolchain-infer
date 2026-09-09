@@ -4,6 +4,7 @@ export type VersionReason = 'exact' | 'current' | 'maximum' | 'bundled' | 'local
 export interface Warning {
   code: string
   message: string
+  params?: Record<string, string>
   sourceId?: string
   path?: string
   blockers?: string[]

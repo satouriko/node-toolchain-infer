@@ -61,6 +61,8 @@ Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Las
 node-toolchain-infer --cwd . --node '18' --package-manager 'pnpm@^9' --json
 ```
 
+警告包含稳定的 `code`、结构化 `params`、英文 `message`，以及可用的来源信息（`sourceId`、`path`、`blockers`）。用 `formatWarning(warning, 'zh-CN')` 或 `formatWarning(warning, 'en')` 按 code 和参数生成文案，不匹配 message 文本。从 `node-toolchain-infer` 或可用于浏览器的 `node-toolchain-infer/warnings` 入口导入该函数。非法声明通过 `params.reason` 和 `params.value` 区分原因并保留输入。未知 code、缺少必要参数的旧数据保留原始消息；外部错误的细节原样保留。
+
 ## 开发与本地网站
 
 仓库工具使用 Node 24 和 pnpm 10.33.0，发布产物支持 Node ≥18。

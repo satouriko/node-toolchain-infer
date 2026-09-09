@@ -50,6 +50,7 @@ try {
 import { infer } from 'node-toolchain-infer'
 import { loadRules } from 'node-toolchain-infer/data'
 import { resolve } from 'node-toolchain-infer/resolve'
+import { formatWarning } from 'node-toolchain-infer/warnings'
 
 assert.equal(typeof resolve, 'function')
 assert.ok((await loadRules()).length > 0)
@@ -70,6 +71,9 @@ const result = await infer({
 assert.equal(result.node?.version, '18.20.8')
 assert.equal(result.packageManager?.name, 'pnpm')
 assert.equal(result.packageManager?.version, '9.15.9')
+const warning = result.warnings.find(item => item.code === 'git-root-not-found')
+assert.ok(warning)
+assert.match(formatWarning({ ...warning, message: 'Changed English text' }, 'zh-CN'), /Git.*起始目录/)
 `,
   )
   await exec(process.execPath, ['smoke.mjs'], { cwd: consumer, timeout: 30_000 })
