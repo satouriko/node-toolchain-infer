@@ -1,0 +1,13 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-19.7.0-darwin-arm64-7a96935baf731d0917a96370dda707b8195ae0a123d6c5ff777d41c3fdda949d/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/projects/0/pnpm-lock.yaml
+ ERROR  Headless installation requires a pnpm-lock.yaml file
+
+pnpm: Headless installation requires a pnpm-lock.yaml file
+    at _install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186185:21)
+    at mutateModules (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186116:29)
+    at async install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186055:24)
+    at async installDeps (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:187943:31)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219780:21
+    at async main (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219751:34)
+    at async runPnpm (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219979:5)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-fLgXhd/b4d4186f-b463-49cb-9da6-ad341a8dc588/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219971:7

@@ -1,0 +1,89 @@
+{
+  "id": "732c8cb6-437a-4899-8a9b-8159e6ff1041",
+  "key": "0568d76af09d8902eb9c5d87ca909fed3853a1bad2a785f3de47fed34bf36e01",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.27.5",
+  "fixtureId": "yarn-modern-v6",
+  "fixtureHash": "c0a626d12740dbd3f13b4eb369f7cc8091d1dddaabc938bab894e2ec28fbbfce",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:01.844Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "id": "46b7b07ed548f686cdcbd51a1fcf8965f6cab62c04549c62e7ad4ff4ffb8f627-2de6290626e0",
+    "key": "46b7b07ed548f686cdcbd51a1fcf8965f6cab62c04549c62e7ad4ff4ffb8f627",
+    "manager": "yarn",
+    "version": "0.27.5",
+    "actualVersion": "0.27.5",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-8W8oj308F1FFK+716vGRUbCpVVjZ9Bws2lPnyXkMC+lCFWyebev3Tzxqk/j0PGMjGzE5CnwrhDeYr6aCD5UBBA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/package-lock.json",
+      "lockfileSha256": "8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4",
+      "logPath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/6f796995d647ea516f4eb1617fb5594baa32d444b1aeafea934a4301d8319260.log",
+      "installedTreeSha256": "5d4a4b9526f9963d44594374f5a0ab25dc3ebb699b1ad117329551b8d2e13b0b"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.27.5.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v6",
+    "fixtureHash": "c0a626d12740dbd3f13b4eb369f7cc8091d1dddaabc938bab894e2ec28fbbfce",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/46b7b07ed548f686cdcbd51a1fcf8965f6cab62c04549c62e7ad4ff4ffb8f627-2de6290626e0.log",
+    "createdAt": "2026-09-09T10:19:01.821Z"
+  }
+}

@@ -1,0 +1,23 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-11.8.0-darwin-x64-fbb26b38f408c2f2324a5821062c16103f54de16d24f9f24c4e270a3a41f4832/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/5/tools/pnpm-2.25.5/node_modules/pnpm/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+Scope: current workspace package
+Performing headless installation
+Resolving: total 1, reused 0, downloaded 0
+Resolving: total 1, reused 0, downloaded 0
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/70cdc7eda0fd4f5fc47b9ced5933755ba2d93f4bf0ff9771b2890b53427c7787-66264700626e.log

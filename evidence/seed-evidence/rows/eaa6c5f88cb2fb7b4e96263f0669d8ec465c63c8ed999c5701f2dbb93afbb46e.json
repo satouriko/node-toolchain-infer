@@ -1,0 +1,89 @@
+{
+  "id": "da9220be-3648-49eb-a656-dd51f1063839",
+  "key": "7213c72b30c863f1461ffb07d518c7286fa69271990b29915d647c6659006f65",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.25.1",
+  "fixtureId": "yarn-modern-v6",
+  "fixtureHash": "c0a626d12740dbd3f13b4eb369f7cc8091d1dddaabc938bab894e2ec28fbbfce",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:20.665Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "id": "7e6b99e2e54b9221917837e4ed8c4e8c5dd6a977078cd36b4838d81baeb706af-cae1c5e7b551",
+    "key": "7e6b99e2e54b9221917837e4ed8c4e8c5dd6a977078cd36b4838d81baeb706af",
+    "manager": "yarn",
+    "version": "0.25.1",
+    "actualVersion": "0.25.1",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-K9utW8JUu4f9bFZSO2AqjPz/iXcyerjSVUa8PzoQQOAyBaWTvPiZBJ2SyZwtQ0j2LVJSzeNTi3fUWDPNMb/YnA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb/package-lock.json",
+      "lockfileSha256": "d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb",
+      "logPath": "bootstrap/d1be3dcf80c289e88b6cc0118c69d5127ad896e0fa08d134b18ba32a838ae2cb/c3970f3da9b46f5ebd4ed3d7bf5b74f3366e243b24d8cdb069a72a67feb72db9.log",
+      "installedTreeSha256": "3d7f74215ca6c56888cdb7193c712f241d5f9c7d837d6b5abf9cfa10dd350e5a"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.25.1.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v6",
+    "fixtureHash": "c0a626d12740dbd3f13b4eb369f7cc8091d1dddaabc938bab894e2ec28fbbfce",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "988df69a81d801187615f5942623818af695ef25ec267945508bcc8e1186262c"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/7e6b99e2e54b9221917837e4ed8c4e8c5dd6a977078cd36b4838d81baeb706af-cae1c5e7b551.log",
+    "createdAt": "2026-09-09T10:19:20.655Z"
+  }
+}

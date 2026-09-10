@@ -1,0 +1,18 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.8.1-darwin-arm64-6e577fd0d9db776db82306629e441a9dace416702622aebdd171c9dfaa41f4d2/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-7Q0gNb/f51b35cb-d56b-402a-941f-0b60c62d8527/tools/0/npm-11.19.1/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm warn Unknown env config "npm-globalconfig". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+added 1 package in 1s
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/76c7db42be9b332a8ad9ab6cb67c751d62e3afe864c3014c2412e11e2131a315-2060283806e9.log

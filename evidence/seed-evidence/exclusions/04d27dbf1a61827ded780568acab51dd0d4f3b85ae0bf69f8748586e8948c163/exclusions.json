@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "rowId": "83b0ec22-59f2-4b32-9528-982d283a99fd",
+      "observationId": "fe4bf2059f548e9f9ed9d59f953a156079c638aba406300fe14ed4accd791f92-0d89039e0ce3",
+      "rowSha256": "dc087fbe334d1602f1b20d284de9c880d81c88c18f98a2f0c139142a991cdb34",
+      "reason": "Fixture configuration mismatch, not a format rejection: the v6 lock records autoInstallPeers=true while the old harness used pnpm 7's false default. The same fixture passes with matching settings: 2fcc6cf5cc178e1f609bc78884ac469629a4e7795330899f7f64f5c91a7faddd-44134cf6a051. See maintenance/evidence/gap-audit/pnpm/README.md#pnpm-733.",
+      "reviewedAt": "2026-09-09T12:14:56.522Z"
+    }
+  ]
+}

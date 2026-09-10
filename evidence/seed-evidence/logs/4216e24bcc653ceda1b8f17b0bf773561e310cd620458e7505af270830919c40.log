@@ -1,0 +1,26 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-18.16.0-darwin-arm64-82c7bb4869419ce7338669e6739a786dfc7e72f276ffbed663f85ffc905dcdb4/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/tools/8.3.0-node-18.16.0-pnpm-lock-v6/pnpm-8.3.0/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /Users/cuteloli/Code/node-toolchain-infer/.cache/gap-audit/runs/8.3.0-node-18.16.0-pnpm-lock-v6/.pnpm-store/v3
+  Virtual store is at:             node_modules/.pnpm
+
+dependencies:
++ is-number 7.0.0
+
+Done in 480ms
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/b129f41533cd2b41b83630ed8db4ccc3a8a8931e5750b265ce6cd79ff1a21847-6ca67eeefa99.log

@@ -1,0 +1,89 @@
+{
+  "id": "98404659-be93-49cd-9f2e-1f0e89182595",
+  "key": "32a6ec9701a2e36b57718acb6fd7dcbbc99cae783455edee495e60805085203a",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.27.5",
+  "fixtureId": "yarn-modern-v8",
+  "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:00.457Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "id": "2f3a1fa94c0c1d309da3d692e3215de296561ad7dc7fea74ca7d614bd0b428fc-09aef5fb4474",
+    "key": "2f3a1fa94c0c1d309da3d692e3215de296561ad7dc7fea74ca7d614bd0b428fc",
+    "manager": "yarn",
+    "version": "0.27.5",
+    "actualVersion": "0.27.5",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-8W8oj308F1FFK+716vGRUbCpVVjZ9Bws2lPnyXkMC+lCFWyebev3Tzxqk/j0PGMjGzE5CnwrhDeYr6aCD5UBBA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/package-lock.json",
+      "lockfileSha256": "8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4",
+      "logPath": "bootstrap/8d3e2481ecb2e2cc510666d70a783914d4e051716a231ac1ed90944a5ca9c5b4/6f796995d647ea516f4eb1617fb5594baa32d444b1aeafea934a4301d8319260.log",
+      "installedTreeSha256": "5d4a4b9526f9963d44594374f5a0ab25dc3ebb699b1ad117329551b8d2e13b0b"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.27.5.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v8",
+    "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/2f3a1fa94c0c1d309da3d692e3215de296561ad7dc7fea74ca7d614bd0b428fc-09aef5fb4474.log",
+    "createdAt": "2026-09-09T10:19:00.405Z"
+  }
+}

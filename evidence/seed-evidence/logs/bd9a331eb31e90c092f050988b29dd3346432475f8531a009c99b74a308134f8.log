@@ -1,0 +1,327 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.8.1-darwin-arm64-6e577fd0d9db776db82306629e441a9dace416702622aebdd171c9dfaa41f4d2/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/6599c745-9a6f-4930-862f-4b3175cdae14/tools/1/npm-12.0.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm warn Unknown env config "verify-deps-before-run". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm error code EUSAGE
+npm error
+npm error The `npm ci` command can only install with an existing
+npm error package-lock.json with lockfileVersion >= 1. Run an install with npm@5
+npm error or later to generate a package-lock.json file, then try again.
+npm error
+npm error Clean install a project
+npm error
+npm error Usage:
+npm error npm ci
+npm error
+npm error Options:
+npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts]
+npm error [--allow-directory <all|none|root>] [--allow-file <all|none|root>]
+npm error [--allow-git <all|none|root>] [--allow-remote <all|none|root>]
+npm error [--allow-scripts <package-list> [--allow-scripts <package-list> ...]]
+npm error [--strict-allow-scripts] [--dangerously-allow-all-scripts] [--no-audit]
+npm error [--no-bin-links] [--no-fund] [--dry-run]
+npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+npm error [--workspaces] [--include-workspace-root] [--install-links]
+npm error
+npm error   --install-strategy
+npm error     Sets the strategy for installing packages in node_modules.
+npm error
+npm error   --legacy-bundling
+npm error     Instead of hoisting package installs in `node_modules`, install packages
+npm error
+npm error   --global-style
+npm error     Only install direct dependencies in the top level `node_modules`,
+npm error
+npm error   --omit
+npm error     Dependency types to omit from the installation tree on disk.
+npm error
+npm error   --include
+npm error     Option that allows for defining which types of dependencies to install.
+npm error
+npm error   --strict-peer-deps
+npm error     If set to `true`, and `--legacy-peer-deps` is not set, then _any_
+npm error
+npm error   --foreground-scripts
+npm error     Run all build scripts (ie, `preinstall`, `install`, and
+npm error
+npm error   --ignore-scripts
+npm error     If true, npm does not run scripts specified in package.json files.
+npm error
+npm error   --allow-directory
+npm error     Limits the ability for npm to install dependencies from directories.
+npm error
+npm error   --allow-file
+npm error     Limits the ability for npm to install dependencies from tarball files.
+npm error
+npm error   --allow-git
+npm error     Limits the ability for npm to fetch dependencies from git references.
+npm error
+npm error   --allow-remote
+npm error     Limits the ability for npm to fetch dependencies from urls.
+npm error
+npm error   --allow-scripts
+npm error     Comma-separated list of packages whose install-time lifecycle scripts
+npm error
+npm error   --strict-allow-scripts
+npm error     If `true`, turn the install-script policy from a warning into a hard
+npm error
+npm error   --dangerously-allow-all-scripts
+npm error     If `true`, bypass the `allowScripts` policy entirely and run every
+npm error
+npm error   --audit
+npm error     When "true" submit audit reports alongside the current npm command to the
+npm error
+npm error   --bin-links
+npm error     Tells npm to create symlinks (or `.cmd` shims on Windows) for package
+npm error
+npm error   --fund
+npm error     When "true" displays the message at the end of each `npm install`
+npm error
+npm error   --dry-run
+npm error     Indicates that you don't want npm to make any changes and that it should
+npm error
+npm error   -w|--workspace
+npm error     Enable running a command in the context of the configured workspaces of the
+npm error
+npm error   --workspaces
+npm error     Set to true to run the command in the context of **all** configured
+npm error
+npm error   --include-workspace-root
+npm error     Include the workspace root when workspaces are enabled for a command.
+npm error
+npm error   --install-links
+npm error     When set file: protocol dependencies will be packed and installed as
+npm error
+npm error
+npm error aliases: clean-install, ic, install-clean, isntall-clean
+npm error
+npm error Run "npm help ci" for more info
+npm error A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-cache/_logs/2026-09-09T09_58_44_740Z-debug-0.log
+
+[npm debug: 2026-09-09T09_58_44_740Z-debug-0.log]
+0 verbose cli /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-26.8.1-darwin-arm64-6e577fd0d9db776db82306629e441a9dace416702622aebdd171c9dfaa41f4d2/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/bin/npm-cli.js
+1 info using npm@12.0.0
+2 info using node@v26.8.1
+3 silly config load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/npmrc
+4 silly config load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npmrc
+5 silly config load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-userconfig
+6 silly config load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-globalconfig
+7 verbose title npm ci
+8 verbose argv "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-cache/_logs/2026-09-09T09_58_44_740Z-
+10 verbose logfile /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-cache/_logs/2026-09-09T09_58_44_740Z-debug-0.log
+11 warn Unknown env config "verify-deps-before-run". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+12 warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+13 silly logfile done cleaning log files
+14 silly packumentCache heap:4395630592 maxSize:1098907648 maxEntrySize:549453824
+15 verbose loadVirtual Error: loadVirtual requires existing package-lock.json file
+15 verbose loadVirtual     at Arborist.loadVirtual (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/load-virtual.js:42:18)
+15 verbose loadVirtual     at async CI.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/commands/ci.js:77:7)
+15 verbose loadVirtual     at async Npm.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/npm.js:194:9)
+15 verbose loadVirtual     at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/cli/entry.js:67:5)
+16 verbose stack Error: 
+16 verbose stack The `npm ci` command can only install with an existing
+16 verbose stack package-lock.json with lockfileVersion >= 1. Run an install with npm@5
+16 verbose stack or later to generate a package-lock.json file, then try again.
+16 verbose stack
+16 verbose stack Clean install a project
+16 verbose stack
+16 verbose stack Usage:
+16 verbose stack npm ci
+16 verbose stack
+16 verbose stack Options:
+16 verbose stack [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+16 verbose stack [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+16 verbose stack [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+16 verbose stack [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts]
+16 verbose stack [--allow-directory <all|none|root>] [--allow-file <all|none|root>]
+16 verbose stack [--allow-git <all|none|root>] [--allow-remote <all|none|root>]
+16 verbose stack [--allow-scripts <package-list> [--allow-scripts <package-list> ...]]
+16 verbose stack [--strict-allow-scripts] [--dangerously-allow-all-scripts] [--no-audit]
+16 verbose stack [--no-bin-links] [--no-fund] [--dry-run]
+16 verbose stack [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+16 verbose stack [--workspaces] [--include-workspace-root] [--install-links]
+16 verbose stack
+16 verbose stack   --install-strategy
+16 verbose stack     Sets the strategy for installing packages in node_modules.
+16 verbose stack
+16 verbose stack   --legacy-bundling
+16 verbose stack     Instead of hoisting package installs in `node_modules`, install packages
+16 verbose stack
+16 verbose stack   --global-style
+16 verbose stack     Only install direct dependencies in the top level `node_modules`,
+16 verbose stack
+16 verbose stack   --omit
+16 verbose stack     Dependency types to omit from the installation tree on disk.
+16 verbose stack
+16 verbose stack   --include
+16 verbose stack     Option that allows for defining which types of dependencies to install.
+16 verbose stack
+16 verbose stack   --strict-peer-deps
+16 verbose stack     If set to `true`, and `--legacy-peer-deps` is not set, then _any_
+16 verbose stack
+16 verbose stack   --foreground-scripts
+16 verbose stack     Run all build scripts (ie, `preinstall`, `install`, and
+16 verbose stack
+16 verbose stack   --ignore-scripts
+16 verbose stack     If true, npm does not run scripts specified in package.json files.
+16 verbose stack
+16 verbose stack   --allow-directory
+16 verbose stack     Limits the ability for npm to install dependencies from directories.
+16 verbose stack
+16 verbose stack   --allow-file
+16 verbose stack     Limits the ability for npm to install dependencies from tarball files.
+16 verbose stack
+16 verbose stack   --allow-git
+16 verbose stack     Limits the ability for npm to fetch dependencies from git references.
+16 verbose stack
+16 verbose stack   --allow-remote
+16 verbose stack     Limits the ability for npm to fetch dependencies from urls.
+16 verbose stack
+16 verbose stack   --allow-scripts
+16 verbose stack     Comma-separated list of packages whose install-time lifecycle scripts
+16 verbose stack
+16 verbose stack   --strict-allow-scripts
+16 verbose stack     If `true`, turn the install-script policy from a warning into a hard
+16 verbose stack
+16 verbose stack   --dangerously-allow-all-scripts
+16 verbose stack     If `true`, bypass the `allowScripts` policy entirely and run every
+16 verbose stack
+16 verbose stack   --audit
+16 verbose stack     When "true" submit audit reports alongside the current npm command to the
+16 verbose stack
+16 verbose stack   --bin-links
+16 verbose stack     Tells npm to create symlinks (or `.cmd` shims on Windows) for package
+16 verbose stack
+16 verbose stack   --fund
+16 verbose stack     When "true" displays the message at the end of each `npm install`
+16 verbose stack
+16 verbose stack   --dry-run
+16 verbose stack     Indicates that you don't want npm to make any changes and that it should
+16 verbose stack
+16 verbose stack   -w|--workspace
+16 verbose stack     Enable running a command in the context of the configured workspaces of the
+16 verbose stack
+16 verbose stack   --workspaces
+16 verbose stack     Set to true to run the command in the context of **all** configured
+16 verbose stack
+16 verbose stack   --include-workspace-root
+16 verbose stack     Include the workspace root when workspaces are enabled for a command.
+16 verbose stack
+16 verbose stack   --install-links
+16 verbose stack     When set file: protocol dependencies will be packed and installed as
+16 verbose stack
+16 verbose stack
+16 verbose stack aliases: clean-install, ic, install-clean, isntall-clean
+16 verbose stack
+16 verbose stack Run "npm help ci" for more info
+16 verbose stack     at CI.usageError (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/base-cmd.js:179:26)
+16 verbose stack     at CI.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/commands/ci.js:84:18)
+16 verbose stack     at async Npm.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/npm.js:194:9)
+16 verbose stack     at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/tools/1/npm-12.0.0/node_modules/npm/lib/cli/entry.js:67:5)
+17 error code EUSAGE
+18 error
+18 error The `npm ci` command can only install with an existing
+18 error package-lock.json with lockfileVersion >= 1. Run an install with npm@5
+18 error or later to generate a package-lock.json file, then try again.
+18 error
+18 error Clean install a project
+18 error
+18 error Usage:
+18 error npm ci
+18 error
+18 error Options:
+18 error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+18 error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+18 error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+18 error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts]
+18 error [--allow-directory <all|none|root>] [--allow-file <all|none|root>]
+18 error [--allow-git <all|none|root>] [--allow-remote <all|none|root>]
+18 error [--allow-scripts <package-list> [--allow-scripts <package-list> ...]]
+18 error [--strict-allow-scripts] [--dangerously-allow-all-scripts] [--no-audit]
+18 error [--no-bin-links] [--no-fund] [--dry-run]
+18 error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+18 error [--workspaces] [--include-workspace-root] [--install-links]
+18 error
+18 error   --install-strategy
+18 error     Sets the strategy for installing packages in node_modules.
+18 error
+18 error   --legacy-bundling
+18 error     Instead of hoisting package installs in `node_modules`, install packages
+18 error
+18 error   --global-style
+18 error     Only install direct dependencies in the top level `node_modules`,
+18 error
+18 error   --omit
+18 error     Dependency types to omit from the installation tree on disk.
+18 error
+18 error   --include
+18 error     Option that allows for defining which types of dependencies to install.
+18 error
+18 error   --strict-peer-deps
+18 error     If set to `true`, and `--legacy-peer-deps` is not set, then _any_
+18 error
+18 error   --foreground-scripts
+18 error     Run all build scripts (ie, `preinstall`, `install`, and
+18 error
+18 error   --ignore-scripts
+18 error     If true, npm does not run scripts specified in package.json files.
+18 error
+18 error   --allow-directory
+18 error     Limits the ability for npm to install dependencies from directories.
+18 error
+18 error   --allow-file
+18 error     Limits the ability for npm to install dependencies from tarball files.
+18 error
+18 error   --allow-git
+18 error     Limits the ability for npm to fetch dependencies from git references.
+18 error
+18 error   --allow-remote
+18 error     Limits the ability for npm to fetch dependencies from urls.
+18 error
+18 error   --allow-scripts
+18 error     Comma-separated list of packages whose install-time lifecycle scripts
+18 error
+18 error   --strict-allow-scripts
+18 error     If `true`, turn the install-script policy from a warning into a hard
+18 error
+18 error   --dangerously-allow-all-scripts
+18 error     If `true`, bypass the `allowScripts` policy entirely and run every
+18 error
+18 error   --audit
+18 error     When "true" submit audit reports alongside the current npm command to the
+18 error
+18 error   --bin-links
+18 error     Tells npm to create symlinks (or `.cmd` shims on Windows) for package
+18 error
+18 error   --fund
+18 error     When "true" displays the message at the end of each `npm install`
+18 error
+18 error   --dry-run
+18 error     Indicates that you don't want npm to make any changes and that it should
+18 error
+18 error   -w|--workspace
+18 error     Enable running a command in the context of the configured workspaces of the
+18 error
+18 error   --workspaces
+18 error     Set to true to run the command in the context of **all** configured
+18 error
+18 error   --include-workspace-root
+18 error     Include the workspace root when workspaces are enabled for a command.
+18 error
+18 error   --install-links
+18 error     When set file: protocol dependencies will be packed and installed as
+18 error
+18 error
+18 error aliases: clean-install, ic, install-clean, isntall-clean
+18 error
+18 error Run "npm help ci" for more info
+19 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1
+20 verbose os Darwin 25.6.0
+21 verbose node v26.8.1
+22 verbose npm  v12.0.0
+23 verbose exit 1
+24 verbose code 1
+25 error A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-ko743W/***/projects/1/.npm-cache/_logs/2026-09-09T09_58_44_740Z-debug-0.log

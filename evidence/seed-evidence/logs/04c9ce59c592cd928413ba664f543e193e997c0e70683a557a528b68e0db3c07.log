@@ -1,0 +1,23 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/8/tools/npm-7.18.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+(node:85424) [DEP0174] DeprecationWarning: Calling promisify on a function that returns a Promise is likely a mistake.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+npm WARN old lockfile 
+npm WARN old lockfile The npm-shrinkwrap.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+
+added 1 package in 3s
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/dd58d9acd2c65e380d3920a05e12b4241732906dcea1810394b5ee4e62f4249c-0b22719b1926.log
+Frozen enforcement was not established: a contradictory manifest must produce an explicit lock rejection.

@@ -1,0 +1,30 @@
+Error: Cannot find module 'delay'
+Require stack:
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js
+- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at Module._load (node:internal/modules/cjs/loader:1341:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.require (node:internal/modules/cjs/loader:1674:12)
+    at require (node:internal/modules/helpers:157:16)
+    at Object.<anonymous> (/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js',
+    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js'
+  ]
+}

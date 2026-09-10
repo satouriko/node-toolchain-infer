@@ -1,0 +1,56 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/tools/npm-5.7.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm WARN npm npm does not support Node.js v24.10.0
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+npm ERR! cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/project-control-project/.npm-cache/_logs/2026-09-09T10_45_54_644Z-debug.log
+
+[npm debug: 2026-09-09T10_45_54_644Z-debug.log]
+0 info it worked if it ends with ok
+1 warn npm npm does not support Node.js v24.10.0
+2 warn npm You should probably upgrade to a newer version of node as we
+3 warn npm can't make any promises that npm will work with this version.
+4 warn npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+5 warn npm You can find the latest version at https://nodejs.org/
+6 verbose cli [
+6 verbose cli   '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node',
+6 verbose cli   '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/tools/npm-5.7.0/node_modules/npm/bin/npm-cli.js',
+6 verbose cli   'ci',
+6 verbose cli   '--ignore-scripts',
+6 verbose cli   '--no-audit',
+6 verbose cli   '--no-fund'
+6 verbose cli ]
+7 info using npm@5.7.0
+8 info using node@v24.10.0
+9 silly correctMkdir /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/etc correctMkdir not in flight; initializing
+10 silly correctMkdir /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation correctMkdir not in flight; initializing
+11 silly correctMkdir /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/project-control-project correctMkdir not in flight; initializing
+12 verbose npm-session e7605a543a434215
+13 silly init starting workers
+14 silly init prefix: /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/project-control-project
+15 silly init removing node_modules/ before install
+16 silly checkLock verifying package-lock data
+17 verbose stack Error: cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+17 verbose stack
+17 verbose stack
+17 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+17 verbose stack
+17 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/tools/npm-5.7.0/node_modules/npm/node_modules/libcipm/index.js:118:15
+18 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/project-control-project
+19 verbose Darwin 25.6.0
+20 verbose argv "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node" "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-gle401/2/tools/npm-5.7.0/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+21 verbose node v24.10.0
+22 verbose npm  v5.7.0
+23 error cipm can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+23 error
+23 error
+23 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+24 verbose exit [ 1, true ]

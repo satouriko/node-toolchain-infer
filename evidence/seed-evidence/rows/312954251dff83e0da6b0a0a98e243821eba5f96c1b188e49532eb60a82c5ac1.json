@@ -1,0 +1,89 @@
+{
+  "id": "910b8804-ab77-4f3e-a728-ba054989b58f",
+  "key": "9206bd9cc4a5a293ba90edebac55985105db002166dac2bc6a122bb42c43f8d7",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.24.6",
+  "fixtureId": "yarn-modern-v10",
+  "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:35.956Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "id": "0b48b259b0b8ed14013cb48dbcfe9f34ed70887c597d10ac84f102aa0379f768-42c9ae01d0dd",
+    "key": "0b48b259b0b8ed14013cb48dbcfe9f34ed70887c597d10ac84f102aa0379f768",
+    "manager": "yarn",
+    "version": "0.24.6",
+    "actualVersion": "0.24.6",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-pqBnmMpNdRBlglZO7MGweJ5Z4UFw+oBaCAz+lz+NMuKZv2o9T30T1sAtGHyZ68ZmkZcPUHHTdY6SzE1fyEhUkA==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/package-lock.json",
+      "lockfileSha256": "5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65",
+      "logPath": "bootstrap/5e47102b44ce368f823aede6474ff708023e440a32394e65179d7eb58a17ec65/2e8c8a9711779d360ff0985d6c2ccebb755e40d858efb645eaca4de06e6ef00f.log",
+      "installedTreeSha256": "60f72fecb53a5fab954711d14825ed16b0a65dc356d922917cdce9b0622c0a8e"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.24.6.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v10",
+    "fixtureHash": "ad4c5f7498fdaaeaac56d173816c3e7e479958b35c0a3998a34554b51ea9aad6",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "4dd953b3163f293d36bacc078b16d75bd715678162f163164c862d45b41b4475"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/0b48b259b0b8ed14013cb48dbcfe9f34ed70887c597d10ac84f102aa0379f768-42c9ae01d0dd.log",
+    "createdAt": "2026-09-09T10:19:35.939Z"
+  }
+}

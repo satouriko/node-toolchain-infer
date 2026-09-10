@@ -1,0 +1,13 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+ WARN  Ignoring not compatible lockfile at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/projects/0/pnpm-lock.yaml
+ ERROR  Headless installation requires a pnpm-lock.yaml file
+
+pnpm: Headless installation requires a pnpm-lock.yaml file
+    at _install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186185:21)
+    at mutateModules (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186116:29)
+    at async install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:186055:24)
+    at async installDeps (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:187943:31)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219780:21
+    at async main (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219751:34)
+    at async runPnpm (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219979:5)
+    at async /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-retest-jZcYyr/1f83863d-5c61-43bf-939a-c45d7b46218c/tools/0/pnpm-7.23.0/node_modules/pnpm/dist/pnpm.cjs:219971:7

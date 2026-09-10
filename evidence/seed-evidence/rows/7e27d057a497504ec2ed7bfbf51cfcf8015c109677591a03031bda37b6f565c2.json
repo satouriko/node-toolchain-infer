@@ -1,0 +1,89 @@
+{
+  "id": "e3315095-1a6a-4558-aea3-b4ca58bd88c8",
+  "key": "414bc7869e3ce6e60a2a376cfa3e697eba7b3ade00b7f8dea2244ba8a0aa4d33",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.26.0",
+  "fixtureId": "yarn-modern-v4",
+  "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:19:02.337Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "id": "b042915ad63bd9a3c27109ae15d48aa56f061946ea1b1f66d58f96dd83bb28dc-d31e3d37386c",
+    "key": "b042915ad63bd9a3c27109ae15d48aa56f061946ea1b1f66d58f96dd83bb28dc",
+    "manager": "yarn",
+    "version": "0.26.0",
+    "actualVersion": "0.26.0",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-4+7vs/X1J5o/rVHC2ux1RoDd2ZVa1/pExMTEHmawG9WxAdiGzfTyOZopoQzR3TehSnormbZNc+LSKTsoKMTwww==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/db9727ec9bd86b7a8508b221e205a1936904c85b10a90cab06129f7f7c66e35f/package-lock.json",
+      "lockfileSha256": "db9727ec9bd86b7a8508b221e205a1936904c85b10a90cab06129f7f7c66e35f",
+      "logPath": "bootstrap/db9727ec9bd86b7a8508b221e205a1936904c85b10a90cab06129f7f7c66e35f/84d9717e5ebc58c21ebf5f71095f961ca6cad509cc71a6df8aab3be65da8a0c0.log",
+      "installedTreeSha256": "5217657415c118e6bf2e5e2d535969fe6aa27bc6e743bb7da7afcc1544a71bbe"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.26.0.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v4",
+    "fixtureHash": "7430aa3a161dc6e44b38b4ea4b5b958dea830f27800c0fe868e2937e4f515500",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "c19cdf9b65e9883f41ef83e63b6b67a28b75471d7e0d576529b4c6fcb1a7991d"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/b042915ad63bd9a3c27109ae15d48aa56f061946ea1b1f66d58f96dd83bb28dc-d31e3d37386c.log",
+    "createdAt": "2026-09-09T10:19:02.273Z"
+  }
+}

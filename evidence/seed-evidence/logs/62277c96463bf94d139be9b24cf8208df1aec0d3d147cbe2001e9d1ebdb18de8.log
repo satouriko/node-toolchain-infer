@@ -1,0 +1,77 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-8.8.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-cache/_logs/2026-09-09T10_35_14_869Z-debug-0.log
+
+[npm debug: 2026-09-09T10_35_14_869Z-debug-0.log]
+0 verbose cli /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-8.8.0/node_modules/npm/bin/npm-cli.js
+1 info using npm@8.8.0
+2 info using node@v24.10.0
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-8.8.0/node_modules/npm/npmrc Completed in 2ms
+6 timing config:load:builtin Completed in 2ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npmrc Completed in 1ms
+10 timing config:load:project Completed in 8ms
+11 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-userconfig Completed in 0ms
+12 timing config:load:user Completed in 1ms
+13 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-globalconfig Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 0ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 14ms
+19 timing npm:load:configload Completed in 14ms
+20 timing npm:load:mkdirpcache Completed in 1ms
+21 timing npm:load:mkdirplogs Completed in 4ms
+22 verbose title npm ci
+23 verbose argv "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+24 timing npm:load:setTitle Completed in 10ms
+25 timing config:load:flatten Completed in 1ms
+26 timing npm:load:display Completed in 1ms
+27 verbose logfile logs-max:10 dir:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-cache/_logs
+28 verbose logfile /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-cache/_logs/2026-09-09T10_35_14_869Z-debug-0.log
+29 timing npm:load:logFile Completed in 3ms
+30 timing npm:load:timers Completed in 0ms
+31 timing npm:load:configScope Completed in 0ms
+32 timing npm:load Completed in 33ms
+33 timing arborist:ctor Completed in 1ms
+34 silly logfile done cleaning log files
+35 timing npm-ci:rm Completed in 0ms
+36 timing idealTree:init Completed in 0ms
+37 timing idealTree:userRequests Completed in 0ms
+38 silly idealTree buildDeps
+39 silly fetch manifest is-number@6.0.0
+40 http fetch GET 200 https://registry.npmjs.org/is-number 252ms (cache miss)
+41 silly placeDep ROOT is-number@6.0.0 REPLACE for: compatibility-fixture@1.0.0 want: 6.0.0
+42 timing idealTree:#root Completed in 257ms
+43 timing idealTree:node_modules/is-number Completed in 0ms
+44 timing idealTree:buildDeps Completed in 260ms
+45 timing idealTree:fixDepFlags Completed in 0ms
+46 timing idealTree Completed in 263ms
+47 timing command:ci Completed in 273ms
+48 verbose stack Error: `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+48 verbose stack
+48 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+48 verbose stack
+48 verbose stack     at CI.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-8.8.0/node_modules/npm/lib/commands/ci.js:73:13)
+48 verbose stack     at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/tools/npm-8.8.0/node_modules/npm/lib/cli.js:78:5)
+49 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project
+50 verbose Darwin 25.6.0
+51 verbose node v24.10.0
+52 verbose npm  v8.8.0
+53 error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+53 error
+53 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+53 error
+54 verbose exit 1
+55 timing npm Completed in 339ms
+56 verbose code 1
+57 error A complete log of this run can be found in:
+57 error     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/10/project-control-project/.npm-cache/_logs/2026-09-09T10_35_14_869Z-debug-0.log

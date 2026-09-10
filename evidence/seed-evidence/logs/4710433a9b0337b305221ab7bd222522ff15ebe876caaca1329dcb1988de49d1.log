@@ -1,0 +1,46 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/npm-6.11.1/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm WARN npm npm does not support Node.js v24.10.0
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 6, 8, 9, 10, 11, 12.
+npm WARN npm You can find the latest version at https://nodejs.org/
+npm ERR! Cannot read properties of undefined (reading 'is-number')
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/project/.npm-cache/_logs/2026-09-09T10_13_22_214Z-debug.log
+
+[npm debug: 2026-09-09T10_13_22_214Z-debug.log]
+0 info it worked if it ends with ok
+1 warn npm npm does not support Node.js v24.10.0
+2 warn npm You should probably upgrade to a newer version of node as we
+3 warn npm can't make any promises that npm will work with this version.
+4 warn npm Supported releases of Node.js are the latest release of 6, 8, 9, 10, 11, 12.
+5 warn npm You can find the latest version at https://nodejs.org/
+6 verbose cli [
+6 verbose cli   '/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node',
+6 verbose cli   '/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/npm-6.11.1/node_modules/npm/bin/npm-cli.js',
+6 verbose cli   'ci',
+6 verbose cli   '--ignore-scripts',
+6 verbose cli   '--no-audit',
+6 verbose cli   '--no-fund'
+6 verbose cli ]
+7 info using npm@6.11.1
+8 info using node@v24.10.0
+9 info prepare initializing installer
+10 verbose prepare starting workers
+11 verbose prepare installation prefix: /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/project
+12 verbose prepare using package-lock.json
+13 verbose checkLock verifying package-lock data
+14 verbose teardown shutting down workers.
+15 info teardown Done in 0s
+16 verbose stack TypeError: Cannot read properties of undefined (reading 'is-number')
+16 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/npm-6.11.1/node_modules/npm/node_modules/lock-verify/index.js:27:40
+16 verbose stack     at Array.forEach (<anonymous>)
+16 verbose stack     at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/npm-6.11.1/node_modules/npm/node_modules/lock-verify/index.js:25:25
+17 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/project
+18 verbose Darwin 25.6.0
+19 verbose argv "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node" "/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/npm-6.11.1/node_modules/npm/bin/npm-cli.js" "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+20 verbose node v24.10.0
+21 verbose npm  v6.11.1
+22 error Cannot read properties of undefined (reading 'is-number')
+23 verbose exit [ 1, true ]
