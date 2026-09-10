@@ -28,6 +28,19 @@ interface PreparedTool {
   directory: string
   receipt: BootstrapReceipt
 }
+/** Keep the dependency graph and installer output usable after the CI cache is gone. */
+export async function preserveBootstrap(receipt: BootstrapReceipt, evidence: string): Promise<BootstrapReceipt> {
+  const lock = await readFile(receipt.lockfilePath)
+  if (digest(lock) !== receipt.lockfileSha256) throw new Error('Bootstrap dependency lock digest mismatch')
+  const log = await readFile(receipt.logPath)
+  const prefix = `bootstrap/${receipt.lockfileSha256}`
+  const lockfilePath = `${prefix}/package-lock.json`
+  const logPath = `${prefix}/${digest(log)}.log`
+  await mkdir(join(evidence, prefix), { recursive: true })
+  await writeFile(join(evidence, lockfilePath), lock)
+  await writeFile(join(evidence, logPath), log)
+  return { ...receipt, lockfilePath, logPath }
+}
 const prepared = new Map<string, Promise<PreparedTool>>()
 async function treeHash(directory: string): Promise<string> {
   const root = resolve(directory)

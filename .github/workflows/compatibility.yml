@@ -52,6 +52,9 @@ jobs:
           pnpm releases:check --state-dir maintenance/results --max-releases "$MAX_RELEASES"
           result=$?
           echo "exit_code=$result" >> "$GITHUB_OUTPUT"
+          if [ -f maintenance/results/report.md ]; then
+            cat maintenance/results/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
           exit 0
       - name: Upload reports and reproduction logs before failing
         if: always()

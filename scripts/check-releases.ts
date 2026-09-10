@@ -6,6 +6,8 @@ import { pathToFileURL } from 'node:url'
 
 import semver from 'semver'
 
+import { preserveBootstrap } from '../maintenance/bootstrap.js'
+import { recordFailure } from '../maintenance/failure.js'
 import { generateFixture } from '../maintenance/generate-fixtures.js'
 import { compatibilityOutcome, type KnownBugReview, loadKnownBugs, reviewedBug } from '../maintenance/known-bugs.js'
 import { digest, evaluate, type Fixture, type Issues, mergeHistory, type Observation } from '../maintenance/model.js'
@@ -319,7 +321,13 @@ export async function runReleaseCheck(
         .map((sample) => sample.fixture)
       if (!relevant.length) currentIssues[`${key}:recipe`] = `No recipe for ${manager}@${release.version}`
       try {
-        const tool = await provision(manager, release, catalog, join(temporary, 'tools'))
+        const provisionOptions = {
+          bootstrapDependencies: true,
+          cacheDirectory: join(root, '.cache/maintenance'),
+          timeoutMs: 120_000,
+        }
+        const tool = await provision(manager, release, catalog, join(temporary, 'tools'), undefined, provisionOptions)
+        if (tool.bootstrap) tool.bootstrap = await preserveBootstrap(tool.bootstrap, directory)
         // Generate each recipe shape with the exact new version; detect new formats before matrix testing.
         for (const fixture of relevant) {
           const generationKey = `${key}:${fixture.id}`
@@ -333,6 +341,7 @@ export async function runReleaseCheck(
               },
               catalog,
               join(directory, 'generated', digest(generationKey)),
+              provisionOptions,
             )
             state.generation[generationKey] = generated
           }
@@ -378,13 +387,14 @@ export async function runReleaseCheck(
           }
         }
       } catch (error) {
+        const failureLog = await recordFailure(directory, `${manager}@${release.version}`, error)
         if (error instanceof FormatDetectionError) {
           const message = `${manager}@${release.version}: ${String(error)}; inspect generated candidate receipts/logs`
           issues.unknownFormats.push(message)
           currentIssues[`${key}:parser`] = message
         } else {
           conclusive = false
-          issues.incomplete.push(`${manager}@${release.version}: ${String(error)}`)
+          issues.incomplete.push(`${manager}@${release.version}: ${String(error)}; ${failureLog}`)
         }
       }
       if (conclusive) {
@@ -397,7 +407,8 @@ export async function runReleaseCheck(
       await writeFile(join(directory, 'state.json'), `${JSON.stringify(state, null, 2)}\n`)
     }
   } catch (error) {
-    issues.incomplete.push(String(error))
+    const failureLog = await recordFailure(directory, 'Release check setup', error)
+    issues.incomplete.push(`${String(error)}; ${failureLog}`)
   } finally {
     await rm(temporary, { recursive: true, force: true })
   }

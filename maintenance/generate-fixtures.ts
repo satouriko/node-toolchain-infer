@@ -9,6 +9,7 @@ import semver from 'semver'
 import { fetchCatalog } from '../src/catalog.js'
 import { isStableVersion } from '../src/versions.js'
 
+import { preserveBootstrap } from './bootstrap.js'
 import { digest, type Fixture } from './model.js'
 import { provision, type ProvisionOptions } from './provision.js'
 import { detectFormat, execute, FormatDetectionError, hashes } from './runner.js'
@@ -53,6 +54,7 @@ export async function generateFixture(
   const temporary = await mkdtemp(join(tmpdir(), 'toolchain-generate-'))
   try {
     const tool = await provision(fixture.manager, release, catalog, join(temporary, 'tools'), fixture.node, options)
+    if (tool.bootstrap) tool.bootstrap = await preserveBootstrap(tool.bootstrap, destination)
     const cwd = join(temporary, 'project')
     await mkdir(cwd)
     await writeFile(

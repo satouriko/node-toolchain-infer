@@ -494,18 +494,21 @@ export async function provision(
   if (native) cli = native.cli
   let bootstrap: BootstrapReceipt | undefined
   const versionDirectory = await mkdtemp(join(tmpdir(), 'toolchain-version-'))
-  const checkVersion = () =>
-    exec(native ? cli : node, native ? ['--version'] : [cli, '--version'], {
+  const checkVersion = async () => {
+    const result = await exec(native ? cli : node, native ? ['--version'] : [cli, '--version'], {
       cwd: versionDirectory,
       timeout: timeoutMs,
       killSignal: 'SIGKILL',
       maxBuffer: 4 * 1024 * 1024,
       env: { ...process.env, PATH: `${dirname(node)}:${process.env.PATH ?? ''}`, COREPACK_ENABLE_PROJECT_SPEC: '0' },
     })
-  let stdout: string
+    if (![release.version, `${manager} ${release.version}`, `v${release.version}`].includes(result.stdout.trim()))
+      throw new Error(`Actual tool version mismatch: ${result.stdout || '<empty stdout>'}\n${result.stderr}`)
+    return result
+  }
   try {
     try {
-      stdout = (await checkVersion()).stdout
+      await checkVersion()
     } catch (error) {
       const details = error as Error & { stderr?: string }
       if (
@@ -523,13 +526,11 @@ export async function provision(
       await rm(toolDirectory, { recursive: true, force: true })
       await cp(installed.directory, toolDirectory, { recursive: true, verbatimSymlinks: true })
       cli = join(toolDirectory, bin)
-      stdout = (await checkVersion()).stdout
+      await checkVersion()
     }
   } finally {
     await rm(versionDirectory, { recursive: true, force: true })
   }
-  if (![release.version, `${manager} ${release.version}`, `v${release.version}`].includes(stdout.trim()))
-    throw new Error(`Actual tool version mismatch: ${stdout}`)
   await verifyRuntime(node, nodeVersion, nodeArch, timeoutMs)
   return {
     node,

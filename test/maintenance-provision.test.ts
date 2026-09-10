@@ -256,11 +256,14 @@ test('manager version discovery is bounded when an old executable hangs', async 
   }
 })
 
-test('opt-in missing-dependency bootstrap preserves an exact production lock and reuses its receipt', async () => {
+test('bootstrap handles old Node reporting a missing module on stderr with exit zero and preserves its receipt', async () => {
   const root = await mkdtemp(join(tmpdir(), 'provision-bootstrap-test-'))
   const originalFetch = globalThis.fetch
   try {
-    await fixtureTarball(root, 'console.log(require("bootstrap-local").version)')
+    await fixtureTarball(
+      root,
+      'try { console.log(require("bootstrap-local").version) } catch (error) { console.error(error) }',
+    )
     await mkdir(join(root, 'package/vendor'), { recursive: true })
     await writeFile(
       join(root, 'package/vendor/package.json'),

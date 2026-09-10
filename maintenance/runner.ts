@@ -133,8 +133,10 @@ export async function execute(
     child.on('error', (error) => {
       output += String(error)
     })
-    child.on('close', (exitCode) => {
+    child.on('close', (exitCode, signal) => {
       clearTimeout(timeout)
+      if (exitCode !== 0 && !output.trim())
+        output = `Command ${JSON.stringify([...(tool.execution === 'native' ? [tool.cli] : [tool.node, tool.cli]), ...args])} failed with ${signal ? `signal ${signal}` : `exit code ${exitCode}`}; no output was emitted.\n`
       resolve({ exitCode, output })
     })
   })

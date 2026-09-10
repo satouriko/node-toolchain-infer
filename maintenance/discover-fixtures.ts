@@ -33,8 +33,10 @@ async function preserveBootstrap(
   if (!bootstrap) return undefined
   const destination = join(discovery, 'bootstrap', bootstrap.lockfileSha256)
   await mkdir(destination, { recursive: true })
-  await cp(bootstrap.lockfilePath, join(destination, 'package-lock.json'))
-  await cp(bootstrap.logPath, join(destination, 'bootstrap.log'))
+  if (resolve(bootstrap.lockfilePath) !== join(destination, 'package-lock.json'))
+    await cp(bootstrap.lockfilePath, join(destination, 'package-lock.json'))
+  if (resolve(bootstrap.logPath) !== join(destination, 'bootstrap.log'))
+    await cp(bootstrap.logPath, join(destination, 'bootstrap.log'))
   return {
     ...bootstrap,
     lockfilePath: relative(receiptDirectory, join(destination, 'package-lock.json')),
@@ -217,7 +219,14 @@ function adoptFixture(fixture: Fixture, candidate: string): Promise<{ status: st
     const receipt = JSON.parse(await readFile(join(destination, 'receipt.json'), 'utf8')) as {
       bootstrap?: BootstrapReceipt
     }
-    receipt.bootstrap = await preserveBootstrap(receipt.bootstrap, destination)
+    receipt.bootstrap = await preserveBootstrap(
+      receipt.bootstrap && {
+        ...receipt.bootstrap,
+        lockfilePath: resolve(candidate, receipt.bootstrap.lockfilePath),
+        logPath: resolve(candidate, receipt.bootstrap.logPath),
+      },
+      destination,
+    )
     await writeFile(join(destination, 'receipt.json'), `${JSON.stringify(receipt, null, 2)}\n`)
     recipes.push(fixture)
     await writeFile(path, `${JSON.stringify(recipes, null, 2)}\n`)

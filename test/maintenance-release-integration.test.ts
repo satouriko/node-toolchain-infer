@@ -183,7 +183,7 @@ for (const version of ['1.0.0', '1.0.0-beta.0'])
   })
 
 test(
-  'new release generation selects its runtime and discovers replacement pnpm lock filenames',
+  'release checks bootstrap missing tool dependencies for both generation and frozen installs',
   {
     skip:
       Number(process.versions.node.split('.')[0]) < 20
@@ -204,20 +204,35 @@ test(
         match: { format: '3', file: 'shrinkwrap.yaml' },
         dependencies: { 'is-number': '7.0.0' },
       }
-      for (const directory of ['fixtures/pnpm', 'state', 'tar/package/bin'])
+      for (const directory of ['fixtures/pnpm', 'state', 'tar/package/bin', 'tar/package/vendor'])
         await mkdir(join(root, directory), { recursive: true })
       await writeFile(join(root, 'fixtures/pnpm/package.json'), '{}')
       await writeFile(join(root, 'fixtures/pnpm/shrinkwrap.yaml'), 'shrinkwrapVersion: 3\n')
       await writeFile(join(root, 'fixtures/recipes.json'), JSON.stringify([fixture]))
       await writeFile(
         join(root, 'tar/package/package.json'),
-        JSON.stringify({ name: 'pnpm', version: '12.4.0', bin: { pnpm: 'bin/pnpm.cjs' } }),
+        JSON.stringify({
+          name: 'pnpm',
+          version: '12.4.0',
+          bin: { pnpm: 'bin/pnpm.cjs' },
+          dependencies: { 'local-cli-runtime': 'file:vendor' },
+        }),
       )
+      await writeFile(
+        join(root, 'tar/package/vendor/package.json'),
+        JSON.stringify({
+          name: 'local-cli-runtime',
+          version: '1.0.0',
+          main: 'index.js',
+        }),
+      )
+      await writeFile(join(root, 'tar/package/vendor/index.js'), 'module.exports = "12.4.0"')
       await writeFile(
         join(root, 'tar/package/bin/pnpm.cjs'),
         String.raw`
 const fs = require('node:fs');
-if (process.argv.includes('--version')) console.log('12.4.0');
+const version = require('local-cli-runtime');
+if (process.argv.includes('--version')) console.log(version);
 else if (process.argv.includes('--frozen-lockfile')) {
   fs.mkdirSync('node_modules/is-number', {recursive:true});
   fs.writeFileSync('node_modules/is-number/package.json', '{"version":"7.0.0"}');
@@ -257,6 +272,18 @@ else if (process.argv.includes('--frozen-lockfile')) {
       assert.ok(generated)
       const receipt = JSON.parse(await readFile(join(generated.directory, 'receipt.json'), 'utf8'))
       assert.equal(receipt.node, process.versions.node)
+      assert.ok(receipt.bootstrap?.lockfileSha256)
+      assert.equal(
+        digest(await readFile(join(generated.directory, receipt.bootstrap.lockfilePath))),
+        receipt.bootstrap.lockfileSha256,
+      )
+      assert.match(await readFile(join(generated.directory, receipt.bootstrap.logPath), 'utf8'), /npm-cli/)
+      const observed = JSON.parse(await readFile(join(root, 'state/observations.json'), 'utf8')) as Observation[]
+      assert.ok(observed[0].bootstrap)
+      assert.equal(
+        digest(await readFile(join(root, 'state', observed[0].bootstrap.lockfilePath))),
+        observed[0].bootstrap.lockfileSha256,
+      )
       assert.equal(receipt.lock, 'pnpm-lock.yaml')
       assert.equal(receipt.match.format, '9')
       assert.equal(receipt.files['pnpm-lock.yaml'], digest('lockfileVersion: 9.0\n'))

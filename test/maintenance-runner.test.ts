@@ -6,9 +6,34 @@ import process from 'node:process'
 import test from 'node:test'
 
 import { digest, type Fixture } from '../maintenance/model.js'
-import { runFixture } from '../maintenance/runner.js'
+import { execute, runFixture } from '../maintenance/runner.js'
 
 import type { Tool } from '../maintenance/provision.js'
+
+test('silent process failures retain the command and exit status in reproduction logs', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'runner-silent-failure-'))
+  try {
+    const cli = join(root, 'tool.cjs')
+    await writeFile(cli, 'process.exit(7)')
+    const tool: Tool = {
+      node: process.execPath,
+      nodeVersion: process.versions.node,
+      nodeArch: process.arch,
+      nodeIntegrity: 'test-runtime',
+      cli,
+      version: '4.2.1',
+      integrity: 'test-tool',
+      url: 'test',
+    }
+    const result = await execute(tool, ['install', '--ignore-scripts'], root)
+    assert.equal(result.exitCode, 7)
+    assert.match(result.output, /install.*--ignore-scripts/)
+    assert.match(result.output, /exit code 7/)
+    assert.match(result.output, /no output/i)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
 
 test('format tests use the pnpm settings recorded in the lockfile and retain them in the control evidence', async () => {
   const root = await mkdtemp(join(tmpdir(), 'infer-lock-settings-'))
