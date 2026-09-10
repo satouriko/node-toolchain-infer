@@ -187,6 +187,81 @@ async function diskFixture() {
   return { root, seed, state, row, raw, sample: { fixture, hash: inputHash } }
 }
 
+test('incremental checks import failed historical attempts without relabeling or rerunning them', async () => {
+  const setup = await diskFixture()
+  try {
+    const failed = {
+      ...setup.row,
+      catalogHash: digest(JSON.stringify(catalog)),
+      status: 'inconclusive',
+      observation: { ...setup.row.observation, status: 'inconclusive', exitCode: 1 },
+    }
+    const raw = JSON.stringify(failed)
+    await writeFile(join(setup.seed, 'rows/one.json'), raw)
+    await writeFile(join(setup.seed, 'catalog.json'), JSON.stringify(catalog))
+    const result = await runReleaseCheck({
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 0,
+      incremental: true,
+    })
+    assert.equal(result.exitCode, 0)
+    assert.equal(result.history?.recordedReleases, 1)
+    assert.equal(result.managers[0].conclusivelyObservedCount, 0)
+    const history = JSON.parse(await readFile(join(setup.state, 'history.json'), 'utf8'))
+    assert.equal(history[0].outcomes[fixture.id], 'inconclusive')
+    assert.equal(await readFile(join(setup.state, history[0].sources[0]), 'utf8'), raw)
+    assert.match(await readFile(join(setup.state, 'history.md'), 'utf8'), /inconclusive/)
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
+test('incremental checks record new failures once, discover old-branch patches, and retry only explicitly', async () => {
+  const setup = await diskFixture()
+  try {
+    const options = {
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 1,
+      incremental: true,
+      seedDirectories: [],
+    }
+    const first = await runReleaseCheck(options)
+    assert.equal(first.exitCode, 2, 'a new release without an executable is still a failure')
+    const original = await readFile(join(setup.state, 'history.json'), 'utf8')
+    const second = await runReleaseCheck(options)
+    assert.equal(second.exitCode, 0, 'the recorded failure is historical on the next daily run')
+    assert.equal(await readFile(join(setup.state, 'history.json'), 'utf8'), original)
+    assert.equal((await runReleaseCheck({ ...options, retryFailed: true })).exitCode, 2)
+    await writeFile(
+      join(setup.root, 'catalog.json'),
+      JSON.stringify({
+        ...catalog,
+        managers: { ...catalog.managers, npm: [release, { ...release, version: '9.9.9' }] },
+      }),
+    )
+    assert.equal((await runReleaseCheck(options)).exitCode, 2, 'an added old-branch patch must run')
+    assert.equal((await runReleaseCheck(options)).exitCode, 0)
+    await writeFile(
+      join(setup.root, 'catalog.json'),
+      JSON.stringify({
+        ...catalog,
+        managers: { ...catalog.managers, npm: [{ ...release, integrity: 'replaced-artifact' }] },
+      }),
+    )
+    assert.equal(
+      (await runReleaseCheck(options)).exitCode,
+      2,
+      'changed artifact identity invalidates the saved attempt',
+    )
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
 test('an exclusion invalidates a previously imported sole success and its completed state during production checks', async () => {
   const setup = await diskFixture()
   try {
@@ -468,6 +543,92 @@ test('imported initial facts do not hide disagreement with a current confirmed r
     })
     assert.notEqual(report.exitCode, 0)
     assert.ok(report.unresolved.some((message) => message.includes('current-boundary')))
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
+test('incremental migration preserves terminal legacy failures but retries interrupted attempts', async () => {
+  const setup = await diskFixture()
+  try {
+    const options = {
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 1,
+      seedDirectories: [],
+    }
+    assert.equal((await runReleaseCheck(options)).exitCode, 2)
+    const saved = JSON.parse(await readFile(join(setup.state, 'state.json'), 'utf8'))
+    delete saved.history
+    await writeFile(join(setup.state, 'state.json'), JSON.stringify(saved))
+    const migrated = await runReleaseCheck({ ...options, incremental: true })
+    assert.equal(migrated.exitCode, 0)
+    assert.equal(migrated.history?.checkedThisRun, 0)
+    const records = JSON.parse(await readFile(join(setup.state, 'history.json'), 'utf8'))
+    assert.equal(records[0].exitCode, 2)
+    assert.ok(records[0].sources.some((path: string) => path.startsWith('reports/')))
+    delete saved.history
+    saved.attempted[portableReleaseKey('npm', release, [setup.sample])] = '2999-01-01T00:00:00Z'
+    await writeFile(join(setup.state, 'state.json'), JSON.stringify(saved))
+    assert.equal((await runReleaseCheck({ ...options, incremental: true })).history?.checkedThisRun, 1)
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
+test('incremental scheduling treats changed URL as new despite conclusive facts with the same integrity', async () => {
+  const setup = await diskFixture()
+  try {
+    await writeFile(join(setup.seed, 'catalog.json'), JSON.stringify(catalog))
+    await writeFile(
+      join(setup.seed, 'rows/one.json'),
+      JSON.stringify({ ...setup.row, catalogHash: digest(JSON.stringify(catalog)) }),
+    )
+    const options = {
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 0,
+      incremental: true,
+    }
+    assert.equal((await runReleaseCheck(options)).exitCode, 0)
+    await writeFile(
+      options.catalogPath,
+      JSON.stringify({
+        ...catalog,
+        managers: { ...catalog.managers, npm: [{ ...release, tarball: 'https://invalid.example/new-artifact.tgz' }] },
+      }),
+    )
+    const changed = await runReleaseCheck(options)
+    assert.equal(changed.exitCode, 2)
+    assert.match(changed.incomplete.join(' '), /unprocessed/)
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
+test('migration cannot pair a terminal old report with a catalog overwritten by an interrupted run', async () => {
+  const setup = await diskFixture()
+  try {
+    const options = {
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 1,
+      seedDirectories: [],
+    }
+    assert.equal((await runReleaseCheck(options)).exitCode, 2)
+    const changed = {
+      ...catalog,
+      generatedAt: '2026-09-10',
+      managers: { ...catalog.managers, npm: [{ ...release, tarball: 'https://invalid.example/new-artifact.tgz' }] },
+    }
+    await writeFile(options.catalogPath, JSON.stringify(changed))
+    await writeFile(join(setup.state, 'catalog.json'), JSON.stringify(changed))
+    const pending = await runReleaseCheck({ ...options, incremental: true, maxReleases: 0 })
+    assert.equal(pending.exitCode, 2)
+    assert.equal(pending.history?.recordedReleases, 0)
   } finally {
     await rm(setup.root, { recursive: true, force: true })
   }

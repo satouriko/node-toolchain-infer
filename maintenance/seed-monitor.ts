@@ -6,7 +6,16 @@ import { isStableVersion } from '../src/versions.js'
 import { EvidenceExclusions, exclusionArchivePath } from './evidence-exclusions.js'
 import { frozenControlError } from './frozen-control.js'
 import { compatibilityOutcome, type KnownBugReview, reviewedBug } from './known-bugs.js'
-import { digest, type Fixture, FROZEN_LOCKFILES, FROZEN_PROTOCOL, type Observation, SEED_PROTOCOL } from './model.js'
+import {
+  digest,
+  type Fixture,
+  FROZEN_LOCKFILES,
+  FROZEN_PROTOCOL,
+  type Observation,
+  type Outcome,
+  SEED_PROTOCOL,
+} from './model.js'
+import { releaseHistoryKey } from './release-history.js'
 import { frozenArgs } from './runner.js'
 
 import type { SeedRow } from '../scripts/seed-data.js'
@@ -144,6 +153,16 @@ export interface SeedMonitorOptions {
   catalog: Catalog
   samples: MonitorSample[]
   knownBugs?: KnownBugReview[]
+  includeAttempts?: boolean
+}
+export interface SeedAttempt {
+  key: string
+  manager: Manager
+  version: string
+  fixtureId: string
+  createdAt: string
+  status: Outcome
+  sources: string[]
 }
 async function immutable(path: string, bytes: string | Buffer): Promise<void> {
   await mkdir(dirname(path), { recursive: true })
@@ -212,8 +231,10 @@ export async function importSeedMonitor(options: SeedMonitorOptions): Promise<{
   incomplete: string[]
   superseded: number
   excludedObservationIds: string[]
+  attempts: SeedAttempt[]
 }> {
   const observations: Observation[] = []
+  const attempts: SeedAttempt[] = []
   const incomplete: string[] = []
   let superseded = 0
   const excludedObservationIds = new Set<string>()
@@ -249,6 +270,20 @@ export async function importSeedMonitor(options: SeedMonitorOptions): Promise<{
       continue
     }
     const excludedRows: Array<{ hash: string; bytes: Buffer }> = []
+    let sourceCatalog: Catalog | undefined
+    let sourceCatalogHash: string | undefined
+    let sourceCatalogPath: string | undefined
+    if (options.includeAttempts) {
+      try {
+        sourceCatalog = JSON.parse(await readFile(join(directory, 'catalog.json'), 'utf8')) as Catalog
+        const rawCatalog = JSON.stringify(sourceCatalog)
+        sourceCatalogHash = digest(rawCatalog)
+        sourceCatalogPath = `seed-evidence/catalogs/${sourceCatalogHash}.json`
+        await immutable(join(options.destination, sourceCatalogPath), rawCatalog)
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
+      }
+    }
     let names: string[]
     try {
       names = await readdir(join(directory, 'rows'))
@@ -280,6 +315,66 @@ export async function importSeedMonitor(options: SeedMonitorOptions): Promise<{
           continue
         }
         const original = row.observation
+        if (options.includeAttempts) {
+          const sample = samples.get(row.fixtureId)
+          const release = releases.get(`${row.manager}@${row.version}`)
+          const sourceRelease = sourceCatalog?.managers[row.manager]?.find((item) => item.version === row.version)
+          const identityMatches =
+            release
+            && ((sourceCatalog
+              && sourceRelease
+              && sourceCatalogHash === row.catalogHash
+              && releaseHistoryKey(row.manager, sourceRelease) === releaseHistoryKey(row.manager, release))
+              || (!sourceCatalog
+                && original?.toolIntegrity
+                && original.toolUrl === (release.tarball ?? release.bundle?.url)
+                && !release.runtime
+                && original.toolIntegrity === release.integrity
+                && original.version === row.version
+                && original.manager === row.manager))
+          if (
+            sample
+            && release
+            && identityMatches
+            && row.fixtureHash === sample.hash
+            && ['pass', 'incompatible', 'rewrite', 'semantic-mismatch', 'inconclusive'].includes(row.status)
+          ) {
+            const rowPath = `seed-evidence/rows/${digest(raw)}.json`
+            await immutable(join(options.destination, rowPath), raw)
+            const sources = [rowPath]
+            const originalLog = original?.logPath ?? row.logPath
+            if (originalLog) {
+              const log = await assets.read(originalLog)
+              const logPath = `seed-evidence/logs/${digest(log)}.log`
+              await immutable(join(options.destination, logPath), log)
+              sources.push(logPath)
+            }
+            if (sourceCatalogPath) sources.push(sourceCatalogPath)
+            const assetPaths = [
+              original?.frozenControl?.logPath,
+              original?.bootstrap?.lockfilePath,
+              original?.bootstrap?.logPath,
+              original?.frozenControl?.bootstrap?.lockfilePath,
+              original?.frozenControl?.bootstrap?.logPath,
+            ]
+            for (const assetPath of assetPaths) {
+              if (!assetPath) continue
+              const content = await assets.read(assetPath)
+              const path = `seed-evidence/assets/${digest(content)}`
+              await immutable(join(options.destination, path), content)
+              sources.push(path)
+            }
+            attempts.push({
+              key: releaseHistoryKey(row.manager, release),
+              manager: row.manager,
+              version: row.version,
+              fixtureId: row.fixtureId,
+              createdAt: row.createdAt,
+              status: row.status,
+              sources,
+            })
+          }
+        }
         if (
           !original
           || row.status !== original.status
@@ -380,5 +475,6 @@ export async function importSeedMonitor(options: SeedMonitorOptions): Promise<{
     incomplete,
     superseded,
     excludedObservationIds: [...excludedObservationIds].sort(),
+    attempts,
   }
 }

@@ -1,0 +1,104 @@
+{
+  "id": "69e2f963-27ef-4e93-84c2-f863fdf9d000",
+  "key": "cb8f520fbecd062f0f1378dbeb6c29098f4ccb1737dd202ce453a306460d8fc5",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "pnpm",
+  "version": "4.12.3",
+  "fixtureId": "pnpm-legacy-shrinkwrap-v4",
+  "fixtureHash": "ace931357ccd73c51a9b037826fcba78373d935ea57e93ddbb587fcc708125fb",
+  "catalogHash": "a7f2c215dac9b4f35880e3bd5d920d188b45df01840f0665c20cbc4c73f081be",
+  "createdAt": "2026-09-10T09:22:53.706Z",
+  "attempt": 1,
+  "status": "incompatible",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".npmrc": "4344b6884ac4c1023afd5347c8a0edcc0a92619aaf40fde9e34c167482685665",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-workspace.yaml": "d115dc6c83ba283a7d17146ad456056f3f70b003edb8c312a52880b48b034001",
+      "shrinkwrap.yaml": "5d072db61014bfb7d96154a8d2538f850adc41a0706463a302cb9194b115612f"
+    },
+    "id": "b69a1c260134d08cb6997b3ce80f7cd605e6e583a7f579a0c2380b79adecc12f-90cdaf95d47d",
+    "key": "b69a1c260134d08cb6997b3ce80f7cd605e6e583a7f579a0c2380b79adecc12f",
+    "manager": "pnpm",
+    "version": "4.12.3",
+    "actualVersion": "4.12.3",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-PTJ+uJ0Augxnr9jH8SZbZbPeTLepK9LS2rNKT44qSf880mwYDbDf3+XhcAoJyb+6mHg8sNkYE+PQWe6F3X4UKg==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/75331cf6fc690ac3c9679fa1eb844b3e052fef5a35633941475f3fac2833f53e/package-lock.json",
+      "lockfileSha256": "75331cf6fc690ac3c9679fa1eb844b3e052fef5a35633941475f3fac2833f53e",
+      "logPath": "bootstrap/75331cf6fc690ac3c9679fa1eb844b3e052fef5a35633941475f3fac2833f53e/584fd890504a766c16c1ea904f96f55e7912920e7d37de9ccfb2b8d31baf0327.log",
+      "installedTreeSha256": "0dc3a2eb8ea933fb46e77f919dbc78eee3998d0ced02fb0d7510f8e851648438",
+      "manifestPreparation": {
+        "original": {
+          "content": "{\n\t\"name\": \"pnpm\",\n\t\"description\": \"Fast, disk space efficient package manager\",\n\t\"version\": \"4.12.3\",\n\t\"author\": \"Zoltan Kochan <z@kochan.io> (https://www.kochan.io/)\",\n\t\"bin\": {\n\t\t\"pnpm\": \"bin/pnpm.js\",\n\t\t\"pnpx\": \"bin/pnpx.js\"\n\t},\n\t\"bugs\": {\n\t\t\"url\": \"https://github.com/pnpm/pnpm/issues\"\n\t},\n\t\"main\": \"lib/bin/pnpm.js\",\n\t\"files\": [\n\t\t\"lib\",\n\t\t\"!*.map\",\n\t\t\"bin\"\n\t],\n\t\"dependencies\": {\n\t\t\"@pnpm/cli-utils\": \"0.3.13\",\n\t\t\"@pnpm/command\": \"1.0.0\",\n\t\t\"@pnpm/common-cli-options-help\": \"0.1.4\",\n\t\t\"@pnpm/config\": \"8.1.2\",\n\t\t\"@pnpm/core-loggers\": \"4.0.1\",\n\t\t\"@pnpm/default-reporter\": \"7.1.0\",\n\t\t\"@pnpm/file-reporter\": \"0.1.0\",\n\t\t\"@pnpm/filter-workspace-packages\": \"2.0.9\",\n\t\t\"@pnpm/find-workspace-dir\": \"1.0.0\",\n\t\t\"@pnpm/logger\": \"3.1.0\",\n\t\t\"@pnpm/parse-cli-args\": \"1.0.0\",\n\t\t\"@pnpm/plugin-commands-audit\": \"1.0.3\",\n\t\t\"@pnpm/plugin-commands-import\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-installation\": \"1.1.3\",\n\t\t\"@pnpm/plugin-commands-listing\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-outdated\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-publishing\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-rebuild\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-script-runners\": \"1.0.3\",\n\t\t\"@pnpm/plugin-commands-server\": \"1.0.4\",\n\t\t\"@pnpm/plugin-commands-store\": \"1.0.4\",\n\t\t\"@pnpm/run-npm\": \"2.0.0\",\n\t\t\"@pnpm/tabtab\": \"0.0.1\",\n\t\t\"@pnpm/types\": \"5.0.0\",\n\t\t\"@zkochan/libnpx\": \"11.0.3\",\n\t\t\"chalk\": \"3.0.0\",\n\t\t\"common-tags\": \"1.8.0\",\n\t\t\"graceful-fs\": \"4.2.1\",\n\t\t\"is-ci\": \"2.0.0\",\n\t\t\"loud-rejection\": \"2.2.0\",\n\t\t\"pkgs-graph\": \"5.1.4\",\n\t\t\"ramda\": \"0.27.0\",\n\t\t\"render-help\": \"1.0.0\",\n\t\t\"split-cmd\": \"1.0.1\",\n\t\t\"update-notifier\": \"4.1.0\",\n\t\t\"which\": \"2.0.2\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@pnpm/assert-project\": \"2.0.0\",\n\t\t\"@pnpm/constants\": \"3.0.0\",\n\t\t\"@pnpm/find-workspace-packages\": \"2.1.14\",\n\t\t\"@pnpm/lockfile-types\": \"2.0.0\",\n\t\t\"@pnpm/modules-yaml\": \"6.0.1\",\n\t\t\"@pnpm/prepare\": \"0.0.0\",\n\t\t\"@pnpm/read-package-json\": \"3.0.2\",\n\t\t\"@pnpm/read-project-manifest\": \"1.0.3\",\n\t\t\"@pnpm/write-project-manifest\": \"1.0.1\",\n\t\t\"@types/byline\": \"4.2.31\",\n\t\t\"@types/common-tags\": \"1.8.0\",\n\t\t\"@types/cross-spawn\": \"6.0.1\",\n\t\t\"@types/graceful-fs\": \"4.1.3\",\n\t\t\"@types/is-ci\": \"2.0.0\",\n\t\t\"@types/is-windows\": \"^1.0.0\",\n\t\t\"@types/mkdirp\": \"1.0.0\",\n\t\t\"@types/mz\": \"^2.7.0\",\n\t\t\"@types/ncp\": \"2.0.3\",\n\t\t\"@types/ramda\": \"^0.27.0\",\n\t\t\"@types/retry\": \"0.12.0\",\n\t\t\"@types/semver\": \"^7.1.0\",\n\t\t\"@types/table\": \"^4.0.7\",\n\t\t\"@types/tape-promise\": \"4.0.0\",\n\t\t\"@types/update-notifier\": \"4.1.0\",\n\t\t\"@types/which\": \"1.3.2\",\n\t\t\"@zkochan/rimraf\": \"1.0.0\",\n\t\t\"anonymous-npm-registry-client\": \"0.1.2\",\n\t\t\"byline\": \"5.0.0\",\n\t\t\"cross-spawn\": \"7.0.1\",\n\t\t\"deep-require-cwd\": \"1.0.0\",\n\t\t\"delay\": \"4.3.0\",\n\t\t\"dir-is-case-sensitive\": \"1.0.2\",\n\t\t\"execa\": \"4.0.0\",\n\t\t\"exists-link\": \"2.0.0\",\n\t\t\"is-windows\": \"1.0.2\",\n\t\t\"load-json-file\": \"6.2.0\",\n\t\t\"make-dir\": \"3.0.2\",\n\t\t\"mz\": \"2.7.0\",\n\t\t\"ncp\": \"2.0.0\",\n\t\t\"normalize-newline\": \"3.0.0\",\n\t\t\"npm-run-all\": \"4.1.5\",\n\t\t\"p-any\": \"3.0.0\",\n\t\t\"path-exists\": \"4.0.0\",\n\t\t\"pnpm\": \"4.12.3\",\n\t\t\"read-yaml-file\": \"2.0.0\",\n\t\t\"retry\": \"0.12.0\",\n\t\t\"semver\": \"7.1.3\",\n\t\t\"symlink-dir\": \"3.1.2\",\n\t\t\"tape-promise\": \"4.0.0\",\n\t\t\"tree-kill\": \"1.2.2\",\n\t\t\"write-json-file\": \"4.0.0\",\n\t\t\"write-pkg\": \"4.0.0\",\n\t\t\"write-yaml-file\": \"4.0.0\"\n\t},\n\t\"directories\": {\n\t\t\"test\": \"test\"\n\t},\n\t\"homepage\": \"https://pnpm.js.org\",\n\t\"keywords\": [\n\t\t\"dependency manager\",\n\t\t\"install\",\n\t\t\"installer\",\n\t\t\"uninstall\",\n\t\t\"remove\",\n\t\t\"link\",\n\t\t\"prune\",\n\t\t\"shrinkwrap\",\n\t\t\"lockfile\",\n\t\t\"fast\",\n\t\t\"rapid\",\n\t\t\"efficient\",\n\t\t\"package.json\",\n\t\t\"packages\",\n\t\t\"dependencies\",\n\t\t\"symlinks\",\n\t\t\"hardlinks\",\n\t\t\"modules\",\n\t\t\"npm\",\n\t\t\"package manager\",\n\t\t\"monorepo\",\n\t\t\"multi-package\",\n\t\t\"workspace\"\n\t],\n\t\"license\": \"MIT\",\n\t\"preferGlobal\": true,\n\t\"engines\": {\n\t\t\"node\": \">=10.13\"\n\t},\n\t\"repository\": {\n\t\t\"type\": \"git\",\n\t\t\"url\": \"git+https://github.com/pnpm/pnpm.git\"\n\t},\n\t\"scripts\": {\n\t\t\"start\": \"npm run tsc -- --watch\",\n\t\t\"lint\": \"tslint -c ../../tslint.json src/**/*.ts test/**/*.ts\",\n\t\t\"registry-mock\": \"registry-mock\",\n\t\t\"test:tap\": \"cd ../.. && c8 --reporter lcov --reports-dir packages/pnpm/coverage ts-node packages/pnpm/test --type-check\",\n\t\t\"pretest:e2e\": \"rimraf node_modules/.bin/pnpm\",\n\t\t\"test:e2e\": \"registry-mock prepare && run-p -r registry-mock test:tap\",\n\t\t\"_test\": \"pnpm run compile && cross-env PNPM_REGISTRY_MOCK_PORT=7780 pnpm run test:e2e\",\n\t\t\"test\": \"pnpm run _test\",\n\t\t\"prepublishOnly\": \"pnpm run compile && npm cache clear --force && publish-packed --prune\",\n\t\t\"postpublish\": \"publish-packed\",\n\t\t\"compile\": \"rimraf lib tsconfig.tsbuildinfo && tsc --build\"\n\t},\n\t\"publishconfig\": {\n\t\t\"tag\": \"next\"\n\t}\n}\n",
+          "sha256": "64e1e29e0c411ced629632be634219d23d342440b47bb80a6bbf6a75a9647d82"
+        },
+        "installation": {
+          "content": "{\n  \"name\": \"pnpm\",\n  \"description\": \"Fast, disk space efficient package manager\",\n  \"version\": \"4.12.3\",\n  \"author\": \"Zoltan Kochan <z@kochan.io> (https://www.kochan.io/)\",\n  \"bin\": {\n    \"pnpm\": \"bin/pnpm.js\",\n    \"pnpx\": \"bin/pnpx.js\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/pnpm/pnpm/issues\"\n  },\n  \"main\": \"lib/bin/pnpm.js\",\n  \"files\": [\n    \"lib\",\n    \"!*.map\",\n    \"bin\"\n  ],\n  \"dependencies\": {\n    \"@pnpm/cli-utils\": \"0.3.13\",\n    \"@pnpm/command\": \"1.0.0\",\n    \"@pnpm/common-cli-options-help\": \"0.1.4\",\n    \"@pnpm/config\": \"8.1.2\",\n    \"@pnpm/core-loggers\": \"4.0.1\",\n    \"@pnpm/default-reporter\": \"7.1.0\",\n    \"@pnpm/file-reporter\": \"0.1.0\",\n    \"@pnpm/filter-workspace-packages\": \"2.0.9\",\n    \"@pnpm/find-workspace-dir\": \"1.0.0\",\n    \"@pnpm/logger\": \"3.1.0\",\n    \"@pnpm/parse-cli-args\": \"1.0.0\",\n    \"@pnpm/plugin-commands-audit\": \"1.0.3\",\n    \"@pnpm/plugin-commands-import\": \"1.0.4\",\n    \"@pnpm/plugin-commands-installation\": \"1.1.3\",\n    \"@pnpm/plugin-commands-listing\": \"1.0.4\",\n    \"@pnpm/plugin-commands-outdated\": \"1.0.4\",\n    \"@pnpm/plugin-commands-publishing\": \"1.0.4\",\n    \"@pnpm/plugin-commands-rebuild\": \"1.0.4\",\n    \"@pnpm/plugin-commands-script-runners\": \"1.0.3\",\n    \"@pnpm/plugin-commands-server\": \"1.0.4\",\n    \"@pnpm/plugin-commands-store\": \"1.0.4\",\n    \"@pnpm/run-npm\": \"2.0.0\",\n    \"@pnpm/tabtab\": \"0.0.1\",\n    \"@pnpm/types\": \"5.0.0\",\n    \"@zkochan/libnpx\": \"11.0.3\",\n    \"chalk\": \"3.0.0\",\n    \"common-tags\": \"1.8.0\",\n    \"graceful-fs\": \"4.2.1\",\n    \"is-ci\": \"2.0.0\",\n    \"loud-rejection\": \"2.2.0\",\n    \"pkgs-graph\": \"5.1.4\",\n    \"ramda\": \"0.27.0\",\n    \"render-help\": \"1.0.0\",\n    \"split-cmd\": \"1.0.1\",\n    \"update-notifier\": \"4.1.0\",\n    \"which\": \"2.0.2\"\n  },\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"homepage\": \"https://pnpm.js.org\",\n  \"keywords\": [\n    \"dependency manager\",\n    \"install\",\n    \"installer\",\n    \"uninstall\",\n    \"remove\",\n    \"link\",\n    \"prune\",\n    \"shrinkwrap\",\n    \"lockfile\",\n    \"fast\",\n    \"rapid\",\n    \"efficient\",\n    \"package.json\",\n    \"packages\",\n    \"dependencies\",\n    \"symlinks\",\n    \"hardlinks\",\n    \"modules\",\n    \"npm\",\n    \"package manager\",\n    \"monorepo\",\n    \"multi-package\",\n    \"workspace\"\n  ],\n  \"license\": \"MIT\",\n  \"preferGlobal\": true,\n  \"engines\": {\n    \"node\": \">=10.13\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/pnpm/pnpm.git\"\n  },\n  \"scripts\": {\n    \"start\": \"npm run tsc -- --watch\",\n    \"lint\": \"tslint -c ../../tslint.json src/**/*.ts test/**/*.ts\",\n    \"registry-mock\": \"registry-mock\",\n    \"test:tap\": \"cd ../.. && c8 --reporter lcov --reports-dir packages/pnpm/coverage ts-node packages/pnpm/test --type-check\",\n    \"pretest:e2e\": \"rimraf node_modules/.bin/pnpm\",\n    \"test:e2e\": \"registry-mock prepare && run-p -r registry-mock test:tap\",\n    \"_test\": \"pnpm run compile && cross-env PNPM_REGISTRY_MOCK_PORT=7780 pnpm run test:e2e\",\n    \"test\": \"pnpm run _test\",\n    \"prepublishOnly\": \"pnpm run compile && npm cache clear --force && publish-packed --prune\",\n    \"postpublish\": \"publish-packed\",\n    \"compile\": \"rimraf lib tsconfig.tsbuildinfo && tsc --build\"\n  },\n  \"publishconfig\": {\n    \"tag\": \"next\"\n  }\n}\n",
+          "sha256": "0c65e67f9b9a23f41b9ec8cd4767aa59e4c78e7221bc5dd92ac16c2cb4ea75ad"
+        }
+      }
+    },
+    "toolUrl": "https://registry.npmjs.org/pnpm/-/pnpm-4.12.3.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "pnpm-legacy-shrinkwrap-v4",
+    "fixtureHash": "ace931357ccd73c51a9b037826fcba78373d935ea57e93ddbb587fcc708125fb",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "status": "incompatible",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".npmrc": "4344b6884ac4c1023afd5347c8a0edcc0a92619aaf40fde9e34c167482685665",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "pnpm-workspace.yaml": "d115dc6c83ba283a7d17146ad456056f3f70b003edb8c312a52880b48b034001",
+      "shrinkwrap.yaml": "5d072db61014bfb7d96154a8d2538f850adc41a0706463a302cb9194b115612f",
+      "yarn.lock": "<missing>"
+    },
+    "afterHashes": {
+      ".npmrc": "4344b6884ac4c1023afd5347c8a0edcc0a92619aaf40fde9e34c167482685665",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "pnpm-workspace.yaml": "d115dc6c83ba283a7d17146ad456056f3f70b003edb8c312a52880b48b034001",
+      "shrinkwrap.yaml": "5d072db61014bfb7d96154a8d2538f850adc41a0706463a302cb9194b115612f",
+      "yarn.lock": "<missing>"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "requestedDependencies": {
+      "is-number": "7.0.0"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/b69a1c260134d08cb6997b3ce80f7cd605e6e583a7f579a0c2380b79adecc12f-90cdaf95d47d.log",
+    "createdAt": "2026-09-10T09:22:53.677Z"
+  }
+}

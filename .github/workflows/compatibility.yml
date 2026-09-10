@@ -5,9 +5,13 @@ on:
   workflow_dispatch:
     inputs:
       max_releases:
-        description: Maximum release combinations to process (remaining backlog stays incomplete)
+        description: Maximum new releases to check (remaining new releases stay pending)
         default: '8'
         type: string
+      retry_failed:
+        description: Explicitly retry recorded failures instead of checking only new releases
+        default: false
+        type: boolean
 permissions:
   contents: write
 concurrency:
@@ -42,14 +46,19 @@ jobs:
             git -C "$RUNNER_TEMP/compatibility-data" checkout --orphan compatibility-data
             git -C "$RUNNER_TEMP/compatibility-data" rm -rf .
           fi
-      - name: Check exact releases and unresolved items
+      - name: Check new releases or explicitly retry recorded failures
         id: check
         env:
           MAX_RELEASES: ${{ inputs.max_releases || '8' }}
+          RETRY_FAILED: ${{ inputs.retry_failed || false }}
         shell: bash
         run: |
           set +e
-          pnpm releases:check --state-dir maintenance/results --max-releases "$MAX_RELEASES"
+          args=(--incremental --state-dir maintenance/results --max-releases "$MAX_RELEASES")
+          if [ "$RETRY_FAILED" = true ]; then
+            args+=(--retry-failed)
+          fi
+          pnpm releases:check "${args[@]}"
           result=$?
           echo "exit_code=$result" >> "$GITHUB_OUTPUT"
           if [ -f maintenance/results/report.md ]; then

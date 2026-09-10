@@ -1,6 +1,6 @@
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { join, resolve } from 'node:path'
+import { join, relative, resolve } from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
@@ -13,6 +13,7 @@ import { compatibilityOutcome, type KnownBugReview, loadKnownBugs, reviewedBug }
 import { digest, evaluate, type Fixture, type Issues, mergeHistory, type Observation } from '../maintenance/model.js'
 import { compareBehavior, selectReleaseBatch } from '../maintenance/monitor.js'
 import { provision } from '../maintenance/provision.js'
+import { type RecordedRelease, recordRelease, releaseHistoryKey, writeHistory } from '../maintenance/release-history.js'
 import { readJson, reusableObservation } from '../maintenance/run-matrix.js'
 import { fixtureFiles, FormatDetectionError, hashes, runFixture } from '../maintenance/runner.js'
 import {
@@ -92,9 +93,20 @@ export async function checkReleasesFromPaths(input: {
 }
 export interface Report extends ReturnType<typeof checkReleases>, Issues {
   exitCode: 0 | 1 | 2
+  catalogHash?: string
+  history?: { recordedReleases: number; checkedThisRun: number; unresolved: string[] }
 }
 export async function writeReport(directory: string, report: Report): Promise<void> {
   await mkdir(directory, { recursive: true })
+  await mkdir(join(directory, 'reports'), { recursive: true })
+  for (const extension of ['json', 'md']) {
+    try {
+      const previous = await readFile(join(directory, `report.${extension}`))
+      await writeFile(join(directory, 'reports', `${digest(previous)}.${extension}`), previous, { flag: 'wx' })
+    } catch (error) {
+      if (!['ENOENT', 'EEXIST'].includes((error as NodeJS.ErrnoException).code ?? '')) throw error
+    }
+  }
   await writeFile(join(directory, 'report.json'), `${JSON.stringify(report, null, 2)}\n`)
   const lines = [
     `# Compatibility release check`,
@@ -110,6 +122,15 @@ export async function writeReport(directory: string, report: Report): Promise<vo
   ]
   for (const key of ['unknownFormats', 'mismatches', 'unresolved', 'incomplete'] as const)
     lines.push('', `## ${key}`, '', ...(report[key].length ? report[key].map((item) => `- ${item}`) : ['None.']))
+  if (report.history)
+    lines.push(
+      '',
+      '## Incremental check',
+      '',
+      `${report.history.checkedThisRun} releases checked this run; ${report.history.recordedReleases} exact artifacts have recorded results.`,
+      'Previous failures are retained in [history.md](history.md) and history.json; they are not rerun or relabeled as compatible.',
+      ...report.history.unresolved.map((item) => `- Historical unresolved: ${item}`),
+    )
   lines.push(
     '',
     'Reproduce with the catalog.json, observations.json, state.json and logs in this artifact; see maintenance/update-compatibility.prompt.md. Historical point observations do not establish compatibility boundaries.',
@@ -124,6 +145,7 @@ interface State {
   batches?: number
   unresolved: Record<string, string>
   generation?: Record<string, { match: Fixture['match']; directory: string; lock?: string } | undefined>
+  history?: Record<string, RecordedRelease>
 }
 export async function runReleaseCheck(
   options: {
@@ -134,6 +156,8 @@ export async function runReleaseCheck(
     manager?: Manager
     seedDirectories?: string[]
     enrichYarn?: YarnEnricher
+    incremental?: boolean
+    retryFailed?: boolean
   } = {},
 ): Promise<Report> {
   const root = options.root ?? process.cwd()
@@ -151,6 +175,7 @@ export async function runReleaseCheck(
       'npm-v3-controls',
       'gap-audit/pnpm',
       'gap-audit/yarn',
+      'compat-maintenance-repair',
     ].map((name) => join(root, 'maintenance/evidence', name))
   await mkdir(directory, { recursive: true })
   const fixtures = await readJson<Fixture[]>(join(root, 'fixtures/recipes.json'), [])
@@ -172,6 +197,11 @@ export async function runReleaseCheck(
   state.generation ??= {}
   state.attempted ??= Object.fromEntries(state.completed.map((key) => [key, '']))
   state.batches ??= 0
+  state.history ??= {}
+  const previousCatalog = await readJson<Catalog | null>(join(directory, 'catalog.json'), null)
+  const previousReport = await readJson<Report | null>(join(directory, 'report.json'), null)
+  const previousCompleted = new Set(state.completed)
+  const selectedVersions = new Set<string>()
   try {
     await cp(join(root, 'maintenance/evidence/logs'), join(directory, 'logs'), { recursive: true })
   } catch (error) {
@@ -216,16 +246,114 @@ export async function runReleaseCheck(
         return { fixture, hash: digest(JSON.stringify(await hashes(source, await fixtureFiles(source)))) }
       }),
     )
+    if (
+      options.incremental
+      && previousCatalog
+      && previousReport?.catalogGeneratedAt === previousCatalog.generatedAt
+      && (!previousReport.catalogHash || previousReport.catalogHash === digest(JSON.stringify(previousCatalog)))
+    ) {
+      for (const manager of ['npm', 'pnpm', 'yarn'] as const) {
+        for (const release of previousCatalog.managers[manager]) {
+          const current = catalog.managers[manager].find((item) => item.version === release.version)
+          const key = releaseHistoryKey(manager, release)
+          const portableKey = portableReleaseKey(manager, release, samples)
+          const attemptedAt = state.attempted[portableKey]
+          if (
+            !current
+            || key !== releaseHistoryKey(manager, current)
+            || Object.hasOwn(state.history, key)
+            || !attemptedAt
+            || !(Date.parse(attemptedAt) <= Date.parse(previousReport.generatedAt))
+          )
+            continue
+          const prefix = `${manager}@${release.version}`
+          const oldIssues = Object.fromEntries(
+            (['unknownFormats', 'mismatches', 'unresolved', 'incomplete'] as const).map((kind) => [
+              kind,
+              previousReport[kind].filter(
+                (message) => message.startsWith(`${prefix}:`) || message.startsWith(`${prefix} `),
+              ),
+            ]),
+          ) as unknown as Issues
+          if (!previousCompleted.has(portableKey) && !Object.values(oldIssues).some((messages) => messages.length))
+            continue
+          const sources: string[] = []
+          for (const [kind, document] of [
+            ['reports', previousReport],
+            ['catalogs', previousCatalog],
+          ] as const) {
+            const raw = `${JSON.stringify(document, null, 2)}\n`
+            const path = `${kind}/${digest(raw)}.json`
+            await mkdir(join(directory, kind), { recursive: true })
+            await writeFile(join(directory, path), raw)
+            sources.push(path)
+          }
+          const observations = history.filter(
+            (item) =>
+              item.manager === manager
+              && item.version === release.version
+              && item.toolIntegrity === release.integrity
+              && Date.parse(item.createdAt) >= Date.parse(attemptedAt),
+          )
+          state.history[key] = await recordRelease(directory, {
+            key,
+            manager,
+            version: release.version,
+            origin: 'migration',
+            checkedAt: previousReport.generatedAt,
+            outcomes: Object.fromEntries(observations.map((item) => [item.fixtureId, item.status])),
+            sources: [...sources, ...observations.map((item) => item.logPath)],
+            issues: oldIssues,
+            exitCode: evaluate(oldIssues).exitCode,
+          })
+        }
+      }
+    }
     const seeded = await importSeedMonitor({
       directories: seedDirectories,
       destination: directory,
       catalog,
       samples,
       knownBugs,
+      includeAttempts: options.incremental,
     })
     const excluded = new Set(seeded.excludedObservationIds)
     history = mergeHistory(history, seeded.observations).filter((observation) => !excluded.has(observation.id))
     issues.incomplete.push(...seeded.incomplete)
+    if (options.incremental) {
+      const grouped = new Map<string, Map<string, (typeof seeded.attempts)[number]>>()
+      for (const attempt of seeded.attempts) {
+        const group = grouped.get(attempt.key) ?? new Map<string, (typeof seeded.attempts)[number]>()
+        const previous = group.get(attempt.fixtureId)
+        if (!previous || previous.createdAt < attempt.createdAt) group.set(attempt.fixtureId, attempt)
+        grouped.set(attempt.key, group)
+      }
+      for (const [key, group] of grouped) {
+        const attempts = [...group.values()]
+        const first = attempts[0]
+        const checkedAt = attempts
+          .map((attempt) => attempt.createdAt)
+          .sort()
+          .at(-1)!
+        if (Object.hasOwn(state.history, key) && state.history[key].checkedAt >= checkedAt) continue
+        if (
+          !samples
+            .filter((sample) => sample.fixture.manager === first.manager)
+            .every((sample) => group.has(sample.fixture.id))
+        )
+          continue
+        state.history[key] = await recordRelease(directory, {
+          key,
+          manager: first.manager,
+          version: first.version,
+          origin: 'seed',
+          checkedAt,
+          outcomes: Object.fromEntries(attempts.map((attempt) => [attempt.fixtureId, attempt.status])),
+          sources: attempts.flatMap((attempt) => attempt.sources),
+        })
+      }
+      await writeFile(join(directory, 'state.json'), `${JSON.stringify(state, null, 2)}\n`)
+    }
     const facts = monitorFacts(catalog, samples, history, knownBugs)
     let referenceHistory = [...facts.observations]
     for (const key of facts.covered) delete state.unresolved[`${key}:seed-conflict`]
@@ -291,9 +419,22 @@ export async function runReleaseCheck(
       )
       .filter(
         (item) =>
-          !completed.has(item.key)
+          options.incremental
+          || !completed.has(item.key)
           || Object.keys(state.unresolved).some((key) => key.startsWith(`${item.manager}@${item.release.version}:`)),
       )
+      .filter((item) => {
+        if (!options.incremental) return true
+        const recorded = state.history![releaseHistoryKey(item.manager, item.release)]
+        return (
+          !Object.hasOwn(state.history!, releaseHistoryKey(item.manager, item.release))
+          || Boolean(
+            options.retryFailed
+            && (recorded.exitCode
+              || Object.values(recorded.outcomes).some((outcome) => !['pass', 'incompatible'].includes(outcome))),
+          )
+        )
+      })
     // Recent releases first, with old-branch patches still in the queue, not hidden behind a maximum version.
     queue.sort(
       (a, b) =>
@@ -307,6 +448,21 @@ export async function runReleaseCheck(
         `${queue.length - selected.length} unprocessed release combinations remain; increase --max-releases or rerun with this state directory.`,
       )
     for (const { manager, release, key } of selected) {
+      selectedVersions.add(`${manager}@${release.version}`)
+      const offsets = {
+        unknownFormats: issues.unknownFormats.length,
+        mismatches: issues.mismatches.length,
+        incomplete: issues.incomplete.length,
+      }
+      const recorded: RecordedRelease = {
+        key: releaseHistoryKey(manager, release),
+        manager,
+        version: release.version,
+        checkedAt: new Date().toISOString(),
+        origin: 'check',
+        outcomes: {},
+        sources: [],
+      }
       state.attempted[key] = new Date().toISOString()
       await writeFile(join(directory, 'state.json'), `${JSON.stringify(state, null, 2)}\n`)
       console.log(`Checking ${manager}@${release.version}`)
@@ -316,7 +472,9 @@ export async function runReleaseCheck(
         .filter(
           (sample) =>
             sample.fixture.manager === manager
-            && (pendingIssue(manager, release.version) || !facts.covered.has(monitorFactKey(manager, release, sample))),
+            && (options.incremental
+              || pendingIssue(manager, release.version)
+              || !facts.covered.has(monitorFactKey(manager, release, sample))),
         )
         .map((sample) => sample.fixture)
       if (!relevant.length) currentIssues[`${key}:recipe`] = `No recipe for ${manager}@${release.version}`
@@ -330,9 +488,15 @@ export async function runReleaseCheck(
         if (tool.bootstrap) tool.bootstrap = await preserveBootstrap(tool.bootstrap, directory)
         // Generate each recipe shape with the exact new version; detect new formats before matrix testing.
         for (const fixture of relevant) {
-          const generationKey = `${key}:${fixture.id}`
-          let generated = state.generation[generationKey]
+          const generationKey = `${options.incremental ? recorded.key : key}:${fixture.id}`
+          let generated = options.incremental ? undefined : state.generation[generationKey]
           if (!generated) {
+            const generationDirectory = join(
+              directory,
+              'generated',
+              digest(options.incremental ? `${generationKey}:${recorded.checkedAt}` : generationKey),
+            )
+            recorded.sources.push(relative(directory, generationDirectory))
             generated = await generateFixture(
               {
                 ...fixture,
@@ -340,7 +504,7 @@ export async function runReleaseCheck(
                 node: fixture.version === release.version ? fixture.node : undefined,
               },
               catalog,
-              join(directory, 'generated', digest(generationKey)),
+              generationDirectory,
               provisionOptions,
             )
             state.generation[generationKey] = generated
@@ -357,9 +521,13 @@ export async function runReleaseCheck(
             currentIssues[`${generationKey}:format`] = message
           }
           const observation =
-            (await reusableObservation(fixture, tool, join(root, 'fixtures'), history))
+            (options.incremental
+              ? undefined
+              : await reusableObservation(fixture, tool, join(root, 'fixtures'), history))
             ?? (await runFixture(fixture, tool, join(root, 'fixtures'), join(temporary, 'project'), directory))
           history = mergeHistory(history, [observation])
+          recorded.outcomes[fixture.id] = observation.status
+          recorded.sources.push(observation.logPath)
           await writeFile(join(directory, 'observations.json'), `${JSON.stringify(history, null, 2)}\n`)
           const matching = rules.rules.filter(
             (rule) =>
@@ -388,6 +556,7 @@ export async function runReleaseCheck(
         }
       } catch (error) {
         const failureLog = await recordFailure(directory, `${manager}@${release.version}`, error)
+        recorded.sources.push(failureLog)
         if (error instanceof FormatDetectionError) {
           const message = `${manager}@${release.version}: ${String(error)}; inspect generated candidate receipts/logs`
           issues.unknownFormats.push(message)
@@ -404,6 +573,19 @@ export async function runReleaseCheck(
       }
       Object.assign(state.unresolved, currentIssues)
       state.completed = [...completed]
+      if (options.incremental) {
+        const result = evaluate({
+          unknownFormats: issues.unknownFormats.slice(offsets.unknownFormats),
+          mismatches: issues.mismatches.slice(offsets.mismatches),
+          incomplete: issues.incomplete.slice(offsets.incomplete),
+          unresolved: Object.values(currentIssues),
+        })
+        state.history[recorded.key] = await recordRelease(directory, {
+          ...recorded,
+          issues: result,
+          exitCode: result.exitCode,
+        })
+      }
       await writeFile(join(directory, 'state.json'), `${JSON.stringify(state, null, 2)}\n`)
     }
   } catch (error) {
@@ -416,8 +598,14 @@ export async function runReleaseCheck(
   const finalFacts = monitorFacts(catalog, samples, history, knownBugs)
   for (const conflict of finalFacts.conflicts)
     state.unresolved[`${conflict.split(': conflicting')[0]}:seed-conflict`] = conflict
-  issues.unresolved = Object.values(state.unresolved)
+  const historicalUnresolved: string[] = []
+  issues.unresolved = Object.entries(state.unresolved).flatMap(([key, message]) => {
+    if (!options.incremental || [...selectedVersions].some((version) => key.startsWith(`${version}:`))) return [message]
+    historicalUnresolved.push(message)
+    return []
+  })
   const report = {
+    catalogHash: digest(JSON.stringify(catalog)),
     ...checkReleases({
       catalog,
       observations: finalFacts.observations,
@@ -426,11 +614,21 @@ export async function runReleaseCheck(
       knownBugs,
     }),
     ...evaluate(issues),
+    ...(options.incremental
+      ? {
+          history: {
+            recordedReleases: Object.keys(state.history).length,
+            checkedThisRun: selectedVersions.size,
+            unresolved: historicalUnresolved,
+          },
+        }
+      : {}),
   }
   // Persist discovered work even when metadata, provisioning or a later fixture fails.
   await writeFile(join(directory, 'state.json'), `${JSON.stringify(state, null, 2)}\n`)
   await writeFile(join(directory, 'observations.json'), `${JSON.stringify(history, null, 2)}\n`)
   await writeReport(directory, report)
+  if (options.incremental) await writeHistory(directory, state.history)
   return report
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
@@ -447,6 +645,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     catalogPath: argument('--catalog'),
     maxReleases,
     manager: manager as Manager | undefined,
+    incremental: process.argv.includes('--incremental'),
+    retryFailed: process.argv.includes('--retry-failed'),
     seedDirectories: process.argv.includes('--seed-dir')
       ? process.argv.flatMap((value, index) =>
           value === '--seed-dir' && process.argv[index + 1] ? [process.argv[index + 1]] : [],

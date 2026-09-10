@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
+import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
@@ -64,6 +64,20 @@ test('path runner accepts compatibility observations and writes JSON/Markdown be
     })
     assert.match(await readFile(join(path, 'report.md'), 'utf8'), /prior issue/)
     assert.equal(JSON.parse(await readFile(join(path, 'report.json'), 'utf8')).exitCode, 2)
+    const previousReport = await readFile(join(path, 'report.json'), 'utf8')
+    await writeReport(path, {
+      ...result,
+      unknownFormats: [],
+      mismatches: [],
+      unresolved: [],
+      incomplete: [],
+      exitCode: 0,
+    })
+    const archived = await readdir(join(path, 'reports'))
+    const reports = await Promise.all(
+      archived.filter((name) => name.endsWith('.json')).map((name) => readFile(join(path, 'reports', name), 'utf8')),
+    )
+    assert.ok(reports.includes(previousReport), 'the next daily run must not erase the preceding failure report')
   } finally {
     await rm(path, { recursive: true, force: true })
   }

@@ -232,10 +232,11 @@ test(
         String.raw`
 const fs = require('node:fs');
 const version = require('local-cli-runtime');
+if (!process.argv.includes('--version')) fs.appendFileSync(${JSON.stringify(join(root, 'commands.log'))}, process.argv.slice(2).join(' ') + '\n');
 if (process.argv.includes('--version')) console.log(version);
 else if (process.argv.includes('--frozen-lockfile')) {
   fs.mkdirSync('node_modules/is-number', {recursive:true});
-  fs.writeFileSync('node_modules/is-number/package.json', '{"version":"7.0.0"}');
+  fs.writeFileSync('node_modules/is-number/package.json', '{"version":"6.0.0"}');
 } else fs.writeFileSync('pnpm-lock.yaml', 'lockfileVersion: 9.0\n');
 `,
       )
@@ -288,6 +289,36 @@ else if (process.argv.includes('--frozen-lockfile')) {
       assert.equal(receipt.match.format, '9')
       assert.equal(receipt.files['pnpm-lock.yaml'], digest('lockfileVersion: 9.0\n'))
       assert.equal(await readFile(join(root, 'fixtures/pnpm/shrinkwrap.yaml'), 'utf8'), 'shrinkwrapVersion: 3\n')
+      assert.equal(observed[0].status, 'semantic-mismatch')
+      const options = {
+        root,
+        stateDirectory: join(root, 'state'),
+        catalogPath: join(root, 'catalog.json'),
+        maxReleases: 1,
+        seedDirectories: [],
+        incremental: true,
+      }
+      const commands = await readFile(join(root, 'commands.log'), 'utf8')
+      assert.equal((await runReleaseCheck(options)).history?.checkedThisRun, 0)
+      assert.equal(await readFile(join(root, 'commands.log'), 'utf8'), commands)
+      const retried = await runReleaseCheck({ ...options, retryFailed: true })
+      assert.equal(retried.history?.checkedThisRun, 1)
+      const records = JSON.parse(await readFile(join(root, 'state/history.json'), 'utf8'))
+      const candidate = records[0].sources.find((path: string) => path.startsWith('generated/'))
+      assert.ok(candidate)
+      assert.notEqual(join(root, 'state', candidate), generated.directory)
+      assert.equal(
+        await readFile(join(generated.directory, 'receipt.json'), 'utf8'),
+        `${JSON.stringify(receipt, null, 2)}\n`,
+      )
+
+      const newCommands = (await readFile(join(root, 'commands.log'), 'utf8')).slice(commands.length)
+      assert.match(newCommands, /--frozen-lockfile/, 'explicit retries must execute the frozen command again')
+      assert.ok(
+        newCommands.split('\n').includes('install --ignore-scripts'),
+        'explicit retries must regenerate the candidate format',
+      )
+
       const { generateFixture } = await import('../maintenance/generate-fixtures.js')
       await assert.rejects(
         generateFixture({ ...fixture, version: '12.4.0' }, catalog, join(root, 'exact-rebuild')),
