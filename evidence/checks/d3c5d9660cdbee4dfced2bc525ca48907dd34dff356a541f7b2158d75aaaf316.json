@@ -1,0 +1,21 @@
+{
+  "key": "pnpm@4.12.3:fc8a41804f62410e216f7e77aa68707e828952359ae2084e79f125a2900affa1",
+  "manager": "pnpm",
+  "version": "4.12.3",
+  "origin": "migration",
+  "checkedAt": "2026-09-10T08:14:09.576Z",
+  "outcomes": {},
+  "sources": [
+    "reports/bd331bd8b867b35c5bc13683b28d8ba0fc12a8efbd6427319865e668cfca3f65.json",
+    "catalogs/38400d77924af37bebcc4d43ad632827463b8daa57a479c4d488b0535466408e.json"
+  ],
+  "issues": {
+    "unknownFormats": [],
+    "mismatches": [],
+    "unresolved": [],
+    "incomplete": [
+      "pnpm@4.12.3: Error: Command failed: /opt/hostedtoolcache/node/24.20.0/x64/bin/node /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js --version\nnode:internal/modules/cjs/loader:1564\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@pnpm/cli-utils'\nRequire stack:\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js:10:61\n    at async /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js:10:26 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n\nNode.js v24.20.0\n"
+    ]
+  },
+  "exitCode": 2
+}

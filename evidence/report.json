@@ -1,7 +1,8 @@
 {
+  "catalogHash": "4d4faf05ebdb1209797e43140d5e30a91a0ad9c4b6b8c1bb29a9cc6e351083e0",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T08:14:09.576Z",
-  "catalogGeneratedAt": "2026-09-10T08:13:22.741Z",
+  "generatedAt": "2026-09-10T09:45:08.786Z",
+  "catalogGeneratedAt": "2026-09-10T09:44:01.128Z",
   "managers": [
     {
       "manager": "npm",
@@ -14,7 +15,7 @@
     {
       "manager": "pnpm",
       "releasedStableCount": 980,
-      "conclusivelyObservedCount": 825,
+      "conclusivelyObservedCount": 826,
       "uncoveredVersions": [
         "0.0.1",
         "0.16.0",
@@ -168,7 +169,6 @@
         "3.7.2",
         "4.2.0",
         "4.2.1",
-        "4.12.3",
         "5.4.1",
         "5.9.1"
       ]
@@ -3583,16 +3583,11 @@
   "unknownFormats": [],
   "mismatches": [],
   "unresolved": [],
-  "incomplete": [
-    "178 unprocessed release combinations remain; increase --max-releases or rerun with this state directory.",
-    "yarn@4.9.1: Error: Actual tool version mismatch: 4.9.1-git.20250411.hash-1908ee79f\n",
-    "pnpm@5.9.1: Error: Command failed: /opt/hostedtoolcache/node/24.20.0/x64/bin/node /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js --version\nnode:internal/modules/cjs/loader:1564\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@pnpm/cli-meta'\nRequire stack:\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js:29:82\n    at async /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js:29:34 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n\nNode.js v24.20.0\n",
-    "pnpm@5.4.1: Error: Generation failed (1); maintenance/results/generated/7ae5e1fa3f77dbf6b08ea9c7c4f506d528affb5632baf693b377c4ebb6bdfa85/generation.log: Error: Cannot find module 'delay'\nRequire stack:\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at Object.<anonymous> (/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js:9:17)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n",
-    "pnpm@4.12.3: Error: Command failed: /opt/hostedtoolcache/node/24.20.0/x64/bin/node /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js --version\nnode:internal/modules/cjs/loader:1564\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@pnpm/cli-utils'\nRequire stack:\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js:10:61\n    at async /tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js:10:26 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-4.12.3/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n\nNode.js v24.20.0\n",
-    "pnpm@4.2.1: Error: Generation failed (1); maintenance/results/generated/09fec0584941ab760b151b8b9171fbdfe7b198197c4cdcf3142c26df7544490c/generation.log: ",
-    "pnpm@4.2.0: Error: Generation failed (1); maintenance/results/generated/3b2b491c28e2117bb8e2e3d5204f950ca3bbf121eeb1d3b53d4ac850c6473614/generation.log: ",
-    "pnpm@3.7.2: Error: Generation failed (1); maintenance/results/generated/a1cfc72676c1aa5c4e058f7ef041ced53f63952fb7be5306e20b1a1913003bf3/generation.log: ",
-    "pnpm@3.5.4: Error: Download HTTP 404: https://registry.npmjs.org/pnpm/-/pnpm-3.5.4.tgz"
-  ],
-  "exitCode": 2
+  "incomplete": [],
+  "exitCode": 0,
+  "history": {
+    "recordedReleases": 1706,
+    "checkedThisRun": 0,
+    "unresolved": []
+  }
 }

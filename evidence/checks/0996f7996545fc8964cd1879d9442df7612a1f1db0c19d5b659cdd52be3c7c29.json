@@ -1,0 +1,21 @@
+{
+  "key": "pnpm@5.4.1:062ce1bf074416a76ec9a172bc658e4efba082703da057adb864219f06e62b39",
+  "manager": "pnpm",
+  "version": "5.4.1",
+  "origin": "migration",
+  "checkedAt": "2026-09-10T08:14:09.576Z",
+  "outcomes": {},
+  "sources": [
+    "reports/bd331bd8b867b35c5bc13683b28d8ba0fc12a8efbd6427319865e668cfca3f65.json",
+    "catalogs/38400d77924af37bebcc4d43ad632827463b8daa57a479c4d488b0535466408e.json"
+  ],
+  "issues": {
+    "unknownFormats": [],
+    "mismatches": [],
+    "unresolved": [],
+    "incomplete": [
+      "pnpm@5.4.1: Error: Generation failed (1); maintenance/results/generated/7ae5e1fa3f77dbf6b08ea9c7c4f506d528affb5632baf693b377c4ebb6bdfa85/generation.log: Error: Cannot find module 'delay'\nRequire stack:\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at Object.<anonymous> (/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js:9:17)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/store-connection-manager/lib/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/import.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/node_modules/@pnpm/plugin-commands-import/lib/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/cmd/index.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/main.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-generate-4atIkV/tools/pnpm-5.4.1/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n"
+    ]
+  },
+  "exitCode": 2
+}

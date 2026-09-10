@@ -1,0 +1,15 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/5/tools/pnpm-0.36.0/node_modules/pnpm/lib/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+(node:5457) [DEP0128] DeprecationWarning: Invalid 'main' field in '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/5/tools/pnpm-0.36.0/node_modules/pnpm/node_modules/promisequence/package.json' of 'promoseq.js'. Please either fix that or report it to the module author
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/190dcb69bc6c53097227b2d4da4d7b36752a0168a9125dc486e8e5802a1953f9-d3fab7167442.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

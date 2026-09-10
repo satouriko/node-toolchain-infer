@@ -1,0 +1,22 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-xGknYz/4/tools/yarn-0.20.3/node_modules/yarn/bin/yarn.js install --frozen-lockfile --ignore-scripts --non-interactive
+yarn install v0.20.3
+(node:16430) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+warning Ignored scripts due to flag.
+Done in 0.07s.
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: semantic-mismatch; logs/1478dcd51e0dfa689bf94dafb4211e2b43ae7abe39f2e7f9630e84babff8b2f6-5ce887200d79.log
+Frozen enforcement was not established: a contradictory manifest must produce an explicit lock rejection.

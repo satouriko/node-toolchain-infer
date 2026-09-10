@@ -1,0 +1,24 @@
+Error: Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-6.3.0-darwin-x64-5c711a62e464f1d455c31afe2a62e9866eeaf1c23d977b57a60285d0bd040ba5/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/14/tools/pnpm-0.23.0/bin/pnpm --version
+/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/14/tools/pnpm-0.23.0/bin/pnpm:3
+if [ "$#" -lt "1" ]; then
+   ^
+SyntaxError: Unexpected token [
+    at Object.exports.runInThisContext (vm.js:76:16)
+    at Module._compile (module.js:513:28)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+    at tryModuleLoad (module.js:417:12)
+    at Function.Module._load (module.js:409:3)
+    at Module.runMain (module.js:575:10)
+    at run (bootstrap_node.js:352:7)
+    at startup (bootstrap_node.js:144:9)
+    at bootstrap_node.js:467:3
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:508:28)
+    at Pipe.<anonymous> (node:net:346:12)

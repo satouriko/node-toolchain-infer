@@ -1,0 +1,20 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-8.1.4-darwin-x64-a24858a10dd4ca8ad55fd61a7472b4fe9140eb3fa347c41717360c3f29438748/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+Cannot read property 'debug' of undefined
+
+TypeError: Cannot read property 'debug' of undefined
+    at Object.exports.default (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/logging/logInstallStatus.js:4:60)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:82:35
+    at Generator.next (<anonymous>)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:7:71
+    at Promise (<anonymous>)
+    at __awaiter (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:3:12)
+    at install (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:64:12)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:34:26)
+    at Generator.next (<anonymous>)
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:7:71
+    at Promise (<anonymous>)
+    at __awaiter (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:3:12)
+    at Promise.all.specs.map (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:25:28)
+    at Array.map (native)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/9/tools/pnpm-1.5.0/node_modules/pnpm/lib/node_modules/supi/lib/install/installMultiple.js:25:14)
+    at Generator.next (<anonymous>)

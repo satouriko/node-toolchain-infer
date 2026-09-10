@@ -1,0 +1,89 @@
+{
+  "id": "5f530d51-9da9-40e2-92ba-c1b022938b2a",
+  "key": "c2e509e8afe5314e08a58c1c0dfea7f8ea96b8c36f360a2bc8a8a7e727269a23",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.21.1",
+  "fixtureId": "yarn-modern-v8",
+  "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:21:46.596Z",
+  "attempt": 2,
+  "status": "inconclusive",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "id": "2d72026e4e3f1a73354bc5de3fbfb795f78bd8a02e30fc3b3dc8f8ead1d92949-eea9ea2ccff4",
+    "key": "2d72026e4e3f1a73354bc5de3fbfb795f78bd8a02e30fc3b3dc8f8ead1d92949",
+    "manager": "yarn",
+    "version": "0.21.1",
+    "actualVersion": "0.21.1",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-MS7lyEF87np9TngPR4Y0yLth8kuXmSxfl0kwEWxNBkXidSjaf/R7Twoe2skU3YuYkFsUO2TB7Bry6cP5IVdcog==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/7b050e445983ade7c24eabc86f645cece4b60dde079dd8785e77511bbeef3f2f/package-lock.json",
+      "lockfileSha256": "7b050e445983ade7c24eabc86f645cece4b60dde079dd8785e77511bbeef3f2f",
+      "logPath": "bootstrap/7b050e445983ade7c24eabc86f645cece4b60dde079dd8785e77511bbeef3f2f/c044af3bdd63a1d8870fd684689c4492d060bd7edb624d3f38126b28579bcadf.log",
+      "installedTreeSha256": "02b5cc3fc3e071b8159c9c9aea68aee3da3e0f31d8a6ec3a2101fc11a7968e9e"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.21.1.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v8",
+    "fixtureHash": "dcfe1efbf5b257dee24a6f79db798bea86a62cf99f3a9025c0806b168d17ed72",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "inconclusive",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "f8dd6004d331f5ecd2c5c745b10fba7d893f7bd37cb8a22c287c9658bc7f427e"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/2d72026e4e3f1a73354bc5de3fbfb795f78bd8a02e30fc3b3dc8f8ead1d92949-eea9ea2ccff4.log",
+    "createdAt": "2026-09-09T10:21:46.337Z"
+  }
+}

@@ -1,0 +1,21 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/9/tools/pnpm-0.41.2/node_modules/pnpm/lib/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+(node:95803) [DEP0128] DeprecationWarning: Invalid 'main' field in '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/9/tools/pnpm-0.41.2/node_modules/pnpm/lib/node_modules/promisequence/package.json' of 'promoseq.js'. Please either fix that or report it to the module author
+(Use `node --trace-deprecation ...` to show where the warning was created)
+node:fs:1725
+  const stats = binding.stat(
+                        ^
+
+[Error: ENOENT: no such file or directory, stat '/Users/cuteloli/.pnpm/cache/lock'
+  at Object.statSync (node:fs:1725:25)
+  at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/9/tools/pnpm-0.41.2/node_modules/pnpm/lib/node_modules/cache-manager-fs/index.js:470:15
+  at Array.filter (<anonymous>:null:null)
+  at DiskStore.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-LhwGgB/9/tools/pnpm-0.41.2/node_modules/pnpm/lib/node_modules/cache-manager-fs/index.js:468:18)
+  at FSReqCallback.oncomplete (node:fs:185:23)
+] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: '/Users/cuteloli/.pnpm/cache/lock'
+}
+
+Node.js v24.10.0

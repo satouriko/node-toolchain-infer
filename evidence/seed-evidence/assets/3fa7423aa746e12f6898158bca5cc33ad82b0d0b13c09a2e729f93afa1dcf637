@@ -1,0 +1,143 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+npm ERR! code EUSAGE
+npm ERR! 
+npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR! 
+npm ERR! Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+npm ERR! 
+npm ERR! Clean install a project
+npm ERR! 
+npm ERR! Usage:
+npm ERR! npm ci
+npm ERR! 
+npm ERR! Options:
+npm ERR! [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+npm ERR! [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+npm ERR! [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+npm ERR! [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+npm ERR! [--no-bin-links] [--no-fund] [--dry-run]
+npm ERR! [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+npm ERR! [-ws|--workspaces] [--include-workspace-root] [--install-links]
+npm ERR! 
+npm ERR! aliases: clean-install, ic, install-clean, isntall-clean
+npm ERR! 
+npm ERR! Run "npm help ci" for more info
+
+npm ERR! A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_33_12_294Z-debug-0.log
+
+[npm debug: 2026-09-09T10_33_12_294Z-debug-0.log]
+0 verbose cli /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.2.5
+2 info using node@v24.10.0
+3 timing npm:load:whichnode Completed in 9ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/npmrc Completed in 0ms
+6 timing config:load:builtin Completed in 0ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 7ms
+11 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-userconfig Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-globalconfig Completed in 1ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:setEnvs Completed in 0ms
+16 timing config:load Completed in 12ms
+17 timing npm:load:configload Completed in 12ms
+18 timing config:load:flatten Completed in 1ms
+19 timing npm:load:mkdirpcache Completed in 1ms
+20 timing npm:load:mkdirplogs Completed in 0ms
+21 verbose title npm ci
+22 verbose argv "ci" "--ignore-scripts" "--no-audit" "--no-fund"
+23 timing npm:load:setTitle Completed in 11ms
+24 timing npm:load:display Completed in 1ms
+25 verbose logfile logs-max:10 dir:/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_33_12_294Z-
+26 verbose logfile /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_33_12_294Z-debug-0.log
+27 timing npm:load:logFile Completed in 3ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 60ms
+31 timing arborist:ctor Completed in 0ms
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 5ms
+34 warn old lockfile
+34 warn old lockfile The package-lock.json file was created with an old version of npm,
+34 warn old lockfile so supplemental metadata must be fetched from the registry.
+34 warn old lockfile
+34 warn old lockfile This is a one-time fix-up, please be patient...
+34 warn old lockfile
+35 silly inflate node_modules/is-number
+36 http fetch GET 200 https://registry.npmjs.org/is-number 420ms (cache miss)
+37 timing idealTree:inflate Completed in 423ms
+38 timing idealTree:userRequests Completed in 1ms
+39 silly idealTree buildDeps
+40 silly fetch manifest is-number@6.0.0
+41 silly placeDep ROOT is-number@6.0.0 REPLACE for: compatibility-fixture@1.0.0 want: 6.0.0
+42 timing idealTree:#root Completed in 2ms
+43 timing idealTree:node_modules/is-number Completed in 0ms
+44 timing idealTree:buildDeps Completed in 2ms
+45 timing idealTree:fixDepFlags Completed in 0ms
+46 timing idealTree Completed in 434ms
+47 timing command:ci Completed in 451ms
+48 verbose stack Error: 
+48 verbose stack `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+48 verbose stack
+48 verbose stack Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+48 verbose stack
+48 verbose stack Clean install a project
+48 verbose stack
+48 verbose stack Usage:
+48 verbose stack npm ci
+48 verbose stack
+48 verbose stack Options:
+48 verbose stack [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+48 verbose stack [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+48 verbose stack [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+48 verbose stack [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+48 verbose stack [--no-bin-links] [--no-fund] [--dry-run]
+48 verbose stack [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+48 verbose stack [-ws|--workspaces] [--include-workspace-root] [--install-links]
+48 verbose stack
+48 verbose stack aliases: clean-install, ic, install-clean, isntall-clean
+48 verbose stack
+48 verbose stack Run "npm help ci" for more info
+48 verbose stack     at CI.usageError (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/lib/base-command.js:113:26)
+48 verbose stack     at CI.exec (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/lib/commands/ci.js:69:18)
+48 verbose stack     at async module.exports (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/tools/npm-10.2.5/node_modules/npm/lib/cli-entry.js:61:5)
+49 verbose cwd /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project
+50 verbose Darwin 25.6.0
+51 verbose node v24.10.0
+52 verbose npm  v10.2.5
+53 error code EUSAGE
+54 error
+54 error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+54 error
+54 error Invalid: lock file's is-number@7.0.0 does not satisfy is-number@6.0.0
+54 error
+54 error Clean install a project
+54 error
+54 error Usage:
+54 error npm ci
+54 error
+54 error Options:
+54 error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+54 error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+54 error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+54 error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+54 error [--no-bin-links] [--no-fund] [--dry-run]
+54 error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+54 error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+54 error
+54 error aliases: clean-install, ic, install-clean, isntall-clean
+54 error
+54 error Run "npm help ci" for more info
+55 verbose exit 1
+56 timing npm Completed in 644ms
+57 verbose code 1
+58 error A complete log of this run can be found in: /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Elra7r/3/project-control-project/.npm-cache/_logs/2026-09-09T10_33_12_294Z-debug-0.log

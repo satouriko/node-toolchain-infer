@@ -1,0 +1,19 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/2/tools/pnpm-6.15.0/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+Lockfile is up-to-date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+(node:23559) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ ERR_INVALID_THIS  Value of "this" must be of type URLSearchParams
+
+at getAll                 node:internal/url:552                                              
+at <anonymous>            ../tools/pnpm-6.15.0/dist/pnpm.cjs:50539  return URLSearchParams.p…
+at                        ../tools/pnpm-6.15.0/dist/pnpm.cjs:50589  result[key] = this.getAl…
+at reduce                                                                                    
+at raw                    ../tools/pnpm-6.15.0/dist/pnpm.cjs:50588  return [...this.keys()].…
+at new Headers            ../tools/pnpm-6.15.0/dist/pnpm.cjs:50489  const raw = init.raw();  
+at getNodeRequestOptions  ../tools/pnpm-6.15.0/dist/pnpm.cjs:50796  const headers = new Head…
+at                        ../tools/pnpm-6.15.0/dist/pnpm.cjs:50853  const options = getNodeR…
+at new Promise                                                                               
+at fetch [as default]     ../tools/pnpm-6.15.0/dist/pnpm.cjs:50851  return new Promise((reso…

@@ -1,0 +1,23 @@
+Error: Command failed: /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-8.1.2-darwin-x64-70f353449b19d6d36262f5e38f9cc23e80b2034c21ae48623a6a4890f513eb53/bin/node /Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/061d31a5f4d86bdf24f30f85292115d589fb6a16e251519605efee07a484a34f/tool/lib/bin/pnpm.js --version
+module.js:487
+    throw err;
+    ^
+
+Error: Cannot find module 'thenify'
+    at Function.Module._resolveFilename (module.js:485:15)
+    at Function.Module._load (module.js:437:25)
+    at Module.require (module.js:513:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/prepared/061d31a5f4d86bdf24f30f85292115d589fb6a16e251519605efee07a484a34f/tool/lib/fs/readPkg.js:5:17)
+    at Module._compile (module.js:569:30)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:503:32)
+    at tryModuleLoad (module.js:466:12)
+    at Function.Module._load (module.js:458:3)
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)

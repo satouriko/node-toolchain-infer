@@ -1,0 +1,75 @@
+Error: Command failed: /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/bin/pnpm.js --version
+node:internal/modules/cjs/loader:1423
+  throw err;
+  ^
+
+Error: Cannot find module 'thenify'
+Require stack:
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/safeReadPkg.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/api/install.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/cmd/install.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/bin/pnpm.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)
+    at Module._load (node:internal/modules/cjs/loader:1226:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js:5:17)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/safeReadPkg.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/api/install.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/cmd/install.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/bin/pnpm.js'
+  ]
+}
+
+Node.js v24.10.0
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:508:28)
+    at Pipe.<anonymous> (node:net:346:12)
+
+node:internal/modules/cjs/loader:1423
+  throw err;
+  ^
+
+Error: Cannot find module 'thenify'
+Require stack:
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/safeReadPkg.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/api/install.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/cmd/install.js
+- /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/bin/pnpm.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)
+    at Module._load (node:internal/modules/cjs/loader:1226:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js:5:17)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/readPkg.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/fs/safeReadPkg.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/api/install.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/cmd/install.js',
+    '/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-MGRLsa/3/tools/pnpm-0.74.1/node_modules/pnpm/lib/bin/pnpm.js'
+  ]
+}
+
+Node.js v24.10.0

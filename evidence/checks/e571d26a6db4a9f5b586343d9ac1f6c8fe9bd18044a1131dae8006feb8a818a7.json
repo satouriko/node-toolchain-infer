@@ -1,0 +1,21 @@
+{
+  "key": "pnpm@5.9.1:8eef4e43abfae2f474fed80990fffb06a4deeac9e2406dc2ec78ba1fab6387fb",
+  "manager": "pnpm",
+  "version": "5.9.1",
+  "origin": "migration",
+  "checkedAt": "2026-09-10T08:14:09.576Z",
+  "outcomes": {},
+  "sources": [
+    "reports/bd331bd8b867b35c5bc13683b28d8ba0fc12a8efbd6427319865e668cfca3f65.json",
+    "catalogs/38400d77924af37bebcc4d43ad632827463b8daa57a479c4d488b0535466408e.json"
+  ],
+  "issues": {
+    "unknownFormats": [],
+    "mismatches": [],
+    "unresolved": [],
+    "incomplete": [
+      "pnpm@5.9.1: Error: Command failed: /opt/hostedtoolcache/node/24.20.0/x64/bin/node /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js --version\nnode:internal/modules/cjs/loader:1564\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@pnpm/cli-meta'\nRequire stack:\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js\n- /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at Module._load (node:internal/modules/cjs/loader:1341:5)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.require (node:internal/modules/cjs/loader:1674:12)\n    at require (node:internal/modules/helpers:157:16)\n    at /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js:29:82\n    at async /tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js:29:34 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/lib/bin/pnpm.js',\n    '/tmp/toolchain-releases-nQC3nN/tools/pnpm-5.9.1/node_modules/pnpm/bin/pnpm.js'\n  ]\n}\n\nNode.js v24.20.0\n"
+    ]
+  },
+  "exitCode": 2
+}

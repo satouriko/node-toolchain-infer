@@ -1,0 +1,13 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/1/tools/pnpm-0.65.3/lib/bin/pnpm.js install --frozen-lockfile --ignore-scripts
+(node:84996) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/1/tools/pnpm-0.65.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:287
+      if (cb) cb.apply(this, arguments)
+                 ^
+
+TypeError: cb.apply is not a function
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/1/tools/pnpm-0.65.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:287:18
+    at /private/var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-7iEB2A/1/tools/pnpm-0.65.3/lib/node_modules/graceful-fs/polyfills.js:287:18
+    at FSReqCallback.oncomplete (node:fs:196:5)
+
+Node.js v24.10.0

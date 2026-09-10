@@ -1,0 +1,22 @@
+/Users/cuteloli/Code/node-toolchain-infer/.cache/maintenance/nodes/node-10.1.0-darwin-x64-383ef526e27b92113f8dc0dad406b771f6ecaf9e3fddd4f5357590a3cf543d7b/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-seed-Bkiftr/11/tools/pnpm-2.1.0/node_modules/pnpm/lib/bin/pnpm.js install --frozen-shrinkwrap --ignore-scripts
+(node:90217) ExperimentalWarning: The fs.promises API is experimental
+Performing headless installation
+Packages: +1
++
+Resolving: total 1, reused 1, downloaded 0, done
+
+dependencies:
++ is-number 7.0.0
+
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: inconclusive; logs/6e531b069a584d64be85136f6d915e34afdbe51853df411fdfd55a91aa89804a-022926bcc0d1.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

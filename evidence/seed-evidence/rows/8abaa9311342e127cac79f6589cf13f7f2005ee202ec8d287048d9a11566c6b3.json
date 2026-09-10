@@ -1,0 +1,89 @@
+{
+  "id": "af1fca03-9b1b-4c57-a999-c4e22f1ac015",
+  "key": "93805b8102d9ed32c469d8a2ba855be3daf424fd07fd23383fe55cdd130f2021",
+  "protocol": "frozen-initial-matrix-v2",
+  "manager": "yarn",
+  "version": "0.20.4",
+  "fixtureId": "yarn-modern-v9",
+  "fixtureHash": "5f616211f46709df34fdc7019760551685c2cfbc1b14f1a66cfc15db9f36f8a7",
+  "catalogHash": "c6534790485cbc5dfaa6e716267fb590ab2bc91734b116361a532536e454fdac",
+  "createdAt": "2026-09-09T10:21:52.028Z",
+  "attempt": 2,
+  "status": "inconclusive",
+  "observation": {
+    "protocol": "frozen-install-v2",
+    "inputHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "id": "b8336132ca44e713acc6342b50cf910e25582fc5bf9ed676772dd2438f18cd26-2f6454f17e2a",
+    "key": "b8336132ca44e713acc6342b50cf910e25582fc5bf9ed676772dd2438f18cd26",
+    "manager": "yarn",
+    "version": "0.20.4",
+    "actualVersion": "0.20.4",
+    "node": "24.10.0",
+    "nodeIntegrity": "sha256-nnWdNNl6+KcbdYVNIK8pd5RhEVVAaZfwbXlrXg9tVzs=",
+    "nodeArch": "arm64",
+    "toolIntegrity": "sha512-ITgJ9cmWh0MijOE7yiLKQxm+Mnw1bkDHFVKGCfL6SRXXK1TuCJUaHQjLMDIsW/6Z5x3vTqMFF4N7ukjeTDRgog==",
+    "bootstrap": {
+      "protocol": 1,
+      "node": "24.10.0",
+      "npmVersion": "11.6.1",
+      "npmCliHash": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+      "command": [
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node",
+        "/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/lib/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--global=false",
+        "--ignore-scripts",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org"
+      ],
+      "lockfilePath": "bootstrap/2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669/package-lock.json",
+      "lockfileSha256": "2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669",
+      "logPath": "bootstrap/2c3e8e708c6d317bfdf7223bf3801df57a5905ba1b83b2fc68b16d071ea54669/6a3eeaed0d6d8de73dabff1e9d3872e52bba9d8b1bbaa71e293cb2aa1dfff22c.log",
+      "installedTreeSha256": "c4c94710837d57f9f574c628f53813b34f90a96f9be171bcca9db6d572a12b62"
+    },
+    "toolUrl": "https://registry.npmjs.org/yarn/-/yarn-0.20.4.tgz",
+    "platform": "darwin",
+    "arch": "arm64",
+    "fixtureId": "yarn-modern-v9",
+    "fixtureHash": "5f616211f46709df34fdc7019760551685c2cfbc1b14f1a66cfc15db9f36f8a7",
+    "command": [
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts",
+      "--non-interactive"
+    ],
+    "status": "inconclusive",
+    "exitCode": 1,
+    "beforeHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "afterHashes": {
+      ".yarnrc.yml": "dfa1f34a1cf1a16e27467b4c82fe19511b7ff191eae96998ab8e646236570abd",
+      "npm-shrinkwrap.json": "<missing>",
+      "package-lock.json": "<missing>",
+      "package.json": "cc050a45ae6f5e106954ddfd6dae20dceea2d2539ec426eb9654c4b857aa50fc",
+      "pnpm-lock.yaml": "<missing>",
+      "shrinkwrap.yaml": "<missing>",
+      "yarn.lock": "3909a47f7ebf7497a1fe93b71bbaab0486ca7496252c1f207e79b8ced619fbbd"
+    },
+    "installed": {
+      "is-number": "<missing>"
+    },
+    "semantic": false,
+    "semanticMethod": "node-modules",
+    "logPath": "logs/b8336132ca44e713acc6342b50cf910e25582fc5bf9ed676772dd2438f18cd26-2f6454f17e2a.log",
+    "createdAt": "2026-09-09T10:21:52.021Z"
+  }
+}
