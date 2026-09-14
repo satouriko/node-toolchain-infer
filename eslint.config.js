@@ -2,7 +2,11 @@ import unicute, { globals } from 'eslint-config-unicute'
 
 export default unicute(
   {
-    node: ['src/{catalog,cli,collect,index,runtime}.ts', 'scripts/**/*.ts', 'maintenance/**/*.ts'],
+    node: [
+      'src/{catalog,cli,collect,index,runtime,volta-config,volta-runtime}.ts',
+      'scripts/**/*.ts',
+      'maintenance/**/*.ts',
+    ],
     // Array.prototype.toSorted requires Node 20; published code supports Node 18.
     rules: { 'unicorn/no-array-sort': 'off' },
   },

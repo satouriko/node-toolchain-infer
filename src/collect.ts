@@ -6,6 +6,7 @@ import { parse as parseYaml } from 'yaml'
 
 import { createSource } from './sources.js'
 import { declarationText, errorCode, errorMessage, object, optionalObject } from './validation.js'
+import { readVoltaConfig, VOLTA_TOOLS } from './volta-config.js'
 import { createWarning } from './warnings.js'
 import { readYarnLock } from './yarn-lock.js'
 
@@ -97,10 +98,18 @@ export async function collect({ cwd = process.cwd(), node, packageManager }: Col
           continue
         }
         if ('packageManager' in manifest) add('packageManager', manifest.packageManager)
-        const volta = optionalObject(manifest.volta)
+        const volta = await readVoltaConfig(path, manifest)
+        warnings.push(...volta.warnings)
         const dev = optionalObject(manifest.devEngines)
         const engines = optionalObject(manifest.engines)
-        if ('node' in volta) add('voltaNode', volta.node)
+        for (const tool of VOLTA_TOOLS) {
+          const setting = volta.settings[tool]
+          if (!setting) continue
+          const key = `volta${tool[0].toUpperCase()}${tool.slice(1)}`
+          add(key, tool === 'node' || tool === 'npm' ? setting.value : `${tool}@${declarationText(setting.value)}`, {
+            path: setting.path,
+          })
+        }
         for (const element of array(dev.runtime)) {
           const item = optionalObject(element)
           if (item.name === 'node') add('devRuntime', item.version)

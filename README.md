@@ -27,13 +27,15 @@ Files are collected from the real `cwd` through the nearest Git root, inclusive.
 
 1. `package.json#packageManager`
 2. `pnpm-lock.yaml`, `shrinkwrap.yaml`, `yarn.lock`, `npm-shrinkwrap.json`, `package-lock.json`
-3. `volta.node`, `.node-version`, `.nvmrc`, `.tool-versions` (`nodejs`)
+3. `volta.node/pnpm/yarn/npm`, `.node-version`, `.nvmrc`, `.tool-versions` (`nodejs`)
 4. `devEngines.runtime` (`name: node`), `devEngines.packageManager`
 5. `engines.node`, then the selected manager's `engines` entry
 
 Caller inputs precede every file. Equal-ranked occurrences retain their input order. A concrete value is a singleton constraint; it does not promote its source. A conflicting lower-priority condition and its derived Node requirement are ignored together. Package-manager versions retain their own `engines.node` requirements throughout resolution.
 
-Node selection: retained exact version → current version if eligible → greatest eligible published version. Manager selection: retained exact version → selected Node's bound npm or local pnpm/Yarn if eligible → greatest eligible published version. No Node or npm version is hardcoded as a fallback.
+Volta declarations follow `volta.extends`, resolving each path relative to its declaring file; child values override inherited values. Their trace retains the declaring path and the child project's directory priority. `volta.pnpm` and `volta.yarn` select a manager; `volta.npm` constrains npm only when npm is selected, allowing npm to coexist with pnpm/Yarn. Within the Volta group, Node, pnpm, Yarn, npm are considered in that order. Invalid inheritance produces a warning while preserving readable declarations.
+
+Node selection: retained exact version → current version if eligible → greatest eligible published version. Manager selection: retained exact version → verified local version if eligible → greatest eligible published version. For npm, a separately verified local npm is preferred only on the running Node, followed by the selected Node's bound npm. No Node or npm version is hardcoded as a fallback.
 
 ## Version data
 
@@ -64,13 +66,17 @@ The [current stable-only report](maintenance/evidence/stable-only/README.md) rec
 - `infer(options?)`: filesystem collection, runtime detection, metadata and resolution.
 - `collect({cwd?, node?, packageManager?})`: read-only collection, no project code execution.
 - `resolve({sources, runtime}, catalog, rules?)`: pure resolver, also exported from `node-toolchain-infer/resolve`.
-- `detectRuntime({cwd?})`: current Node, adjacent npm, optional local pnpm/Yarn.
+- `detectRuntime({cwd?})`: current Node, adjacent npm, optional local pnpm/Yarn and separately installed Volta npm.
 - `fetchCatalog()`, `loadCatalog(path)`, `loadRules()`: official facts and explicit snapshots/rules.
 - `createSource(key, value, options?)`, `SOURCE_DEFINITIONS`: construct inputs for simulation.
 
 `infer` accepts explicit `runtime`, `catalog`, `rules`, `fetcher` and `signal` for deterministic tests or caller-managed metadata. A supplied `catalog` makes no additional network requests, including for prereleases admitted by explicit versions or ranges but absent from that snapshot. Filesystem scan results are not cached.
 
 Local pnpm/Yarn detection first probes the target project directory (`cwd`, defaulting to the current directory), allowing Corepack to use an already cached project version. If that probe fails, it probes the machine default from the Node installation directory with project selection disabled. Both probes disable Corepack networking and auto-pinning; detection neither downloads a missing Corepack version nor adds a `packageManager` field. `infer()` passes its scanned directory to detection; an explicit `runtime` bypasses detection.
+
+When the selected PATH command belongs to Volta, detection reads project/default settings and checks the installed cache instead of invoking a shim or `volta which`, which can fetch missing tools. It verifies the cached package's manifest, Node requirement, entrypoint and actual version under the running Node. A cached project pin takes priority; an unavailable pin falls back to a verified cached default. Native pnpm support follows `VOLTA_FEATURE_PNPM`; legacy global pnpm installations are also recognized. An inactive Volta installation does not override another command earlier on PATH. Detection does not install tools, change Volta defaults or write project files. See Volta's [project inheritance](https://docs.volta.sh/advanced/workspaces) and [pnpm support](https://docs.volta.sh/advanced/pnpm).
+
+`runtime.npm` remains the npm bound to the running Node. `runtime.localNpm` optionally records a separately verified npm; it never changes `node.bundledNpm`. A Volta project with a Node pin but no npm pin uses bundled npm and does not inherit the machine's custom npm. nvm, fnm and asdf need no activation commands: current Node comes from the running process, while `.nvmrc`, `.node-version` and `.tool-versions` remain project constraints. Inference does not switch the calling process's Node version.
 
 ```sh
 node-toolchain-infer --cwd . --node '18' --package-manager 'pnpm@^9' --json

@@ -27,13 +27,15 @@ console.log(result.warnings, result.trace)
 
 1. `package.json#packageManager`
 2. `pnpm-lock.yaml`、`shrinkwrap.yaml`、`yarn.lock`、`npm-shrinkwrap.json`、`package-lock.json`
-3. `volta.node`、`.node-version`、`.nvmrc`、`.tool-versions` 的 `nodejs`
+3. `volta.node/pnpm/yarn/npm`、`.node-version`、`.nvmrc`、`.tool-versions` 的 `nodejs`
 4. `devEngines.runtime` 中的 Node、`devEngines.packageManager`
 5. `engines.node`、选定包管理器对应的 `engines` 条件
 
 调用方输入高于所有文件；同序号的重复项按出现顺序处理。每个包管理器候选与自身的 `engines.node` 一起进入优先级判断，冲突时一起忽略。
 
-Node 依次采用：保留的具体版本、满足条件的当前版本、范围内最大的已发布版本。包管理器依次采用：保留的具体版本、所选 Node 绑定的 npm／本地 pnpm 或 Yarn、范围内最大的可运行版本。无类型声明时默认 npm，不写死任何 Node/npm 兜底版本。
+Volta 声明支持 `volta.extends`，路径相对于声明该继承的文件，子配置覆盖父配置。追踪中保留实际声明路径，优先级仍属于当前项目目录。`volta.pnpm` 和 `volta.yarn` 可以选择包管理器；`volta.npm` 仅在选中 npm 时约束版本，允许 npm 与 pnpm/Yarn 共存。Volta 组内依次处理 Node、pnpm、Yarn、npm。继承配置有误时返回警告并保留已读到的声明。
+
+Node 依次采用：保留的具体版本、满足条件的当前版本、范围内最大的已发布版本。包管理器依次采用：保留的具体版本、满足条件且已验证的本地版本、范围内最大的可运行版本。npm 在选择当前 Node 时优先使用单独验证的本地 npm，其次使用所选 Node 绑定的 npm。无类型声明时默认 npm，不写死任何 Node/npm 兜底版本。
 
 ## 版本数据
 
@@ -57,11 +59,15 @@ Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Las
 
 ## API 与命令行
 
-`infer` 完成读取、检测、获取数据和推断；`collect` 只读取声明；`resolve` 是无 I/O 的纯计算器，也可从 `node-toolchain-infer/resolve` 导入。`detectRuntime` 检测当前 Node、同安装目录的 npm 和可选的本地 pnpm/Yarn。`fetchCatalog`、`loadCatalog`、`loadRules` 分别获取官方数据、读取指定快照和兼容规则。`createSource` 与 `SOURCE_DEFINITIONS` 用于构造模拟输入。
+`infer` 完成读取、检测、获取数据和推断；`collect` 只读取声明；`resolve` 是无 I/O 的纯计算器，也可从 `node-toolchain-infer/resolve` 导入。`detectRuntime` 检测当前 Node、同安装目录的 npm、可选的本地 pnpm/Yarn 和 Volta 单独安装的 npm。`fetchCatalog`、`loadCatalog`、`loadRules` 分别获取官方数据、读取指定快照和兼容规则。`createSource` 与 `SOURCE_DEFINITIONS` 用于构造模拟输入。
 
 可通过 `runtime`、`catalog`、`rules`、`fetcher`、`signal` 显式控制数据和取消操作。传入 `catalog` 后不再额外联网，快照缺少显式版本或范围所允许的预发布版本时也一样。结果包含最终版本、警告、逐条采纳过程、保留约束、候选版本、扫描目录和数据时间。
 
 本地 pnpm/Yarn 先在目标项目目录探测，允许 Corepack 使用已缓存的项目版本；失败后才在 Node 安装目录禁用项目选择，探测机器默认版本。两次探测都关闭 Corepack 联网和自动写入 `packageManager`，不会下载缺少的 Corepack 版本或补写项目声明。`detectRuntime({ cwd })` 默认使用当前目录，`infer()` 则传入实际扫描目录；显式提供 `runtime` 时跳过探测。
+
+PATH 中实际命中的命令由 Volta 管理时，直接读取项目与默认配置，检查已安装缓存，不执行可能下载工具的 shim 或 `volta which`。缓存的包清单、Node 要求、入口文件和实际输出版本都经过核对，使用当前 Node 验证可运行性。已缓存的项目版本优先，缺失时退回已验证的缓存默认版本。原生 pnpm 模式遵循 `VOLTA_FEATURE_PNPM`，也支持旧方式安装的全局 pnpm。PATH 更靠前的其他工具不会被未启用的 Volta 覆盖。探测不会安装工具、修改 Volta 默认配置或项目文件。参见 Volta 的[项目继承](https://docs.volta.sh/advanced/workspaces)与 [pnpm 支持](https://docs.volta.sh/advanced/pnpm)。
+
+`runtime.npm` 始终表示当前 Node 绑定的 npm，单独验证的 npm 放在可选字段 `runtime.localNpm`，不会覆盖结果中的 `node.bundledNpm`。Volta 项目声明了 Node 但没有声明 npm 时，使用绑定 npm，不继承机器默认的自定义 npm。nvm、fnm、asdf 不需要执行激活命令：当前 Node 来自运行中的进程，`.nvmrc`、`.node-version`、`.tool-versions` 继续作为项目约束；推断不会切换调用进程的 Node。
 
 ```sh
 node-toolchain-infer --cwd . --node '18' --package-manager 'pnpm@^9' --json

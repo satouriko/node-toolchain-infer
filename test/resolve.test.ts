@@ -137,6 +137,32 @@ test('no declarations prefer current Node and its bundled npm, not the highest n
   assert.equal(r.packageManager.version, '10.8.2')
   assert.equal(r.packageManager.reason, 'bundled')
 })
+test('a verified custom npm is a local preference without changing the bundled npm', () => {
+  const r = run([], [], { ...runtime, localNpm: '9.9.9' })
+  assert.equal(r.packageManager.version, '9.9.9')
+  assert.equal(r.packageManager.reason, 'local')
+  assert.equal(r.node.bundledNpm, runtime.npm)
+})
+test('an excluded custom npm falls back to the selected Node bundled npm', () => {
+  for (const sources of [[], [pm('npm@>=10')]]) {
+    const r = run(sources, [], { ...runtime, localNpm: '9.9.9-beta.1' })
+    assert.equal(r.packageManager.version, runtime.npm)
+    assert.equal(r.packageManager.reason, 'bundled')
+    assert.ok(r.warnings.some((w) => w.code === 'prerelease-excluded' && w.params?.name === 'npm'))
+  }
+  assert.equal(run([pm('npm@>=10')], [], { ...runtime, localNpm: '9.9.9' }).packageManager.version, runtime.npm)
+})
+test('a custom npm prerelease requires its own explicit declaration', () => {
+  const r = run([pm('npm@>=9.9.9-beta.1 <9.9.9')], [], { ...runtime, localNpm: '9.9.9-beta.1' })
+  assert.equal(r.packageManager.version, '9.9.9-beta.1')
+  assert.equal(r.packageManager.reason, 'local')
+})
+test('a custom npm observed on the running Node cannot be assumed to run on another Node', () => {
+  const r = run([node('22.9.0')], [], { ...runtime, localNpm: '9.9.9' })
+  assert.equal(r.packageManager.version, '10.9.0')
+  assert.equal(r.packageManager.reason, 'bundled')
+  assert.ok(!r.candidates.managerVersions.includes('9.9.9'))
+})
 test('a Node major range selects the greatest matching published release', () => {
   const r = run([node('18')])
   assert.equal(r.node.version, '18.20.8')

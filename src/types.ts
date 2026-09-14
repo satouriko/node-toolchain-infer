@@ -14,6 +14,8 @@ export interface Warning {
 export interface Runtime {
   node: string
   npm: string
+  /** A separately installed npm verified with this Node; npm remains the bundled version. */
+  localNpm?: string
   pnpm?: string
   yarn?: string
 }

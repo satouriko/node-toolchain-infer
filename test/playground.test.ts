@@ -8,8 +8,33 @@ import test from 'node:test'
 import { collect } from '../src/collect.js'
 import { playgroundSources } from '../src/playground.js'
 import { resolveLive } from '../website/src/resolve-live.js'
+import { SOURCES } from '../website/src/schema.js'
 
 import type { UiCatalog } from '../website/src/ui-types.js'
+
+test('calculator Volta inputs use the same versions and priority as collected manifests', async (t) => {
+  const root = await realpath(await mkdtemp(join(tmpdir(), 'infer-playground-')))
+  t.after(() => rm(root, { recursive: true, force: true }))
+  await mkdir(join(root, '.git'))
+  await writeFile(
+    join(root, 'package.json'),
+    JSON.stringify({
+      volta: {
+        node: '22.4.0',
+        pnpm: '9.1.0',
+        yarn: '1.22.22',
+        npm: '10.8.2',
+      },
+    }),
+  )
+  const actual = await collect({ cwd: root })
+  const fields = { voltaNode: '22.4.0', voltaPnpm: '9.1.0', voltaYarn: '1.22.22', voltaNpm: '10.8.2' }
+  const simulated = playgroundSources({ runtime: {}, fields, additional: [], searchDepth: 0 })
+  const values = (rows: typeof actual.sources) =>
+    rows.map(({ kind, value, rank, conditional }) => ({ kind, value, rank, conditional }))
+  assert.deepEqual(values(simulated), values(actual.sources))
+  for (const key of Object.keys(fields)) assert.ok(SOURCES.some((s) => s.key === key))
+})
 
 test('calculator and collector preserve explicit legacy workspace features at every directory', async () => {
   const root = await realpath(await mkdtemp(join(tmpdir(), 'infer-playground-')))

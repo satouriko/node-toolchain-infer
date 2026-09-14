@@ -24,13 +24,15 @@ export function playgroundSources(input: InputState): Source[] {
     yarnFamily?: string,
   ) => {
     if (!value.trim() || depth > input.searchDepth) return
-    const text =
+    let text =
       key === 'toolVersions'
         ? value
             .replace(/^nodejs\s+/, '')
             .split(/\s+/)
             .join(' || ')
         : value
+    if (key === 'voltaPnpm') text = `pnpm@${value}`
+    if (key === 'voltaYarn') text = `yarn@${value}`
     const source = createSource(key, text, { depth, index })
     if (key === 'pnpmShrinkwrap') source.features = { sharedWorkspace }
     if (key === 'yarnLock' && yarnFamily === 'zpm') source.features = { yarnFamily }

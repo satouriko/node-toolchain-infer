@@ -58,6 +58,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
     }
   }
   const runningNode = runtime.node
+  const localNpm = semver.valid(input.runtime.localNpm ?? '')
   const raw = (input.sources || []).map((s, index) => ({ ...s, index })).sort(sourceOrder)
   const aliasNodes = catalog.nodes.filter((n) => isStableVersion(n.version))
   if (isStableVersion(runningNode) && !aliasNodes.some((n) => n.version === runningNode))
@@ -93,6 +94,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
   }
   for (const name of MANAGERS)
     releaseVersions[name] = [...catalog.managers[name].map((p) => p.version), ...(runtime[name] ? [runtime[name]] : [])]
+  if (localNpm) releaseVersions.npm.push(localNpm)
   const declarationVersions = new Map(
     parsed.map((source) => [
       source,
@@ -123,6 +125,8 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
       && !(name === 'node' ? explicitNodes : explicitManagers[name as Manager]).has(version)
     )
       warn('prerelease-excluded', null, { name, version })
+  if (localNpm && !isStableVersion(localNpm) && !explicitManagers.npm.has(localNpm) && localNpm !== runtime.npm)
+    warn('prerelease-excluded', null, { name: 'npm', version: localNpm })
   if (isStableVersion(runtime.node) || explicitNodes.has(runtime.node))
     nodeMap.set(runtime.node, {
       ...nodeMap.get(runtime.node),
@@ -132,7 +136,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
   const nodes = [...nodeMap.values()].sort(descending)
   const managerData = Object.fromEntries(
     MANAGERS.map((name) => {
-      const local = runtime[name]
+      const locals = [...new Set([runtime[name], ...(name === 'npm' ? [localNpm] : [])])]
       const records = catalog.managers[name]
         .filter(
           (p) =>
@@ -140,14 +144,15 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
             && (isAbsent(p.node) || semver.validRange(p.node)),
         )
         .map((p) => ({ ...p }))
-      if (
-        local
-        && (isStableVersion(local) || explicitManagers[name].has(local))
-        && nodeMap.has(runningNode)
-        && !records.some((p) => p.version === local)
-      ) {
-        records.push({ version: local, node: runningNode, observedRuntime: true })
-      }
+      for (const local of locals)
+        if (
+          local
+          && (isStableVersion(local) || explicitManagers[name].has(local))
+          && nodeMap.has(runningNode)
+          && !records.some((p) => p.version === local)
+        ) {
+          records.push({ version: local, node: runningNode, observedRuntime: true })
+        }
       return [name, records.sort(descending)]
     }),
   ) as Record<Manager, ManagerRelease[]>
@@ -288,8 +293,12 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
   if (exactNode) nodeReason = 'exact'
   const candidates = final.managers.filter((p) => supportsNode(p, chosenNode))
   const exactManager = accepted.find((s) => s.target === 'manager' && s.exact)
-  const preferredVersion = manager === 'npm' ? chosenNode.npm : runtime[manager]
-  const preferred = candidates.find((p) => p.version === preferredVersion)
+  const preferredVersions =
+    manager === 'npm'
+      ? [chosenNode.version === runningNode ? localNpm : null, chosenNode.npm].filter(Boolean)
+      : [runtime[manager]].filter(Boolean)
+  const preferred = preferredVersions.map((version) => candidates.find((p) => p.version === version)).find(Boolean)
+  const preferredVersion = preferredVersions[0]
   const chosenManager = exactManager
     ? candidates.find((p) => p.version === exactManager.exact)
     : preferred || candidates[0]
@@ -310,7 +319,7 @@ export function resolve(input: ResolveInput, catalog: Catalog, rules: Compatibil
     }
   }
   let managerReason: 'exact' | 'bundled' | 'local' | 'maximum' = 'maximum'
-  if (preferred) managerReason = manager === 'npm' ? 'bundled' : 'local'
+  if (preferred) managerReason = manager === 'npm' && preferred.version === chosenNode.npm ? 'bundled' : 'local'
   if (exactManager) managerReason = 'exact'
   if (!exactManager && preferredVersion && !preferred)
     warn('preferred-version-rejected', null, {
