@@ -1,6 +1,7 @@
 import semver from 'semver'
 
 import { type MANAGERS, normalizeSource } from './constraints.js'
+import { MetadataHttpError, MetadataRequestError, requestMetadata, withSignal } from './metadata-request.js'
 import { errorMessage, object, optionalObject } from './validation.js'
 import { isStableVersion, prereleaseCores } from './versions.js'
 import { createWarning } from './warnings.js'
@@ -10,6 +11,7 @@ import type {
   CatalogOptions,
   Fetcher,
   ManagerRelease,
+  MetadataRequestFailure,
   NodeRelease,
   Source,
   SourceReceipt,
@@ -37,7 +39,7 @@ interface FetchResult {
 }
 interface Cache {
   entries: Map<string, Entry>
-  pending: Map<string, Promise<FetchResult>>
+  pending: Map<string, { promise: Promise<FetchResult>; controller: AbortController; consumers: number }>
 }
 const caches = new WeakMap<Fetcher, Cache>()
 const defaultFetcher: Fetcher = (url, options) => fetch(url, options)
@@ -47,6 +49,7 @@ export class MetadataError extends Error {
   constructor(
     message: string,
     readonly failures: string[],
+    readonly diagnostics: MetadataRequestFailure[] = [],
   ) {
     super(message)
     this.name = 'MetadataError'
@@ -144,21 +147,10 @@ async function browserHash(body: string): Promise<string> {
   const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(body))
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
 }
-function withSignal<T>(promise: Promise<T>, signal?: AbortSignal): Promise<T> {
-  if (!signal) return promise
-  if (signal.aborted) return Promise.reject(signal.reason)
-  return new Promise((resolve, reject) => {
-    const abort = () => {
-      reject(signal.reason)
-    }
-    signal.addEventListener('abort', abort, { once: true })
-    promise
-      .then(resolve, reject)
-      .finally(() => {
-        signal.removeEventListener('abort', abort)
-      })
-      .catch(() => {})
-  })
+function requestFailures(error: unknown): MetadataRequestFailure[] {
+  if (error instanceof MetadataRequestError) return [error.failure]
+  if (error instanceof MetadataError) return error.diagnostics
+  return []
 }
 interface MetadataOptions extends CatalogOptions {
   hash?: (body: string) => Promise<string>
@@ -176,46 +168,54 @@ function createLoader({ fetcher = defaultFetcher, signal, onSource, hash = brows
     source: { id: string; url: string },
     parser?: (data: unknown) => Pick<Entry, 'nodes' | 'managers'>,
   ): Promise<FetchResult> => {
+    if (signal?.aborted) throw signal.reason
     onSource?.({ ...source, status: 'loading' })
     const key = `${source.id}:${source.url}`
     let request = activeCache.pending.get(key)
     if (!request) {
-      request = (async (): Promise<FetchResult> => {
+      const controller = new AbortController()
+      const promise = (async (): Promise<FetchResult> => {
         const previous = activeCache.entries.get(key)
         try {
           const headers: Record<string, string> = { Accept: 'application/json' }
           if (previous?.receipt.etag) headers['If-None-Match'] = previous.receipt.etag
           if (previous?.receipt.lastModified) headers['If-Modified-Since'] = previous.receipt.lastModified
-          const response = await fetcher(source.url, { headers, signal: AbortSignal.timeout(20_000) })
-          const now = new Date().toISOString()
-          if (response.status === 304) {
-            if (!previous) throw new Error(`${source.id}: HTTP 304 without a cached response.`)
-            const entry = { ...previous, receipt: { ...previous.receipt, checkedAt: now } }
-            activeCache.entries.set(key, entry)
-            return { entry }
-          }
-          if (!response.ok) throw new Error(`${source.id}: HTTP ${response.status}`)
-          const body = await response.text()
-          let data: unknown
-          try {
-            data = JSON.parse(body)
-          } catch {
-            throw new Error(`${source.id}: invalid JSON response.`)
-          }
-          const receipt: SourceReceipt = { ...source, fetchedAt: now, checkedAt: now, sha256: await hash(body) }
-          const etag = response.headers.get('etag')
-          const modified = response.headers.get('last-modified')
-          if (etag) receipt.etag = etag
-          if (modified) receipt.lastModified = modified
-          const entry: Entry = { receipt }
-          if (parser) Object.assign(entry, parser(data))
-          else if (source.id === 'node') entry.nodes = parseNodes(data)
-          else if (source.id === 'yarn-tags') entry.managers = parseTags(data, source.url)
-          else if (source.id === 'yarn-zpm') entry.managers = parseNativeYarn(data, source.url)
-          else entry.managers = parseRegistry(data, source)
-          activeCache.entries.set(key, entry)
-          return { entry }
+          const fetchedEntry = await requestMetadata(
+            source,
+            async (requestSignal) => {
+              const response = await fetcher(source.url, { headers, signal: requestSignal })
+              const now = new Date().toISOString()
+              if (response.status === 304) {
+                if (!previous) throw new Error(`${source.id}: HTTP 304 without a cached response.`)
+                return { ...previous, receipt: { ...previous.receipt, checkedAt: now } }
+              }
+              if (!response.ok) throw new MetadataHttpError(response.status, response.headers.get('retry-after'))
+              const body = await response.text()
+              let data: unknown
+              try {
+                data = JSON.parse(body)
+              } catch {
+                throw new Error(`${source.id}: invalid JSON response.`)
+              }
+              const receipt: SourceReceipt = { ...source, fetchedAt: now, checkedAt: now, sha256: await hash(body) }
+              const etag = response.headers.get('etag')
+              const modified = response.headers.get('last-modified')
+              if (etag) receipt.etag = etag
+              if (modified) receipt.lastModified = modified
+              const entry: Entry = { receipt }
+              if (parser) Object.assign(entry, parser(data))
+              else if (source.id === 'node') entry.nodes = parseNodes(data)
+              else if (source.id === 'yarn-tags') entry.managers = parseTags(data, source.url)
+              else if (source.id === 'yarn-zpm') entry.managers = parseNativeYarn(data, source.url)
+              else entry.managers = parseRegistry(data, source)
+              return entry
+            },
+            controller.signal,
+          )
+          activeCache.entries.set(key, fetchedEntry)
+          return { entry: fetchedEntry }
         } catch (error) {
+          if (controller.signal.aborted) throw controller.signal.reason
           if (!previous) throw error
           return {
             entry: previous,
@@ -226,30 +226,40 @@ function createLoader({ fetcher = defaultFetcher, signal, onSource, hash = brows
                 detail: errorMessage(error),
                 fetchedAt: previous.receipt.fetchedAt,
               },
-              { path: source.url, fetchedAt: previous.receipt.fetchedAt },
+              { path: source.url, fetchedAt: previous.receipt.fetchedAt, requestFailures: requestFailures(error) },
             ),
           }
         }
       })()
+      request = { promise, controller, consumers: 0 }
       activeCache.pending.set(key, request)
-      request
+      const pending = request
+      promise
         .finally(() => {
-          activeCache.pending.delete(key)
+          if (activeCache.pending.get(key) === pending) activeCache.pending.delete(key)
         })
         .catch(() => {})
     }
+    request.consumers++
     try {
-      const result = await withSignal(request, signal)
+      const result = await withSignal(request.promise, signal)
       onSource?.({
         ...source,
         status: result.warning ? 'stale' : 'ready',
         count: result.entry.nodes?.length ?? result.entry.managers?.length,
         fetchedAt: result.entry.receipt.fetchedAt,
+        ...(result.warning ? { error: result.warning.message, failure: result.warning.requestFailures?.[0] } : {}),
       })
       return result
     } catch (error) {
-      onSource?.({ ...source, status: 'error', error: errorMessage(error) })
+      onSource?.({ ...source, status: 'error', error: errorMessage(error), failure: requestFailures(error)[0] })
       throw error
+    } finally {
+      request.consumers--
+      if (!request.consumers && activeCache.pending.get(key) === request) {
+        activeCache.pending.delete(key)
+        request.controller.abort(signal?.reason)
+      }
     }
   }
   return load
@@ -258,10 +268,28 @@ function createLoader({ fetcher = defaultFetcher, signal, onSource, hash = brows
 export async function fetchMetadata(options: MetadataOptions = {}): Promise<Catalog> {
   const { signal } = options
   const load = createLoader(options)
-  const results = await Promise.allSettled(OFFICIAL_SOURCES.map((source) => load(source)))
+  const sources = OFFICIAL_SOURCES.filter(
+    (source) =>
+      !options.tools
+      || options.tools.some((tool) => source.id === tool || (tool === 'yarn' && source.id.startsWith('yarn-'))),
+  )
+  const results = await Promise.allSettled(sources.map((source) => load(source)))
   if (signal?.aborted) throw signal.reason
   const failures = results.flatMap((result) => (result.status === 'rejected' ? [errorMessage(result.reason)] : []))
-  if (failures.length) throw new MetadataError(failures.join('; '), failures)
+  const diagnostics = results.flatMap((result) => (result.status === 'rejected' ? requestFailures(result.reason) : []))
+  if (failures.length && (!options.allowPartial || failures.length === results.length))
+    throw new MetadataError(failures.join('; '), failures, diagnostics)
+  const sourceWarnings = results.flatMap((result, index) =>
+    result.status === 'rejected'
+      ? [
+          createWarning(
+            'metadata-source-unavailable',
+            { source: sources[index].id, detail: errorMessage(result.reason) },
+            { path: sources[index].url, requestFailures: requestFailures(result.reason) },
+          ),
+        ]
+      : [],
+  )
   const values = results.flatMap((result) => (result.status === 'fulfilled' ? [result.value] : []))
   const entries = new Map(values.map((value) => [value.entry.receipt.id, value.entry]))
   // Native releases have their own official channel; Berry tags fill registry omissions.
@@ -306,7 +334,7 @@ export async function fetchMetadata(options: MetadataOptions = {}): Promise<Cata
                 version: release.version,
                 detail: errorMessage(error),
               },
-              { path: url },
+              { path: url, requestFailures: requestFailures(error) },
             ),
           )
         }
@@ -323,11 +351,11 @@ export async function fetchMetadata(options: MetadataOptions = {}): Promise<Cata
       pnpm: entries.get('pnpm')?.managers ?? [],
       yarn: [...yarn.values()].sort((a, b) => semver.rcompare(a.version, b.version)),
     },
-    warnings: [...values.flatMap((value) => (value.warning ? [value.warning] : [])), ...tagWarnings],
+    warnings: [...sourceWarnings, ...values.flatMap((value) => (value.warning ? [value.warning] : [])), ...tagWarnings],
   }
 }
 
-/** Add prereleases admitted by explicit declarations. Ordinary catalog fetching stays stable-only. */
+/** Fill missing exact versions and admitted prereleases. Ordinary catalog fetching stays stable-only. */
 export async function fetchExplicitMetadata(
   catalog: Catalog,
   sources: Source[],
@@ -341,7 +369,7 @@ export async function fetchExplicitMetadata(
   for (const [index, source] of sources.entries()) {
     try {
       const normalized = normalizeSource({ ...source, index }, [], [])
-      if (normalized.lockfile || !prereleaseCores(normalized.range).length) continue
+      if (normalized.lockfile || (!normalized.exact && !prereleaseCores(normalized.range).length)) continue
       const version = normalized.exact ?? normalized.range
       const target = normalized.target === 'node' ? 'node' : 'manager'
       const { manager } = normalized
@@ -440,10 +468,12 @@ export async function fetchExplicitMetadata(
           if (version.includes('nightly')) channel = 'nightly'
           else if (version.includes('v8-canary')) channel = 'v8-canary'
           else if (version.includes('-test')) channel = 'test'
-          const url = `https://nodejs.org/download/${channel}/index.json`
+          const url = isStableVersion(version)
+            ? OFFICIAL_SOURCES[0].url
+            : `https://nodejs.org/download/${channel}/index.json`
           fetched = await load({ id: `explicit-${id}`, url }, (data) => {
             const nodes = parseNodes(data, version)
-            if (!nodes.length) throw new Error(`Node ${version} is absent from the official ${channel} index.`)
+            if (!nodes.length) throw new Error(`Node ${version} is absent from the official release index.`)
             return { nodes }
           })
           result.nodes.push(...(fetched.entry.nodes ?? []))
@@ -459,6 +489,7 @@ export async function fetchExplicitMetadata(
           const names =
             manager === 'yarn' && semver.major(version) >= 2 ? ['@yarnpkg/cli-dist', 'yarn', '@yarnpkg/cli'] : [manager]
           const failures: string[] = []
+          const diagnostics: MetadataRequestFailure[] = []
           for (const name of names) {
             const url = `https://registry.npmjs.org/${name.replace('/', '%2F')}/${encodeURIComponent(version)}`
             try {
@@ -477,6 +508,7 @@ export async function fetchExplicitMetadata(
             } catch (error) {
               if (options.signal?.aborted) throw options.signal.reason
               failures.push(errorMessage(error))
+              diagnostics.push(...requestFailures(error))
             }
           }
           if (!fetched && manager === 'yarn' && semver.major(version) >= 2) {
@@ -502,7 +534,7 @@ export async function fetchExplicitMetadata(
               }
             })
           }
-          if (!fetched) throw new Error(failures.join('; '))
+          if (!fetched) throw new MetadataError(failures.join('; '), failures, diagnostics)
           result.managers[manager].push(...(fetched.entry.managers ?? []))
         }
         result.sources.push(fetched.entry.receipt)
@@ -516,7 +548,7 @@ export async function fetchExplicitMetadata(
               id,
               detail: errorMessage(error),
             },
-            { sourceId: source.id, path: source.path },
+            { sourceId: source.id, path: source.path, requestFailures: requestFailures(error) },
           ),
         )
       }

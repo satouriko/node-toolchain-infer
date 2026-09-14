@@ -105,7 +105,7 @@ test('infer fetches an explicitly pinned prerelease separately and derives only 
   assert.equal(result.node?.version, '22.9.0')
   assert.deepEqual(result.candidates.nodes, ['22.9.0', '18.20.8'])
   assert.ok(requests.includes('https://registry.npmjs.org/pnpm/10.0.0-rc.1'))
-  assert.equal(requests.length, 9, 'eight stable sources plus one explicit manifest, no prerelease enumeration')
+  assert.equal(requests.length, 3, 'Node and pnpm sources plus one explicit manifest, no unrelated managers')
 })
 
 test('an explicit catalog remains offline even when it lacks a pinned prerelease', async (t) => {

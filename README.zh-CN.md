@@ -37,9 +37,13 @@ Node 依次采用：保留的具体版本、满足条件的当前版本、范围
 
 ## 版本数据
 
-每次 `infer()` 获取或重新验证八个官方接口：Node 发行索引，npm 注册表中的 npm、pnpm、yarn、`@yarnpkg/cli-dist`、`@yarnpkg/cli`，以及 Yarn 官方 Berry tags 和 [release lines](https://repo.yarnpkg.com/releases)。Yarn 支持 Classic（<2）、Berry（>=2 <6）和原生 Yarn 6+（`yarnpkg/zpm`）。原生版本取 `releaseLines.zpm.tags`、`stable`、`canary` 的并集并去重，按版本号本身过滤稳定版，不能依据渠道名称判断。原生记录带 `runtime: 'native'`，宿主 Node 约束为 `node: '*'`；项目声明的 Node 条件和 infer 包本身的 Node 要求仍然有效。旧 Yarn 同版本优先采用 cli-dist、yarn、cli 的声明；只有官方 tag、注册表没有的版本，再查询该 tag 的包清单，缺失 engines 保持未知。常规列表排除预发布版；遇到允许预发布版的显式声明，按需补查元数据：精确版本查询该版本的官方清单或发布记录；范围查询对应官方版本列表，只保留符合范围的预发布版。Node 范围查询官方 dist、rc、nightly、v8-canary、test 索引。这些按需查询的记录不加入常规版本统计。返回每次查询的来源 URL、获取与验证时间、响应 SHA-256。具体链接见英文 README 和网站。
+`infer()` 先读取项目声明，再请求 Node 和第一个有效声明所选择的包管理器；没有包管理器选择声明时使用 npm。只有其他包管理器仍可能按声明优先级改变结果时，才补取对应数据。普通 pnpm 项目仅请求 Node 和 pnpm，无关的 Yarn 接口和不生效的 Yarn engines 不会增加请求；显式版本补查也遵循同一工具范围。`fetchCatalog()` 默认仍获取完整目录，可用 `fetchCatalog({ tools: ['node', 'pnpm'] })` 主动指定子集。
 
-Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Last-Modified 条件请求，304 复用已解析数据，同时进行的请求合并。不会默认写磁盘，也不缓存目录扫描结果。刷新失败时可以使用旧的成功响应，但会警告并注明时间。没有官方数据时，只能基于已知运行环境候选推断，不能声称找到了全部已发布版本中的最大值。
+完整版本目录覆盖八个官方接口：Node 发行索引，npm 注册表中的 npm、pnpm、yarn、`@yarnpkg/cli-dist`、`@yarnpkg/cli`，以及 Yarn 官方 Berry tags 和 [release lines](https://repo.yarnpkg.com/releases)。Yarn 支持 Classic（<2）、Berry（>=2 <6）和原生 Yarn 6+（`yarnpkg/zpm`）。原生版本取 `releaseLines.zpm.tags`、`stable`、`canary` 的并集并去重，按版本号本身过滤稳定版，不能依据渠道名称判断。原生记录带 `runtime: 'native'`，宿主 Node 约束为 `node: '*'`；项目声明的 Node 条件和 infer 包本身的 Node 要求仍然有效。旧 Yarn 同版本优先采用 cli-dist、yarn、cli 的声明；只有官方 tag、注册表没有的版本，再查询该 tag 的包清单，缺失 engines 保持未知。常规列表排除预发布版；遇到允许预发布版的显式声明，按需补查元数据：精确版本查询该版本的官方清单或发布记录；范围查询对应官方版本列表，只保留符合范围的预发布版。Node 范围查询官方 dist、rc、nightly、v8-canary、test 索引。这些按需查询的记录不加入常规版本统计。返回每次查询的来源 URL、获取与验证时间、响应 SHA-256。具体链接见英文 README 和网站。
+
+Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Last-Modified 条件请求，304 复用已解析数据，同时进行的请求合并。不会默认写磁盘，也不缓存目录扫描结果。刷新失败时可以使用旧的成功响应，但会警告并注明时间。`infer()` 在个别来源失败时保留其他来源的数据，并返回 `metadata-source-unavailable` 警告。没有官方数据时，只能基于已知运行环境候选推断，不能声称找到了全部已发布版本中的最大值。`fetchCatalog()` 默认仍要求所有主要来源成功，避免维护脚本生成不完整快照；调用方可用 `allowPartial: true` 接受部分结果。
+
+临时网络错误和 HTTP 429/500/502/503/504 最多重试两次，含首次请求共三次；只重试失败的来源。间隔约为 200 ms、800 ms，带随机抖动，并遵守 `Retry-After`。每个来源的请求、响应读取和等待共用 20 秒总时限。HTTP 404、证书错误、响应数据无效不重试。调用方取消后，没有其他调用方共用的请求会停止。显式指定的稳定版本若不在目录中，也会单独补查其官方元数据，保留该版本的 Node 运行要求及绑定 npm 信息。
 
 随包发布的是编译后的锁兼容表。维护脚本把已经确认的行为变化边界生成 semver 范围；没有实测不兼容上界，就不加上界。旧包直接使用自己携带的范围判断新发布的包管理器版本；遇到表中没有的锁格式，约束为 `*`，保留包管理器类型。这是尽可能兼容的推断规则，不是对每个真实项目安装成功的保证。
 
@@ -57,11 +61,15 @@ Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Las
 
 可通过 `runtime`、`catalog`、`rules`、`fetcher`、`signal` 显式控制数据和取消操作。传入 `catalog` 后不再额外联网，快照缺少显式版本或范围所允许的预发布版本时也一样。结果包含最终版本、警告、逐条采纳过程、保留约束、候选版本、扫描目录和数据时间。
 
+本地 pnpm/Yarn 先在目标项目目录探测，允许 Corepack 使用已缓存的项目版本；失败后才在 Node 安装目录禁用项目选择，探测机器默认版本。两次探测都关闭 Corepack 联网和自动写入 `packageManager`，不会下载缺少的 Corepack 版本或补写项目声明。`detectRuntime({ cwd })` 默认使用当前目录，`infer()` 则传入实际扫描目录；显式提供 `runtime` 时跳过探测。
+
 ```sh
 node-toolchain-infer --cwd . --node '18' --package-manager 'pnpm@^9' --json
 ```
 
 警告包含稳定的 `code`、结构化 `params`、英文 `message`，以及可用的来源信息（`sourceId`、`path`、`blockers`）。用 `formatWarning(warning, 'zh-CN')` 或 `formatWarning(warning, 'en')` 按 code 和参数生成文案，不匹配 message 文本。从 `node-toolchain-infer` 或可用于浏览器的 `node-toolchain-infer/warnings` 入口导入该函数。非法声明通过 `params.reason` 和 `params.value` 区分原因并保留输入。未知 code、缺少必要参数的旧数据保留原始消息；外部错误的细节原样保留。
+
+元数据失败还通过 `requestFailures` 保留来源 ID、URL、请求次数、耗时、可用的 HTTP 状态码及嵌套错误消息和错误码。`onSource` 事件的 `failure`、`MetadataError.diagnostics` 也提供这些结构化信息；原有 `MetadataError.failures` 仍为可读消息数组。
 
 ## 开发与本地网站
 

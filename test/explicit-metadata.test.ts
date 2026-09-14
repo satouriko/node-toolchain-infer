@@ -30,6 +30,65 @@ const pin = createSource('packageManager', 'pnpm@10.0.0-rc.1')
 const url = 'https://registry.npmjs.org/pnpm/10.0.0-rc.1'
 const manifest = { name: 'pnpm', version: '10.0.0-rc.1', engines: { node: '>=23.0.0-0' } }
 
+test('a missing exact stable version is fetched separately and retains its Node requirement', async () => {
+  const source = createSource('packageManager', 'pnpm@11.17.0')
+  const requests: string[] = []
+  const result = await fetchExplicitCatalog(catalog, [source], {
+    fetcher: (request) => {
+      requests.push(request)
+      return Promise.resolve(response({ name: 'pnpm', version: '11.17.0', engines: { node: '>=22.13' } }))
+    },
+  })
+  assert.deepEqual(requests, ['https://registry.npmjs.org/pnpm/11.17.0'])
+  const selected = resolve({ sources: [source], runtime: { node: '22.0.0', npm: '10.0.0', pnpm: '9.0.0' } }, result)
+  assert.equal(selected.packageManager?.version, '11.17.0')
+  assert.equal(selected.node?.version, '24.0.0')
+  assert.deepEqual(
+    catalog.managers.pnpm.map((row) => row.version),
+    ['9.0.0'],
+  )
+})
+
+test('a missing stable Node pin queries the stable release index and retains its bundled npm', async () => {
+  const requests: string[] = []
+  const result = await fetchExplicitCatalog(catalog, [createSource('nvmrc', 'v24.10.0')], {
+    fetcher: (request) => {
+      requests.push(request)
+      return Promise.resolve(
+        response([
+          { version: 'v24.10.0', npm: '11.6.1' },
+          { version: 'v24.11.0', npm: '11.6.2' },
+        ]),
+      )
+    },
+  })
+  assert.deepEqual(requests, ['https://nodejs.org/dist/index.json'])
+  assert.equal(result.nodes.find((node) => node.version === '24.10.0')?.npm, '11.6.1')
+  assert.equal(
+    result.nodes.some((node) => node.version === '24.11.0'),
+    false,
+  )
+})
+
+test('known exact stable versions need no additional request', async () => {
+  const result = await fetchExplicitCatalog(catalog, [createSource('packageManager', 'pnpm@9.0.0')], {
+    fetcher: () => {
+      throw new Error('unexpected network request')
+    },
+  })
+  assert.equal(result, catalog)
+})
+
+test('an unavailable stable pin preserves the catalog and reports the failed exact URL', async () => {
+  const source = createSource('packageManager', 'pnpm@11.17.0')
+  const result = await fetchExplicitCatalog(catalog, [source], { fetcher: () => Promise.resolve(response({}, 404)) })
+  assert.deepEqual(result.nodes, catalog.nodes)
+  assert.deepEqual(result.managers, catalog.managers)
+  assert.equal(result.warnings[0].code, 'explicit-version-unavailable')
+  assert.equal(result.warnings[0].requestFailures?.[0].url, 'https://registry.npmjs.org/pnpm/11.17.0')
+  assert.equal(result.warnings[0].requestFailures[0].attempts, 1)
+})
+
 test('ordinary ranges and lockfiles never request prerelease metadata', async () => {
   const result = await fetchExplicitCatalog(
     catalog,

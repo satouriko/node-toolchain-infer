@@ -141,6 +141,12 @@ const definitions = {
     (p) => `${p.detail}; inference is restricted to known local runtime candidates.`,
     (p) => `官方版本数据不可用：${p.detail}；仅使用已知的本地运行时候选进行推断。`,
   ),
+  'metadata-source-unavailable': define(
+    ['source', 'detail'],
+    (p) => `${p.source}: ${p.detail}; inference uses the remaining available metadata and local runtime candidates.`,
+    (p) =>
+      `${p.source} 官方版本数据不可用：${p.detail}；继续使用其他可用元数据和本地运行时候选，最大版本仅指这些数据。`,
+  ),
   'npm-from-release-metadata': define(
     [],
     () => 'No adjacent npm installation was found; using the npm version recorded for this exact Node release.',

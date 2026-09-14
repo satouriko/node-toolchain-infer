@@ -9,6 +9,7 @@ export interface Warning {
   path?: string
   blockers?: string[]
   fetchedAt?: string
+  requestFailures?: MetadataRequestFailure[]
 }
 export interface Runtime {
   node: string
@@ -174,6 +175,18 @@ export interface CatalogOptions {
   fetcher?: Fetcher
   signal?: AbortSignal
   onSource?: (event: CatalogEvent) => void
+  /** Keep successful sources when others fail. Defaults to false; infer enables this. */
+  allowPartial?: boolean
+  /** Fetch only these tools. Defaults to Node and all package managers. */
+  tools?: Array<'node' | Manager>
+}
+export interface MetadataRequestFailure {
+  sourceId: string
+  url: string
+  attempts: number
+  elapsedMs: number
+  status?: number
+  causes: Array<{ name: string; message: string; code?: string }>
 }
 export interface CatalogEvent {
   id: string
@@ -182,4 +195,5 @@ export interface CatalogEvent {
   count?: number
   fetchedAt?: string
   error?: string
+  failure?: MetadataRequestFailure
 }

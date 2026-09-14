@@ -13,6 +13,7 @@ import type { Catalog, Runtime, Warning } from './types.js'
 
 const execute = promisify(execFile)
 export interface RuntimeOptions {
+  cwd?: string
   execPath?: string
   nodeVersion?: string
   catalog?: Catalog
@@ -24,6 +25,7 @@ export interface RuntimeDetection {
   warnings: Warning[]
 }
 export async function detectRuntime({
+  cwd = process.cwd(),
   execPath = process.execPath,
   nodeVersion = process.versions.node,
   catalog,
@@ -61,18 +63,28 @@ export async function detectRuntime({
   if (localManagers)
     await Promise.all(
       (['pnpm', 'yarn'] as const).map(async (manager) => {
-        try {
-          const { stdout } = await execute(process.platform === 'win32' ? `${manager}.cmd` : manager, ['--version'], {
-            cwd: binaryDirectory,
-            env: { ...env, COREPACK_ENABLE_NETWORK: '0', COREPACK_ENABLE_PROJECT_SPEC: '0' },
-            timeout: 5000,
-            maxBuffer: 64 * 1024,
-            windowsHide: true,
-          })
-          const version = semver.valid(stdout.trim())
-          if (version) runtime[manager] = version
-        } catch {
-          /* Missing optional local commands simply provide no candidate. */
+        for (const projectSpec of [true, false]) {
+          try {
+            const { stdout } = await execute(process.platform === 'win32' ? `${manager}.cmd` : manager, ['--version'], {
+              cwd: projectSpec ? cwd : binaryDirectory,
+              env: {
+                ...env,
+                COREPACK_ENABLE_NETWORK: '0',
+                COREPACK_ENABLE_AUTO_PIN: '0',
+                COREPACK_ENABLE_PROJECT_SPEC: projectSpec ? '1' : '0',
+              },
+              timeout: 5000,
+              maxBuffer: 64 * 1024,
+              windowsHide: true,
+            })
+            const version = semver.valid(stdout.trim())
+            if (version) {
+              runtime[manager] = version
+              break
+            }
+          } catch {
+            /* An uncached project version may still have a usable machine default. */
+          }
         }
       }),
     )
