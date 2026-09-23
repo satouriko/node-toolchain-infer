@@ -1,0 +1,17 @@
+npm@12.1.0
+Error: Shrinkwrap generation failed: npm warn Unknown env config "verify-deps-before-run". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "npm-globalconfig". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-path". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+
+added 1 package in 407ms
+Unknown command: "shrinkwrap"
+
+To see a list of supported npm commands, run:
+  npm help
+
+    at generateFixture (/home/runner/work/node-toolchain-infer/node-toolchain-infer/maintenance/generate-fixtures.ts:113:40)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async runReleaseCheck (/home/runner/work/node-toolchain-infer/node-toolchain-infer/scripts/check-releases.ts:500:25)

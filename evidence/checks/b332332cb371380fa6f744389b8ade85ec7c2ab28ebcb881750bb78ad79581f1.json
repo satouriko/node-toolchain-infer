@@ -1,0 +1,26 @@
+{
+  "key": "npm@12.1.0:a2acbd79634a306a8028a563e8fcfa61af216fdd5c12ae4f623650f79cce4b38",
+  "manager": "npm",
+  "version": "12.1.0",
+  "checkedAt": "2026-09-23T08:41:41.907Z",
+  "origin": "check",
+  "outcomes": {
+    "npm-package-lock-v3": "pass"
+  },
+  "sources": [
+    "generated/b6693063c0bcb3b6478d576cb73c36d648e3cfd425b00ee7384812856ce99ec6",
+    "logs/7af3b61be5c2283f6f8d120124edf9c7bdc32502ba5856627783c426b421ca76-016a792869b2.log",
+    "generated/542c32f38ecaff44db927eabaff7f3144bde046a94ded05e2463e0307cc03406",
+    "logs/failure-8d2abcb9-f6b7-45d8-aab1-19303a5e0905.log"
+  ],
+  "issues": {
+    "unknownFormats": [],
+    "mismatches": [],
+    "incomplete": [
+      "npm@12.1.0: Error: Shrinkwrap generation failed: npm warn Unknown env config \"verify-deps-before-run\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"npm-globalconfig\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"_jsr-registry\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store-dir\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store-path\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\n\nadded 1 package in 407ms\nUnknown command: \"shrinkwrap\"\n\nTo see a list of supported npm commands, run:\n  npm help\n; logs/failure-8d2abcb9-f6b7-45d8-aab1-19303a5e0905.log"
+    ],
+    "unresolved": [],
+    "exitCode": 2
+  },
+  "exitCode": 2
+}

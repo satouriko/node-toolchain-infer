@@ -1,21 +1,22 @@
 {
-  "catalogHash": "64a69f35eb8538c21e87d61e6af1eae6ba1b23641af0d648cf8c0e583e9d5714",
+  "catalogHash": "71ffb12e1c83ecafee593a03dc05ef6725cb4274eae8ea5c0ddb91feb987d335",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T08:39:21.992Z",
-  "catalogGeneratedAt": "2026-09-22T08:38:09.861Z",
+  "generatedAt": "2026-09-23T08:42:11.644Z",
+  "catalogGeneratedAt": "2026-09-23T08:40:16.148Z",
   "managers": [
     {
       "manager": "npm",
-      "releasedStableCount": 527,
-      "conclusivelyObservedCount": 526,
+      "releasedStableCount": 529,
+      "conclusivelyObservedCount": 527,
       "uncoveredVersions": [
-        "1.1.25"
+        "1.1.25",
+        "12.1.0"
       ]
     },
     {
       "manager": "pnpm",
-      "releasedStableCount": 986,
-      "conclusivelyObservedCount": 832,
+      "releasedStableCount": 987,
+      "conclusivelyObservedCount": 833,
       "uncoveredVersions": [
         "0.0.1",
         "0.16.0",
@@ -3583,11 +3584,13 @@
   "unknownFormats": [],
   "mismatches": [],
   "unresolved": [],
-  "incomplete": [],
-  "exitCode": 0,
+  "incomplete": [
+    "npm@12.1.0: Error: Shrinkwrap generation failed: npm warn Unknown env config \"verify-deps-before-run\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"npm-globalconfig\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"_jsr-registry\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store-dir\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown env config \"store-path\". This will error in a future major version of npm. See `npm help npmrc` for supported config options.\n\nadded 1 package in 407ms\nUnknown command: \"shrinkwrap\"\n\nTo see a list of supported npm commands, run:\n  npm help\n; logs/failure-8d2abcb9-f6b7-45d8-aab1-19303a5e0905.log"
+  ],
+  "exitCode": 2,
   "history": {
-    "recordedReleases": 1712,
-    "checkedThisRun": 0,
+    "recordedReleases": 1715,
+    "checkedThisRun": 3,
     "unresolved": []
   }
 }
