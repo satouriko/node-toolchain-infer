@@ -1,0 +1,23 @@
+/opt/hostedtoolcache/node/24.21.0/x64/bin/node /tmp/toolchain-releases-NMkeiE/tools/pnpm-9.0.5/node_modules/pnpm/bin/pnpm.cjs install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 527ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/65ff380ba007aab0a2144f822dbaa4207be96e7faac768ccc57db1eeea8eeb0c-6a1a85407ad6.log

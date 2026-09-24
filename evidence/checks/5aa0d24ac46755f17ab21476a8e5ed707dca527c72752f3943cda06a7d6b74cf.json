@@ -1,0 +1,22 @@
+{
+  "key": "pnpm@7.29.3:acbd1fe356c1d109e0c7a012dc4c9b8263069438c6667d9dfaaef4bf4dc34d16",
+  "manager": "pnpm",
+  "version": "7.29.3",
+  "checkedAt": "2026-09-24T05:25:12.625Z",
+  "origin": "check",
+  "outcomes": {},
+  "sources": [
+    "generated/6dbeeb337239938cdb79af99bad5a2f5e5f29b50b40c58a5ff0c0655e51bb2c7",
+    "logs/failure-14bdd347-8bdf-4ed5-8453-6f713f3933f4.log"
+  ],
+  "issues": {
+    "unknownFormats": [],
+    "mismatches": [],
+    "incomplete": [
+      "pnpm@7.29.3: Error: Generation failed (1); maintenance/results/generated/6dbeeb337239938cdb79af99bad5a2f5e5f29b50b40c58a5ff0c0655e51bb2c7/generation.log: Progress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +1\n+\n ERR_INVALID_THIS  Value of \"this\" must be of type URLSearchParams\n\npnpm [ERR_INVALID_THIS]: Value of \"this\" must be of type URLSearchParams\n    at Proxy.getAll (node:internal/url:599:13)\n    at Proxy.<anonymous> (/tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59646:55)\n    at /tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59708:31\n    at Array.reduce (<anonymous>)\n    at Proxy.raw (/tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59707:33)\n    at new Headers (/tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59592:28)\n    at getNodeRequestOptions (/tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59941:23)\n    at /tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59998:25\n    at new Promise (<anonymous>)\n    at fetch (/tmp/toolchain-generate-a9vpI6/tools/pnpm-7.29.3/node_modules/pnpm/dist/pnpm.cjs:59996:14)\n; logs/failure-14bdd347-8bdf-4ed5-8453-6f713f3933f4.log"
+    ],
+    "unresolved": [],
+    "exitCode": 2
+  },
+  "exitCode": 2
+}

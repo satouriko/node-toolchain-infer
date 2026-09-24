@@ -1193,7 +1193,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@5.7.0 | 2026-09-09T10:50:57.434Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/4af770a2539d8fa21e9a83e59f451b6d850035a47597870ba9a029b5d8b55368.json) |
 | pnpm@5.8.0 | 2026-09-09T10:50:57.429Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/322ceaf4380c533b16645d178cd2f5f8d2dce13a5f95031ac33b90bf4ebcfc1a.json) |
 | pnpm@5.9.0 | 2026-09-09T10:50:39.544Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/58a3a0f580068fd093d6f97e5a02bf4e95cca7548e4e3b844219d8b41feff8d7.json) |
-| pnpm@5.9.1 | 2026-09-10T08:14:09.576Z | Tool preparation failed | 2 | [receipt](checks/e571d26a6db4a9f5b586343d9ac1f6c8fe9bd18044a1131dae8006feb8a818a7.json) |
+| pnpm@5.9.1 | 2026-09-24T05:25:22.199Z | Tool preparation failed | 2 | [receipt](checks/405384838801afd9b64c9f3df2736557f4be7e53b01a2c894bb0fe7f3cb45086.json) |
 | pnpm@5.9.2 | 2026-09-09T10:50:39.410Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/8014c54df41e1f5f61bee102123de98ef66220a3d2075d1cf81f4a90f47bfe0a.json) |
 | pnpm@5.9.3 | 2026-09-09T10:50:34.593Z | incompatible: 4, pass: 5 | historical measurement | [receipt](checks/e830e07d22cfc6638fea3144e1451383bb14c3229d37bb7e8c9975a4e9cbca2c.json) |
 | pnpm@6.0.0 | 2026-09-09T10:49:40.718Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/0ef5394029a8c794eef9c6c2b5a340a2444abc86b2307a9ee1ee98417c660312.json) |
@@ -1376,12 +1376,12 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@7.27.0 | 2026-09-09T10:36:26.313Z | incompatible: 3, pass: 6 | historical measurement | [receipt](checks/6c861d58b32cf8958074e6ea2d057bc7982d0394705dffd34d68cc8a16f59204.json) |
 | pnpm@7.27.1 | 2026-09-09T10:47:06.458Z | pass: 6, incompatible: 3 | historical measurement | [receipt](checks/f55deb2e0ccff6deba0ed2845be09c85be474f040b14847d10c88defc32b8c0a.json) |
 | pnpm@7.28.0 | 2026-09-09T10:36:17.382Z | rewrite: 4, pass: 2, incompatible: 3 | historical measurement | [receipt](checks/0b238721d27a56d20ae24188b6843aa8bd010464ba7978e7d4b8d5670b1c0f3f.json) |
-| pnpm@7.29.0 | 2026-09-09T10:36:15.635Z | pass: 2, rewrite: 4, incompatible: 3 | historical measurement | [receipt](checks/d02f54a956aa165edc9fdae46f5d4cd8596357008e34d6568c546e0345d8f84d.json) |
-| pnpm@7.29.1 | 2026-09-09T10:36:14.709Z | incompatible: 3, rewrite: 4, pass: 2 | historical measurement | [receipt](checks/a81f7a78539cbbeaf886d9ea4392e18aeeb23a85dff997160bba5bda5bcb8402.json) |
-| pnpm@7.29.2 | 2026-09-09T10:36:14.787Z | rewrite: 4, incompatible: 3, pass: 2 | historical measurement | [receipt](checks/87c031d5dbd751e7f9cd9811e6c7228341172459b2c26283997e73303aab4b94.json) |
-| pnpm@7.29.3 | 2026-09-09T10:36:09.337Z | rewrite: 4, pass: 2, incompatible: 3 | historical measurement | [receipt](checks/ef3aa3ef420d3145ef4d12dc6c75be252c3f9770a4a057fc13a2152a15551971.json) |
+| pnpm@7.29.0 | 2026-09-24T05:25:19.290Z | Tool preparation failed | 2 | [receipt](checks/17c7d60d1e24c03e2c8f211e231da6a4e02eb30489861952e97be9047931b95d.json) |
+| pnpm@7.29.1 | 2026-09-24T05:25:17.132Z | Tool preparation failed | 2 | [receipt](checks/d2a5b3289246366f01feda3719a394731b065d62d237f8312526f5752a5dcace.json) |
+| pnpm@7.29.2 | 2026-09-24T05:25:14.824Z | Tool preparation failed | 2 | [receipt](checks/8794c93e0cf78892c45dffd711f232b51fe8eb2065ca55a116ff4237afb49985.json) |
+| pnpm@7.29.3 | 2026-09-24T05:25:12.625Z | Tool preparation failed | 2 | [receipt](checks/5aa0d24ac46755f17ab21476a8e5ed707dca527c72752f3943cda06a7d6b74cf.json) |
 | pnpm@7.3.0 | 2026-09-09T10:38:58.252Z | pass: 5, incompatible: 4 | historical measurement | [receipt](checks/5ca1d6935512bd7e835e8fd63261c75b19a4114b68b7c32dadf29b29450a9f4a.json) |
-| pnpm@7.30.0 | 2026-09-09T10:36:08.284Z | rewrite: 4, pass: 2, incompatible: 3 | historical measurement | [receipt](checks/f86bc42162dc860154d174dbad80065f815bea9382359810db1ee74230e58e7b.json) |
+| pnpm@7.30.0 | 2026-09-24T05:25:10.324Z | Tool preparation failed | 2 | [receipt](checks/d0c87368c5d0d24cbb68bd0151ea927bd7a21d3b3ca0cb60192d2027379ac1f1.json) |
 | pnpm@7.30.1 | 2026-09-09T10:36:16.069Z | pass: 6, incompatible: 3 | historical measurement | [receipt](checks/0b6f72110fac249570959d850a05aa600e0701ed6fd3999caefa47cd0f7e8e04.json) |
 | pnpm@7.30.2 | 2026-09-09T10:36:14.035Z | pass: 6, incompatible: 3 | historical measurement | [receipt](checks/72436378aa2390c717070e504ad8b9b4faeb735808754a06550b6b63fdea2c66.json) |
 | pnpm@7.30.3 | 2026-09-09T10:36:12.747Z | pass: 6, incompatible: 3 | historical measurement | [receipt](checks/c15ade1f3d784b5f6107bf750bebd4fdf2a4c1c27aa0bd1672d9005760d5ae23.json) |
@@ -1480,7 +1480,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@9.0.2 | 2026-09-09T10:34:33.262Z | incompatible: 7, pass: 2 | historical measurement | [receipt](checks/0fb3a08f0068f042e687c0d8f4e4e8597aefee31042803a4f797bf7f56bb089c.json) |
 | pnpm@9.0.3 | 2026-09-09T10:34:32.835Z | incompatible: 7, pass: 2 | historical measurement | [receipt](checks/85b3042c3c52bdb0895f536c4617ae1a4d496d4a53cd79010489b8211187b04c.json) |
 | pnpm@9.0.4 | 2026-09-09T10:34:32.306Z | incompatible: 7, pass: 2 | historical measurement | [receipt](checks/da70075de4ae9145d1a1dceb329430d6d169b94c3437a41fb2e9784346364123.json) |
-| pnpm@9.0.5 | 2026-09-09T12:05:41.471Z | rewrite: 1, incompatible: 7, pass: 1 | historical measurement | [receipt](checks/69b80ec5ed1fa13ad1171f556759e5cbc2f0c026003e9725ecd7154fbf8791a6.json) |
+| pnpm@9.0.5 | 2026-09-24T05:24:45.791Z | pass: 1, incompatible: 7, rewrite: 1 | 1 | [receipt](checks/2af1f0714cb6bc6b6f32cc0eeb2822844dd90495bf8229bbb3f0e4b774866d8c.json) |
 | pnpm@9.0.6 | 2026-09-09T10:34:32.306Z | incompatible: 7, pass: 2 | historical measurement | [receipt](checks/dc9307e84f22855afc720e51901ce0e78a92d42f2983d69322a6cd0ca4bf520e.json) |
 | pnpm@9.1.0 | 2026-09-09T10:34:30.285Z | pass: 2, incompatible: 7 | historical measurement | [receipt](checks/b10c169550395c1d4e24188319b216fa28099d445b8290fa64a948cfe6a86ad5.json) |
 | pnpm@9.1.1 | 2026-09-09T10:34:27.241Z | pass: 2, incompatible: 7 | historical measurement | [receipt](checks/daf93ac079682d9a5d7e2d2fbd0eefbf97d69dfb4761d6abb369f9af7b5396ae.json) |
@@ -1715,7 +1715,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | yarn@4.8.0 | 2026-09-09T10:30:18.109Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/05158004acb817633cd92cb3184ff50766ba21949737eddcd44535b13e17dc53.json) |
 | yarn@4.8.1 | 2026-09-09T10:30:17.367Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/8c76a518d87dbdda9861a7cd4d72a16c870517b5312b075efa6c06de47155726.json) |
 | yarn@4.9.0 | 2026-09-09T10:30:16.920Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/61f042662b08b26d5b9d8a0f0428306c711c895870cf3810d65cc973fea990dd.json) |
-| yarn@4.9.1 | 2026-09-10T08:14:09.576Z | Tool preparation failed | 2 | [receipt](checks/5c498b26b0569076c38443417969181e2c6da2835b5985ba2ef3b2bcef48b6f9.json) |
+| yarn@4.9.1 | 2026-09-24T05:25:21.485Z | Tool preparation failed | 2 | [receipt](checks/7fa7f673eb20e057182c4895f29783c65b1464aafcdd777105b3697a720901ac.json) |
 | yarn@4.9.2 | 2026-09-09T10:30:15.565Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/84d14b74a9c2d678bbfe94c5cae6f60b71297b79347299d4c7dae33bedfea75e.json) |
 | yarn@4.9.3 | 2026-09-09T10:30:15.551Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/3db3d189715082e8999c5d1e7487dd576b7b496905019b7c6af68ca0aa7532ba.json) |
 | yarn@4.9.4 | 2026-09-09T10:30:15.543Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/a67065be58e96635bf70c9f8315b351307d03bc799d9de3daf104bb9fc593c4c.json) |

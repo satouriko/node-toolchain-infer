@@ -1,0 +1,20 @@
+pnpm@7.29.2
+Error: Generation failed (1); maintenance/results/generated/b218977a5df9b49a9d2c1e19f69cb999028b422fc2314e3e0d1e69f0c5fb057f/generation.log: Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+ ERR_INVALID_THIS  Value of "this" must be of type URLSearchParams
+
+pnpm [ERR_INVALID_THIS]: Value of "this" must be of type URLSearchParams
+    at Proxy.getAll (node:internal/url:599:13)
+    at Proxy.<anonymous> (/tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59646:55)
+    at /tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59708:31
+    at Array.reduce (<anonymous>)
+    at Proxy.raw (/tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59707:33)
+    at new Headers (/tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59592:28)
+    at getNodeRequestOptions (/tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59941:23)
+    at /tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59998:25
+    at new Promise (<anonymous>)
+    at fetch (/tmp/toolchain-generate-pYznfS/tools/pnpm-7.29.2/node_modules/pnpm/dist/pnpm.cjs:59996:14)
+
+    at generateFixture (/home/runner/work/node-toolchain-infer/node-toolchain-infer/maintenance/generate-fixtures.ts:108:13)
+    at async runReleaseCheck (/home/runner/work/node-toolchain-infer/node-toolchain-infer/scripts/check-releases.ts:502:27)
