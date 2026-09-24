@@ -1,0 +1,21 @@
+/opt/hostedtoolcache/node/24.21.0/x64/bin/node /tmp/toolchain-releases-Gs932H/tools/npm-8.3.0/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm WARN old lockfile 
+npm WARN old lockfile The npm-shrinkwrap.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+
+added 1 package in 338ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/b390d743bca50defb2f72ca3f63ab109bc3ac23fb09d88e1dc3b9f61916ba5b0-fa0a7a5df384.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.

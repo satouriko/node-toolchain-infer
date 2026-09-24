@@ -1,0 +1,15 @@
+/opt/hostedtoolcache/node/24.21.0/x64/bin/node /tmp/toolchain-releases-Gs932H/tools/npm-8.3.2/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 288ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: pass; logs/5fe76d2841f490ab9f5507d011921d9cd3a90ec52d65c19c79db532cab161e4b-60337a7ad0ef.log
+Frozen enforcement was not established: the control must reject the changed manifest or retain the original locked versions without changing files.
