@@ -489,36 +489,39 @@ export async function runReleaseCheck(
         // Generate each recipe shape with the exact new version; detect new formats before matrix testing.
         for (const fixture of relevant) {
           const generationKey = `${options.incremental ? recorded.key : key}:${fixture.id}`
-          let generated = options.incremental ? undefined : state.generation[generationKey]
-          if (!generated) {
-            const generationDirectory = join(
-              directory,
-              'generated',
-              digest(options.incremental ? `${generationKey}:${recorded.checkedAt}` : generationKey),
+          // npm 12 removed shrinkwrap generation and reading; still test the committed lock as an incompatible input.
+          if (!(manager === 'npm' && semver.gte(release.version, '12.0.0') && fixture.lock === 'npm-shrinkwrap.json')) {
+            let generated = options.incremental ? undefined : state.generation[generationKey]
+            if (!generated) {
+              const generationDirectory = join(
+                directory,
+                'generated',
+                digest(options.incremental ? `${generationKey}:${recorded.checkedAt}` : generationKey),
+              )
+              recorded.sources.push(relative(directory, generationDirectory))
+              generated = await generateFixture(
+                {
+                  ...fixture,
+                  version: release.version,
+                  node: fixture.version === release.version ? fixture.node : undefined,
+                },
+                catalog,
+                generationDirectory,
+                provisionOptions,
+              )
+              state.generation[generationKey] = generated
+            }
+            const known = fixtures.some(
+              (candidate) =>
+                candidate.manager === manager
+                && candidate.lock === (generated.lock ?? fixture.lock)
+                && JSON.stringify(candidate.match) === JSON.stringify(generated.match),
             )
-            recorded.sources.push(relative(directory, generationDirectory))
-            generated = await generateFixture(
-              {
-                ...fixture,
-                version: release.version,
-                node: fixture.version === release.version ? fixture.node : undefined,
-              },
-              catalog,
-              generationDirectory,
-              provisionOptions,
-            )
-            state.generation[generationKey] = generated
-          }
-          const known = fixtures.some(
-            (candidate) =>
-              candidate.manager === manager
-              && candidate.lock === (generated.lock ?? fixture.lock)
-              && JSON.stringify(candidate.match) === JSON.stringify(generated.match),
-          )
-          if (!known) {
-            const message = `${manager}@${release.version} generated unknown format ${JSON.stringify(generated.match)} using ${fixture.id}`
-            issues.unknownFormats.push(message)
-            currentIssues[`${generationKey}:format`] = message
+            if (!known) {
+              const message = `${manager}@${release.version} generated unknown format ${JSON.stringify(generated.match)} using ${fixture.id}`
+              issues.unknownFormats.push(message)
+              currentIssues[`${generationKey}:format`] = message
+            }
           }
           const observation =
             (options.incremental
