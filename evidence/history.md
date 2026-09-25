@@ -1699,6 +1699,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | yarn@4.17.0 | 2026-09-09T10:30:10.845Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/ecc5137ba264ce568b670c936f73f8f2652316363edebc7d479b3d4a1f19afb1.json) |
 | yarn@4.17.1 | 2026-09-09T10:30:10.793Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/212be384d6bb9362192be37be9312326cf1994f90d5688045b266065286505b0.json) |
 | yarn@4.18.0 | 2026-09-09T10:30:10.925Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/bbdbb1aa8cd73de95fc28e53f9ab2eec9d6a59755e0c6ed41fce2af5ca45578b.json) |
+| yarn@4.18.1 | 2026-09-25T08:55:27.108Z | incompatible: 7, pass: 1 | 1 | [receipt](checks/1f6df76e3345cbe50578132e5beb1b5be27291cb4062d5e4e9f1f17388e6a01e.json) |
 | yarn@4.2.0 | 2026-09-09T10:30:22.104Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/c7aab04f348b16507fe15dc3a36fa6a9dea968a48bfc017301caee91b995a333.json) |
 | yarn@4.2.1 | 2026-09-09T10:30:22.061Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/0a94ace7c8148679e2e0aadaf039b84bb11c34c6514c1f2292f621ac71b899c9.json) |
 | yarn@4.2.2 | 2026-09-09T10:30:21.764Z | incompatible: 7, pass: 1 | historical measurement | [receipt](checks/c0b65ddee5af3d90691a4ced64a045a250dd5f7be96d2b925cbecdb4c3aaeb90.json) |

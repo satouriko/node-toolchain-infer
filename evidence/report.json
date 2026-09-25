@@ -1,8 +1,8 @@
 {
-  "catalogHash": "cbbbefc4825a920bdbea35867e8dc52e6752b8f9cd9836d98d0eba94906938fd",
+  "catalogHash": "735058dbcfd5a6c6fdc89444df6bd28b7624f8803ba5979448dcb9948bcef254",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T08:33:57.349Z",
-  "catalogGeneratedAt": "2026-09-24T08:32:54.141Z",
+  "generatedAt": "2026-09-25T08:55:49.217Z",
+  "catalogGeneratedAt": "2026-09-25T08:54:39.127Z",
   "managers": [
     {
       "manager": "npm",
@@ -175,8 +175,8 @@
     },
     {
       "manager": "yarn",
-      "releasedStableCount": 199,
-      "conclusivelyObservedCount": 169,
+      "releasedStableCount": 200,
+      "conclusivelyObservedCount": 170,
       "uncoveredVersions": [
         "0.1.0",
         "0.1.1",
@@ -3581,13 +3581,19 @@
   ],
   "promptTemplatePath": "maintenance/update-compatibility.prompt.md",
   "unknownFormats": [],
-  "mismatches": [],
-  "unresolved": [],
+  "mismatches": [
+    "yarn@4.18.1 yarn-classic-v1: incompatible, expected undefined (unestablished); logs/7d967ee2676fef7cf821a8544acce422cadcdbbed754c998909b74303f76d0ec-e20b045c4e55.log",
+    "yarn@4.18.1 yarn-modern-v7: incompatible, expected undefined (unestablished); logs/52ac1d82cb6781542659f27992293bb1961700cf3b54509189effc0b4bc8a14c-83afcd484233.log"
+  ],
+  "unresolved": [
+    "yarn@4.18.1 yarn-classic-v1: incompatible, expected undefined (unestablished); logs/7d967ee2676fef7cf821a8544acce422cadcdbbed754c998909b74303f76d0ec-e20b045c4e55.log",
+    "yarn@4.18.1 yarn-modern-v7: incompatible, expected undefined (unestablished); logs/52ac1d82cb6781542659f27992293bb1961700cf3b54509189effc0b4bc8a14c-83afcd484233.log"
+  ],
   "incomplete": [],
-  "exitCode": 0,
+  "exitCode": 1,
   "history": {
-    "recordedReleases": 1715,
-    "checkedThisRun": 0,
+    "recordedReleases": 1716,
+    "checkedThisRun": 1,
     "unresolved": [
       "pnpm@9.0.5 pnpm-lock-v6: rewrite, expected true (rule); logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log",
       "pnpm@9.0.5:38110ce2f432ab70851c19999068683384a7b027599811045a942561522d1ded: conflicting initial observations 9c40d45d4229bd8799ed6bc1110f197c7528230b8629ce80855975e8164b96c4-0ee3e36b4b7b, 8d5c16aef125e237cbc468b764bd0b1099338dd7cec6d4577a5e66d76b8c7fdb-b91290686213, a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705",
