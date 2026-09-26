@@ -1,8 +1,8 @@
 {
-  "catalogHash": "735058dbcfd5a6c6fdc89444df6bd28b7624f8803ba5979448dcb9948bcef254",
+  "catalogHash": "01dc5d6095cc21ba9dc6d72cd8e3fd96d594e42d719185ac6fc8e7b01768ba5d",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-25T08:55:49.217Z",
-  "catalogGeneratedAt": "2026-09-25T08:54:39.127Z",
+  "generatedAt": "2026-09-26T08:43:01.782Z",
+  "catalogGeneratedAt": "2026-09-26T08:40:59.736Z",
   "managers": [
     {
       "manager": "npm",
@@ -14,8 +14,8 @@
     },
     {
       "manager": "pnpm",
-      "releasedStableCount": 987,
-      "conclusivelyObservedCount": 833,
+      "releasedStableCount": 989,
+      "conclusivelyObservedCount": 835,
       "uncoveredVersions": [
         "0.0.1",
         "0.16.0",
@@ -3581,23 +3581,19 @@
   ],
   "promptTemplatePath": "maintenance/update-compatibility.prompt.md",
   "unknownFormats": [],
-  "mismatches": [
-    "yarn@4.18.1 yarn-classic-v1: incompatible, expected undefined (unestablished); logs/7d967ee2676fef7cf821a8544acce422cadcdbbed754c998909b74303f76d0ec-e20b045c4e55.log",
-    "yarn@4.18.1 yarn-modern-v7: incompatible, expected undefined (unestablished); logs/52ac1d82cb6781542659f27992293bb1961700cf3b54509189effc0b4bc8a14c-83afcd484233.log"
-  ],
-  "unresolved": [
-    "yarn@4.18.1 yarn-classic-v1: incompatible, expected undefined (unestablished); logs/7d967ee2676fef7cf821a8544acce422cadcdbbed754c998909b74303f76d0ec-e20b045c4e55.log",
-    "yarn@4.18.1 yarn-modern-v7: incompatible, expected undefined (unestablished); logs/52ac1d82cb6781542659f27992293bb1961700cf3b54509189effc0b4bc8a14c-83afcd484233.log"
-  ],
+  "mismatches": [],
+  "unresolved": [],
   "incomplete": [],
-  "exitCode": 1,
+  "exitCode": 0,
   "history": {
-    "recordedReleases": 1716,
-    "checkedThisRun": 1,
+    "recordedReleases": 1718,
+    "checkedThisRun": 2,
     "unresolved": [
       "pnpm@9.0.5 pnpm-lock-v6: rewrite, expected true (rule); logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log",
       "pnpm@9.0.5:38110ce2f432ab70851c19999068683384a7b027599811045a942561522d1ded: conflicting initial observations 9c40d45d4229bd8799ed6bc1110f197c7528230b8629ce80855975e8164b96c4-0ee3e36b4b7b, 8d5c16aef125e237cbc468b764bd0b1099338dd7cec6d4577a5e66d76b8c7fdb-b91290686213, a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705",
-      "pnpm@9.0.5 pnpm-lock-v6: initial observation a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705 (rewrite) disagrees with current rule initial-eb5697865755b60f; logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log"
+      "pnpm@9.0.5 pnpm-lock-v6: initial observation a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705 (rewrite) disagrees with current rule initial-eb5697865755b60f; logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log",
+      "yarn@4.18.1 yarn-classic-v1: incompatible, expected undefined (unestablished); logs/7d967ee2676fef7cf821a8544acce422cadcdbbed754c998909b74303f76d0ec-e20b045c4e55.log",
+      "yarn@4.18.1 yarn-modern-v7: incompatible, expected undefined (unestablished); logs/52ac1d82cb6781542659f27992293bb1961700cf3b54509189effc0b4bc8a14c-83afcd484233.log"
     ]
   }
 }

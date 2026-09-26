@@ -1,0 +1,9 @@
+/tmp/toolchain-releases-Zl8NIZ/tools/pnpm-12.7.0/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+Error: ERR_PNPM_BROKEN_LOCKFILE
+
+  × installing dependencies
+  ╰─▶ The lockfile at "/tmp/toolchain-releases-Zl8NIZ/project/pnpm-lock.yaml"
+      is broken: The lockfileVersion of 6.0 is incompatible with this version
+      of pnpm, which supports lockfileVersion 9.x (1:18)
+
