@@ -218,6 +218,66 @@ test('incremental checks import failed historical attempts without relabeling or
   }
 })
 
+test('exact release retry preserves other pending releases, the full catalog, and old receipts', async () => {
+  const setup = await diskFixture()
+  try {
+    const options = {
+      root: setup.root,
+      stateDirectory: setup.state,
+      catalogPath: join(setup.root, 'catalog.json'),
+      maxReleases: 1,
+      incremental: true,
+      seedDirectories: [],
+    }
+    assert.equal((await runReleaseCheck(options)).history?.checkedThisRun, 1)
+    const [original] = JSON.parse(await readFile(join(setup.state, 'history.json'), 'utf8'))
+    const receipt = await readFile(join(setup.state, original.receiptPath), 'utf8')
+    const expanded = {
+      ...catalog,
+      managers: {
+        ...catalog.managers,
+        npm: [release, { ...release, version: '10.1.0' }],
+        pnpm: [{ ...release }],
+      },
+    }
+    await writeFile(options.catalogPath, JSON.stringify(expanded))
+    const result = await runReleaseCheck({ ...options, manager: 'npm', version: '10.0.0', retryFailed: true })
+    assert.equal(result.history?.checkedThisRun, 1)
+    assert.equal(
+      result.incomplete.some((message) => message.includes('unprocessed')),
+      false,
+    )
+    const records = JSON.parse(await readFile(join(setup.state, 'history.json'), 'utf8'))
+    assert.deepEqual(
+      records.map((record: { manager: string; version: string }) => `${record.manager}@${record.version}`),
+      ['npm@10.0.0'],
+    )
+    assert.equal(await readFile(join(setup.state, original.receiptPath), 'utf8'), receipt)
+    const savedCatalog = JSON.parse(await readFile(join(setup.state, 'catalog.json'), 'utf8'))
+    assert.equal(savedCatalog.managers.npm.length, 2)
+    assert.equal(savedCatalog.managers.pnpm.length, 1)
+
+    const absent = await runReleaseCheck({ ...options, manager: 'npm', version: '99.0.0', retryFailed: true })
+    assert.equal(absent.exitCode, 2)
+    assert.equal(absent.history?.checkedThisRun, 0)
+    assert.match(absent.incomplete.join(' '), /not found.*catalog/i)
+  } finally {
+    await rm(setup.root, { recursive: true, force: true })
+  }
+})
+
+test('exact release selection rejects ambiguous managers and non-exact stable versions before checking', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'invalid-release-selection-'))
+  try {
+    const options = { root, catalogPath: join(root, 'absent.json'), maxReleases: 0, seedDirectories: [] }
+    await assert.rejects(runReleaseCheck({ ...options, version: '4.18.1' }), /requires.*manager/i)
+    for (const version of ['^4.18.1', '4.18.1-rc.0', ''])
+      await assert.rejects(runReleaseCheck({ ...options, manager: 'yarn', version }), /exact stable version/i)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
 test('incremental checks record new failures once, discover old-branch patches, and retry only explicitly', async () => {
   const setup = await diskFixture()
   try {

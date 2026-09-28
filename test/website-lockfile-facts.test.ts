@@ -15,17 +15,21 @@ test('version facts use the shipped compatibility ranges and retain installation
   assert.ok(lockfilesForVersion('pnpm', '13.0.0').compatible.some((rule) => rule.match.format === '9.0'))
 })
 
-test('facts show all fixture formats and distinguish uncompiled formats from confirmed compatibility', () => {
+test('facts use explicit Yarn policies while retaining every fixture format', () => {
   assert.equal(lockfileFacts.length, 23)
-  assert.equal(lockfileFacts.filter((fact) => fact.compiled).length, 21)
+  assert.ok(lockfileFacts.every((fact) => fact.compiled))
   assert.ok(
     lockfileFacts.every(
       (fact) => fact.generatedAt && ['data/compatibility.json', 'fixtures/recipes.json'].includes(fact.source),
     ),
   )
   const yarn = lockfilesForVersion('yarn', '4.1.0')
-  assert.ok(yarn.unrestricted.some((rule) => rule.match.classic === true))
-  assert.ok(yarn.unrestricted.some((rule) => rule.match.format === 7))
+  assert.deepEqual(yarn.unrestricted, [])
+  assert.equal(
+    yarn.compatible.some((rule) => rule.match.format === 7),
+    false,
+  )
+  assert.ok(lockfilesForVersion('yarn', '1.22.22').compatible.some((rule) => rule.match.classic === true))
   assert.ok(yarn.compatible.some((rule) => rule.match.format === 8))
   assert.equal(
     yarn.compatible.some((rule) => rule.match.classic === true),

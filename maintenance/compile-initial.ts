@@ -7,6 +7,7 @@ import semver from 'semver'
 
 import { isStableVersion } from '../src/versions.js'
 
+import { compatibilityPolicy } from './compatibility-policy.js'
 import { compileRanges } from './compile-ranges.js'
 import { EvidenceExclusions, type ExclusionAudit } from './evidence-exclusions.js'
 import { frozenControlError } from './frozen-control.js'
@@ -58,6 +59,7 @@ export interface InitialFixtureReport {
   fixtureHash: string
   match: CompatibilityRule['match']
   range: string | null
+  policy?: { id: string; reason: string }
   points: InitialPoint[]
   boundaries: InitialBoundary[]
   issues: InitialIssue[]
@@ -488,7 +490,30 @@ export function compileInitial(options: InitialOptions): { data: CompatibilityDa
     catalogHash,
     evidenceCatalogHashes: [...evidenceCatalogs.keys()],
     knownBugs: (options.knownBugs ?? []).filter((bug) => semver.minVersion(stableBugRange(bug.range)) !== null),
-    fixtures: options.fixtures.map((fixture) => compileFixture(options, fixture, evidenceCatalogs)),
+    fixtures: options.fixtures.map((fixture) => {
+      const result = compileFixture(options, fixture, evidenceCatalogs)
+      const policy = compatibilityPolicy(fixture)
+      if (policy) {
+        result.range = policy.rule.range
+        result.policy = { id: policy.rule.id, reason: policy.reason }
+        result.issues = result.issues.filter((item) => item.code !== 'unknown-lower-bound')
+        const contradictions = result.points.filter(
+          (point) =>
+            point.outcome !== 'unknown'
+            && semver.satisfies(point.version, policy.rule.range!) !== (point.outcome === 'supported'),
+        )
+        if (contradictions.length)
+          result.issues.push(
+            issue(
+              'policy-contradicts-observation',
+              'Measured stable outcomes disagree with the adopted project policy; review the policy.',
+              contradictions.map((point) => point.version),
+              contradictions.flatMap((point) => point.evidenceIds),
+            ),
+          )
+      }
+      return result
+    }),
     issues: [],
     retests: [],
     exitCode: 0,
@@ -516,7 +541,7 @@ export function compileInitial(options: InitialOptions): { data: CompatibilityDa
       results.flatMap((item) => item.points.flatMap((point) => point.exceptions?.map((entry) => entry.bugId) ?? [])),
     )
     rules.push({
-      id: `initial-${digest(key).slice(0, 16)}`,
+      id: results[0].policy?.id ?? `initial-${digest(key).slice(0, 16)}`,
       manager: fixtures[0].manager,
       match: results[0].match,
       range,
@@ -594,6 +619,7 @@ export async function compileInitialPaths(paths: InitialPaths): Promise<ReturnTy
       `## ${fixture.fixtureId}`,
       '',
       `Range: ${fixture.range ?? 'unknown (*)'}`,
+      ...(fixture.policy ? [`Project policy: ${fixture.policy.id}. ${fixture.policy.reason}`] : []),
       '',
       ...fixture.points.flatMap((point) =>
         (point.exceptions ?? []).map(

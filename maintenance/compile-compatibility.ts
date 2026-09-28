@@ -7,6 +7,7 @@ import semver from 'semver'
 
 import { isStableVersion } from '../src/versions.js'
 
+import { compatibilityPolicy } from './compatibility-policy.js'
 import { frozenControlError } from './frozen-control.js'
 import { bugSummary, compatibilityOutcome, type KnownBugReview, loadKnownBugs, reviewedBug } from './known-bugs.js'
 import { compileIntervals, type Fixture, type Interval, mergeHistory, type Observation } from './model.js'
@@ -36,6 +37,11 @@ export function compileRules(
   const stableObservations = observations.filter((observation) => isStableVersion(observation.version))
   const rules: CompatibilityRule[] = []
   for (const fixture of fixtures) {
+    const policy = compatibilityPolicy(fixture)
+    if (policy) {
+      rules.push({ ...policy.rule, match: { ...policy.rule.match } })
+      continue
+    }
     const selected = stableBoundaries.filter((boundary) => boundary.fixtureId === fixture.id)
     if (!selected.length) continue
     const edges = selected

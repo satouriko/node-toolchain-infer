@@ -1,0 +1,34 @@
+{
+  "sourceRun": "https://github.com/satouriko/node-toolchain-infer/actions/runs/36115432991",
+  "sourceEvidenceCommit": "c46f5135ff64a72b8d261d7936377e93a3472ff1",
+  "beforeExitCode": 1,
+  "afterExitCode": 0,
+  "checkedThisRun": 1,
+  "observationsAdded": 8,
+  "oldObservationsPreserved": 12531,
+  "otherReleaseResultsUnchanged": 1715,
+  "oldReceiptPreserved": true,
+  "mismatches": [],
+  "incomplete": [],
+  "outcomes": {
+    "yarn-classic-v1": "incompatible",
+    "yarn-modern-v8": "incompatible",
+    "yarn-modern-v4": "incompatible",
+    "yarn-modern-v10": "pass",
+    "yarn-modern-v6": "incompatible",
+    "yarn-modern-v9": "incompatible",
+    "yarn-modern-v5": "incompatible",
+    "yarn-modern-v7": "incompatible"
+  },
+  "newReceipt": "checks/bc03f16b28e715c33d51048506818b939b492a40b768f231b2be54fa5a9ee63b.json",
+  "runtime": [
+    {
+      "node": "24.10.0",
+      "platform": "darwin",
+      "arch": "arm64"
+    }
+  ],
+  "rulesSha256": "59a5157a08235f25952c6ab82e4c72085b4b15653896c1c3e87996422e09782b",
+  "catalogSha256": "0a06169dbbee4dfcb89c6d8c3cf2fd34b9492f454a7368ecf37439ae9edd624e",
+  "verification": "Local replay of the failed CI state; not a new GitHub Actions run."
+}

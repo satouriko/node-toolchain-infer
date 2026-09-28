@@ -1,5 +1,7 @@
 # English AI maintenance prompt
 
+Approved Yarn policy: retain Classic v1 `>=0.21.0 <2.1.0` and Modern v7's empty stable range `<0.0.0` through `maintenance/compatibility-policy.ts`. The v1 floor and v7 stable exclusion are project decisions, not exhaustive measurements. Do not reopen ancient-version testing merely to prove these adopted policies. A targeted retry uses `--incremental --retry-failed --manager yarn --version 4.18.1` against preserved state and the complete catalog.
+
 Daily workflow policy: use `pnpm releases:check --incremental`. Persist every terminal result, including failure and inconclusive outcomes; reuse these exact artifact results on later runs. Import historical attempts without changing their raw status or claiming compatibility. Only new artifacts enter the daily queue. Historical unresolved findings stay in history; new failures and pending new work still fail the current run. Retry historical failures only when explicitly requested with `--incremental --retry-failed`. The strict investigation instructions below apply to audit mode (without `--incremental`), not automatic daily retries.
 
 Maintain node-toolchain-infer using actual observed evidence. Work from main's code and fixtures plus the latest compatibility-data evidence artifact. Do not publish, push, create remote objects, install tools globally, hand-edit lock format numbers, or infer ranges from sparse passing samples. User authorization is required for remote writes outside an explicitly authorized workflow execution.
@@ -23,6 +25,8 @@ Separate the raw test outcome from semantic lock-format compatibility. A manager
 Before concluding a gap investigation, run `pnpm data:audit` on the full before/after compiler reports. Account for every stable internal gap, not just the user's examples. Distinguish semver membership, semantic compatibility and raw installation status. Explain the preserved real boundaries and every remaining unknown; attach exact rows, logs, source links and controlled reproductions. Rebuild the bundled table and calculator only after reviewing the full inventory. Keep confirmed historical facts; local experiment reuse and adjacent-version comparisons must use the same explicit installation environment. A parser/classifier fix requires rerunning every affected point in the audited gap, rather than only registering a bug or changing an old status.
 
 # 中文 AI 维护提示词
+
+已确认的 Yarn 项目策略：通过 `maintenance/compatibility-policy.ts` 保留 Classic v1 的 `>=0.21.0 <2.1.0` 和 Modern v7 的空稳定范围 `<0.0.0`。v1 起点与 v7 无稳定支持是项目决策，不是历史版本全部实测的结论；不要仅为证明这两项策略重新开展古老版本测试。定向重试使用 `--incremental --retry-failed --manager yarn --version 4.18.1`，保留原状态和完整版本目录。
 
 请基于真实行为证据维护 node-toolchain-infer。代码和样例取自主分支，历史证据取自 compatibility-data 分支或最近的工作流制品。不要发布 npm 包、推送远端、创建远端对象、全局安装工具、手工修改锁格式数字，也不要用稀疏成功点猜版本范围。除已明确授权执行的工作流外，远端写操作需要用户授权。
 
