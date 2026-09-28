@@ -1,0 +1,27 @@
+/opt/hostedtoolcache/node/24.21.0/x64/bin/node /tmp/toolchain-releases-LobJIe/tools/pnpm-11.28.1/node_modules/pnpm/bin/pnpm.mjs install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+✓ Lockfile passes supply-chain policies (verified 561ms ago)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1
++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /tmp/toolchain-releases-LobJIe/project/.pnpm-home/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 709ms using pnpm v11.28.1
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/95d412fecea4f5257a33654e4c2c59d549b8a17eba7cb2d00ca9a56ed7fa47e6-401094f8a2a4.log
