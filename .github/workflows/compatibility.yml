@@ -17,6 +17,10 @@ on:
         default: all
         type: choice
         options: [all, npm, pnpm, yarn]
+      version:
+        description: Exact stable version to check (requires a specific manager)
+        default: ''
+        type: string
 permissions:
   contents: write
 concurrency:
@@ -57,6 +61,7 @@ jobs:
           MAX_RELEASES: ${{ inputs.max_releases || '8' }}
           RETRY_FAILED: ${{ inputs.retry_failed || false }}
           MANAGER: ${{ inputs.manager || 'all' }}
+          VERSION: ${{ inputs.version || '' }}
         shell: bash
         run: |
           set +e
@@ -66,6 +71,9 @@ jobs:
           fi
           if [ "$MANAGER" != all ]; then
             args+=(--manager "$MANAGER")
+          fi
+          if [ -n "$VERSION" ]; then
+            args+=(--version "$VERSION")
           fi
           pnpm releases:check "${args[@]}"
           result=$?

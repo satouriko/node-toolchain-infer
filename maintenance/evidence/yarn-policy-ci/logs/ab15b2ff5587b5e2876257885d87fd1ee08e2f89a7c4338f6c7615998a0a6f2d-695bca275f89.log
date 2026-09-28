@@ -1,0 +1,24 @@
+/Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-releases-ndnV77/tools/yarn-4.18.1/node_modules/@yarnpkg/cli-dist/bin/yarn.js install --immutable
+➤ YN0000: · Yarn 4.18.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ A package was added to the project (+ 10.17 KiB).
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: · Done in 0s 216ms
+
+[PnP dependency verification] /Users/cuteloli/.local/share/fnm/node-versions/v24.10.0/installation/bin/node --require /var/folders/dk/hdf0w6sx0dbfnxr2gy5dh1mw0000gn/T/toolchain-releases-ndnV77/project/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/ee8d95a13ca6c80f0f05504c4a0e178ae1ac411f87a1a297d1739b0ed7c82175-6748b47716af.log

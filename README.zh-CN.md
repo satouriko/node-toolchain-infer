@@ -55,7 +55,7 @@ Node 包的本地缓存是本进程里的版本元数据缓存：使用 ETag/Las
 
 历史 Yarn 独立脚本也从官方 tags 纳入清单。维护脚本将 tag 解析到 commit，下载该 commit 中的脚本，保存不可变 URL、文件大小和计算出的 SHA-512；这不是官方注册表发布的 SRI。执行文件必须自报所要求的版本。扩充清单时保留旧快照，仅当制品身份和样本字节不变时复用旧实验。[初始数据编译与成对复测](maintenance/compile-initial.md)说明了具体命令。
 
-[当前稳定版报告](maintenance/evidence/stable-only/README.md)记录当前的 21 条编译规则、2 个未确定格式和 5 类活动 bug。更早的全版本报告保留为历史证据。
+当前兼容表包含 23 条规则：21 条实测范围，加上两条明确的 [Yarn 项目策略](maintenance/compatibility-policy.ts)。Classic v1 使用 `>=0.21.0 <2.1.0`，其中起点是项目约定的支持下限；Modern v7 按无稳定版本支持处理，使用空范围。这不表示早期版本已经全部实测。[稳定版报告](maintenance/evidence/stable-only/README.md)保留此前只依据实测证据生成的结果及未确定记录。
 
 ## API 与命令行
 

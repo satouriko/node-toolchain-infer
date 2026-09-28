@@ -154,12 +154,18 @@ export async function runReleaseCheck(
     catalogPath?: string
     maxReleases?: number
     manager?: Manager
+    version?: string
     seedDirectories?: string[]
     enrichYarn?: YarnEnricher
     incremental?: boolean
     retryFailed?: boolean
   } = {},
 ): Promise<Report> {
+  if (options.version !== undefined) {
+    if (!options.manager) throw new Error('--version requires --manager (npm, pnpm or yarn)')
+    if (semver.valid(options.version) !== options.version || !isStableVersion(options.version))
+      throw new Error('--version must be an exact stable version')
+  }
   const root = options.root ?? process.cwd()
   const directory = options.stateDirectory ?? join(root, 'maintenance/results')
   const seedDirectories =
@@ -222,6 +228,8 @@ export async function runReleaseCheck(
     catalog = options.catalogPath
       ? (JSON.parse(await readFile(options.catalogPath, 'utf8')) as Catalog)
       : await fetchCatalog()
+    if (options.version && !catalog.managers[options.manager!].some((release) => release.version === options.version))
+      throw new Error(`${options.manager}@${options.version} not found in the release catalog`)
     const artifacts = await prepareYarnArtifacts({
       catalog,
       stateDirectory: directory,
@@ -417,6 +425,7 @@ export async function runReleaseCheck(
           key: portableReleaseKey(manager, release, samples),
         })),
       )
+      .filter((item) => !options.version || item.release.version === options.version)
       .filter(
         (item) =>
           options.incremental
@@ -643,11 +652,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   if (!Number.isInteger(maxReleases) || maxReleases < 0) throw new Error('--max-releases must be a nonnegative integer')
   const manager = argument('--manager')
   if (manager && !['npm', 'pnpm', 'yarn'].includes(manager)) throw new Error('--manager must be npm, pnpm or yarn')
+  const version = argument('--version')
+  if (process.argv.includes('--version') && !version) throw new Error('--version requires an exact stable version')
   runReleaseCheck({
     stateDirectory: argument('--state-dir'),
     catalogPath: argument('--catalog'),
     maxReleases,
     manager: manager as Manager | undefined,
+    version,
     incremental: process.argv.includes('--incremental'),
     retryFailed: process.argv.includes('--retry-failed'),
     seedDirectories: process.argv.includes('--seed-dir')

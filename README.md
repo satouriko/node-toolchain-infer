@@ -59,7 +59,7 @@ Historical Yarn bundles are also inventoried from the official tags. Maintenance
 
 An [explicit Yarn 6 integration verification](maintenance/evidence/yarn6-integration/README.md) exercises the native executable, JSON lock collection, node_modules/PnP frozen installation and inference. Its RC records are outside compatibility matrices, compiled ranges, release statistics and known-bug rules.
 
-The [current stable-only report](maintenance/evidence/stable-only/README.md) records the current 21 compiled rules, 2 uncompiled formats and 5 active bug families. Earlier all-release reports remain historical evidence.
+The bundled table contains 23 rules: 21 measured ranges plus two explicit [Yarn project policies](maintenance/compatibility-policy.ts). Classic v1 uses `>=0.21.0 <2.1.0`, with an adopted support floor; Modern v7 has no supported stable release (empty range). These policies do not claim exhaustive historical measurements. The [stable-only report](maintenance/evidence/stable-only/README.md) preserves the earlier evidence-only compilation and its unresolved observations.
 
 ## API and CLI
 
