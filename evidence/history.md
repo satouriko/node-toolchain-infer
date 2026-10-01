@@ -123,6 +123,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | npm@11.19.1 | 2026-09-09T10:47:09.195Z | pass: 6 | historical measurement | [receipt](checks/44c52abd571625084f4e21dc37dfce73ecbb716d2a5ad8e6c4513157c1beebe3.json) |
 | npm@11.2.0 | 2026-09-09T10:31:42.298Z | pass: 6 | historical measurement | [receipt](checks/83e94bb5b2b870ef899cd9911057ebc16179c6c95576acc1b72180e90e37e4f6.json) |
 | npm@11.20.0 | 2026-09-23T08:41:22.183Z | pass: 6 | 0 | [receipt](checks/667af614946cae3d94548dda835940ac6c5c9a03fa3674cc223c42dddb618b8d.json) |
+| npm@11.21.0 | 2026-10-01T10:15:24.919Z | pass: 6 | 0 | [receipt](checks/ba3369152b3a809d154f5d34fe89dfd4a9f42013e186ccd3b8922c6422cbd1a8.json) |
 | npm@11.3.0 | 2026-09-09T10:31:40.503Z | pass: 6 | historical measurement | [receipt](checks/2c2528b87a6f13b4b7cea3c66a9ffc7946e90cf451b465b873661960ee6e8e1e.json) |
 | npm@11.4.0 | 2026-09-09T10:31:38.044Z | pass: 6 | historical measurement | [receipt](checks/d05362d54a322206d06b054ffffb247a936e94046d9875d1e368306c02efd723.json) |
 | npm@11.4.1 | 2026-09-09T10:31:37.146Z | pass: 6 | historical measurement | [receipt](checks/63dd4fcab8bb3f185f3dceda21fd1b41a85b0b4b7365af2e03757de805d18c4f.json) |
@@ -142,6 +143,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | npm@12.0.1 | 2026-09-09T10:30:17.834Z | pass: 3, incompatible: 3 | historical measurement | [receipt](checks/11e3c7a3d45478bb79bd8b369d0d11f30bb238fe5f59ef0ac8031ba3a232d5da.json) |
 | npm@12.0.2 | 2026-09-09T10:30:17.425Z | incompatible: 3, pass: 3 | historical measurement | [receipt](checks/081a759b805661e6b43a5f76de539960c1fa5f144b62b314fe31c24c6ccddc65.json) |
 | npm@12.1.0 | 2026-09-24T05:33:01.032Z | pass: 3, incompatible: 3 | 0 | [receipt](checks/7237c4d525ebe258b7aa85ffe967d89f5d2676dc76bdb23248320c9f22de4f31.json) |
+| npm@12.2.0 | 2026-10-01T10:15:38.648Z | pass: 3, incompatible: 3 | 0 | [receipt](checks/40334ef2418606ae760ddfbc4c3ba61b730767d9ce386fbd019450947c42f488.json) |
 | npm@2.0.0 | 2026-09-09T10:21:50.713Z | incompatible: 6 | historical measurement | [receipt](checks/45cb21f2f0e3648f81bb6214a05abac68056885fddf621988faa1309cf24d407.json) |
 | npm@2.0.1 | 2026-09-09T10:21:50.723Z | incompatible: 6 | historical measurement | [receipt](checks/3dff0e7b72d814a01d47151ac9269839a3a3f817c941c7459d6588dbe6731c62.json) |
 | npm@2.0.2 | 2026-09-09T10:21:49.918Z | incompatible: 6 | historical measurement | [receipt](checks/196bb0f003d0deccb976d6d7a319b0e92488071de61c7d553b9de2da8668d98d.json) |
@@ -911,6 +913,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@11.28.0 | 2026-09-26T08:42:27.568Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/c5d1fba2a93aba0e103ec0631c2a0bd0b6416994d3a8b5d8abf7ac31fc6c9ebe.json) |
 | pnpm@11.28.1 | 2026-09-28T09:56:08.963Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/0419d44ed9a557b31e92ce1f36296cab6a6bdf5654fa718e9d7768658e7d77cb.json) |
 | pnpm@11.28.2 | 2026-09-29T09:57:55.688Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/1cdec71df8c57027da32cd1b4b555dfc900da52c4b2122eaf26e18d5d6861ee4.json) |
+| pnpm@11.28.3 | 2026-10-01T10:15:45.763Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/26c112952e1f4dfc5d6b859abc70bf79464c9c275c784a405b9f4e3eb68c5e46.json) |
 | pnpm@11.3.0 | 2026-09-09T10:31:28.405Z | incompatible: 8, pass: 1 | historical measurement | [receipt](checks/36d6b640b9f09b4c5ca2ff8d9293c82ff9d651d9124449cbb2ac4cac6b32e3eb.json) |
 | pnpm@11.4.0 | 2026-09-09T10:31:28.279Z | incompatible: 8, pass: 1 | historical measurement | [receipt](checks/3b21e22c18f28eb43f5a90c3154d111553c05b8c0d3d501844a808569a079780.json) |
 | pnpm@11.5.0 | 2026-09-09T10:31:24.282Z | incompatible: 8, pass: 1 | historical measurement | [receipt](checks/c830d92065139e1fb4fc7a623b1588ded0ecab75568c9f8776ea18cd66f75544.json) |
