@@ -1,11 +1,11 @@
 # Compatibility release check
 
-Generated: 2026-10-08T10:42:48.489Z
+Generated: 2026-10-09T10:42:08.078Z
 
 Exit code: 0 (0 complete, 1 maintenance required, 2 incomplete)
 
 - npm: 530/531 stable releases have conclusive observations for every recipe.
-- pnpm: 848/1002 stable releases have conclusive observations for every recipe.
+- pnpm: 849/1003 stable releases have conclusive observations for every recipe.
 - yarn: 170/200 stable releases have conclusive observations for every recipe.
 
 ## unknownFormats
@@ -26,7 +26,7 @@ None.
 
 ## Incremental check
 
-0 releases checked this run; 1733 exact artifacts have recorded results.
+1 releases checked this run; 1734 exact artifacts have recorded results.
 Previous failures are retained in [history.md](history.md) and history.json; they are not rerun or relabeled as compatible.
 - Historical unresolved: pnpm@9.0.5 pnpm-lock-v6: rewrite, expected true (rule); logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log
 - Historical unresolved: pnpm@9.0.5:38110ce2f432ab70851c19999068683384a7b027599811045a942561522d1ded: conflicting initial observations 9c40d45d4229bd8799ed6bc1110f197c7528230b8629ce80855975e8164b96c4-0ee3e36b4b7b, 8d5c16aef125e237cbc468b764bd0b1099338dd7cec6d4577a5e66d76b8c7fdb-b91290686213, a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705
