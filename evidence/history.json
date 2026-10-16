@@ -4606,6 +4606,44 @@
     "receiptPath": "checks/ba3369152b3a809d154f5d34fe89dfd4a9f42013e186ccd3b8922c6422cbd1a8.json"
   },
   {
+    "key": "npm@11.21.1:b02b2ccfaacda25134b8b78ec867881181feefdced5e16c5f1583b5d3a703884",
+    "manager": "npm",
+    "version": "11.21.1",
+    "checkedAt": "2026-10-16T08:17:52.755Z",
+    "origin": "check",
+    "outcomes": {
+      "npm-package-lock-v3": "pass",
+      "npm-shrinkwrap-v3": "pass",
+      "npm-package-lock-v1": "pass",
+      "npm-package-lock-v2": "pass",
+      "npm-shrinkwrap-v2": "pass",
+      "npm-shrinkwrap-v1": "pass"
+    },
+    "sources": [
+      "generated/3134629fa6b01f729d48fa8240af8897b2980f74f67a214dd27e9f9f0ba3b184",
+      "logs/bad6cea6d883284452d8ba41818e6e0ebc7c268e6faaffd6a2411eeaba2a3bef-56011c48f05b.log",
+      "generated/4bf461a18b172f17fcc8493fbdcff5611d01cf2ac95b7608164e784a8cf9c15f",
+      "logs/3de49a7cb15d2f58b7ba0bbcad8ac75d6d6e790373cfd4179b6aadac2cefbc84-0cd21fd26d09.log",
+      "generated/1cea3e7ba2573c7c28f78226a2997aa8cfcc835b1728817744dc83ddb0e157c2",
+      "logs/69a7100f22767e6f43f35402d16c6313c3cf98e841308af1e879a45b65ef2dfb-610ea9560731.log",
+      "generated/2c2105343bc77acc1c9b7e35f1af67737fe9e72fd501dcb88dbcd84e2252a082",
+      "logs/c49147ce83c799f631bd332606fb82f645a61de3a074039b3282c9187bbc28fa-0b9c3d5fb403.log",
+      "generated/f175f31b35d454b4820b9b6c70f22aed749e5460e78fe6765bd7c101e1f704ff",
+      "logs/e861c0a5e807e74679e3ac055eb5f0d8abf39747326c96339a5a5a75757d8497-d8805471bdc8.log",
+      "generated/621986df16c68e4fba31e5e0394a5b957c40f2dbb20a32e2d53abd5b1a226920",
+      "logs/b13259c0bd5d9b3f91471feceb34d966b3fd1df179c20a48cd488823e0f6caf1-e0d5863e5bb4.log"
+    ],
+    "issues": {
+      "unknownFormats": [],
+      "mismatches": [],
+      "incomplete": [],
+      "unresolved": [],
+      "exitCode": 0
+    },
+    "exitCode": 0,
+    "receiptPath": "checks/c0387585ebd462592ee5cf59ec9ef2581259d994d4a92997ffa8991ce6b570b1.json"
+  },
+  {
     "key": "npm@11.3.0:3c3db57081852bab173be4ec6a04bf3c07d9c4e574c2f962f84a38a9f829f403",
     "manager": "npm",
     "version": "11.3.0",
@@ -5421,6 +5459,41 @@
     },
     "exitCode": 0,
     "receiptPath": "checks/40334ef2418606ae760ddfbc4c3ba61b730767d9ce386fbd019450947c42f488.json"
+  },
+  {
+    "key": "npm@12.2.1:3f54d980ad464cc1db377df5554404b7d3046d4564b0a67b7ead74b6bc31f7a8",
+    "manager": "npm",
+    "version": "12.2.1",
+    "checkedAt": "2026-10-16T08:17:42.941Z",
+    "origin": "check",
+    "outcomes": {
+      "npm-package-lock-v3": "pass",
+      "npm-shrinkwrap-v3": "incompatible",
+      "npm-package-lock-v1": "pass",
+      "npm-package-lock-v2": "pass",
+      "npm-shrinkwrap-v2": "incompatible",
+      "npm-shrinkwrap-v1": "incompatible"
+    },
+    "sources": [
+      "generated/8cddae49c2948d842a287212cbef07f5b64a03599f8810a02b74a969105d0651",
+      "logs/8190076d76fa6a01df4ba94e6056598f805839b8910506eba2b31a7ac9d74a31-ccfa39148720.log",
+      "logs/f848f676b9f62b64f4ce0dd0ae172549e01d650bf669b4556a3d0ab1700d6528-4371dc76e1f2.log",
+      "generated/3c0fe88f1e70756283ce7a59de64248dd0a07b97c04481794a3c1fb63ce67678",
+      "logs/c753054300f28abb37352287100f6096cb890485138e5ae925fbd5b95249d43b-04582fa229a4.log",
+      "generated/7177c162d2341da9677b747eec9e24516f69ff040858bc0c0c8c67ab0622a02a",
+      "logs/0779fb51c17eea5fd4637f3cc280593911fc109d4609d5024525b5412c2602b5-32e203c3c472.log",
+      "logs/b3594a1ec6fd91c14e80144f2053679c803cbf1761e5b3c7fd62ffef4f376605-97d793eaee68.log",
+      "logs/fdfc70163e9283f2d87c97c2c3b584bb02127ae5c95cac0942616af960784661-ba3e2318e4e5.log"
+    ],
+    "issues": {
+      "unknownFormats": [],
+      "mismatches": [],
+      "incomplete": [],
+      "unresolved": [],
+      "exitCode": 0
+    },
+    "exitCode": 0,
+    "receiptPath": "checks/f259c957fbc62a6af06da5a6ebb3442b58385daf003f3d3f7004cc8e0aa6ae0f.json"
   },
   {
     "key": "npm@2.0.0:a40241d960d649cb8e712e1578fe1418c154a1d8181fd6105cce4daa74343221",
@@ -40278,6 +40351,53 @@
     "receiptPath": "checks/d93eb18b328c430cbdcba2b8775e77efdeb6b65e52dd32fcab0db3188d21ac3a.json"
   },
   {
+    "key": "pnpm@11.28.6:7e50feff5a965b147f4203a0e8a28ea4623440c09606c72014b23f3b8af89b65",
+    "manager": "pnpm",
+    "version": "11.28.6",
+    "checkedAt": "2026-10-16T08:18:23.002Z",
+    "origin": "check",
+    "outcomes": {
+      "pnpm-lock-v9": "pass",
+      "pnpm-lock-v5.4": "incompatible",
+      "pnpm-lock-v6": "incompatible",
+      "pnpm-lock-v5.1": "incompatible",
+      "pnpm-lock-v5": "incompatible",
+      "pnpm-lock-v5.2": "incompatible",
+      "pnpm-lock-v5.3": "incompatible",
+      "pnpm-legacy-shrinkwrap-v3": "incompatible",
+      "pnpm-legacy-shrinkwrap-v4": "incompatible"
+    },
+    "sources": [
+      "generated/c8b7e5e890f928741c2bfbe3ca445c32562810dc8aff78d323383f045c237f15",
+      "logs/5bc47ba2c21a4dc23160ada1dd96cc487d4e82d3f47404b093ca2b54146e50fa-e7292b614f10.log",
+      "generated/45445c1317a5ea445c6586d60df312c52506af55c00450c1205d26ebcbbc423b",
+      "logs/d5101d3d228811872652b01cf86eee86a59a4b5db83301af06e849ce15c5f583-b49300efa8e7.log",
+      "generated/4958fae3b426256be589a07c8e4fe4c1bedbc3eb368392bb8dcba9677b19f05c",
+      "logs/1f81fa94e1fb5e1aee4a8262cdf827abc69173d06adede95086e7570db1626fe-29d044b1ecf1.log",
+      "generated/d323b02e20535556bddd3925608c1b98aaea4200a8cf862b2bad56efa4a048c3",
+      "logs/42fe0be1014a94a082385fcfcbf045e4042209f9becbd925bc90bc0477c7d081-b2a06c13d38c.log",
+      "generated/fa1cba423a5350afeb2775bfc2d49e3115b38e9d79bf8b4a4baef9902b3531f4",
+      "logs/815daa4e4051fdec3a8bf35517529b8c10c0c1f4cde9681c3ab67b32cf8fcceb-5143590b00c5.log",
+      "generated/d496c8039658e8480deb3c2f0608dbdd77118daa6ba4470b5db40129cd716086",
+      "logs/ed63dd72adb13476b4fe856c8e7794013baa7741e8438b76c4699530604b524b-53cb3433f326.log",
+      "generated/e618012f58a209719f845c903468f6d93113e68ed96a751b9a9779ec5b2dc432",
+      "logs/57327c99a4b36808728b0df76872c690a3fce33c9daf0005b7a7760e59c2213d-4a04492f5c71.log",
+      "generated/fa7c014ceccc48e51a26ffb0d68dbb2efdc2652b665ee880cdc3e3b27de8685b",
+      "logs/3c675e73b11c21a7d0c34229d7f2deac3829bfc1fd911a1628e29282ce1d9a06-4c3e3701c966.log",
+      "generated/c3dd34207d7bd6bd9a913b6be1733862691a4d712a92435375c4b3e88c4a3b93",
+      "logs/53e30f475a83fd3ea93daf5cff5b4a8188f152804abaf7700cbc3ba0d923979c-27f16747c124.log"
+    ],
+    "issues": {
+      "unknownFormats": [],
+      "mismatches": [],
+      "incomplete": [],
+      "unresolved": [],
+      "exitCode": 0
+    },
+    "exitCode": 0,
+    "receiptPath": "checks/84a718f744f5d30d7e3d9876d58b6cda850a2939a959eb6ab11cad758582e2ee.json"
+  },
+  {
     "key": "pnpm@11.3.0:ac6c05c92162c62cf266297930c4372bf46dcef0087dc92eb6a5225129a95de4",
     "manager": "pnpm",
     "version": "11.3.0",
@@ -41240,6 +41360,53 @@
     },
     "exitCode": 0,
     "receiptPath": "checks/7ce36f52f170969d961fb6c2bef641d5d3357236353c54be2e80b78283ba5a76.json"
+  },
+  {
+    "key": "pnpm@12.14.0:0c71cfb618fbf3bfcfe145a8f2c7e9a460271dbab2004b80eb7034d29c3631c9",
+    "manager": "pnpm",
+    "version": "12.14.0",
+    "checkedAt": "2026-10-16T08:18:04.551Z",
+    "origin": "check",
+    "outcomes": {
+      "pnpm-lock-v9": "pass",
+      "pnpm-lock-v5.4": "incompatible",
+      "pnpm-lock-v6": "incompatible",
+      "pnpm-lock-v5.1": "incompatible",
+      "pnpm-lock-v5": "incompatible",
+      "pnpm-lock-v5.2": "incompatible",
+      "pnpm-lock-v5.3": "incompatible",
+      "pnpm-legacy-shrinkwrap-v3": "incompatible",
+      "pnpm-legacy-shrinkwrap-v4": "incompatible"
+    },
+    "sources": [
+      "generated/796c177a15945f36c0ddde9ce62c9f589487dd3c518dd94c01ae7755e9ba88c3",
+      "logs/1e71efc43c4efa2dcf38474df085afa8278f145ccaca7149c6797f254073029b-cfc04fe517dc.log",
+      "generated/53fc291fd08b7ca41a3c2442ce505a584d62292d527d560a67e7cb6659f14f9e",
+      "logs/81662c1bf1007f80b925e7f7b354fefc9576bda411855338a7af3b00a9ef4b9c-daefe88073cb.log",
+      "generated/1dca22d642a326d9357260c5dc4f9bdf4c0b1a97aafd0f13b4e75ce87e5a6de4",
+      "logs/6752233b2faefb512fa2a31733938d5f823b779817040db7da38b9eb743f8fdf-b718d186e7fd.log",
+      "generated/159da3f2019acec5feea251461c21e4844031fe3fa610c2ded2fc2cf7e534ae2",
+      "logs/77fa40684115573620bcd41cadeb0c916e1151c25155e8f72a0d681f4c10b788-9b4d5c6dd260.log",
+      "generated/ff9fd6fa1323763c588660c9281854fe0bffdbf1c6340964b22704d5e231609b",
+      "logs/0b36a89c913882b4eb56636eb1f2e6ec968d8a73d4707f1f209a1b0e51f4bd0a-a2b896293c64.log",
+      "generated/dae63d0747aad9d11a989395e25bf086c8a8e84ac39ea4c514fbf68799f795e4",
+      "logs/ec7112d96be10504df75943aa5091be624a91558f7988244478dd039153b70b8-439c72ac2306.log",
+      "generated/462a402eca93b01ec338769a3156eabfc1fc8d2a4b1f2f60e042330eb214731b",
+      "logs/c381fa219cb313ea4efc332f35310fa1b69b8778422f024a83c268508f15b2f8-c8fc3de79812.log",
+      "generated/88b80038f5a64e95be195399b0ef9e57125af8f8a039be63578afef8b75dc534",
+      "logs/c8b17762360c3b918f01585b5fd76dc05b93e3abf839bef47ae525c87f3e4538-8f42ed3c6a83.log",
+      "generated/fe7d548e110a13d72ec00566032c2c0cedb67eaec0fc5ae06bed0798745495f1",
+      "logs/7c324615c316861fe7be0b82b1d1c21351987b50441490abc409c0e77560f01b-26e3dc06e235.log"
+    ],
+    "issues": {
+      "unknownFormats": [],
+      "mismatches": [],
+      "incomplete": [],
+      "unresolved": [],
+      "exitCode": 0
+    },
+    "exitCode": 0,
+    "receiptPath": "checks/dbf653086defbef587a73abb452e6935483ad2226203ff9c8fa4ddb14b47ea68.json"
   },
   {
     "key": "pnpm@12.2.0:ae3d6b92fdd42a133d25d64cb25fa2c3dc7be56471ee1f87b3c8726770c17c3e",
