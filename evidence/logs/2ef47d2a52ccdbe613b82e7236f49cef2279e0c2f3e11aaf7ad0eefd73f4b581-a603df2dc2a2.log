@@ -1,0 +1,26 @@
+/tmp/toolchain-releases-pHsFMN/tools/pnpm-12.16.1/node_modules/pnpm/native-pnpm install --frozen-lockfile --ignore-scripts
+[Fixture environment] {"npm_config_auto_install_peers":"true","npm_config_exclude_links_from_lockfile":"false"}
+✓ Lockfile passes supply-chain policies (verified 61ms ago)
+Lockfile is up to date, resolution step is skipped
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /tmp/toolchain-releases-pHsFMN/project/.pnpm-home/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Packages: +1
++
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+dependencies:
++ is-number 7.0.0
+
+Done in 103ms using pnpm v12.16.1
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/6214d3c5388a5418efebddf7984344c6e9603379c2bcbed41e75c4dac5ff9b11-c0e30e15cb42.log
