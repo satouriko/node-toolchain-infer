@@ -917,6 +917,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@11.27.1 | 2026-09-21T09:04:26.925Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/6197888ed5361a71d3b885957d881b473a6f7e13c9dcfc58f57a58d09c5a3444.json) |
 | pnpm@11.28.0 | 2026-09-26T08:42:27.568Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/c5d1fba2a93aba0e103ec0631c2a0bd0b6416994d3a8b5d8abf7ac31fc6c9ebe.json) |
 | pnpm@11.28.1 | 2026-09-28T09:56:08.963Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/0419d44ed9a557b31e92ce1f36296cab6a6bdf5654fa718e9d7768658e7d77cb.json) |
+| pnpm@11.28.10 | 2026-10-31T09:45:50.099Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/8ef168529e5a4b5697b62d2ce07d2a2af333e1e9a5c9683c7677b54f87d0e200.json) |
 | pnpm@11.28.2 | 2026-09-29T09:57:55.688Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/1cdec71df8c57027da32cd1b4b555dfc900da52c4b2122eaf26e18d5d6861ee4.json) |
 | pnpm@11.28.3 | 2026-10-01T10:15:45.763Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/26c112952e1f4dfc5d6b859abc70bf79464c9c275c784a405b9f4e3eb68c5e46.json) |
 | pnpm@11.28.4 | 2026-10-04T09:55:16.536Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/a938494468f34c6f52ff02dbcd1ec2989dc3ddfa1211d5014714185e83a02496.json) |
@@ -949,6 +950,7 @@ Historical results are retained without changing their original outcomes. Daily 
 | pnpm@12.15.0 | 2026-10-22T08:43:34.691Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/5b68c7768ea7be41da5821e62d0423f2c58b8ff42be1442b1f631942035972c1.json) |
 | pnpm@12.16.0 | 2026-10-27T09:08:46.385Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/3c9067c881fa2904aa5470c59c71f8d530dda8f4ddd28696a409328ae6de4ce6.json) |
 | pnpm@12.16.1 | 2026-10-28T09:48:47.705Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/634fa2dca7b3042806d0895014ebb5fbc6eee72bca7af5a4a31d1e50b8992181.json) |
+| pnpm@12.17.0 | 2026-10-31T09:46:24.321Z | pass: 1, incompatible: 8 | 0 | [receipt](checks/6549551fc837b3ead1e977a808e3b39f09e535d6c271f536a79d0d101f5d66df.json) |
 | pnpm@12.2.0 | 2026-09-09T10:30:16.270Z | incompatible: 8, pass: 1 | historical measurement | [receipt](checks/411edcfeb8df8cb3aa26efee2aa8b55719ab04f2206ded779f0c848ba0e90875.json) |
 | pnpm@12.2.1 | 2026-09-09T10:30:13.789Z | incompatible: 8, pass: 1 | historical measurement | [receipt](checks/5970241cee49ed868aba74d99d1353fb7b1b30fe4e7e474a48df4a5194910d35.json) |
 | pnpm@12.3.0 | 2026-09-09T10:30:15.700Z | pass: 1, incompatible: 8 | historical measurement | [receipt](checks/45bd3ee7b95daeb9565d1130d6844b611ff53d4d55ec398b4ceb61b0379f9a06.json) |
