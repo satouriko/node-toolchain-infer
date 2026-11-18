@@ -1,0 +1,20 @@
+/opt/hostedtoolcache/node/24.22.2/x64/bin/node /tmp/toolchain-releases-awGPdU/tools/npm-12.2.3/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+npm warn Unknown env config "verify-deps-before-run". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "npm-globalconfig". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "store-path". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+
+added 1 package in 272ms
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/f636178503fb96d5694c0768009b3c700d342ef797b1c00e17a720605b0a7767-f9131028fcd8.log
