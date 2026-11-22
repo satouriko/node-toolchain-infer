@@ -1582,7 +1582,8 @@
     "yarn@0.23.2:0063216b8f998b3a6a57b7508739b11ae409f31be2e765faabdc695186806422",
     "yarn@0.23.1:e39b271472dfe1ad3948c3aae5fd2fca98f90c57a3869080f66fa78095fd1109",
     "yarn@0.23.0:1b4021178d68ca2ef7a7d0992b15601e404b604766631e8ed1da7bcdd70580a4",
-    "yarn@0.22.0:035ec69605ccaff1900f8c94a4f4a1c5d1190b31b81c914e835cc4d393746d8a"
+    "yarn@0.22.0:035ec69605ccaff1900f8c94a4f4a1c5d1190b31b81c914e835cc4d393746d8a",
+    "yarn@4.19.0:f50678faff2330e9484de3c7a0ebce35fbbeed6a01055c88919fa53a433912ae"
   ],
   "unresolved": {
     "pnpm@9.0.5:9d57902a5eba4347d9661efa6d7b26f9c66dd73bcd032e5892d94560e28417f8:pnpm-lock-v6:behavior": "pnpm@9.0.5 pnpm-lock-v6: rewrite, expected true (rule); logs/a4973009e91019d8d4d63d69b8556496052f3952e60779505da4cec17b4b55fc-5cc4b3129705.log",
@@ -5595,6 +5596,70 @@
       },
       "directory": "maintenance/results/generated/52e86661520e5be8647dfd0b03c62b59056c915685e488687ae9ddd2669b1326",
       "lock": "pnpm-lock.yaml"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-classic-v1": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/7ff51580a515b3acde132f447449b2f059183d3f813c299053b3a5b1ea8e99b9",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v8": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/449e09262982ee09359ec91a4b19a46627a822d62c0d542ab37dd0b3b244eea3",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v4": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/3679a5873aad926015d3cadd2a2712abcf21d50ea860a7dce0356f843e72bb21",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v10": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/deb7fbea507d66839ac8e3fcc9a8a935920a9e506f77cf8b583d080675d03324",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v6": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/7ecad4f17c72422932e6aa72f35393124161e91c8e1353065c9415f38c255f6c",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v9": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/fbd297767c6129700e5a8f75f7a4e282b824d7cc5474601806eaa29dd4e4d489",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v5": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/95dc00e359d96eb4c394d325f7ee829e62e801fff3d1133e27812672fb84fc31",
+      "lock": "yarn.lock"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f:yarn-modern-v7": {
+      "match": {
+        "format": 10,
+        "classic": false
+      },
+      "directory": "maintenance/results/generated/8c4542d3e4c32eb82b395bca3e67546c66fcc36850a15b233855413524b6cd79",
+      "lock": "yarn.lock"
     }
   },
   "attempted": {
@@ -5680,9 +5745,10 @@
     "npm@11.21.3:e12aae197fffc438623712df8404c9810c697c2a8c0ac0f65617c404fbc03d12": "2026-11-18T11:53:08.101Z",
     "npm@10.9.11:e60aa46a1a86bcbf15a1201949723b30844131c7207496e519c3408d4fca8bc0": "2026-11-18T11:53:21.439Z",
     "pnpm@12.22.0:07c1b74e848cb129c866ec90881565465789e437c3d6d55b7d98214f54bb645a": "2026-11-18T11:53:34.752Z",
-    "pnpm@11.28.13:818fcf753ebfa6a1f740d17510cfdd359c0c57e862f86c8963a3ee9d1de1487a": "2026-11-18T11:53:55.589Z"
+    "pnpm@11.28.13:818fcf753ebfa6a1f740d17510cfdd359c0c57e862f86c8963a3ee9d1de1487a": "2026-11-18T11:53:55.589Z",
+    "yarn@4.19.0:f50678faff2330e9484de3c7a0ebce35fbbeed6a01055c88919fa53a433912ae": "2026-11-22T11:36:58.309Z"
   },
-  "batches": 79,
+  "batches": 80,
   "history": {
     "pnpm@5.9.1:8eef4e43abfae2f474fed80990fffb06a4deeac9e2406dc2ec78ba1fab6387fb": {
       "key": "pnpm@5.9.1:8eef4e43abfae2f474fed80990fffb06a4deeac9e2406dc2ec78ba1fab6387fb",
@@ -88839,6 +88905,50 @@
       },
       "exitCode": 0,
       "receiptPath": "checks/0d45a77a1b78cb772c77ce491fa069c8eca58b7b4a8554c51eb2a172d4703ce1.json"
+    },
+    "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f": {
+      "key": "yarn@4.19.0:34a1eba03341d0a4b03d580666bcfb0137c0dfa42f78af88f3bceaa48c33c18f",
+      "manager": "yarn",
+      "version": "4.19.0",
+      "checkedAt": "2026-11-22T11:36:58.309Z",
+      "origin": "check",
+      "outcomes": {
+        "yarn-classic-v1": "incompatible",
+        "yarn-modern-v8": "incompatible",
+        "yarn-modern-v4": "incompatible",
+        "yarn-modern-v10": "pass",
+        "yarn-modern-v6": "incompatible",
+        "yarn-modern-v9": "incompatible",
+        "yarn-modern-v5": "incompatible",
+        "yarn-modern-v7": "incompatible"
+      },
+      "sources": [
+        "generated/7ff51580a515b3acde132f447449b2f059183d3f813c299053b3a5b1ea8e99b9",
+        "logs/5ee3647ceb49f90f4ad36bdd317a9b964e6e811602edee071f41e1b23faa301f-09a064bb6207.log",
+        "generated/449e09262982ee09359ec91a4b19a46627a822d62c0d542ab37dd0b3b244eea3",
+        "logs/efaf98d95b8390d943c88c1e40277d00810aa02b79c2ecbbafa5b189f7600b46-18dbd4d1e6b4.log",
+        "generated/3679a5873aad926015d3cadd2a2712abcf21d50ea860a7dce0356f843e72bb21",
+        "logs/580f7dbf2d66bb4bbe4dc80d3b75d2c28e1e866099e8cd318cec245211d25db6-2ade2efdaff7.log",
+        "generated/deb7fbea507d66839ac8e3fcc9a8a935920a9e506f77cf8b583d080675d03324",
+        "logs/bd368ebd7672543230147cfa2e9f0c8a50571584d42e44f989f6ba26a8e734b3-331e12d717e8.log",
+        "generated/7ecad4f17c72422932e6aa72f35393124161e91c8e1353065c9415f38c255f6c",
+        "logs/089beb70de1909ffba9f1de3579034a9451360f0d1a91a801aae777750710440-e2e9d86c0d4b.log",
+        "generated/fbd297767c6129700e5a8f75f7a4e282b824d7cc5474601806eaa29dd4e4d489",
+        "logs/3709a91504649d0f1eebe3f9ba3e87a34d9f7f0cfe16af8787243a654e1acd91-6e706644946d.log",
+        "generated/95dc00e359d96eb4c394d325f7ee829e62e801fff3d1133e27812672fb84fc31",
+        "logs/18bd108dfbae055bc0fa1b2fe6bd7ca8f0ff8f9e59fc94f4ad1632fb386c50cc-40c22b2854b9.log",
+        "generated/8c4542d3e4c32eb82b395bca3e67546c66fcc36850a15b233855413524b6cd79",
+        "logs/bd7dd466bc5e0ecffbefd15fce5ea903e4407bdc8127ad8ac18d7ee3abef1179-f2626cb4a54b.log"
+      ],
+      "issues": {
+        "unknownFormats": [],
+        "mismatches": [],
+        "incomplete": [],
+        "unresolved": [],
+        "exitCode": 0
+      },
+      "exitCode": 0,
+      "receiptPath": "checks/f47e55eafc7ab716e1fbc2266b236fb2e50ea47a2c2cc70f3f87939cdcec40bf.json"
     }
   }
 }

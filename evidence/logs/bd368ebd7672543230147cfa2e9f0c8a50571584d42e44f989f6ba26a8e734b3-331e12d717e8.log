@@ -1,0 +1,30 @@
+/opt/hostedtoolcache/node/24.22.3/x64/bin/node /tmp/toolchain-releases-CvSQoG/tools/yarn-4.19.0/node_modules/@yarnpkg/cli-dist/bin/yarn.js install --immutable
+[94m➤[39m YN0000: · Yarn 4.19.0
+[94m➤[39m [90mYN0000[39m: ┌ Resolution step
+::group::Resolution step
+::endgroup::
+[94m➤[39m [90mYN0000[39m: └ Completed
+[94m➤[39m [90mYN0000[39m: ┌ Fetch step
+::group::Fetch step
+[94m➤[39m YN0013: │ A package was added to the project ([38;5;160m+ 10.17 KiB[39m).
+::endgroup::
+[94m➤[39m [90mYN0000[39m: └ Completed
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+::group::Link step
+::endgroup::
+[94m➤[39m [90mYN0000[39m: └ Completed
+[94m➤[39m YN0000: · Done in 0s 183ms
+
+[PnP dependency verification] /opt/hostedtoolcache/node/24.22.3/x64/bin/node --require /tmp/toolchain-releases-CvSQoG/project/.pnp.cjs --eval const out = {}; for (const name of JSON.parse(process.argv[1])) out[name] = require(name + "/package.json").version; console.log("NTI_DEPENDENCIES " + JSON.stringify(out)); ["is-number"]
+NTI_DEPENDENCIES {"is-number":"7.0.0"}
+
+[Contradictory manifest control]
+{
+  "name": "compatibility-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "is-number": "6.0.0"
+  }
+}
+Result: incompatible; logs/e07321a96b2869631767a79af02293d125ac008dd54eec33c975abaa56c4b804-5d1ea3072147.log
